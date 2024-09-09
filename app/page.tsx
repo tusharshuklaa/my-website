@@ -1,4 +1,5 @@
 import { ModeToggle } from "@/components/mode-toggle";
+import { Navbar } from "@/components/navbar";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { cn } from "@/lib/utils";
@@ -8,6 +9,7 @@ export default function Home() {
     <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background">
       <ShootingStars />
       <StarsBackground />
+      <Navbar />
       <ModeToggle />
       <h1 className={cn("relative z-20 text-xl text-white md:text-4xl")}>
         Tailwind is Awesome
