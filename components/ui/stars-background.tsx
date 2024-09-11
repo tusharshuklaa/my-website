@@ -40,7 +40,7 @@ export const StarsBackground: FC<StarBackgroundProps> = ({
     useRef<HTMLCanvasElement>(null);
 
   const generateStars = useCallback(
-    (width: number, height: number): StarProps[] => {
+    (width: number, height: number): Array<StarProps> => {
       const area = width * height;
       const numStars = Math.floor(area * starDensity);
 
@@ -50,7 +50,7 @@ export const StarsBackground: FC<StarBackgroundProps> = ({
         return {
           x: Math.random() * width,
           y: Math.random() * height,
-          radius: Math.random() * 0.05 + 0.5,
+          radius: Math.random() * 0.15 + 0.5,
           opacity: Math.random() * 0.5 + 0.5,
           twinkleSpeed: shouldTwinkle
             ? minTwinkleSpeed +
