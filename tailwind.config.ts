@@ -1,5 +1,23 @@
 import type { Config } from "tailwindcss";
 import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
+import plugin from "tailwindcss/plugin";
+
+const backfaceVisibility = plugin(function ({ addUtilities }) {
+  addUtilities({
+    ".backface-visible": {
+      "backface-visibility": "visible",
+      "-moz-backface-visibility": "visible",
+      "-webkit-backface-visibility": "visible",
+      "-ms-backface-visibility": "visible",
+    },
+    ".backface-hidden": {
+      "backface-visibility": "hidden",
+      "-moz-backface-visibility": "hidden",
+      "-webkit-backface-visibility": "hidden",
+      "-ms-backface-visibility": "hidden",
+    },
+  });
+});
 
 const config: Config = {
   darkMode: ["class"],
@@ -57,9 +75,23 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      transitionTimingFunction: {
+        "in-text": "cubic-bezier(0.445, 0.05, 0.55, 0.95)",
+        "in-letter": "cubic-bezier(0.5, 0, 0, 1)",
+      },
+      transformOrigin: {
+        "almost-center": "50% 50% .4em",
+      },
+      transitionDelay: {
+        "char-index": "calc(0ms + var(--char-index) * 25ms)",
+      },
     },
   },
-  plugins: [require("tailwindcss-animate"), addVariablesForColors],
+  plugins: [
+    require("tailwindcss-animate"),
+    addVariablesForColors,
+    backfaceVisibility,
+  ],
 };
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).

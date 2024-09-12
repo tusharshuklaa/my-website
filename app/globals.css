@@ -25,3 +25,13 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer components {
+  .text-flipper:hover .text-flipper--text:first-child .char {
+    transform: rotate3d(1, .3, 0, -90deg);
+  }
+
+  .text-flipper:hover .text-flipper--text:last-child .char {
+    transform: rotate3d(1, .3, 0, 0deg);
+  }
+}

@@ -12,6 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ModeToggle } from "@/components/mode-toggle";
 import Link from "next/link";
 import { CommandCenter } from "@/components/command-center";
+import { TextFlipper } from "./text-flipper";
 
 type NavbarProps = {
   className?: string;
@@ -35,8 +36,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
           </Avatar>
 
           <div className="flex flex-col justify-center align-middle text-xs font-bold uppercase">
-            <span>tushar</span>
-            <span>shukla</span>
+            <TextFlipper className="max-w-14">tushar shukla</TextFlipper>
           </div>
         </Link>
 

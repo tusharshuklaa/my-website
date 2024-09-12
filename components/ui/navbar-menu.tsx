@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { BasicComponent } from "@/types";
+import { TextFlipper } from "../text-flipper";
 
 const transition = {
   type: "spring",
@@ -32,7 +33,7 @@ export const MenuItem: FC<MenuItemProps> = ({
       transition={{ duration: 0.3 }}
       className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
     >
-      {item}
+      <TextFlipper>{item}</TextFlipper>
     </motion.p>
     {active !== null && (
       <motion.div
