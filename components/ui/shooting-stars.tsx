@@ -17,8 +17,6 @@ type ShootingStarsProps = {
   maxSpeed?: number;
   minDelay?: number;
   maxDelay?: number;
-  starColor?: string;
-  trailColor?: string;
   starWidth?: number;
   starHeight?: number;
   className?: string;
@@ -53,6 +51,7 @@ const starColors = [
   "#FF7F00",
   "#FF00FF",
   "#00FFFF",
+  "#2EB9DF",
 ];
 
 export const ShootingStars: React.FC<ShootingStarsProps> = ({
@@ -60,19 +59,27 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
   maxSpeed = 30,
   minDelay = 1200,
   maxDelay = 4200,
-  starColor,
-  trailColor = "#2EB9DF",
   starWidth = 10,
   starHeight = 1,
   className,
 }) => {
   const [star, setStar] = useState<ShootingStar | null>(null);
+  const [starColor, setStarColor] = useState("#9E00FF");
+  const [trailColor, setTrailColor] = useState("#2EB9DF");
   const svgRef = useRef<SVGSVGElement>(null);
-  const actualStarColor =
-    starColor || starColors[Math.floor(Math.random() * starColors.length)];
 
   useEffect(() => {
+    const randomColor = () => {
+      const newStarColor =
+        starColors[Math.floor(Math.random() * starColors.length)];
+      const newTrailColor =
+        starColors[Math.floor(Math.random() * starColors.length)];
+      setStarColor(newStarColor);
+      setTrailColor(newTrailColor);
+    };
+
     const createStar = () => {
+      randomColor();
       const { x, y, angle } = getRandomStartPoint();
       const newStar: ShootingStar = {
         id: Date.now(),
@@ -153,7 +160,7 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
           <stop offset="0%" style={{ stopColor: trailColor, stopOpacity: 0 }} />
           <stop
             offset="100%"
-            style={{ stopColor: actualStarColor, stopOpacity: 1 }}
+            style={{ stopColor: starColor, stopOpacity: 1 }}
           />
         </linearGradient>
       </defs>
