@@ -42,12 +42,25 @@ const getRandomStartPoint = () => {
   }
 };
 
+const starColors = [
+  "#9E00FF",
+  "#FF00FF",
+  "#00FFD5",
+  "#FFD500",
+  "#FF0000",
+  "#00FF00",
+  "#0000FF",
+  "#FF7F00",
+  "#FF00FF",
+  "#00FFFF",
+];
+
 export const ShootingStars: React.FC<ShootingStarsProps> = ({
   minSpeed = 10,
   maxSpeed = 30,
   minDelay = 1200,
   maxDelay = 4200,
-  starColor = "#9E00FF",
+  starColor,
   trailColor = "#2EB9DF",
   starWidth = 10,
   starHeight = 1,
@@ -55,6 +68,8 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
 }) => {
   const [star, setStar] = useState<ShootingStar | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
+  const actualStarColor =
+    starColor || starColors[Math.floor(Math.random() * starColors.length)];
 
   useEffect(() => {
     const createStar = () => {
@@ -138,7 +153,7 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
           <stop offset="0%" style={{ stopColor: trailColor, stopOpacity: 0 }} />
           <stop
             offset="100%"
-            style={{ stopColor: starColor, stopOpacity: 1 }}
+            style={{ stopColor: actualStarColor, stopOpacity: 1 }}
           />
         </linearGradient>
       </defs>
