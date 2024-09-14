@@ -38,6 +38,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        "noise-anim-1": "noise-anim-1 2s infinite linear alternate-reverse",
+        "noise-anim-2": "noise-anim-2 3s infinite linear alternate-reverse",
+        "conic-text": "conic-expand 0.5s ease forwards",
+        "conic-text-rev": "conic-expand-rev 0.5s ease forwards",
+      },
+      backgroundImage: {
+        'collage-gradient': 'conic-gradient(#D9D7F1 12%, #BAABDA 12%, #BAABDA 33%, #E7FBBE 33%, #E7FBBE 55%, #FFCBCB 55%, #FFCBCB 70%, #B5DEFF 70%, #B5DEFF 87%, #F7D1BA 87%)',
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundSize: {
+        '50%': '50%',
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -79,21 +96,6 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      transitionTimingFunction: {
-        "in-text": "cubic-bezier(0.445, 0.05, 0.55, 0.95)",
-        "in-letter": "cubic-bezier(0.5, 0, 0, 1)",
-      },
-      transformOrigin: {
-        "almost-center": "50% 50% .4em",
-      },
-      transitionDelay: {
-        "char-index": "calc(0ms + var(--char-index) * 25ms)",
       },
       keyframes: {
         "noise-anim-1": {
@@ -142,10 +144,44 @@ const config: Config = {
           "95%": { clip: "rect(21px, 9999px, 87px, 0)" },
           "100%": { clip: "rect(81px, 9999px, 45px, 0)" },
         },
+        "conic-expand": {
+          "0%": {
+            "background-size": "50%",
+            "background-position": "0 0",
+          },
+          "20%": {
+            "background-size": "55%",
+            "background-position": "0 1em",
+          },
+          "100%": {
+            "background-size": "325%",
+            "background-position": "-10em -4em",
+          }
+        },
+        "conic-expand-rev": {
+          "0%": {
+            "background-size": "325%",
+            "background-position": "-10em -4em",
+          },
+          "20%": {
+            "background-size": "55%",
+            "background-position": "0 1em",
+          },
+          "100%": {
+            "background-size": "50%",
+            "background-position": "0 0",
+          }
+        },
       },
-      animation: {
-        "noise-anim-1": "noise-anim-1 2s infinite linear alternate-reverse",
-        "noise-anim-2": "noise-anim-2 3s infinite linear alternate-reverse",
+      transformOrigin: {
+        "almost-center": "50% 50% .4em",
+      },
+      transitionDelay: {
+        "char-index": "calc(0ms + var(--char-index) * 25ms)",
+      },
+      transitionTimingFunction: {
+        "in-text": "cubic-bezier(0.445, 0.05, 0.55, 0.95)",
+        "in-letter": "cubic-bezier(0.5, 0, 0, 1)",
       },
     },
   },

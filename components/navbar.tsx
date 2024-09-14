@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, useState } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
   Menu,
@@ -10,9 +11,8 @@ import {
 } from "@/components/ui/navbar-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ModeToggle } from "@/components/mode-toggle";
-import Link from "next/link";
 import { CommandCenter } from "@/components/command-center";
-import { TextFlipper } from "./text-flipper";
+import { TextFlipper } from "@/components/text";
 
 type NavbarProps = {
   className?: string;

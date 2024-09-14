@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { GlitchText } from "@/components/glitch-text";
-import { Underline } from "@/components/underline";
+import { GlitchText, Underline } from "@/components/text";
 
 export default async function NotFound() {
   return (

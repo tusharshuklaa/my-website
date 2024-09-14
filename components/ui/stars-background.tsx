@@ -140,7 +140,7 @@ export const StarsBackground: FC<StarBackgroundProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className={cn("absolute inset-0 h-full w-full", className)}
+      className={cn("absolute inset-0 h-full w-full pointer-events-none", className)}
     />
   );
 };

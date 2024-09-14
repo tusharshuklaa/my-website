@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { BasicComponent } from "@/types";
-import { TextFlipper } from "../text-flipper";
+import { TextFlipper } from "@/components/text";
 
 const transition = {
   type: "spring",
