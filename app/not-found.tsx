@@ -11,8 +11,7 @@ export default async function NotFound() {
         </GlitchText>
         <p></p>
         <p className="relative z-10 mx-auto my-2 max-w-lg text-center text-neutral-500">
-          Oops! The page you&apos;re looking for is either moved or doesn&apos;t
-          exist. <br />
+          Oops! The page you&apos;re looking for is either moved or doesn&apos;t exist. <br />
           If you think this is a mistake, please{" "}
           <Link href="/contact">
             <Underline>contact me</Underline>

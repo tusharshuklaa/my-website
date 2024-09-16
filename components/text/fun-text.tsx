@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { cn } from "@/lib/utils";
+import clsx from "clsx";
 
 type FunTextProps = {
   children: string;
@@ -8,8 +8,8 @@ type FunTextProps = {
 
 export const FunText: FC<FunTextProps> = ({ children, className }) => (
   <span
-    className={cn(
-      "hover:[text-shadow:0px_0px_2rem_navajowhite] text-transparent bg-clip-text bg-50% cursor-pointer animate-conic-text-rev hover:animate-conic-text bg-collage-gradient",
+    className={clsx(
+      "animate-conic-text-rev cursor-pointer bg-collage-gradient bg-50% bg-clip-text text-transparent hover:animate-conic-text hover:[text-shadow:0px_0px_2rem_navajowhite]",
       className,
     )}
   >

@@ -3,16 +3,11 @@
 import { FC, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import {
-  Menu,
-  MenuItem,
-  HoveredLink,
-  ProductItem,
-} from "@/components/ui/navbar-menu";
+import { Menu, MenuItem, HoveredLink, ProductItem } from "@/components/ui/navbar-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ModeToggle } from "@/components/mode-toggle";
 import { CommandCenter } from "@/components/command-center";
-import { TextFlipper } from "@/components/text";
+import { TextFlipper } from "@ui/text-flipper";
 
 type NavbarProps = {
   className?: string;
@@ -23,15 +18,18 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
 
   return (
     <div
-      className={cn("fixed inset-x-0 top-10 z-50 mx-auto max-w-3xl", className)}
+      className={cn(
+        "group fixed inset-x-0 top-10 z-50 mx-auto max-w-3xl backdrop-blur-sm transition-shadow duration-500 ease-out [--bg-size:300%]",
+        className,
+      )}
     >
+      <div
+        className={`absolute inset-0 block h-full w-full animate-gradient rounded-full bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] p-[1px] ![mask-composite:subtract] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`}
+      />
       <Menu setActive={setActive}>
         <Link href="/" className="flex justify-between space-x-2 align-middle">
           <Avatar>
-            <AvatarImage
-              src="https://avatars.githubusercontent.com/u/7785066?v=4"
-              alt="@tusharshuklaa"
-            />
+            <AvatarImage src="https://avatars.githubusercontent.com/u/7785066?v=4" alt="@tusharshuklaa" />
             <AvatarFallback>TS</AvatarFallback>
           </Avatar>
 
@@ -44,9 +42,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
           <MenuItem setActive={setActive} active={active} item="About Me">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/web-dev">Web Development</HoveredLink>
-              <HoveredLink href="/interface-design">
-                Interface Design
-              </HoveredLink>
+              <HoveredLink href="/interface-design">Interface Design</HoveredLink>
               <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
               <HoveredLink href="/branding">Branding</HoveredLink>
             </div>

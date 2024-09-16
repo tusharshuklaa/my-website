@@ -1,14 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Calculator,
-  Calendar,
-  Command,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react";
+import { Calculator, Calendar, Command, CreditCard, Settings, Smile, User } from "lucide-react";
 import {
   CommandDialog,
   CommandInput,
@@ -27,7 +19,7 @@ export const CommandCenter: FC = () => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setOpen(open => !open);
       }
     };
 
@@ -41,12 +33,7 @@ export const CommandCenter: FC = () => {
 
   return (
     <>
-      <Button
-        size="sm"
-        onClick={openCommandCenter}
-        variant="ghost"
-        aria-label="open command center"
-      >
+      <Button size="sm" onClick={openCommandCenter} variant="ghost" aria-label="open command center">
         <Command className="h-[1rem] w-[1rem]" />
         &nbsp;K
       </Button>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { BasicComponent } from "@/types";
-import { TextFlipper } from "@/components/text";
+import { TextFlipper } from "@ui/text-flipper";
 
 const transition = {
   type: "spring",
@@ -22,17 +22,9 @@ type MenuItemProps = PropsWithChildren & {
   item: string;
 };
 
-export const MenuItem: FC<MenuItemProps> = ({
-  setActive,
-  active,
-  item,
-  children,
-}) => (
+export const MenuItem: FC<MenuItemProps> = ({ setActive, active, item, children }) => (
   <div onMouseEnter={() => setActive(item)} className="relative">
-    <motion.p
-      transition={{ duration: 0.3 }}
-      className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
-    >
+    <motion.p transition={{ duration: 0.3 }} className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white">
       <TextFlipper>{item}</TextFlipper>
     </motion.p>
     {active !== null && (
@@ -82,27 +74,12 @@ type ProductItemProps = {
   src: string;
 };
 
-export const ProductItem: FC<ProductItemProps> = ({
-  title,
-  description,
-  href,
-  src,
-}) => (
+export const ProductItem: FC<ProductItemProps> = ({ title, description, href, src }) => (
   <Link href={href} className="flex space-x-2">
-    <Image
-      src={src}
-      width={140}
-      height={70}
-      alt={title}
-      className="flex-shrink-0 rounded-md shadow-2xl"
-    />
+    <Image src={src} width={140} height={70} alt={title} className="flex-shrink-0 rounded-md shadow-2xl" />
     <div>
-      <h4 className="mb-1 text-xl font-bold text-black dark:text-white">
-        {title}
-      </h4>
-      <p className="max-w-[10rem] text-sm text-neutral-700 dark:text-neutral-300">
-        {description}
-      </p>
+      <h4 className="mb-1 text-xl font-bold text-black dark:text-white">{title}</h4>
+      <p className="max-w-[10rem] text-sm text-neutral-700 dark:text-neutral-300">{description}</p>
     </div>
   </Link>
 );
@@ -112,10 +89,7 @@ type HoveredLinkProps = BasicComponent<{
 }>;
 
 export const HoveredLink: FC<HoveredLinkProps> = ({ children, ...rest }) => (
-  <Link
-    {...rest}
-    className="text-neutral-700 hover:text-black dark:text-neutral-200"
-  >
+  <Link {...rest} className="text-neutral-700 hover:text-black dark:text-neutral-200">
     {children}
   </Link>
 );

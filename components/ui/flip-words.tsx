@@ -2,7 +2,8 @@
 
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { cn, isEmoji } from "@/lib/utils";
+import clsx from "clsx";
+import { isEmoji } from "@/lib/utils";
 
 type FlipWordsProps = {
   words: Array<string>;
@@ -10,11 +11,7 @@ type FlipWordsProps = {
   className?: string;
 };
 
-export const FlipWords: FC<FlipWordsProps> = ({
-  words,
-  duration = 3000,
-  className,
-}) => {
+export const FlipWords: FC<FlipWordsProps> = ({ words, duration = 3000, className }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
@@ -54,16 +51,13 @@ export const FlipWords: FC<FlipWordsProps> = ({
         }}
         exit={{
           opacity: 0,
-          y: -40,
-          x: 40,
+          y: 200,
+          x: -40,
           filter: "blur(8px)",
-          scale: 2,
+          scale: 1.5,
           position: "absolute",
         }}
-        className={cn(
-          "relative z-10 inline-block px-2 text-left text-neutral-900 dark:text-neutral-100",
-          className,
-        )}
+        className={clsx("relative z-10 inline-block text-left", className)}
         key={currentWord}
       >
         {currentWord.split(" ").map((word, wordIndex) => (
@@ -86,7 +80,7 @@ export const FlipWords: FC<FlipWordsProps> = ({
                   delay: wordIndex * 0.3 + letterIndex * 0.05,
                   duration: 0.2,
                 }}
-                className="inline-block"
+                className={`${isEmoji(word) ? "text-white" : ""} inline-block`}
               >
                 {letter}
               </motion.span>

@@ -4,9 +4,7 @@ import type { Config } from "tailwindcss";
 const plugin = require("tailwindcss/plugin");
 require("tailwindcss/defaultTheme");
 require("tailwindcss/colors");
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
 
 const backfaceVisibility = plugin(function ({
   addUtilities,
@@ -39,13 +37,15 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        "noise-anim-1": "noise-anim-1 2s infinite linear alternate-reverse",
-        "noise-anim-2": "noise-anim-2 3s infinite linear alternate-reverse",
         "conic-text": "conic-expand 0.5s ease forwards",
         "conic-text-rev": "conic-expand-rev 0.5s ease forwards",
+        gradient: "gradient 8s linear infinite",
+        "noise-anim-1": "noise-anim-1 2s infinite linear alternate-reverse",
+        "noise-anim-2": "noise-anim-2 3s infinite linear alternate-reverse",
       },
       backgroundImage: {
-        'collage-gradient': 'conic-gradient(#D9D7F1 12%, #BAABDA 12%, #BAABDA 33%, #E7FBBE 33%, #E7FBBE 55%, #FFCBCB 55%, #FFCBCB 70%, #B5DEFF 70%, #B5DEFF 87%, #F7D1BA 87%)',
+        "collage-gradient":
+          "conic-gradient(#D9D7F1 12%, #BAABDA 12%, #BAABDA 33%, #E7FBBE 33%, #E7FBBE 55%, #FFCBCB 55%, #FFCBCB 70%, #B5DEFF 70%, #B5DEFF 87%, #F7D1BA 87%)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -53,7 +53,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       backgroundSize: {
-        '50%': '50%',
+        "50%": "50%",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -96,8 +96,20 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        antiquewhite: "#FAEBD7",
+      },
+      fontSize: {
+        "screen-xs": "2.3vmin",
+        "screen-sm": "4.6vmin",
+        "screen-md": "6.89vmin",
+        "screen-lg": "9.19vmin",
       },
       keyframes: {
+        gradient: {
+          to: {
+            backgroundPosition: "var(--bg-size) 0",
+          },
+        },
         "noise-anim-1": {
           "0%": { clip: "rect(52px, 9999px, 97px, 0)" },
           "5%": { clip: "rect(62px, 9999px, 70px, 0)" },
@@ -156,7 +168,7 @@ const config: Config = {
           "100%": {
             "background-size": "325%",
             "background-position": "-10em -4em",
-          }
+          },
         },
         "conic-expand-rev": {
           "0%": {
@@ -170,7 +182,7 @@ const config: Config = {
           "100%": {
             "background-size": "50%",
             "background-position": "0 0",
-          }
+          },
         },
       },
       transformOrigin: {
@@ -185,20 +197,14 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    addVariablesForColors,
-    backfaceVisibility,
-  ],
+  plugins: [require("tailwindcss-animate"), addVariablesForColors, backfaceVisibility],
 };
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function addVariablesForColors({ addBase, theme }: any) {
   const allColors = flattenColorPalette(theme("colors"));
-  const newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
-  );
+  const newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]));
 
   addBase({
     ":root": newVars,

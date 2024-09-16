@@ -70,10 +70,8 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
 
   useEffect(() => {
     const randomColor = () => {
-      const newStarColor =
-        starColors[Math.floor(Math.random() * starColors.length)];
-      const newTrailColor =
-        starColors[Math.floor(Math.random() * starColors.length)];
+      const newStarColor = starColors[Math.floor(Math.random() * starColors.length)];
+      const newTrailColor = starColors[Math.floor(Math.random() * starColors.length)];
       setStarColor(newStarColor);
       setTrailColor(newTrailColor);
     };
@@ -104,22 +102,13 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
   useEffect(() => {
     const moveStar = () => {
       if (star) {
-        setStar((prevStar) => {
+        setStar(prevStar => {
           if (!prevStar) return null;
-          const newX =
-            prevStar.x +
-            prevStar.speed * Math.cos((prevStar.angle * Math.PI) / 180);
-          const newY =
-            prevStar.y +
-            prevStar.speed * Math.sin((prevStar.angle * Math.PI) / 180);
+          const newX = prevStar.x + prevStar.speed * Math.cos((prevStar.angle * Math.PI) / 180);
+          const newY = prevStar.y + prevStar.speed * Math.sin((prevStar.angle * Math.PI) / 180);
           const newDistance = prevStar.distance + prevStar.speed;
           const newScale = 1 + newDistance / 100;
-          if (
-            newX < -20 ||
-            newX > window.innerWidth + 20 ||
-            newY < -20 ||
-            newY > window.innerHeight + 20
-          ) {
+          if (newX < -20 || newX > window.innerWidth + 20 || newY < -20 || newY > window.innerHeight + 20) {
             return null;
           }
           return {
@@ -138,10 +127,7 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
   }, [star]);
 
   return (
-    <svg
-      ref={svgRef}
-      className={cn("absolute inset-0 h-full w-full pointer-events-none", className)}
-    >
+    <svg ref={svgRef} className={cn("pointer-events-none absolute inset-0 h-full w-full", className)}>
       {star && (
         <rect
           key={star.id}
@@ -150,18 +136,13 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
           width={starWidth * star.scale}
           height={starHeight}
           fill="url(#gradient)"
-          transform={`rotate(${star.angle}, ${
-            star.x + (starWidth * star.scale) / 2
-          }, ${star.y + starHeight / 2})`}
+          transform={`rotate(${star.angle}, ${star.x + (starWidth * star.scale) / 2}, ${star.y + starHeight / 2})`}
         />
       )}
       <defs>
         <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" style={{ stopColor: trailColor, stopOpacity: 0 }} />
-          <stop
-            offset="100%"
-            style={{ stopColor: starColor, stopOpacity: 1 }}
-          />
+          <stop offset="100%" style={{ stopColor: starColor, stopOpacity: 1 }} />
         </linearGradient>
       </defs>
     </svg>
