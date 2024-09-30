@@ -5,7 +5,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Menu, MenuItem, HoveredLink, ProductItem } from "@/components/ui/navbar-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ModeToggle } from "@/components/mode-toggle";
 import { CommandCenter } from "@/components/command-center";
 import { TextFlipper } from "@ui/text-flipper";
 
@@ -53,25 +52,25 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
               <ProductItem
                 title="Algochurn"
                 href="https://algochurn.com"
-                src="https://assets.aceternity.com/demos/algochurn.webp"
+                src="/img/my-app.png"
                 description="Prepare for tech interviews like never before."
               />
               <ProductItem
                 title="Tailwind Master Kit"
                 href="https://tailwindmasterkit.com"
-                src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
+                src="/img/my-app.png"
                 description="Production ready Tailwind css components for your next project"
               />
               <ProductItem
                 title="Moonbeam"
                 href="https://gomoonbeam.com"
-                src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
+                src="/img/my-app.png"
                 description="Never write from scratch again. Go from idea to blog in minutes."
               />
               <ProductItem
                 title="Rogue"
                 href="https://userogue.com"
-                src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
+                src="/img/my-app.png"
                 description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
               />
             </div>
@@ -88,7 +87,6 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
         </div>
 
         <div className="flex justify-between space-x-2 align-middle">
-          <ModeToggle />
           <CommandCenter />
         </div>
       </Menu>

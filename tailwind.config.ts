@@ -27,6 +27,8 @@ const backfaceVisibility = plugin(function ({
   });
 });
 
+const conicGradientColors = ["#89FC00", "#F896D8", "#C879FF", "#06D6A0", "#75DDDD", "#9368B7"];
+
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -44,8 +46,7 @@ const config: Config = {
         "noise-anim-2": "noise-anim-2 3s infinite linear alternate-reverse",
       },
       backgroundImage: {
-        "collage-gradient":
-          "conic-gradient(#D9D7F1 12%, #BAABDA 12%, #BAABDA 33%, #E7FBBE 33%, #E7FBBE 55%, #FFCBCB 55%, #FFCBCB 70%, #B5DEFF 70%, #B5DEFF 87%, #F7D1BA 87%)",
+        "collage-gradient": `conic-gradient(${conicGradientColors[0]} 12%, ${conicGradientColors[1]} 12%, ${conicGradientColors[1]} 33%, ${conicGradientColors[2]} 33%, ${conicGradientColors[2]} 55%, ${conicGradientColors[3]} 55%, ${conicGradientColors[3]} 70%, ${conicGradientColors[4]} 70%, ${conicGradientColors[4]} 87%, ${conicGradientColors[0]} 87%)`,
       },
       borderRadius: {
         lg: "var(--radius)",

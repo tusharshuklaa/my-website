@@ -3,15 +3,38 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import clsx from "clsx";
+import { shuffle } from "lodash";
 import { isEmoji } from "@/lib/utils";
 
 type FlipWordsProps = {
-  words: Array<string>;
   duration?: number;
   className?: string;
 };
 
-export const FlipWords: FC<FlipWordsProps> = ({ words, duration = 3000, className }) => {
+export const FlipWords: FC<FlipWordsProps> = ({ duration = 3000, className }) => {
+  const words = shuffle([
+    "building stuff for the web 👨🏻‍💻",
+    "riding my RE Classic 🏍️",
+    "my 2 cute monsters 👻",
+    "creating CSS art 🧑🏻‍🎨",
+    "conversations about space 💫",
+    "tweaking my gadgets 📱",
+    "staying informed of latest tech 💿",
+    "talking to people 🗣️",
+    "loosing money in stocks 😤",
+    "using emojis 😼",
+    "anime and manga 🎌",
+    "money... bcz who doesn't? 🤑",
+    "learning new things 🧠",
+    "solving problems 🧩",
+    "playing mobile games 👾",
+    "stargazing 🌌",
+    "coding for fun 🤓",
+    "writing blogs 📝",
+    "helping others 🤝",
+    "making memories 📸",
+  ]);
+
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 

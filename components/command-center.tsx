@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Calculator, Calendar, Command, CreditCard, Settings, Smile, User } from "lucide-react";
+import { useTheme } from "next-themes";
+import { BookOpenText, Command, Moon, Sun, User } from "lucide-react";
+import { Button } from "@ui/button";
 import {
   CommandDialog,
   CommandInput,
@@ -9,11 +10,15 @@ import {
   CommandGroup,
   CommandItem,
   CommandSeparator,
-} from "@/components/ui/command";
-import { CommandShortcut } from "./ui/command";
+} from "@ui/command";
+import { CommandShortcut } from "@ui/command";
+import { TwitterIcon } from "@/components/icons/twitter";
 
 export const CommandCenter: FC = () => {
   const [open, setOpen] = useState(false);
+
+  // theme toggle
+  const { setTheme, theme } = useTheme();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -27,9 +32,21 @@ export const CommandCenter: FC = () => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const openCommandCenter = () => {
-    setOpen(true);
-  };
+  const openCommandCenter = () => setOpen(true);
+
+  const toggleTheme = () => setTheme(() => (theme === "light" ? "dark" : "light"));
+
+  const goToX = () => window.open("https://x.com/theTSguy");
+
+  const today = new Date();
+  const fullDate = today.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const greeting =
+    today.getHours() < 12 ? "Good Morning 🌅" : today.getHours() < 18 ? "Good Afternoon 🔅" : "Good Evening 🌃";
 
   return (
     <>
@@ -40,38 +57,52 @@ export const CommandCenter: FC = () => {
 
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
+
+        <div className="flex flex-col gap-2 px-3 py-4 text-xl">
+          <span>{greeting}</span>
+          <span className="text-sm">
+            Right now, it&apos;s, <span className="font-bold">{fullDate}</span>{" "}
+          </span>
+        </div>
+
+        <CommandSeparator />
+
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
-            <CommandItem>
-              <Calendar className="mr-2 h-4 w-4" />
-              <span>Calendar</span>
+            <CommandItem onSelect={toggleTheme}>
+              <Sun className="mr-2 h-4 w-4 dark:hidden dark:-rotate-90 dark:scale-0" />
+              <Moon className="mr-2 hidden h-4 w-4 rotate-90 scale-0 transition-all dark:block dark:rotate-0 dark:scale-100" />
+              <span>Toggle Theme</span>
             </CommandItem>
-            <CommandItem>
-              <Smile className="mr-2 h-4 w-4" />
-              <span>Search Emoji</span>
-            </CommandItem>
-            <CommandItem>
-              <Calculator className="mr-2 h-4 w-4" />
-              <span>Calculator</span>
+
+            <CommandItem onSelect={goToX}>
+              <TwitterIcon />
+              <span>Find me on X (Twitter)</span>
             </CommandItem>
           </CommandGroup>
+
           <CommandSeparator />
-          <CommandGroup heading="Settings">
+
+          <CommandGroup heading="Fun Stuff">
             <CommandItem>
               <User className="mr-2 h-4 w-4" />
-              <span>Profile</span>
+              <span>Confetti</span>
               <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
+          </CommandGroup>
+
+          <CommandGroup heading="Blogs">
             <CommandItem>
-              <CreditCard className="mr-2 h-4 w-4" />
-              <span>Billing</span>
-              <CommandShortcut>⌘B</CommandShortcut>
+              <BookOpenText className="mr-2 h-4 w-4" />
+              <span>Getting started with Hello World</span>
             </CommandItem>
+          </CommandGroup>
+
+          <CommandGroup heading="Showcase">
             <CommandItem>
-              <Settings className="mr-2 h-4 w-4" />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
+              <BookOpenText className="mr-2 h-4 w-4" />
+              <span>The dark knight rises - with CSS</span>
             </CommandItem>
           </CommandGroup>
         </CommandList>
