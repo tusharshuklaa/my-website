@@ -19,7 +19,7 @@ export const FlipWords: FC<FlipWordsProps> = ({ duration = 3000, className }) =>
     "creating CSS art 🧑🏻‍🎨",
     "conversations about space 💫",
     "tweaking my gadgets 📱",
-    "staying informed of latest tech 💿",
+    "exploring latest tech 💿",
     "talking to people 🗣️",
     "loosing money in stocks 😤",
     "using emojis 😼",
@@ -74,10 +74,10 @@ export const FlipWords: FC<FlipWordsProps> = ({ duration = 3000, className }) =>
         }}
         exit={{
           opacity: 0,
-          y: 200,
-          x: -40,
+          y: -40,
+          x: 40,
           filter: "blur(8px)",
-          scale: 1.5,
+          scale: 2,
           position: "absolute",
         }}
         className={clsx("relative z-10 inline-block text-left", className)}
@@ -86,8 +86,8 @@ export const FlipWords: FC<FlipWordsProps> = ({ duration = 3000, className }) =>
         {currentWord.split(" ").map((word, wordIndex) => (
           <motion.span
             key={word + wordIndex}
-            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: wordIndex * 0.3,
               duration: 0.3,
@@ -97,13 +97,15 @@ export const FlipWords: FC<FlipWordsProps> = ({ duration = 3000, className }) =>
             {(isEmoji(word) ? [word] : word.split("")).map((letter, letterIndex) => (
               <motion.span
                 key={word + letterIndex}
-                initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{
                   delay: wordIndex * 0.3 + letterIndex * 0.05,
                   duration: 0.2,
                 }}
-                className={`${isEmoji(word) ? "text-white" : ""} inline-block`}
+                className={clsx("inline-block", {
+                  "text-white": isEmoji(word),
+                })}
               >
                 {letter}
               </motion.span>

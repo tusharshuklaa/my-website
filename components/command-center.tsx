@@ -1,3 +1,5 @@
+"use client";
+
 import { FC, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { BookOpenText, Command, Moon, Sun, User } from "lucide-react";

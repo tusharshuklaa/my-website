@@ -21,7 +21,7 @@ type StarBackgroundProps = {
 };
 
 export const StarsBackground: FC<StarBackgroundProps> = ({
-  starDensity = 0.00015,
+  starDensity = 0.0005,
   allStarsTwinkle = true,
   twinkleProbability = 0.7,
   minTwinkleSpeed = 0.5,
@@ -67,13 +67,14 @@ export const StarsBackground: FC<StarBackgroundProps> = ({
     updateStars();
 
     const resizeObserver = new ResizeObserver(updateStars);
-    if (canvasRef.current) {
-      resizeObserver.observe(canvasRef.current);
+    const canvasElement = canvasRef.current;
+    if (canvasElement) {
+      resizeObserver.observe(canvasElement);
     }
 
     return () => {
-      if (canvasRef.current) {
-        resizeObserver.unobserve(canvasRef.current);
+      if (canvasElement) {
+        resizeObserver.unobserve(canvasElement);
       }
     };
   }, [starDensity, allStarsTwinkle, twinkleProbability, minTwinkleSpeed, maxTwinkleSpeed, generateStars]);
@@ -110,5 +111,12 @@ export const StarsBackground: FC<StarBackgroundProps> = ({
     };
   }, [stars]);
 
-  return <canvas ref={canvasRef} className={cn("pointer-events-none absolute inset-0 h-full w-full", className)} />;
+  return (
+    <div className="absolute h-full w-full">
+      <canvas
+        ref={canvasRef}
+        className={cn("pointer-events-none absolute inset-0 h-full w-full animate-zoom-in", className)}
+      />
+    </div>
+  );
 };

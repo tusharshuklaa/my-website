@@ -35,3 +35,65 @@ body {
     transform: rotate3d(1, .3, 0, 0deg);
   }
 }
+/* #89FC00", "#F896D8", "#C879FF", "#06D6A0", "#75DDDD", "#9368B7" */
+@keyframes welcomeText {
+  0% {
+    stroke: #89FC00;
+    stroke-dashoffset: var(--dash-offset);
+  }
+  10% {
+    stroke: #9368B7;
+  }
+  20% {
+    stroke: #F896D8;
+  }
+  30% {
+    stroke: #89FC00;
+  }
+  40% {
+    stroke: #C879FF;
+  }
+  50% {
+    stroke: #9368B7;
+  }
+  60% {
+    stroke: #06D6A0;
+  }
+  70% {
+    stroke: #C879FF;
+  }
+  80% {
+    stroke: #75DDDD;
+    fill: transparent;
+  }
+  100% {
+    stroke: #fff;
+    fill: #fff;
+    stroke-dashoffset: 0;
+  }
+}
+
+.fun-text {
+  --dash-offset: 50;
+  svg {
+    path {
+      fill: transparent;
+      stroke: #fff;
+      stroke-width: 0.1;
+      stroke-dasharray: var(--dash-offset);
+      stroke-dashoffset: var(--dash-offset);
+      animation: welcomeText 4s ease-in-out 1 forwards 4s;
+    }
+  }
+}
+
+.space-clouds {
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    mask-image: url("/img/space-clouds.gif");
+    mask-size: cover;
+    mask-position: center;
+  }
+}

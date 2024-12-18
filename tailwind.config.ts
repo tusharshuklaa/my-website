@@ -44,6 +44,10 @@ const config: Config = {
         gradient: "gradient 8s linear infinite",
         "noise-anim-1": "noise-anim-1 2s infinite linear alternate-reverse",
         "noise-anim-2": "noise-anim-2 3s infinite linear alternate-reverse",
+        "zoom-in": "zoom-in 3s ease forwards",
+        // animation time for name svg is welcome-text time + delay
+        "welcome-text": "welcome-text 3s ease forwards 0.5s",
+        "fade-in": "fade-in 1s ease-in-out 3.3s forwards",
       },
       backgroundImage: {
         "collage-gradient": `conic-gradient(${conicGradientColors[0]} 12%, ${conicGradientColors[1]} 12%, ${conicGradientColors[1]} 33%, ${conicGradientColors[2]} 33%, ${conicGradientColors[2]} 55%, ${conicGradientColors[3]} 55%, ${conicGradientColors[3]} 70%, ${conicGradientColors[4]} 70%, ${conicGradientColors[4]} 87%, ${conicGradientColors[0]} 87%)`,
@@ -104,6 +108,12 @@ const config: Config = {
         "screen-sm": "4.6vmin",
         "screen-md": "6.89vmin",
         "screen-lg": "9.19vmin",
+        "screen-xl": "14vmin",
+        "screen-2xl": "22vmin",
+      },
+      fontFamily: {
+        poppins: ["var(--font-poppins)", "Poppins", "sans-serif"],
+        dongle: ["var(--font-dongle)", "Dongle", "sans-serif"],
       },
       keyframes: {
         gradient: {
@@ -185,6 +195,42 @@ const config: Config = {
             "background-position": "0 0",
           },
         },
+        "zoom-in": {
+          "0%": {
+            transform: "scale(0.8)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+        "welcome-text": {
+          "0%": {
+            transform: "scale(1)",
+          },
+          "75%": {
+            transform: "scale(1.3)",
+            opacity: "1",
+          },
+          "100%": {
+            transform: "scale(0.1)",
+            opacity: "0",
+            "font-size": "0px",
+          },
+        },
+        "fade-in": {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
+      },
+      lineHeight: {
+        "extra-tight": "0.75",
+      },
+      maxWidth: {
+        screen: "100vw",
       },
       transformOrigin: {
         "almost-center": "50% 50% .4em",

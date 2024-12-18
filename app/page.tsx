@@ -1,5 +1,4 @@
-import { LandingPageContent } from "@/components/landing-page-content";
-import { Navbar } from "@/components/navbar";
+import { Navbar, PageContent } from "@components";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
 
@@ -9,7 +8,7 @@ export default function Home() {
       <ShootingStars />
       <StarsBackground />
       <Navbar />
-      <LandingPageContent />
+      <PageContent />
     </div>
   );
 }

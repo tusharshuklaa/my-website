@@ -2,6 +2,8 @@
 
 import React, { FC, useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { SnapSection } from "../snap-container";
 
 type TimelineEntry = {
   title: string;
@@ -9,11 +11,12 @@ type TimelineEntry = {
 };
 
 type TimelineProps = {
+  className?: string;
   data: Array<TimelineEntry>;
   pageRef?: React.RefObject<HTMLDivElement>;
 };
 
-export const Timeline: FC<TimelineProps> = ({ data, pageRef }) => {
+export const Timeline: FC<TimelineProps> = ({ className, data, pageRef }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -28,14 +31,14 @@ export const Timeline: FC<TimelineProps> = ({ data, pageRef }) => {
   const { scrollYProgress } = useScroll({
     container: pageRef,
     target: containerRef,
-    offset: ["start 10%", "end 60%"],
+    offset: ["start 0%", "end 90%"],
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div className="w-full md:px-10" ref={containerRef}>
+    <SnapSection className={cn("w-full md:px-10", className)} ref={containerRef}>
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
         <h2 className="mb-4 max-w-4xl text-lg text-black dark:text-white md:text-4xl">
           A Universe of Experience &amp; Skills
@@ -66,6 +69,7 @@ export const Timeline: FC<TimelineProps> = ({ data, pageRef }) => {
             </div>
           </div>
         ))}
+
         <div
           style={{
             height: height + "px",
@@ -81,6 +85,6 @@ export const Timeline: FC<TimelineProps> = ({ data, pageRef }) => {
           />
         </div>
       </div>
-    </div>
+    </SnapSection>
   );
 };
