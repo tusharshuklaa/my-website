@@ -17,7 +17,7 @@ export const PageContent: FC = () => {
         <div className="px-8">
           <Welcome />
           <Introduction />
-          <Career containerRef={landingPageRef} />
+          <Career pageRef={landingPageRef} />
         </div>
         <Footer />
       </div>

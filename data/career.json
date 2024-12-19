@@ -1,0 +1,125 @@
+{
+  "education": [
+    {
+      "school": "Noida Institute of Engineering & Technology, Gr. Noida",
+      "degree": "B.Tech. in Information Technology",
+      "graduated": "2014",
+      "description": "Studied Computer Science and Mathematics."
+    }
+  ],
+  "experience": [
+    {
+      "company": "Adidas",
+      "location": "Gurugram, Haryana",
+      "url": "https://adidas.com",
+      "heading": "Since 2022",
+      "type": "Full Time",
+      "positions": [
+        {
+          "title": "Software Engineer L2",
+          "duration": "Oct 2024 - Present",
+          "description": "Tempor ex deserunt ipsum incididunt."
+        },
+        {
+          "title": "Software Engineer L1",
+          "duration": "Jun 2022 - Sep 2024 | 2 yrs 4 mos",
+          "description": "Ut aute duis non mollit esse et ea."
+        }
+      ],
+      "description": "Adidas AG is a multinational corporation, founded and headquartered in Herzogenaurach, Germany, that designs and manufactures shoes, clothing, and accessories. It is the largest sportswear manufacturer in Europe, and the second largest in the world, after Nike.",
+      "img": "/img/adidas.png",
+      "imgDark": "/img/adidas-white.png"
+    },
+    {
+      "company": "Publicis Sapient",
+      "location": "Gurugram, Haryana",
+      "url": "https://adidas.com",
+      "heading": "2018 - 2022",
+      "type": "Full Time",
+      "positions": [
+        {
+          "title": "Senior Associate Experience Technology L2",
+          "duration": "Feb 2022 - Jun 2022 | 5 mos",
+          "description": "Tempor ex deserunt ipsum incididunt."
+        },
+        {
+          "title": "Senior Associate Experience Technology L1",
+          "duration": "Feb 2019 - Jan 2022 | 3 yrs",
+          "description": "Ut aute duis non mollit esse et ea."
+        },
+        {
+          "title": "Associate Experience Technology L2",
+          "duration": "Mar 2018 - Feb 2019 | 1 yr",
+          "description": "Ut aute duis non mollit esse et ea."
+        }
+      ],
+      "description": "Publicis Sapient is a digital business transformation company. It provides business consulting, technology, and customer experience services. The company is organized as a matrix, combining vertical expertise with a focus on technology and platforms.",
+      "img": "/img/ps.png",
+      "imgDark": "/img/ps-white.jpg"
+    },
+    {
+      "company": "Wazo Studio",
+      "location": "New Delhi, India",
+      "url": "https://adidas.com",
+      "heading": "2016 - 2018",
+      "type": "Full Time",
+      "positions": [
+        {
+          "title": "Frontend Developer",
+          "duration": "Nov 2016 - Feb 2018 | 1 yr 4 mos",
+          "description": "Worked on a software suite meant for Real Estate Developers enabling them to handle most of the day to day tasks on the platform itself."
+        }
+      ],
+      "description": "Wazo Studio is a software development company that specializes in creating software for Real Estate Developers.",
+      "img": "/img/wazo.png"
+    },
+    {
+      "company": "SaaS Labs, Inc",
+      "location": "Noida, India",
+      "url": "https://adidas.com",
+      "heading": "2016",
+      "type": "Full Time",
+      "positions": [
+        {
+          "title": "Frontend Developer aka Code Junkie",
+          "duration": "Mar 2016 - Oct 2016 | 8 mos",
+          "description": "Worked on a project which provides marketing automation and growth enhancement on social media platforms like Pinterest and Instagram.\nWorked on Viralwoot which already is a huge product in U.S. for Pinterest Promotions and Marketing.\nHave made several Google Chrome Extensions.\nWorked on a project to show live activity of users on a website. It was like a CCTV camera for a website which was capable of providing amazing analytics."
+        }
+      ],
+      "description": "SaaS Labs is a software development company that specializes in creating software for Social Media Marketing.",
+      "img": "/img/saaslabs.png"
+    },
+    {
+      "company": "Hestabit Technologies Pvt. Ltd.",
+      "location": "Noida, India",
+      "url": "https://adidas.com",
+      "heading": "2014 - 2016",
+      "type": "Full Time",
+      "positions": [
+        {
+          "title": "Frontend Developer",
+          "duration": "Sep 2014 - Feb 2016 | 1 yr 6 mos",
+          "description": "Worked on building a CMS (built from scratch/without any framework) meant for Educational Institutes and Organizations.\nWorked on an internal tool to ease development by building plugins/ready-to-use codes.\nWorked on various projects in Wordpress and Magento as a frontend developer"
+        }
+      ],
+      "description": "Hestabit Technologies is a software development company that specializes in creating software for Educational Institutes and Organizations.",
+      "img": "/img/hestabit.svg"
+    },
+    {
+      "company": "Genpact Headstrong Capital Markets",
+      "location": "Noida, India",
+      "url": "https://adidas.com",
+      "heading": "2013",
+      "type": "Internship",
+      "positions": [
+        {
+          "title": "Trainee",
+          "duration": "May 2013 - Jun 2013 | 2 mos",
+          "description": "Used HTML5, CSS3, Javascript, Jquery Mobile, Parse and Apache Cordova for development of Hybrid Mobile Application for Android/iOS."
+        }
+      ],
+      "description": "Genpact Headstrong Capital Markets (now Genpact) was a software development company",
+      "img": "/img/headstrong.jpeg"
+    }
+  ]
+}
