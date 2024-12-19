@@ -2,7 +2,7 @@
 
 import { FC, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { BookOpenText, Command, Moon, Sun, User } from "lucide-react";
+import { BookOpenText, Command, Moon, Search, Sun, User } from "lucide-react";
 import { Button } from "@ui/button";
 import {
   CommandDialog,
@@ -52,13 +52,22 @@ export const CommandCenter: FC = () => {
 
   return (
     <>
-      <Button size="sm" onClick={openCommandCenter} variant="ghost" aria-label="open command center">
-        <Command className="h-[1rem] w-[1rem]" />
-        &nbsp;K
+      <Button
+        size="sm"
+        onClick={openCommandCenter}
+        variant="ghost"
+        aria-label="open command center"
+        className="relative w-40 justify-between rounded-full bg-gray-300 dark:bg-gray-800"
+      >
+        <Search className="h-[1rem] w-[1rem]" />
+        <span className="flex items-center font-poppins">
+          <Command className="h-3 w-3" />
+          &nbsp;K
+        </span>
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput placeholder="Search blogs, pages, links..." />
 
         <div className="flex flex-col gap-2 px-3 py-4 text-xl">
           <span>{greeting}</span>
