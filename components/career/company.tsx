@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import { Underline } from "../text";
+import { PrettyUnderline } from "../text";
 import { ThemeImage } from "../theme-image";
 
 type WorkType = "Full Time" | "Internship" | "Freelance";
@@ -32,7 +32,7 @@ export const Company: FC<CompanyProps> = ({ company, img, imgDark, positions, ty
       <div className="flex flex-col">
         <h2 className="mb-8 flex items-center justify-start gap-2 text-xl font-normal text-neutral-800 dark:text-neutral-200 md:text-2xl">
           <Link href={url} target="_blank">
-            <Underline className="grow-0">{company}</Underline>
+            <PrettyUnderline className="grow-0 hover:text-black">{company}</PrettyUnderline>
           </Link>
           <sub className="text-xs font-thin">( {type} )</sub>
         </h2>

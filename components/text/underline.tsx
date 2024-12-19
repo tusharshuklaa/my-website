@@ -27,3 +27,16 @@ export const Underline: FC<UnderlineProps> = ({ className, children, size = "sm"
     </span>
   );
 };
+
+export const PrettyUnderline: FC<Omit<UnderlineProps, "size">> = ({ className, children }) => {
+  return (
+    <span
+      className={cn(
+        "duration-250 bg-gradient-to-r from-[#84fab0] to-[#8fd3f4] bg-[length:100%_0.2em] bg-[position:0_88%] bg-no-repeat transition-[background-size] ease-in hover:bg-[length:100%_88%]",
+        className,
+      )}
+    >
+      {children}
+    </span>
+  );
+};
