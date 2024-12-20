@@ -1,12 +1,9 @@
 import { CSSProperties, FC } from "react";
 import { cn } from "@/lib/utils";
+import { BasicUiComponent } from "@/types";
 
-type TextFlipperProps = {
-  className?: string;
-  children: string;
-};
-export const TextFlipper: FC<TextFlipperProps> = ({ className, children }) => {
-  const letters = children.split("");
+export const TextFlipper: FC<BasicUiComponent> = ({ className, children }) => {
+  const letters = (children as string)?.split("");
 
   return (
     <span className={cn("text-flipper group grid", className)}>
