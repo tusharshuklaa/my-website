@@ -1,12 +1,8 @@
 import { FC } from "react";
 import { cn } from "@/lib/utils";
+import { BasicUiComponent } from "@/types";
 
-type GlitchTextProps = {
-  children: string;
-  className?: string;
-};
-
-export const GlitchText: FC<GlitchTextProps> = ({ children, className }) => (
+export const GlitchText: FC<BasicUiComponent> = ({ children, className }) => (
   <span
     data-text={children}
     className={cn(

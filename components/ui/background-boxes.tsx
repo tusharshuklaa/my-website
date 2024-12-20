@@ -3,12 +3,9 @@
 import React, { FC } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { UiComponent } from "@/types";
 
-type BoxesCoreProps = {
-  className?: string;
-};
-
-export const BoxesCore: FC<BoxesCoreProps> = ({ className, ...rest }) => {
+export const BoxesCore: FC<UiComponent> = ({ className, ...rest }) => {
   const rows = new Array(150).fill(1);
   const cols = new Array(100).fill(1);
   const colors = [

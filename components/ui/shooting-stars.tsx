@@ -1,5 +1,7 @@
 "use client";
+
 import { cn } from "@/lib/utils";
+import { UiComponent } from "@/types";
 import React, { useEffect, useState, useRef } from "react";
 
 type ShootingStar = {
@@ -12,15 +14,14 @@ type ShootingStar = {
   distance: number;
 };
 
-type ShootingStarsProps = {
+type ShootingStarsProps = UiComponent<{
   minSpeed?: number;
   maxSpeed?: number;
   minDelay?: number;
   maxDelay?: number;
   starWidth?: number;
   starHeight?: number;
-  className?: string;
-};
+}>;
 
 const getRandomStartPoint = () => {
   const side = Math.floor(Math.random() * 4);

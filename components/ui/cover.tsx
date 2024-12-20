@@ -1,16 +1,12 @@
 "use client";
-import React, { FC, useEffect, useId, useState } from "react";
+import React, { ComponentProps, FC, useEffect, useId, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 import { SparklesCore } from "@/components/ui/sparkles";
+import { BasicUiComponent, UiComponent } from "@/types";
 
-type CoverProps = {
-  children?: React.ReactNode;
-  className?: string;
-};
-
-export const Cover: FC<CoverProps> = ({ children, className }) => {
+export const Cover: FC<BasicUiComponent> = ({ children, className }) => {
   const [hovered, setHovered] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
@@ -146,13 +142,12 @@ export const Beam = ({
   hovered,
   width = 600,
   ...svgProps
-}: {
-  className?: string;
+}: UiComponent<ComponentProps<typeof motion.svg>> & {
   delay?: number;
   duration?: number;
   hovered?: boolean;
   width?: number;
-} & React.ComponentProps<typeof motion.svg>) => {
+}) => {
   const id = useId();
 
   return (

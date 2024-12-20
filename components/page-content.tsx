@@ -1,9 +1,10 @@
 "use client";
 
 import { FC, useRef } from "react";
-import { Career, Welcome } from "@components";
-import { Introduction } from "./introduction";
 import { Footer } from "@/components/footer";
+import { Welcome } from "@/components/welcome";
+import { Career } from "@/components/career";
+import { Introduction } from "@/components/introduction";
 
 export const PageContent: FC = () => {
   const landingPageRef = useRef<HTMLDivElement>(null);

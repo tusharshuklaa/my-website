@@ -3,16 +3,12 @@
 import { FC, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Menu, MenuItem, HoveredLink, ProductItem } from "@/components/ui/navbar-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage, Menu, MenuItem, HoveredLink, ProductItem } from "@/components/ui";
 import { CommandCenter } from "@/components/command-center";
-import { TextFlipper } from "@ui/text-flipper";
+import { TextFlipper } from "@/components/text";
+import { UiComponent } from "@/types";
 
-type NavbarProps = {
-  className?: string;
-};
-
-export const Navbar: FC<NavbarProps> = ({ className }) => {
+export const Navbar: FC<UiComponent> = ({ className }) => {
   const [active, setActive] = useState<string | null>(null);
 
   return (

@@ -1,12 +1,8 @@
 import { FC } from "react";
 import clsx from "clsx";
+import { BasicUiComponent } from "@/types";
 
-type FunTextProps = {
-  children?: string;
-  className?: string;
-};
-
-export const FunHoverText: FC<FunTextProps> = ({ children, className }) => (
+export const FunHoverText: FC<BasicUiComponent> = ({ children, className }) => (
   <span
     className={clsx(
       "animate-conic-text-rev cursor-pointer bg-50% bg-clip-text hover:animate-conic-text hover:bg-collage-gradient hover:text-transparent",
@@ -17,7 +13,7 @@ export const FunHoverText: FC<FunTextProps> = ({ children, className }) => (
   </span>
 );
 
-export const FunText: FC<FunTextProps> = ({ className }) => (
+export const FunText: FC<BasicUiComponent> = ({ className }) => (
   <div className={clsx("fun-text w-[80vmin] overflow-hidden", className)}>
     <svg viewBox="0 0 33 10" fill="none" xmlns="http://www.w3.org/2000/svg" className="invisible absolute">
       <filter id="shadow">

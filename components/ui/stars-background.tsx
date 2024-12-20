@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { UiComponent } from "@/types";
 import React, { FC, useState, useEffect, useRef, RefObject, useCallback } from "react";
 
 type StarProps = {
@@ -11,14 +12,13 @@ type StarProps = {
   twinkleSpeed: number | null;
 };
 
-type StarBackgroundProps = {
+type StarBackgroundProps = UiComponent<{
   starDensity?: number;
   allStarsTwinkle?: boolean;
   twinkleProbability?: number;
   minTwinkleSpeed?: number;
   maxTwinkleSpeed?: number;
-  className?: string;
-};
+}>;
 
 export const StarsBackground: FC<StarBackgroundProps> = ({
   starDensity = 0.0005,

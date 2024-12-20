@@ -1,9 +1,10 @@
 "use client";
 
 import { FC, RefObject, useRef } from "react";
-import { Timeline } from "@/components/ui/timeline";
+import { Timeline } from "@ui";
+import { CareerCompany, Company } from "@/components/career";
+import { Heading } from "@/components/text";
 import CareerData from "@/data/career.json";
-import { Company, CareerCompany } from "./company";
 
 type CareerProps = {
   pageRef?: RefObject<HTMLDivElement>;
@@ -23,9 +24,7 @@ export const Career: FC<CareerProps> = ({ pageRef }) => {
   return (
     <div className="relative w-full md:px-10" ref={containerRef}>
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
-        <h2 className="mb-4 max-w-4xl text-lg text-black dark:text-white md:text-4xl">
-          A Universe of Experience &amp; Skills
-        </h2>
+        <Heading>A Universe of Experience &amp; Skills</Heading>
 
         <p className="text-sm text-neutral-700 dark:text-neutral-300 md:text-base">
           A journey from the cosmic dust of startups to the supernova of MNCs, my career has been a stellar exploration

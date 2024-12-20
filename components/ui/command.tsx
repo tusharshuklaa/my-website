@@ -9,6 +9,7 @@ import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { FC } from "react";
+import { UiComponent } from "@/types";
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -25,9 +26,7 @@ const Command = React.forwardRef<
 ));
 Command.displayName = CommandPrimitive.displayName;
 
-interface CommandDialogProps extends DialogProps {
-  className?: string;
-}
+type CommandDialogProps = UiComponent<DialogProps>;
 
 const CommandDialog: FC<CommandDialogProps> = ({ children, ...props }) => {
   return (

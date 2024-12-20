@@ -1,6 +1,6 @@
-import { Navbar, PageContent } from "@components";
-import { ShootingStars } from "@/components/ui/shooting-stars";
-import { StarsBackground } from "@/components/ui/stars-background";
+import { Navbar } from "@/components/navbar";
+import { PageContent } from "@/components/page-content";
+import { ShootingStars, StarsBackground } from "@ui";
 
 export default function Home() {
   return (

@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { FlipWords } from "@ui/flip-words";
-import { Cover } from "@ui/cover";
-import { SnapSection } from "./snap-container";
+import { Cover, FlipWords } from "@ui";
+import { SnapSection } from "@/components/snap-container";
 
 export const Introduction: FC = () => {
   return (

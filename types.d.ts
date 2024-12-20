@@ -6,4 +6,6 @@ declare module "tailwindcss/lib/util/flattenColorPalette" {
 
 type BasicComponent<T = unknown> = PropsWithoutRef<PropsWithChildren> & T;
 
-type BasicUiComponent<T = unknown> = BasicComponent<{ className?: string } & T>;
+type UiComponent<T = unknown> = { className?: string } & T;
+
+type BasicUiComponent<T = unknown> = BasicComponent<UiComponent<T>>;

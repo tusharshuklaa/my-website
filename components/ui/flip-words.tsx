@@ -5,11 +5,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import clsx from "clsx";
 import { shuffle } from "lodash";
 import { isEmoji } from "@/lib/utils";
+import { UiComponent } from "@/types";
 
-type FlipWordsProps = {
+type FlipWordsProps = UiComponent<{
   duration?: number;
-  className?: string;
-};
+}>;
 
 export const FlipWords: FC<FlipWordsProps> = ({ duration = 3000, className }) => {
   const words = shuffle([

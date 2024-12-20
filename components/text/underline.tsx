@@ -1,12 +1,11 @@
 import { FC } from "react";
 import { cn } from "@/lib/utils";
+import { BasicUiComponent } from "@/types";
 
 type UnderlineSize = "sm" | "md" | "lg";
-type UnderlineProps = {
-  children: string;
-  className?: string;
+type UnderlineProps = BasicUiComponent<{
   size?: UnderlineSize;
-};
+}>;
 
 export const Underline: FC<UnderlineProps> = ({ className, children, size = "sm" }) => {
   const sizeClassMap: Record<UnderlineSize, string> = {

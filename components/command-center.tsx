@@ -3,17 +3,17 @@
 import { FC, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { BookOpenText, Command, Moon, Search, Sun, User } from "lucide-react";
-import { Button } from "@ui/button";
 import {
+  Button,
   CommandDialog,
   CommandInput,
   CommandList,
   CommandEmpty,
   CommandGroup,
   CommandItem,
+  CommandShortcut,
   CommandSeparator,
-} from "@ui/command";
-import { CommandShortcut } from "@ui/command";
+} from "@ui";
 import { TwitterIcon } from "@/components/icons/twitter";
 
 export const CommandCenter: FC = () => {

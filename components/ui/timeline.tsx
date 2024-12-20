@@ -3,18 +3,18 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { UiComponent } from "@/types";
 
 type TimelineEntry = {
   title: string;
   content: React.ReactNode;
 };
 
-type TimelineProps = {
-  className?: string;
+type TimelineProps = UiComponent<{
   containerRef: React.RefObject<HTMLDivElement>;
   data: Array<TimelineEntry>;
   targetRef?: React.RefObject<HTMLDivElement>;
-};
+}>;
 
 export const Timeline: FC<TimelineProps> = ({ className, containerRef, data, targetRef }) => {
   const itemsRef = useRef<HTMLDivElement>(null);
