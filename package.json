@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "clean": "turbo run clean && node scripts/clean-folders.js",
+    "create": "node scripts/generate-component.js",
+    "update-index": "node scripts/update-index.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -36,10 +39,14 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@babel/parser": "^7.26.3",
+    "@inquirer/confirm": "^2.0.15",
+    "@inquirer/input": "^1.2.14",
     "@types/lodash": "^4.17.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "es6-template-strings": "^2.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.8",
     "eslint-config-prettier": "^9.1.0",

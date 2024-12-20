@@ -1,0 +1,15 @@
+import { FC } from 'react';
+import { BasicUiComponent } from "@/types";
+import { cn } from "@/lib/utils";
+
+export const ${pascalName}:FC<BasicUiComponent> = ({ children, className, ...props }) => {
+  const ${camelName}Classes = cn('${name}', className);
+
+  return (
+    <div data-testid={ `cmp-${ name }` } className={ ${camelName}Classes } {...props}>
+      {children}
+    </div>
+  );
+};
+
+${pascalName}.displayName = '${pascalName}';
