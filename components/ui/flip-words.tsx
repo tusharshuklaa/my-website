@@ -14,7 +14,7 @@ type FlipWordsProps = UiComponent<{
 export const FlipWords: FC<FlipWordsProps> = ({ duration = 3000, className }) => {
   const words = shuffle([
     "building stuff for the web 👨🏻‍💻",
-    "riding my RE Classic 🏍️",
+    "riding my Classic 🏍️",
     "my 2 cute monsters 👻",
     "creating CSS art 🧑🏻‍🎨",
     "conversations about space 💫",

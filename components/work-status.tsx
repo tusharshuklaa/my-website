@@ -55,7 +55,7 @@ export const WorkStatus: FC<UiComponent> = ({ className }) => {
               /><br />
               <GradientText
                 text={workStatusText}
-                className="text-screen-md leading-tight"
+                className="text-screen-md leading-tight font-extrabold"
                 color={textColor}
               /><br />
               <GradientText
