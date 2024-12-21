@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Link from "next/link";
-import { PrettyUnderline } from "../text";
+import { GradientText, PrettyUnderline } from "../text";
 import { ThemeImage } from "../theme-image";
 
 type WorkType = "Full Time" | "Internship" | "Freelance";
@@ -30,7 +30,7 @@ export const Company: FC<CompanyProps> = ({ company, img, imgDark, positions, ty
       </div>
 
       <div className="flex flex-col">
-        <h2 className="mb-8 flex items-center justify-start gap-2 text-xl font-normal text-neutral-800 dark:text-neutral-200 md:text-2xl">
+        <h2 className="mb-4 flex items-center justify-start gap-2 text-xl font-normal text-neutral-800 dark:text-neutral-200 md:text-2xl">
           <Link href={url} target="_blank">
             <PrettyUnderline className="grow-0 hover:text-black">{company}</PrettyUnderline>
           </Link>
@@ -41,7 +41,7 @@ export const Company: FC<CompanyProps> = ({ company, img, imgDark, positions, ty
           {positions.map(position => (
             <li key={position.title} className="mb-6 flex flex-col gap-2">
               <div>
-                <h3 className="text-lg font-medium text-neutral-700 dark:text-neutral-300">{position.title}</h3>
+                <GradientText text={position.title} className="text-lg font-bold" />
                 <p className="text-xs text-neutral-500 dark:text-neutral-400">{position.duration}</p>
               </div>
 

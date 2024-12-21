@@ -5,6 +5,8 @@ import { Footer } from "@/components/footer";
 import { Welcome } from "@/components/welcome";
 import { Career } from "@/components/career";
 import { Introduction } from "@/components/introduction";
+import { WorkStatus } from "@/components/work-status";
+import { ContactSection } from "@/components/contact-section";
 
 export const PageContent: FC = () => {
   const landingPageRef = useRef<HTMLDivElement>(null);
@@ -19,6 +21,8 @@ export const PageContent: FC = () => {
           <Welcome />
           <Introduction />
           <Career pageRef={landingPageRef} />
+          <WorkStatus />
+          <ContactSection />
         </div>
         <Footer />
       </div>

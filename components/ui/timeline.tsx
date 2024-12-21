@@ -4,6 +4,7 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { UiComponent } from "@/types";
+import { GradientText } from "../text";
 
 type TimelineEntry = {
   title: string;
@@ -45,17 +46,34 @@ export const Timeline: FC<TimelineProps> = ({ className, containerRef, data, tar
               <div className="h-4 w-4 rounded-full border border-neutral-300 bg-neutral-200 p-2 dark:border-neutral-700 dark:bg-neutral-800" />
             </div>
 
-            <h3 className="hidden text-xl font-bold text-neutral-500 [text-shadow:_-0.025em_0_0.125rem_white] dark:text-neutral-500 md:block md:pl-20 md:text-5xl">
-              {item.title}
-            </h3>
+            <GradientText text={item.title} className="hidden text-xl md:block md:pl-20 md:text-5xl" color="pink" />
           </div>
 
           <div className="relative w-full pl-20 pr-4 md:pl-4">
             <h3 className="mb-4 block text-left text-2xl font-bold text-neutral-500 [text-shadow:_-0.025em_0_0.125rem_white] dark:text-neutral-500 md:hidden">
               {item.title}
             </h3>
+            <GradientText text={item.title} className="mb-4 block text-left text-2xl font-bold md:hidden" />
 
-            {item.content}
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: 50
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 1
+                }
+              }}
+              viewport={{
+                once: true,
+                margin: "400px"
+              }}
+            >
+              {item.content}
+            </motion.div>
           </div>
         </div>
       ))}
