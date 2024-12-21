@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Dongle, Poppins } from "@next/font/google";
+import { Dongle, Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
