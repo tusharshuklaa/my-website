@@ -97,3 +97,39 @@ body {
     mask-position: center;
   }
 }
+
+.link-glow-yellow {
+  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(244, 211, 114, .5), rgba(255, 255, 255, 0));
+}
+
+.link-glow-blue {
+  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(174, 250, 255, .5), rgba(255, 255, 255, 0));
+}
+
+.link-glow-green {
+  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(186, 255, 179, .5), rgba(255, 255, 255, 0));
+}
+
+.link-glow-red {
+  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(255, 109, 165, .5), rgba(255, 255, 255, 0));
+}
+
+.link-glow-purple {
+  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(241, 154, 202, .5), rgba(255, 255, 255, 0));
+}
+
+.link-glow-pink {
+  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(255, 180, 215, .5), rgba(255, 255, 255, 0));
+}
+
+.link-glow-indigo {
+  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(104, 208, 238, .5), rgba(255, 255, 255, 0));
+}
+
+.link-glow-orange {
+  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(245, 176, 62, .5), rgba(255, 255, 255, 0));
+}
+
+.link-glow-peach {
+  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(255, 202, 177, .5), rgba(255, 255, 255, 0));
+}

@@ -35,7 +35,7 @@ export const Blip: React.FC<BlipProps> = ({ className, color = "bg-red-500", siz
       ></div>
       {/* Main Blip */}
       <div
-        className={`relative rounded-full opacity-60 ${color}`}
+        className={`relative rounded-full opacity-60 shadow-blip ${color}`}
         style={sizeStyle}
       ></div>
     </div>

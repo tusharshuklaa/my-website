@@ -60,6 +60,9 @@ const config: Config = {
       backgroundSize: {
         "50%": "50%",
       },
+      boxShadow: {
+        'blip': '0 0 3rem 0.75rem red',
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
