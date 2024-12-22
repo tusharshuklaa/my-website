@@ -52,6 +52,7 @@ export { MenuItem } from "./navbar-menu";
 export { Menu } from "./navbar-menu";
 export { ProductItem } from "./navbar-menu";
 export { HoveredLink } from "./navbar-menu";
+export { NeonGradientCard } from "./neon-gradient-card";
 export type { SafariProps } from "./safari";
 export { Safari } from "./safari";
 export { wrap } from "./scroll-based-velocity";

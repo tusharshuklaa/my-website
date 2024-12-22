@@ -45,12 +45,16 @@ const config: Config = {
         "noise-anim-1": "noise-anim-1 2s infinite linear alternate-reverse",
         "noise-anim-2": "noise-anim-2 3s infinite linear alternate-reverse",
         "zoom-in": "zoom-in 3s ease forwards",
-        // animation time for name svg is welcome-text time + delay
         "welcome-text": "welcome-text 3s ease forwards 0.5s",
         "fade-in": "fade-in 1s ease-in-out 3.3s forwards",
+        "background-position-spin": "background-position-spin 3000ms infinite alternate",
+        "gradient-shift": "gradient-shift 5s ease-in-out infinite",
+        "blur-animation": "blur-animation 3s ease-in-out alternate infinite",
       },
       backgroundImage: {
-        "collage-gradient": `conic-gradient(${conicGradientColors[0]} 12%, ${conicGradientColors[1]} 12%, ${conicGradientColors[1]} 33%, ${conicGradientColors[2]} 33%, ${conicGradientColors[2]} 55%, ${conicGradientColors[3]} 55%, ${conicGradientColors[3]} 70%, ${conicGradientColors[4]} 70%, ${conicGradientColors[4]} 87%, ${conicGradientColors[0]} 87%)`,
+        background: "var(--background)",
+        "collage-gradient":
+          "`conic-gradient(${conicGradientColors[0]} 12%, ${conicGradientColors[1]} 12%, ${conicGradientColors[1]} 33%, ${conicGradientColors[2]} 33%, ${conicGradientColors[2]} 55%, ${conicGradientColors[3]} 55%, ${conicGradientColors[3]} 70%, ${conicGradientColors[4]} 70%, ${conicGradientColors[4]} 87%, ${conicGradientColors[0]} 87%)`",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -61,10 +65,9 @@ const config: Config = {
         "50%": "50%",
       },
       boxShadow: {
-        'blip': '0 0 3rem 0.75rem red',
+        blip: "0 0 3rem 0.75rem red",
       },
       colors: {
-        background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -125,50 +128,134 @@ const config: Config = {
           },
         },
         "noise-anim-1": {
-          "0%": { clip: "rect(52px, 9999px, 97px, 0)" },
-          "5%": { clip: "rect(62px, 9999px, 70px, 0)" },
-          "10%": { clip: "rect(96px, 9999px, 63px, 0)" },
-          "15%": { clip: "rect(22px, 9999px, 32px, 0)" },
-          "20%": { clip: "rect(5px, 9999px, 17px, 0)" },
-          "25%": { clip: "rect(18px, 9999px, 62px, 0)" },
-          "30%": { clip: "rect(25px, 9999px, 98px, 0)" },
-          "35%": { clip: "rect(80px, 9999px, 72px, 0)" },
-          "40%": { clip: "rect(74px, 9999px, 59px, 0)" },
-          "45%": { clip: "rect(3px, 9999px, 23px, 0)" },
-          "50%": { clip: "rect(74px, 9999px, 30px, 0)" },
-          "55%": { clip: "rect(72px, 9999px, 82px, 0)" },
-          "60%": { clip: "rect(3px, 9999px, 33px, 0)" },
-          "65%": { clip: "rect(71px, 9999px, 45px, 0)" },
-          "70%": { clip: "rect(25px, 9999px, 19px, 0)" },
-          "75%": { clip: "rect(30px, 9999px, 33px, 0)" },
-          "80%": { clip: "rect(57px, 9999px, 45px, 0)" },
-          "85%": { clip: "rect(79px, 9999px, 3px, 0)" },
-          "90%": { clip: "rect(67px, 9999px, 82px, 0)" },
-          "95%": { clip: "rect(90px, 9999px, 29px, 0)" },
-          "100%": { clip: "rect(53px, 9999px, 92px, 0)" },
+          "0%": {
+            clip: "rect(52px, 9999px, 97px, 0)",
+          },
+          "5%": {
+            clip: "rect(62px, 9999px, 70px, 0)",
+          },
+          "10%": {
+            clip: "rect(96px, 9999px, 63px, 0)",
+          },
+          "15%": {
+            clip: "rect(22px, 9999px, 32px, 0)",
+          },
+          "20%": {
+            clip: "rect(5px, 9999px, 17px, 0)",
+          },
+          "25%": {
+            clip: "rect(18px, 9999px, 62px, 0)",
+          },
+          "30%": {
+            clip: "rect(25px, 9999px, 98px, 0)",
+          },
+          "35%": {
+            clip: "rect(80px, 9999px, 72px, 0)",
+          },
+          "40%": {
+            clip: "rect(74px, 9999px, 59px, 0)",
+          },
+          "45%": {
+            clip: "rect(3px, 9999px, 23px, 0)",
+          },
+          "50%": {
+            clip: "rect(74px, 9999px, 30px, 0)",
+          },
+          "55%": {
+            clip: "rect(72px, 9999px, 82px, 0)",
+          },
+          "60%": {
+            clip: "rect(3px, 9999px, 33px, 0)",
+          },
+          "65%": {
+            clip: "rect(71px, 9999px, 45px, 0)",
+          },
+          "70%": {
+            clip: "rect(25px, 9999px, 19px, 0)",
+          },
+          "75%": {
+            clip: "rect(30px, 9999px, 33px, 0)",
+          },
+          "80%": {
+            clip: "rect(57px, 9999px, 45px, 0)",
+          },
+          "85%": {
+            clip: "rect(79px, 9999px, 3px, 0)",
+          },
+          "90%": {
+            clip: "rect(67px, 9999px, 82px, 0)",
+          },
+          "95%": {
+            clip: "rect(90px, 9999px, 29px, 0)",
+          },
+          "100%": {
+            clip: "rect(53px, 9999px, 92px, 0)",
+          },
         },
         "noise-anim-2": {
-          "0%": { clip: "rect(47px, 9999px, 75px, 0)" },
-          "5%": { clip: "rect(86px, 9999px, 72px, 0)" },
-          "10%": { clip: "rect(45px, 9999px, 58px, 0)" },
-          "15%": { clip: "rect(65px, 9999px, 5px, 0)" },
-          "20%": { clip: "rect(42px, 9999px, 90px, 0)" },
-          "25%": { clip: "rect(86px, 9999px, 98px, 0)" },
-          "30%": { clip: "rect(88px, 9999px, 84px, 0)" },
-          "35%": { clip: "rect(60px, 9999px, 27px, 0)" },
-          "40%": { clip: "rect(96px, 9999px, 79px, 0)" },
-          "45%": { clip: "rect(14px, 9999px, 26px, 0)" },
-          "50%": { clip: "rect(97px, 9999px, 97px, 0)" },
-          "55%": { clip: "rect(78px, 9999px, 13px, 0)" },
-          "60%": { clip: "rect(87px, 9999px, 98px, 0)" },
-          "65%": { clip: "rect(20px, 9999px, 44px, 0)" },
-          "70%": { clip: "rect(32px, 9999px, 19px, 0)" },
-          "75%": { clip: "rect(38px, 9999px, 3px, 0)" },
-          "80%": { clip: "rect(20px, 9999px, 41px, 0)" },
-          "85%": { clip: "rect(96px, 9999px, 44px, 0)" },
-          "90%": { clip: "rect(91px, 9999px, 35px, 0)" },
-          "95%": { clip: "rect(21px, 9999px, 87px, 0)" },
-          "100%": { clip: "rect(81px, 9999px, 45px, 0)" },
+          "0%": {
+            clip: "rect(47px, 9999px, 75px, 0)",
+          },
+          "5%": {
+            clip: "rect(86px, 9999px, 72px, 0)",
+          },
+          "10%": {
+            clip: "rect(45px, 9999px, 58px, 0)",
+          },
+          "15%": {
+            clip: "rect(65px, 9999px, 5px, 0)",
+          },
+          "20%": {
+            clip: "rect(42px, 9999px, 90px, 0)",
+          },
+          "25%": {
+            clip: "rect(86px, 9999px, 98px, 0)",
+          },
+          "30%": {
+            clip: "rect(88px, 9999px, 84px, 0)",
+          },
+          "35%": {
+            clip: "rect(60px, 9999px, 27px, 0)",
+          },
+          "40%": {
+            clip: "rect(96px, 9999px, 79px, 0)",
+          },
+          "45%": {
+            clip: "rect(14px, 9999px, 26px, 0)",
+          },
+          "50%": {
+            clip: "rect(97px, 9999px, 97px, 0)",
+          },
+          "55%": {
+            clip: "rect(78px, 9999px, 13px, 0)",
+          },
+          "60%": {
+            clip: "rect(87px, 9999px, 98px, 0)",
+          },
+          "65%": {
+            clip: "rect(20px, 9999px, 44px, 0)",
+          },
+          "70%": {
+            clip: "rect(32px, 9999px, 19px, 0)",
+          },
+          "75%": {
+            clip: "rect(38px, 9999px, 3px, 0)",
+          },
+          "80%": {
+            clip: "rect(20px, 9999px, 41px, 0)",
+          },
+          "85%": {
+            clip: "rect(96px, 9999px, 44px, 0)",
+          },
+          "90%": {
+            clip: "rect(91px, 9999px, 35px, 0)",
+          },
+          "95%": {
+            clip: "rect(21px, 9999px, 87px, 0)",
+          },
+          "100%": {
+            clip: "rect(81px, 9999px, 45px, 0)",
+          },
         },
         "conic-expand": {
           "0%": {
@@ -227,6 +314,22 @@ const config: Config = {
           "100%": {
             opacity: "1",
           },
+        },
+        "background-position-spin": {
+          "0%": {
+            backgroundPosition: "top center",
+          },
+          "100%": {
+            backgroundPosition: "bottom center",
+          },
+        },
+        "gradient-shift": {
+          "0%": { "background-position": '0% 50%' },
+          "50%": { "background-position": '100% 50%' },
+          "100%": { "background-position": '0% 50%' },
+        },
+        "blur-animation": {
+          "to": { filter: "blur(3vmin)", transform: "scale(1.05)" },
         },
       },
       lineHeight: {

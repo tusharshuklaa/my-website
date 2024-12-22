@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    --background: radial-gradient(ellipse at bottom, #0d1d31 0%, #000 100%);
     --foreground: #ededed;
   }
 }

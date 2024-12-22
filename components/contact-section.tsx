@@ -26,7 +26,7 @@ export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
     },
     {
       name: "Stack Overflow",
-      url: "https://github.com/tusharshuklaa",
+      url: "https://stackoverflow.com/users/2996624/tushar-shukla",
       color: "orange"
     },
     {
@@ -36,7 +36,7 @@ export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
     },
     {
       name: "Codepen",
-      url: "https://github.com/tusharshuklaa",
+      url: "https://codepen.io/tusharshukla",
       color: "pink"
     },
     {
@@ -110,7 +110,7 @@ export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
         </motion.h3>
       </div>
 
-      <div className="flex justify-between mt-24 px-24">
+      <div className="flex justify-between mt-32">
         {
           contactLinks.map(({color, name, url}, index) => (
             <AnimatedLink key={index} color={color} name={name} url={url} />
