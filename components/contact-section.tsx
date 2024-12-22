@@ -110,6 +110,8 @@ export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
         </motion.h3>
       </div>
 
+      <p className="mt-10 text-lg">With more than a decade into front-end wizardry, I can turn your ideas into pixel-perfect magic, with a side of witty banter and enough positivity to fuel a small city. Let's build something awesome together!</p>
+
       <div className="flex justify-between mt-32">
         {
           contactLinks.map(({color, name, url}, index) => (
