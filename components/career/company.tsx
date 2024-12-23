@@ -25,8 +25,8 @@ type CompanyProps = Omit<CareerCompany, "heading">;
 
 export const Company: FC<CompanyProps> = ({ company, img, imgDark, positions, type, url }) => {
   return (
-    <section className="flex gap-8">
-      <div className="mt-2 flex h-28 w-28 shrink-0 items-start justify-center">
+    <section className="flex gap-2 md:gap-8 flex-col md:flex-row">
+      <div className="mt-2 flex h-28 w-28 shrink-0 items-end md:items-start justify-center">
         <ThemeImage darkSrc={imgDark || ""} src={img} alt={`${company} logo`} width={112} height={112} />
       </div>
 

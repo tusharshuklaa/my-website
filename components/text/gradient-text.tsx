@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import clsx from 'clsx';
 import { UiComponent } from "@/types";
 
 export type GradientColors = 'yellow' | 'blue' | 'green' | 'red' | 'purple' | 'pink' | 'indigo' | 'orange' | 'peach';
 type GradientTextProps = UiComponent<{
-  text: string;
+  text: React.ReactNode;
   color?: GradientColors;
 }>;
 

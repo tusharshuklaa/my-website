@@ -17,7 +17,7 @@ export const PageContent: FC = () => {
         className="relative w-full snap-y snap-proximity scroll-pt-10 overflow-y-auto overflow-x-hidden"
         ref={landingPageRef}
       >
-        <div className="px-8">
+        <div className="px-3 md:px-6 lg:px-8">
           <Welcome />
           <Introduction />
           <Career pageRef={landingPageRef} />
