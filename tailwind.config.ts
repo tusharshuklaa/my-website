@@ -66,7 +66,7 @@ const config: Config = {
         "50%": "50%",
       },
       boxShadow: {
-        blip: "0 0 3rem 0.75rem red",
+        blip: "0 0 3rem 0.75rem currentColor",
       },
       colors: {
         foreground: "hsl(var(--foreground))",

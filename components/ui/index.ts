@@ -58,6 +58,8 @@ export { DropdownMenuSubContent } from "./dropdown-menu";
 export { DropdownMenuSubTrigger } from "./dropdown-menu";
 export { DropdownMenuRadioGroup } from "./dropdown-menu";
 export { FlipWords } from "./flip-words";
+export type { Iphone15ProProps } from "./iphone-15-pro";
+export { Iphone15Pro } from "./iphone-15-pro";
 export { MenuItem } from "./navbar-menu";
 export { Menu } from "./navbar-menu";
 export { ProductItem } from "./navbar-menu";
