@@ -6,7 +6,7 @@ export const ${pascalName}:FC<BasicUiComponent> = ({ children, className, ...pro
   const ${camelName}Classes = cn('${name}', className);
 
   return (
-    <div data-testid={ `cmp-${ name }` } className={ ${camelName}Classes } {...props}>
+    <div data-testid="cmp-${ name }" className={ ${camelName}Classes } {...props}>
       {children}
     </div>
   );

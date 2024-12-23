@@ -7,4 +7,4 @@ export { GradientText } from "./gradient-text";
 export { Heading } from "./heading";
 export { TextFlipper } from "./text-flipper";
 export { Underline } from "./underline";
-export { PrettyUnderline } from "./underline";
+export { HighlightText } from "./underline";

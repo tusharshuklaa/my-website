@@ -1,7 +1,8 @@
 import { FC } from "react";
 import Link from "next/link";
-import { GradientText, PrettyUnderline } from "../text";
+import { GradientText, Underline } from "../text";
 import { ThemeImage } from "../theme-image";
+import { ArrowUpRight } from "lucide-react";
 
 type WorkType = "Full Time" | "Internship" | "Freelance";
 type Position = {
@@ -31,17 +32,20 @@ export const Company: FC<CompanyProps> = ({ company, img, imgDark, positions, ty
 
       <div className="flex flex-col">
         <h2 className="mb-4 flex items-center justify-start gap-2 text-xl font-normal text-neutral-800 dark:text-neutral-200 md:text-2xl">
-          <Link href={url} target="_blank">
-            <PrettyUnderline className="grow-0 hover:text-black">{company}</PrettyUnderline>
+          <Link href={url} target="_blank" className="flex">
+            <Underline>{company}</Underline>
+            <ArrowUpRight className="w-4 h-4" />
           </Link>
-          <sub className="text-xs font-thin">( {type} )</sub>
         </h2>
 
         <ul className="list-disc">
           {positions.map(position => (
             <li key={position.title} className="mb-6 flex flex-col gap-2">
               <div>
-                <GradientText text={position.title} className="text-lg font-bold" />
+                <div className="flex items-center gap-2">
+                  <GradientText text={position.title} className="text-lg font-bold" />
+                  <sub className="text-xs font-thin">( {type} )</sub>
+                </div>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400">{position.duration}</p>
               </div>
 

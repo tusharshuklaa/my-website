@@ -50,6 +50,7 @@ const config: Config = {
         "background-position-spin": "background-position-spin 3000ms infinite alternate",
         "gradient-shift": "gradient-shift 5s ease-in-out infinite",
         "blur-animation": "blur-animation 3s ease-in-out alternate infinite",
+        marquee: 'marquee 15s linear infinite',
       },
       backgroundImage: {
         background: "var(--background)",
@@ -108,6 +109,7 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
         antiquewhite: "#FAEBD7",
+        lightYellow: "hsl(40deg 52% 80%)",
       },
       fontSize: {
         "screen-xs": "2.3vmin",
@@ -324,12 +326,16 @@ const config: Config = {
           },
         },
         "gradient-shift": {
-          "0%": { "background-position": '0% 50%' },
-          "50%": { "background-position": '100% 50%' },
-          "100%": { "background-position": '0% 50%' },
+          "0%": { "background-position": "0% 50%" },
+          "50%": { "background-position": "100% 50%" },
+          "100%": { "background-position": "0% 50%" },
         },
         "blur-animation": {
-          "to": { filter: "blur(3vmin)", transform: "scale(1.05)" },
+          to: { filter: "blur(3vmin)", transform: "scale(1.05)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
       },
       lineHeight: {

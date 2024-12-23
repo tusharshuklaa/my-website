@@ -7,7 +7,7 @@ import { GradientText } from '@/components/text';
 import { AnimatedLink, AnimatedLinkProps } from '@/components/animated-link';
 
 export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
-  const contactSectionClasses = cn('max-w-7xl m-auto min-h-screen flex flex-col justify-center', className);
+  const contactSectionClasses = cn('max-w-7xl m-auto pt-28 flex flex-col justify-center', className);
   const contactLinks: Array<AnimatedLinkProps> = [
     {
       name: "LinkedIn",
@@ -30,14 +30,9 @@ export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
       color: "orange"
     },
     {
-      name: "Telegram",
-      url: "https://t.me/thetsguy",
-      color: "green"
-    },
-    {
       name: "Codepen",
       url: "https://codepen.io/tusharshukla",
-      color: "pink"
+      color: "green"
     },
     {
       name: "Email",
@@ -115,7 +110,7 @@ export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
       <div className="flex justify-between mt-32">
         {
           contactLinks.map(({color, name, url}, index) => (
-            <AnimatedLink key={index} color={color} name={name} url={url} />
+            <AnimatedLink key={index} color={color} name={name} url={url} className="text-lg" />
           ))
         }
       </div>
