@@ -36,7 +36,7 @@ const textShadowVariations: Record<GradientColors, string> = {
 
 export const AnimatedLink: FC<BasicUiComponent<AnimatedLinkProps>> = ({ className, color = "yellow", url, name }) => {
   const animatedLinkClasses = cn(
-    "w-28 whitespace-break-spaces group-hover:translate-y-[-0.5rem] transition-transform duration-200 ease-in-out leading-none z-10",
+    "w-full sm:w-28 whitespace-break-spaces group-hover:translate-y-[-0.5rem] transition-transform duration-200 ease-in-out leading-none z-10",
     className
   );
   // radial-gradient(circle closest-corner at 50% 180%, rgba(49, 78, 224, .6), rgba(255, 255, 255, 0))
