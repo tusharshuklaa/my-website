@@ -24,6 +24,7 @@ const breakpoints = {
 export const useScreenType = (): ScreenType => {
   // Function to determine the current screen type
   const getScreenType = useCallback((): ScreenType => {
+    if(!window) return { isMobile: false, isTablet: false, isDesktop: true };
     if (window.matchMedia(breakpoints.desktop).matches) return { isMobile: false, isTablet: false, isDesktop: true };
     if (window.matchMedia(breakpoints.mobile).matches) return { isMobile: true, isTablet: false, isDesktop: false };
     if (window.matchMedia(breakpoints.tablet).matches) return { isMobile: false, isTablet: true, isDesktop: false };
