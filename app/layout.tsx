@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Dongle, Poppins } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@components/theme-provider";
+import { InfoBar } from "@components/info-bar";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} ${dongle.variable} font-poppins antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false} disableTransitionOnChange>
+          <InfoBar hidden={true}>🚧 This website is under construction. Please expect bugs 🐛</InfoBar>
           {children}
         </ThemeProvider>
       </body>

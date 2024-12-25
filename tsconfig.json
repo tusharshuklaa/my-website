@@ -24,6 +24,7 @@
       "@components/*": ["./components/*"],
       "@ui": ["./components/ui/index.ts",],
       "@hooks/*": ["./hooks/*"],
+      "@contexts/*": ["./contexts/*"],
       "@content": ["./.contentlayer/generated"]
     }
   },

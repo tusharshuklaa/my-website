@@ -1,17 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ComponentPropsWithoutRef } from "react";
+import { ShootingStars, StarsBackground } from "@ui";
+import { Navbar } from "@components/navbar";
+import { ContactSection } from "@components/contact-section";
+import { Footer } from "@components/footer";
+import { RootRefProvider } from "@contexts/use-root-ref";
 
 export default function Template({ children }: ComponentPropsWithoutRef<"div">) {
   return (
-    <motion.div
-      className="fixed left-0 top-0 h-screen w-full overflow-hidden"
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.5 }}
-    >
-      {children}
-    </motion.div>
+    <>
+      <div className="bg-background fixed inset-0 w-full h-screen overflow-hidden pointer-events-none z-0">
+        <ShootingStars />
+        <StarsBackground />
+      </div>
+
+      <RootRefProvider>
+        <Navbar />
+
+        {children}
+
+        <ContactSection />
+        <Footer />
+      </RootRefProvider>
+    </>
   );
 }

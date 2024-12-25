@@ -4,7 +4,8 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { UiComponent } from "@/types";
-import { GradientText } from "../text";
+import { useRootRef } from "@contexts/use-root-ref";
+import { GradientText } from "@components/text";
 
 type TimelineEntry = {
   title: string;
@@ -14,12 +15,12 @@ type TimelineEntry = {
 type TimelineProps = UiComponent<{
   containerRef: React.RefObject<HTMLDivElement>;
   data: Array<TimelineEntry>;
-  targetRef?: React.RefObject<HTMLDivElement>;
 }>;
 
-export const Timeline: FC<TimelineProps> = ({ className, containerRef, data, targetRef }) => {
+export const Timeline: FC<TimelineProps> = ({ className, containerRef, data }) => {
   const itemsRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
+  const { rootRef } = useRootRef();
 
   useEffect(() => {
     if (itemsRef.current) {
@@ -29,7 +30,7 @@ export const Timeline: FC<TimelineProps> = ({ className, containerRef, data, tar
   }, [itemsRef]);
 
   const { scrollYProgress } = useScroll({
-    container: targetRef,
+    container: rootRef,
     target: containerRef,
     offset: ["start 10%", "end 80%"],
   });
