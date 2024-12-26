@@ -1,18 +1,16 @@
 "use client";
 
-import { FC, RefObject, useRef } from "react";
+import { FC, useRef } from "react";
 import { motion } from "framer-motion";
 import { Timeline } from "@ui";
-import { CareerCompany, Company } from "@/components/career";
-import { GradientText } from "@/components/text";
+import { CareerCompany, Company } from "@components/career";
+import { GradientText } from "@components/text";
+import { useIsMounted } from "@hooks/use-is-mounted";
 import CareerData from "@/data/career.json";
 
-type CareerProps = {
-  pageRef?: RefObject<HTMLDivElement>;
-};
-
-export const Career: FC<CareerProps> = ({ pageRef }) => {
+export const Career: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isPageMounted = useIsMounted();
   const professionalData = CareerData.experience as Array<CareerCompany>;
 
   const data = professionalData.map(item => {
@@ -55,7 +53,7 @@ export const Career: FC<CareerProps> = ({ pageRef }) => {
         </p>
       </div>
 
-      <Timeline data={data} containerRef={containerRef} targetRef={pageRef} />
+      { isPageMounted && <Timeline data={data} containerRef={containerRef} />}
     </div>
   );
 };
