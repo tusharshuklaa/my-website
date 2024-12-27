@@ -9,14 +9,14 @@ import { UiComponent } from "@/types";
 
 type PlaceholdersAndVanishInputProps = UiComponent<{
   placeholders: string[];
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }>;
 
 export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = ({
   className,
   placeholders,
-  onChange,
+  onChange = () => {},
   onSubmit,
 }) => {
   const [currentPlaceholder, setCurrentPlaceholder] = useState(0);

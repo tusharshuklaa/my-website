@@ -11,15 +11,15 @@ type BlogHeroProps = UiComponent<{
 
 export const BlogHero: FC<BlogHeroProps> = ({ className, text }) => {
   const blogHeroClasses = cn(
-    "h-[30rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md",
+    "h-64 md:h-[30rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md",
     className,
   );
   return (
     <div data-testid="cmp-blog-hero" className={blogHeroClasses}>
-      <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20 text-glow">
+      <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold text-center text-white relative z-20 text-glow">
         {text}
       </h1>
-      <div className="w-[40rem] h-40 relative">
+      <div className="w-80 sm:w-[40rem] h-28 sm:h-40 relative">
         {/* Gradients */}
         <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
         <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />

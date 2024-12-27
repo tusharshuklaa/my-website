@@ -23,12 +23,12 @@ export const HoverCards: FC<HoverCardsType> = ({ items, className }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className={cn("grid grid-cols-1 py-10 md:grid-cols-2 lg:grid-cols-3", className)}>
+    <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5", className)}>
       {items.map((item, idx) => (
         <Link
           href={item?.url}
           key={item?.url}
-          className="group relative block h-full w-full p-2"
+          className="group relative block h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -51,7 +51,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, className }) => {
           </AnimatePresence>
 
           <Card>
-            <CardTitle>
+            <CardTitle className="line-clamp-2">
               {
                 hoveredIndex === idx ? (<GradientText text={item.title} />) : (item.title)
               }
@@ -64,7 +64,8 @@ export const HoverCards: FC<HoverCardsType> = ({ items, className }) => {
               )
             }
             <CardDescription
-              className={cn({
+              className={cn(
+                "line-clamp-5", {
                 "text-white": hoveredIndex === idx,
               })}
             >
