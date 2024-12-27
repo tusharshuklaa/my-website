@@ -1,13 +1,14 @@
 "use client";
 
-import { FC } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { compareDesc, format, parseISO } from 'date-fns';
-
+import { SearchX } from 'lucide-react';
 import { allBlogs } from '@content';
-import { BentoGrid, BentoGridItem, HoverCards, PlaceholdersAndVanishInput } from '@ui';
+import { BentoGrid, BentoGridItem, Button, HoverCards, PlaceholdersAndVanishInput } from '@ui';
 import { cn } from '@/lib/utils';
 import { BlogHero } from '@components/blog-hero';
 import { BentoThreeDCard } from '@components/bento-three-d-card';
+import { GradientText } from '@components/text';
 import { LuminenceSkeleton, AnimatedContentSkeleton, ChatSkeleton, ImageSkeleton } from '@components/bento-skeleton';
 
 const placeholders = [
@@ -20,75 +21,104 @@ const placeholders = [
 const AllBlogsPage: FC = () => {
   // Pick blogs that are published
   const blogs = allBlogs
-    .filter(blog => blog.published)
-    .map(blog => ({
-      ...blog,
-      date: format(parseISO(blog.date), 'LLLL d, yyyy')
-    }))
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
-  const recentBlogs = blogs.slice(0, 5).map((blog, index) => {
-    const itemClasses = cn(
-      'bg-white dark:bg-black',
-      {
-        'md:col-span-2 md:row-span-2': index === 0,
-        'md:col-span-2': index === 4,
-        'md:col-span-1': !(index === 0 || index === 4),
-      },
-    );
+  .filter(blog => blog.published)
+  .map(blog => ({
+    ...blog,
+    date: format(parseISO(blog.date), 'LLLL d, yyyy')
+  }))
+  .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
-    let Skeleton: () => JSX.Element = LuminenceSkeleton;
-    switch (index) {
-      case 0:
-        // Case for 3d card
-        break;
-      case 1:
-        Skeleton = AnimatedContentSkeleton;
-        break;
-      case 2:
-        Skeleton = ChatSkeleton;
-        break;
-      case 3:
-        Skeleton = LuminenceSkeleton;
-        break;
-      case 4:
-        Skeleton = () => ImageSkeleton(blog.title, blog.img);
-        break;
-      default:
-        Skeleton = LuminenceSkeleton;
-    };
+  const [visibleBlogs, setVisibleBlogs] = useState(blogs);
+  const [searchQuery, setSearchQuery] = useState("");
 
-    return {
-      title: blog.title,
-      description: blog.summary,
-      header: <Skeleton />,
-      className: itemClasses,
-      date: blog.date,
-      img: blog.img,
-      url: blog.url,
-    };
-  });
+  const recentBlogs = useMemo(() => {
+    return visibleBlogs.slice(0, 5).map((blog, index) => {
+      const itemClasses = cn(
+        'bg-white dark:bg-black',
+        {
+          'md:col-span-2 md:row-span-2': index === 0,
+          'md:col-span-2': index === 4,
+          'md:col-span-1': !(index === 0 || index === 4),
+        },
+      );
+  
+      let Skeleton: () => JSX.Element = LuminenceSkeleton;
+      switch (index) {
+        case 0:
+          // Case for 3D card
+          break;
+        case 1:
+          Skeleton = AnimatedContentSkeleton;
+          break;
+        case 2:
+          Skeleton = ChatSkeleton;
+          break;
+        case 3:
+          Skeleton = LuminenceSkeleton;
+          break;
+        case 4:
+          Skeleton = () => ImageSkeleton(blog.title, blog.img);
+          break;
+        default:
+          Skeleton = LuminenceSkeleton;
+      };
+  
+      return {
+        title: blog.title,
+        description: blog.summary,
+        header: <Skeleton />,
+        className: itemClasses,
+        date: blog.date,
+        img: blog.img,
+        url: blog.url,
+      };
+    });
+  }, [visibleBlogs]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-  };
+  const remainingBlogs = useMemo(() => visibleBlogs.slice(5), [visibleBlogs]);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("submitted");
+    const value = e.currentTarget.querySelector('input')?.value;
+
+    if (value) {
+      setSearchQuery(value);
+      const filteredBlogs = blogs.filter(blog => blog.title.toLowerCase().includes(value.toLowerCase()));
+      setVisibleBlogs(filteredBlogs);
+    };
+  };
+
+  const onSearchClear = () => {
+    setSearchQuery("");
+    setVisibleBlogs(blogs);
   };
 
   return (
-    <section className="relative mt-40 max-w-4xl mx-auto">
+    <section className="relative mt-20 md:mt-40 max-w-xs md:max-w-4xl mx-auto">
       <BlogHero text="My Blogs" />
 
-      <PlaceholdersAndVanishInput
-        placeholders={placeholders}
-        onChange={handleChange}
-        onSubmit={onSubmit}
-        className="mb-32 mt-8"
-      />
+      <div className="flex flex-col items-center justify-between mb-10 md:mb-20 mt-3 md:mt-8 min-h-44">
+        <PlaceholdersAndVanishInput
+          placeholders={placeholders}
+          onSubmit={onSubmit}
+          className="mb-12 w-full"
+        />
 
-      <BentoGrid className="mb-4">
+        {
+          searchQuery?.length > 0 && (
+            <h3 className="flex flex-col items-center gap-4">
+              <span>Found <GradientText text={visibleBlogs.length} /> blog{visibleBlogs.length > 1 ? "s" : ""} for your search query "<GradientText text={searchQuery} />"</span>
+
+              <Button type="button" variant="outline" onClick={onSearchClear} className="flex gap-2 rounded-full">
+                <span>Clear Search</span>
+                <SearchX className="w-4 h-4" />
+              </Button>
+            </h3>
+          )
+        }
+      </div>
+
+      <BentoGrid className="mb-5">
         {recentBlogs.map((item, i) => {
           if (i === 0) {
             return <BentoThreeDCard key={i} {...item} />;
@@ -105,7 +135,7 @@ const AllBlogsPage: FC = () => {
         })}
       </BentoGrid>
 
-      <HoverCards items={blogs.splice(5)} />
+      <HoverCards items={remainingBlogs} />
     </section>
   );
 };
