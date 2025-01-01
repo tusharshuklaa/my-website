@@ -137,3 +137,20 @@ body {
 .text-glow {
   text-shadow: 0 0 1rem navajowhite;
 }
+
+/* subtle gradient background color for dark theme */
+.line--highlighted {
+  background-color: #173c51;
+}
+
+.line--highlighted[data-highlighted-line-id="a"] {
+  background-color: #17514c;
+}
+
+.line--highlighted[data-highlighted-line-id="b"] {
+  background-color: #172351;
+}
+
+.line--highlighted[data-highlighted-line-id="c"] {
+  background-color: #175133;
+}

@@ -1,9 +1,10 @@
 // contentlayer.config.ts
-import { defineDocumentType, DocumentTypeDef, makeSource } from "contentlayer2/source-files";
+import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode, { LineElement } from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
+import { rehypeExternalEmbed } from "@/lib/rehypeExternalEmbed";
 
 export const Blog = defineDocumentType(() => ({
   name: "Blog",
@@ -49,7 +50,11 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "github-dark",
+          theme: "tokyo-night",
+          defaultLang: {
+            block: "typescript",
+            inline: "plaintext",
+          },
           onVisitLine(node: LineElement) {
             // Prevent lines from collapsing in 'display: grid' mode, and allow empty lines to be copy/pasted
             if (node.children.length === 0) {
@@ -73,10 +78,11 @@ export default makeSource({
         {
           properties: {
             className: ["subheading-anchor"],
-            arialLabel: "Link to section",
+            ariallabel: "Link to section",
           },
         },
       ],
+      rehypeExternalEmbed,
     ],
   },
 });

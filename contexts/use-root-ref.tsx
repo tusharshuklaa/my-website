@@ -1,5 +1,5 @@
 import React, { FC, createContext, useContext, useRef, ComponentPropsWithRef } from 'react';
-import { motion } from 'framer-motion';
+import { PageTransition } from '@components/page-transition';
 
 type RootRefContextType = {
   rootRef: React.RefObject<HTMLDivElement>;
@@ -12,15 +12,9 @@ export const RootRefProvider: FC<ComponentPropsWithRef<"div">> = ({ children }) 
 
   return (
     <RootRefContext.Provider value={{ rootRef }}>
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ ease: "easeInOut", duration: 0.5 }}
-        className="fixed left-0 top-0 h-screen w-full overflow-y-auto overflow-x-hidden scroll-smooth snap-start snap-normal snap-y snap-proximity scroll-pt-10"
-        ref={rootRef}
-      >
+      <PageTransition ref={rootRef}>
         {children}
-      </motion.div>
+      </PageTransition>
     </RootRefContext.Provider>
   );
 };

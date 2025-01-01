@@ -59,7 +59,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, className }) => {
             {
               item.date && (
                 <CardDate date={item.date} className={cn({
-                  "text-bold": hoveredIndex === idx,
+                  "font-bold": hoveredIndex === idx,
                 })} />
               )
             }
