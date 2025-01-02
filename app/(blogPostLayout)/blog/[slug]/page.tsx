@@ -17,7 +17,11 @@ type BlogPageParams = {
 };
 
 const BlogPage: FC<BlogPageParams> = ({ params }) => {
-  const blog = allBlogs.find(blog => blog._raw.flattenedPath === params.slug);
+  const blog = allBlogs.find((post) => {
+    // Remove 'blog/' from the beginning of the path
+    const slugWithoutPrefix = post._raw.flattenedPath.replace(/^blog\//, '');
+    return slugWithoutPrefix === params.slug;
+  });
 
   if (!blog?.body.code) {
     notFound();

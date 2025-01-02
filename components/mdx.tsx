@@ -4,8 +4,9 @@ import { useMDXComponent } from 'next-contentlayer2/hooks';
 import { AnimatedHeading } from './text/heading';
 import { GradientText, HighlightText } from './text';
 import { cn } from '@/lib/utils';
-import { PrettyLink } from './pretty-link';
-import ExternalEmbed from './external-embed';
+import { PrettyLink } from '@components/pretty-link';
+import { ExternalEmbed } from '@components/external-embed';
+import { MultiColumn } from '@components/multi-column';
 
 type MdxProps = {
   code: string;
@@ -15,18 +16,18 @@ const components: MDXComponents = {
   // Heading
   h1: ({ ...props }) => {
     return (
-      <AnimatedHeading {...props} className={cn("tracking-wide !leading-snug", props.className)}>
+      <AnimatedHeading {...props} className={cn("tracking-wide !leading-snug mt-4", props.className)}>
         <GradientText text={props.children} color="blue" />
       </AnimatedHeading>
     );
   },
   h2: ({ ...props }) => (
-    <h2 {...props} className={cn("tracking-wide !leading-snug text-4xl", props.className)}>
+    <h2 {...props} className={cn("tracking-wide !leading-snug text-4xl mt-2", props.className)}>
       <GradientText text={props.children} color="purple" />
     </h2>
   ),
   h3: ({ ...props }) => (
-    <h3 {...props} className={cn("tracking-wide !leading-snug text-2xl", props.className)}>
+    <h3 {...props} className={cn("tracking-wide !leading-snug text-2xl mt-2", props.className)}>
       <GradientText text={props.children} color="green" />
     </h3>
   ),
@@ -49,9 +50,13 @@ const components: MDXComponents = {
     <li {...props} className={cn("pl-2 [&>ul]:mt-2 [&>ul]:mb-2 [&>ul]:ml-3 [&>ol]:mt-2 [&>ol]:mb-2 [&>ol]:ml-3", props.className)}></li>
   ),
   // Link
-  a: ({ ...props }) => (
-    <PrettyLink {...props as any} />
-  ),
+  a: ({ ...props }) => {
+    if (props.className?.includes("subheading-anchor")) {
+      return <a {...props} />;
+    }
+
+    return <PrettyLink {...props as any} />;
+  },
   // Image
   img: ({ ...props }) => (
     <img {...props}></img>
@@ -241,6 +246,7 @@ const components: MDXComponents = {
     <mark {...props} className={cn("bg-violet-900", props.className)}></mark>
   ),
   "external-embed": (props) => <ExternalEmbed {...props} />,
+  MultiColumn,
 };
 
 export const Mdx:FC<MdxProps> = ({ code }) => {

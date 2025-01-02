@@ -154,3 +154,14 @@ body {
 .line--highlighted[data-highlighted-line-id="c"] {
   background-color: #175133;
 }
+
+.subheading-anchor {
+  position: absolute;
+  color: blueviolet;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 0.6em;
+  right: -1em;
+  opacity: 0.5;
+}

@@ -22,7 +22,7 @@ export const variations: Record<GradientColors, string> = {
 
 export const GradientText: FC<GradientTextProps> = ({ className, color = "yellow", text }) => {
   const gradientTextClasses = clsx(
-    'text-transparent bg-clip-text',
+    'text-transparent bg-clip-text relative',
     variations[color],
     className
   );

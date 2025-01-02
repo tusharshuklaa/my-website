@@ -8,7 +8,7 @@ import { rehypeExternalEmbed } from "@/lib/rehypeExternalEmbed";
 
 export const Blog = defineDocumentType(() => ({
   name: "Blog",
-  filePathPattern: "**/*.mdx",
+  filePathPattern: "blog/**/*.mdx",
   contentType: "mdx",
   fields: {
     title: {
@@ -35,13 +35,56 @@ export const Blog = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: post => `/blog/${post._raw.flattenedPath}`,
+      resolve: post => {
+        // Remove 'blog/' from the beginning and add it back with a leading slash
+        const slug = post._raw.flattenedPath.replace(/^blog\//, "");
+        return `/blog/${slug}`;
+      },
+    },
+    slug: {
+      type: "string",
+      resolve: post => post._raw.flattenedPath.replace(/^blog\//, ""),
     },
   },
 }));
 
+const createLinkIcon = () => {
+  return {
+    type: "element",
+    tagName: "svg",
+    properties: {
+      xmlns: "http://www.w3.org/2000/svg",
+      width: "0.7em",
+      height: "0.7em",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "2",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      className: ["anchor-link-icon"],
+    },
+    children: [
+      {
+        type: "element",
+        tagName: "path",
+        properties: {
+          d: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71",
+        },
+      },
+      {
+        type: "element",
+        tagName: "path",
+        properties: {
+          d: "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
+        },
+      },
+    ],
+  };
+};
+
 export default makeSource({
-  contentDirPath: "blog",
+  contentDirPath: "content",
   documentTypes: [Blog],
   mdx: {
     remarkPlugins: [remarkGfm],
@@ -76,9 +119,11 @@ export default makeSource({
       [
         rehypeAutolinkHeadings,
         {
+          behavior: "append",
+          content: createLinkIcon(),
           properties: {
             className: ["subheading-anchor"],
-            ariallabel: "Link to section",
+            ["arial-label"]: "Link to section",
           },
         },
       ],

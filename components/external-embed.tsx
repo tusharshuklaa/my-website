@@ -9,7 +9,7 @@ type EmbedProps = {
   aspectRatio?: '16:9' | '4:3' | '1:1';
 };
 
-const ExternalEmbed: FC<EmbedProps> = ({ url, type, aspectRatio = '16:9' }) => {
+export const ExternalEmbed: FC<EmbedProps> = ({ url, type, aspectRatio = '16:9' }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -149,5 +149,3 @@ const ExternalEmbed: FC<EmbedProps> = ({ url, type, aspectRatio = '16:9' }) => {
     </div>
   );
 };
-
-export default ExternalEmbed;
