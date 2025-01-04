@@ -135,7 +135,7 @@ const AllBlogsPage: FC = () => {
         })}
       </BentoGrid>
 
-      <HoverCards items={remainingBlogs} />
+      <HoverCards items={remainingBlogs} cardClassName='p-6' />
     </section>
   );
 };

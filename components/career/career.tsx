@@ -1,12 +1,12 @@
 "use client";
 
 import { FC, useRef } from "react";
-import { motion } from "framer-motion";
 import { Timeline } from "@ui";
 import { CareerCompany, Company } from "@components/career";
 import { GradientText } from "@components/text";
 import { useIsMounted } from "@hooks/use-is-mounted";
 import CareerData from "@/data/career.json";
+import { AnimatedHeading } from "@components/text/heading";
 
 export const Career: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,29 +23,13 @@ export const Career: FC = () => {
   return (
     <div className="relative w-full md:px-10" ref={containerRef}>
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
-        <motion.h3
-          initial={{
-            opacity: 0,
-            x: 100
-          }}
-          whileInView={{
-            opacity: 1,
-            x: 0,
-            transition: {
-              duration: 2
-            }
-          }}
-          viewport={{
-            once: true,
-            margin: "100px"
-          }}
-        >
+        <AnimatedHeading className="text-left">
           <GradientText
             text={"A Universe of Experience & Skills"}
             className="mb-4 max-w-4xl text-screen-md"
             color="indigo"
           />
-        </motion.h3>
+        </AnimatedHeading>
 
         <p className="text-base text-neutral-700 dark:text-neutral-300 md:text-lg">
           A journey from the cosmic dust of startups to the supernova of MNCs, my career has been a stellar exploration

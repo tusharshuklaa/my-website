@@ -24,6 +24,12 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .slider-3d-transform {
+    transform:
+      rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+      translateZ(45vmin);
+  }
 }
 
 @layer components {

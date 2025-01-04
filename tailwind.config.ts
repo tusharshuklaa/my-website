@@ -53,16 +53,14 @@ const config: Config = {
         "gradient-shift": "gradient-shift 5s ease-in-out infinite",
         "blur-animation": "blur-animation 3s ease-in-out alternate infinite",
         marquee: 'marquee 15s linear infinite',
+        "slider-anim": "slider-anim 20s linear infinite",
+        shimmer: "shimmer 2s linear infinite",
       },
       backgroundImage: {
         background: "var(--background)",
         "collage-gradient":
           "`conic-gradient(${conicGradientColors[0]} 12%, ${conicGradientColors[1]} 12%, ${conicGradientColors[1]} 33%, ${conicGradientColors[2]} 33%, ${conicGradientColors[2]} 55%, ${conicGradientColors[3]} 55%, ${conicGradientColors[3]} 70%, ${conicGradientColors[4]} 70%, ${conicGradientColors[4]} 87%, ${conicGradientColors[0]} 87%)`",
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        "cosmic-bot": "url('/img/cosmic-bot.png')",
       },
       backgroundSize: {
         "50%": "50%",
@@ -339,6 +337,22 @@ const config: Config = {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(-100%)" },
         },
+        "slider-anim": {
+          "0%": {
+            transform: "perspective(1000px) rotateX(-14deg) rotateY(0deg)"
+          },
+          "100%": {
+            transform: "perspective(1000px) rotateX(-14deg) rotateY(360deg)"
+          },
+        },
+        shimmer: {
+          from: {
+            "backgroundPosition": "0 0"
+          },
+          to: {
+            "backgroundPosition": "-200% 0"
+          }
+        }
       },
       lineHeight: {
         "extra-tight": "0.75",

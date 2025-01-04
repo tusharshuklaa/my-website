@@ -17,9 +17,10 @@ type HoverCardItem = {
 
 type HoverCardsType = UiComponent<{
   items: Array<HoverCardItem>;
+  cardClassName?: string;
 }>;
 
-export const HoverCards: FC<HoverCardsType> = ({ items, className }) => {
+export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -50,7 +51,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, className }) => {
             )}
           </AnimatePresence>
 
-          <Card>
+          <Card className={cardClassName}>
             <CardTitle className="line-clamp-2">
               {
                 hoveredIndex === idx ? (<GradientText text={item.title} />) : (item.title)

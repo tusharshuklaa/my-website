@@ -10,12 +10,11 @@ export const Card: FC<BasicUiComponent> = ({ className, children }) => {
         className,
       )}
     >
-      <div className="relative z-50">
-        <div className="p-4">{children}</div>
-      </div>
+      {children}
     </div>
   );
 };
+
 export const CardTitle: FC<BasicUiComponent> = ({ className, children }) => {
   return <h4 className={cn("mt-4 font-bold tracking-wide text-zinc-100", className)}>{children}</h4>;
 };
