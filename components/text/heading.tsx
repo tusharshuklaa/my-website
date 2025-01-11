@@ -6,7 +6,7 @@ import { BasicUiComponent } from "@/types";
 import { motion } from "framer-motion";
 
 export const Heading2: FC<BasicUiComponent> = ({ children, className }) => {
-  return <h2 className={cn("mb-4 max-w-4xl text-lg text-black dark:text-white md:text-4xl", className)}>{children}</h2>;
+  return <h2 className={cn("text-2xl md:text-4xl font-poppins text-black dark:text-white", className)}>{children}</h2>;
 };
 
 export const AnimatedHeading: FC<BasicUiComponent> = ({ children, className }) => {

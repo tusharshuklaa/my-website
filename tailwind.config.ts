@@ -359,6 +359,10 @@ const config: Config = {
       },
       maxWidth: {
         screen: "100vw",
+        full: "100%",
+        "1/2": "50%",
+        "2/3": "75%",
+        halfScreen: "50vw",
       },
       transformOrigin: {
         "almost-center": "50% 50% .4em",

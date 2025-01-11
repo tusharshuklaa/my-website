@@ -8,11 +8,11 @@ import { Blip } from '@components/blip';
 import { GlowingGradientBox } from '@components/glowing-gradient-box';
 import { WorkStatusDeviceProps } from '@components/work-status';
 
-export const WorkStatusDesktop: FC<UiComponent<WorkStatusDeviceProps>> = ({ blipColor, blipShadowColor, className, textColor, workStatusText }) => {
+export const WorkStatusDesktop: FC<UiComponent<WorkStatusDeviceProps>> = ({ blipColor, blipShadowColor, className, textColor, workStatusText, id }) => {
   const workStatusDesktopClasses = cn('flex flex-col items-center justify-center py-16 min-h-screen', className);
 
   return (
-    <SnapSection data-testid={`cmp-work-status-desktop`} className={workStatusDesktopClasses}>
+    <SnapSection data-testid={`cmp-work-status-desktop`} className={workStatusDesktopClasses} id={id}>
       <GlowingGradientBox className="z-10 after:rounded-[11px]">
         <Safari
           className="sm:max-w-2xl md:max-w-3xl lg:max-w-5xl size-full"

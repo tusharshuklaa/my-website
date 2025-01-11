@@ -5,6 +5,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Variables for space mascot */
+  --origAstroWidth: 14vmin;
+  --astroWidth: var(--origAstroWidth);
+  --onePx: calc(var(--astroWidth) / 134);
+  --nOnePx: calc(var(--onePx) * -1);
+  --twoPx: calc(var(--astroWidth) / 66.6);
+  --nTwoPx: calc(var(--twoPx) * -1);
+  --threePx: calc(var(--astroWidth) / 45.161);
+  --nThreePx: calc(var(--threePx) * -1);
+  /* END -  Variables for space mascot */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -93,17 +103,6 @@ body {
   }
 }
 
-.space-clouds {
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    mask-image: url("/img/space-clouds.gif");
-    mask-size: cover;
-    mask-position: center;
-  }
-}
-
 .link-glow-yellow {
   background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(244, 211, 114, .5), rgba(255, 255, 255, 0));
 }
@@ -170,4 +169,248 @@ body {
   height: 0.6em;
   right: -1em;
   opacity: 0.5;
+}
+
+/* space mascot loading */
+
+.space-mascot {
+  animation: speeder 0.4s linear infinite, scaleMascot 1.5s linear infinite;
+  width: var(--astroWidth);
+  height: calc(var(--astroWidth) / 3);
+  margin-left: calc((var(--astroWidth)/-2));
+}
+
+.jetpack {
+  height: 11%;
+  width: 26.2%;
+  top: -42%;
+  left: 45%;
+  border-radius: calc(var(--astroWidth) / 66.6) calc(var(--astroWidth) / 13.46) calc(var(--astroWidth) / 133) 0;
+}
+
+.base span {
+  --border-width-y: calc(var(--astroWidth) / 20);
+  border-top: var(--border-width-y) solid transparent;
+  border-right: calc(var(--astroWidth) / 1.35) solid;
+  border-bottom: var(--border-width-y) solid transparent;
+}
+
+.base span:before {
+  --dimension: calc(var(--astroWidth) / 6.1);
+  height: var(--dimension);
+  width: var(--dimension);
+  right: calc(var(--astroWidth) / -1.23);
+  top: calc(var(--astroWidth) / -8.48);
+}
+.base span:after {
+  border-top: 0 solid transparent;
+  border-right: calc(var(--astroWidth) / 2.434) solid;
+  border-bottom: calc(var(--astroWidth) / 8.48) solid transparent;
+  top: calc(var(--astroWidth) / -8.48);
+  right: calc(var(--astroWidth) / -1.382);
+}
+
+.face {
+  --face-width: calc(var(--astroWidth) / 6.771);
+  height: calc(var(--astroWidth) / 11.29);
+  width: var(--face-width);
+  border-radius: var(--face-width) var(--face-width) 0 0;
+  transform: rotate(-40deg);
+  right: calc(var(--astroWidth) / 13.54);
+  top: calc(var(--astroWidth) / -9.034);
+}
+.face:after {
+  content: "";
+  height: calc(var(--astroWidth) / 11.29);
+  width: calc(var(--astroWidth) / 11.29);
+  right: calc(var(--astroWidth) / 33.816);
+  top: calc(var(--astroWidth) / 19.337);
+  transform: rotate(40deg);
+  transform-origin: 50% 50%;
+  border-radius: 0 0 0 calc(var(--astroWidth) / 66.6);
+}
+
+.space-mascot > span > span {
+  width: 86%;
+  height: calc(var(--astroWidth) / 134);
+  position: absolute;
+  animation: fazer1 0.2s linear infinite;
+}
+
+.space-mascot > span > span:nth-child(2) {
+  top: calc(var(--astroWidth) / 45.161);
+  animation: fazer2 0.4s linear infinite;
+}
+
+.space-mascot > span > span:nth-child(3) {
+  top: calc(var(--astroWidth) / 134);
+  animation: fazer3 0.4s linear infinite;
+  animation-delay: -1s;
+}
+
+.space-mascot > span > span:nth-child(4) {
+  top: calc(var(--astroWidth) / 33.816);
+  animation: fazer4 1s linear infinite;
+  animation-delay: -1s;
+}
+
+@keyframes fazer1 {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: calc(var(--astroWidth)/-0.856);
+    opacity: 0;
+  }
+}
+@keyframes fazer2 {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: calc(var(--astroWidth)/-1.07);
+    opacity: 0;
+  }
+}
+@keyframes fazer3 {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: calc(var(--astroWidth)/-0.535);
+    opacity: 0;
+  }
+}
+@keyframes fazer4 {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: calc(var(--astroWidth)/-1.605);
+    opacity: 0;
+  }
+}
+@keyframes speeder {
+  0% {
+    transform: translate(var(--twoPx), var(--onePx)) rotate(0deg);
+  }
+  10% {
+    transform: translate(var(--nOnePx), var(--nThreePx)) rotate(-1deg);
+  }
+  20% {
+    transform: translate(var(--nTwoPx), 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(var(--onePx), var(--twoPx)) rotate(0deg);
+  }
+  40% {
+    transform: translate(var(--onePx), var(--nOnePx)) rotate(1deg);
+  }
+  50% {
+    transform: translate(var(--nOnePx), var(--threePx)) rotate(-1deg);
+  }
+  60% {
+    transform: translate(var(--nOnePx), var(--onePx)) rotate(0deg);
+  }
+  70% {
+    transform: translate(var(--threePx), var(--onePx)) rotate(-1deg);
+  }
+  80% {
+    transform: translate(var(--nTwoPx), var(--nOnePx)) rotate(1deg);
+  }
+  90% {
+    transform: translate(var(--twoPx), var(--onePx)) rotate(0deg);
+  }
+  100% {
+    transform: translate(var(--onePx), var(--nTwoPx)) rotate(-1deg);
+  }
+}
+
+@keyframes scaleMascot {
+  10% {
+    --astroWidth: calc(var(--origAstroWidth) * 1.1);
+  }
+  20% {
+    --astroWidth: calc(var(--origAstroWidth) * 1.2);
+  }
+  30% {
+    --astroWidth: calc(var(--origAstroWidth) * 1.3);
+  }
+  40% {
+    --astroWidth: calc(var(--origAstroWidth) * 1.4);
+  }
+  50% {
+    --astroWidth: calc(var(--origAstroWidth) * 1.5);
+  }
+  60% {
+    --astroWidth: calc(var(--origAstroWidth) * 1.4);
+  }
+  70% {
+    --astroWidth: calc(var(--origAstroWidth) * 1.3);
+  }
+  80% {
+    --astroWidth: calc(var(--origAstroWidth) * 1.2);
+  }
+  90% {
+    --astroWidth: calc(var(--origAstroWidth) * 1.1)
+  }
+}
+
+.longfazers span {
+  height: 2px;
+}
+.longfazers span:nth-child(1) {
+  top: 20%;
+  animation: lf 0.6s linear infinite;
+  animation-delay: -5s;
+}
+.longfazers span:nth-child(2) {
+  top: 40%;
+  animation: lf2 0.8s linear infinite;
+  animation-delay: -1s;
+}
+.longfazers span:nth-child(3) {
+  top: 60%;
+  animation: lf3 0.6s linear infinite;
+}
+.longfazers span:nth-child(4) {
+  top: 80%;
+  animation: lf4 0.5s linear infinite;
+  animation-delay: -3s;
+}
+@keyframes lf {
+  0% {
+    left: 200%;
+  }
+  100% {
+    left: -200%;
+    opacity: 0;
+  }
+}
+@keyframes lf2 {
+  0% {
+    left: 200%;
+  }
+  100% {
+    left: -200%;
+    opacity: 0;
+  }
+}
+@keyframes lf3 {
+  0% {
+    left: 200%;
+  }
+  100% {
+    left: -100%;
+    opacity: 0;
+  }
+}
+@keyframes lf4 {
+  0% {
+    left: 200%;
+  }
+  100% {
+    left: -100%;
+    opacity: 0;
+  }
 }

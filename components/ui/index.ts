@@ -65,6 +65,7 @@ export { DropdownMenuSubContent } from "./dropdown-menu";
 export { DropdownMenuSubTrigger } from "./dropdown-menu";
 export { DropdownMenuRadioGroup } from "./dropdown-menu";
 export { FlipWords } from "./flip-words";
+export { HoverBorderGradient } from "./hover-border-gradient";
 export type { Iphone15ProProps } from "./iphone-15-pro";
 export { Iphone15Pro } from "./iphone-15-pro";
 export { LampContainer } from "./lamp";
