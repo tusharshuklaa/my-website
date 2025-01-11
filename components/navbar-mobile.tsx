@@ -16,7 +16,7 @@ export const NavbarMobile: FC = () => {
   return (
     <Drawer data-testid="cmp-mobile-navbar">
       <DrawerTrigger asChild className="sm:hidden z-10">
-        <Button variant="clear" size="auto" aria-label="Open mobile navigation" className="absolute right-4 top-4">
+        <Button variant="clear" size="auto" aria-label="Open mobile navigation" className="fixed right-4 top-4">
           <Menu className="w-10 h-10" />
         </Button>
       </DrawerTrigger>

@@ -20,10 +20,11 @@ const FooterListItem: FC<FooterItemProps> = ({ url, text }) => (
 );
 
 const footerLinks = [
+  { url: "/blog", text: "Blog" },
   { url: "/", text: "Home" },
-  { url: "/", text: "About" },
-  { url: "/", text: "Work" },
-  { url: "/", text: "Contact" },
+  { url: "/about-me", text: "About Me" },
+  { url: "/showcase", text: "Showcase" },
+  { url: "/uses", text: "Uses" },
 ];
 
 export const Footer: FC = () => {
