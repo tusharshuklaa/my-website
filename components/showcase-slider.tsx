@@ -55,7 +55,7 @@ const SliderBgContent: FC = () => {
   );
 };
 
-export const ShowcaseSlider: FC<UiComponent> = ({ className, ...props }) => {
+export const ShowcaseSlider: FC<UiComponent> = ({ className }) => {
   const showcaseSliderClasses = cn(
     'flex h-screen min-h-svh w-full flex-col items-start justify-center gap-5 mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10',
     className,
@@ -64,7 +64,7 @@ export const ShowcaseSlider: FC<UiComponent> = ({ className, ...props }) => {
   const showcaseData = ShowcaseData.showcase as Array<Showcase>;
 
   return (
-    <SnapSection data-testid="cmp-showcase-slider" className={showcaseSliderClasses} {...props}>
+    <SnapSection data-testid="cmp-showcase-slider" className={showcaseSliderClasses} id="my-crafts">
       <AnimatedHeading className="text-center mb-20 w-full">
         <GradientText
           text={"A Cluster of my Crafts"}

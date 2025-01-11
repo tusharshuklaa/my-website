@@ -1,7 +1,6 @@
 "use client";
 
 import { ComponentPropsWithoutRef } from "react";
-import { LampContainer } from "@ui";
 import { Navbar } from "@components/navbar";
 import { PageTransition } from "@components/page-transition";
 import { ContactSection } from "@components/contact-section";
