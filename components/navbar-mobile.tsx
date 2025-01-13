@@ -11,6 +11,7 @@ import {
 import { GradientText, TextFlipper } from '@components/text';
 import { GlowingGradientBox } from '@components/glowing-gradient-box';
 import { MyAvatar } from '@components/my-avatar';
+import { DownloadResumeButton } from '@components/download-resume-button';
 
 export const NavbarMobile: FC = () => {
   return (
@@ -56,6 +57,10 @@ export const NavbarMobile: FC = () => {
           <Link href="/showcase" className="block p-4 text-center">
             <GradientText text="Showcase" color="red" />
           </Link>
+
+          <div className="flex items-center justify-center my-4">
+            <DownloadResumeButton />
+          </div>
         </div>
       </DrawerContent>
     </Drawer>

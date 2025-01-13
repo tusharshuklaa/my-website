@@ -10,6 +10,7 @@ import { TextFlipper } from "@components/text";
 import { UiComponent } from "@/types";
 import { allBlogs } from '@content';
 import { MyAvatar } from "@components/my-avatar";
+import { DownloadResumeButton } from "./download-resume-button";
 
 export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
   const [active, setActive] = useState<string | null>(null);
@@ -48,6 +49,7 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
               <HoveredLink href="/#my-crafts">My Crafts</HoveredLink>
               <HoveredLink href="/#work-experience">Work Experience</HoveredLink>
               <HoveredLink href="/#work-status">Work Status</HoveredLink>
+              <DownloadResumeButton containerClassName="my-4" />
             </div>
           </MenuItem>
 
@@ -57,6 +59,7 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
               {
                 blogs.map((blog) => (
                   <ProductItem
+                    key={blog.title}
                     title={blog.title}
                     href={blog.url}
                     src={blog.img}

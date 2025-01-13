@@ -1,8 +1,9 @@
-import { ArrowUpRight } from "lucide-react";
-import { Underline } from "./text";
-import Link from "next/link";
 import { FC } from "react";
-import { HighlightText } from "./text/underline";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { Underline } from "@components/text";
+import { HighlightText } from "@components/text/underline";
+import { DownloadResumeButton } from "@components/download-resume-button";
 
 type FooterItemProps = {
   url: string;
@@ -40,6 +41,7 @@ export const Footer: FC = () => {
           <p className="mt-4">
             <HighlightText className="after:z-0">Pro Tip:</HighlightText> Don&apos;t forget to check command center by either clicking on the search bar in the navigation menu or by pessing keyboard keys (Cmd or Ctrl + K)
           </p>
+          <DownloadResumeButton containerClassName="mt-6" />
         </div>
 
         <div className="w-full md:w-1/4 shrink-0 mt-8 md:mt-0">
