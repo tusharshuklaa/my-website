@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 type Direction = "TOP" | "LEFT" | "BOTTOM" | "RIGHT";
 
-export type HoverBorderGradientProps<T = HTMLElement> = React.PropsWithChildren<{
+type HoverBorderGradientProps<T = HTMLElement> = React.PropsWithChildren<{
   as?: React.ElementType;
   containerClassName?: string;
   className?: string;
