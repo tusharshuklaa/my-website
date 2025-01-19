@@ -1,15 +1,15 @@
 "use client";
 
-import { FC, useMemo, useState } from 'react';
+import { FC, useMemo } from 'react';
 import { compareDesc, format, parseISO } from 'date-fns';
-import { SearchX } from 'lucide-react';
-import { allBlogs } from '@content';
-import { BentoGrid, BentoGridItem, Button, HoverCards, PlaceholdersAndVanishInput } from '@ui';
+import { allBlogs, Blog } from '@content';
 import { cn } from '@/lib/utils';
-import { BlogHero } from '@components/blog-hero';
+import { BentoGrid, BentoGridItem, HoverCards, PlaceholdersAndVanishInput } from '@ui';
+import { ArticleHero } from '@components/blog-hero';
 import { BentoThreeDCard } from '@components/bento-three-d-card';
-import { GradientText } from '@components/text';
 import { LuminenceSkeleton, AnimatedContentSkeleton, ChatSkeleton, ImageSkeleton } from '@components/bento-skeleton';
+import { SearchResults } from '@components/search-results';
+import { useMdxContent } from '@/hooks/use-mdx-content';
 
 const placeholders = [
   "react",
@@ -19,7 +19,6 @@ const placeholders = [
 ];
 
 const AllBlogsPage: FC = () => {
-  // Pick blogs that are published
   const blogs = allBlogs
   .filter(blog => blog.published)
   .map(blog => ({
@@ -28,8 +27,8 @@ const AllBlogsPage: FC = () => {
   }))
   .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
-  const [visibleBlogs, setVisibleBlogs] = useState(blogs);
-  const [searchQuery, setSearchQuery] = useState("");
+  const { items, onSubmit, onSearchClear, searchQuery } = useMdxContent(blogs);
+  const visibleBlogs = items as Array<Blog>;
 
   const recentBlogs = useMemo(() => {
     return visibleBlogs.slice(0, 5).map((blog, index) => {
@@ -41,7 +40,7 @@ const AllBlogsPage: FC = () => {
           'md:col-span-1': !(index === 0 || index === 4),
         },
       );
-  
+
       let Skeleton: () => JSX.Element = LuminenceSkeleton;
       switch (index) {
         case 0:
@@ -62,7 +61,7 @@ const AllBlogsPage: FC = () => {
         default:
           Skeleton = LuminenceSkeleton;
       };
-  
+
       return {
         title: blog.title,
         description: blog.summary,
@@ -77,25 +76,9 @@ const AllBlogsPage: FC = () => {
 
   const remainingBlogs = useMemo(() => visibleBlogs.slice(5), [visibleBlogs]);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const value = e.currentTarget.querySelector('input')?.value;
-
-    if (value) {
-      setSearchQuery(value);
-      const filteredBlogs = blogs.filter(blog => blog.title.toLowerCase().includes(value.toLowerCase()));
-      setVisibleBlogs(filteredBlogs);
-    };
-  };
-
-  const onSearchClear = () => {
-    setSearchQuery("");
-    setVisibleBlogs(blogs);
-  };
-
   return (
     <section className="relative mt-20 md:mt-40 max-w-xs md:max-w-4xl mx-auto">
-      <BlogHero text="My Blogs" />
+      <ArticleHero text="My Blogs" />
 
       <div className="flex flex-col items-center justify-between mb-10 md:mb-20 mt-3 md:mt-8 min-h-44">
         <PlaceholdersAndVanishInput
@@ -104,18 +87,7 @@ const AllBlogsPage: FC = () => {
           className="mb-12 w-full"
         />
 
-        {
-          searchQuery?.length > 0 && (
-            <h3 className="flex flex-col items-center gap-4">
-              <span>Found <GradientText text={visibleBlogs.length} /> blog{visibleBlogs.length > 1 ? "s" : ""} for your search query "<GradientText text={searchQuery} />"</span>
-
-              <Button type="button" variant="outline" onClick={onSearchClear} className="flex gap-2 rounded-full">
-                <span>Clear Search</span>
-                <SearchX className="w-4 h-4" />
-              </Button>
-            </h3>
-          )
-        }
+        <SearchResults query={ searchQuery } itemsCount={visibleBlogs.length} onSearchClear={ onSearchClear } />
       </div>
 
       <BentoGrid className="mb-5">

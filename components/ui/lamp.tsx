@@ -4,10 +4,20 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { BasicUiComponent } from "@/types";
 
-export const LampContainer: FC<BasicUiComponent> = ({
+type LampContainerProps = BasicUiComponent & {
+  containerClassName?: string;
+};
+
+export const LampContainer: FC<LampContainerProps> = ({
   children,
   className,
+  containerClassName,
 }) => {
+  const containerClasses = cn(
+    "relative z-50 flex -translate-y-80 flex-col items-center px-5",
+    containerClassName
+  );
+
   return (
     <div
       className={cn(
@@ -75,7 +85,7 @@ export const LampContainer: FC<BasicUiComponent> = ({
         <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-slate-950"></div>
       </div>
 
-      <div className="relative z-50 flex -translate-y-80 flex-col items-center px-5">
+      <div className={containerClasses}>
         {children}
       </div>
     </div>

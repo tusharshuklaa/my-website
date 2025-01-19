@@ -31,6 +31,11 @@ export const Blog = defineDocumentType(() => ({
       type: "boolean",
       default: true,
     },
+    tags: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
   },
   computedFields: {
     url: {
@@ -44,6 +49,81 @@ export const Blog = defineDocumentType(() => ({
     slug: {
       type: "string",
       resolve: post => post._raw.flattenedPath.replace(/^blog\//, ""),
+    },
+  },
+}));
+
+export const UsesCoding = defineDocumentType(() => ({
+  name: "Coding",
+  filePathPattern: "uses-coding/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    summary: {
+      type: "string",
+      required: true,
+    },
+    img: {
+      type: "string",
+      required: true,
+    },
+    tags: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
+  },
+}));
+
+export const UsesGadgets = defineDocumentType(() => ({
+  name: "Gadgets",
+  filePathPattern: "uses-gadgets/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    summary: {
+      type: "string",
+      required: true,
+    },
+    img: {
+      type: "string",
+      required: true,
+    },
+    tags: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
+  },
+}));
+
+export const UsesSoftware = defineDocumentType(() => ({
+  name: "Software",
+  filePathPattern: "uses-software/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    summary: {
+      type: "string",
+      required: true,
+    },
+    img: {
+      type: "string",
+      required: true,
+    },
+    tags: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
     },
   },
 }));
@@ -85,7 +165,7 @@ const createLinkIcon = () => {
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Blog],
+  documentTypes: [Blog, UsesCoding, UsesGadgets, UsesSoftware],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

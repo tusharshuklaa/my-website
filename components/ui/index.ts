@@ -13,6 +13,7 @@ export { BentoGridItem } from "./bento-grid";
 export type { ButtonProps } from "./button";
 export { Button } from "./button";
 export { buttonVariants } from "./button";
+export { DialogHoverCards } from "./card-dialog-hover-effect";
 export { HoverCards } from "./card-hover-effect";
 export { Card } from "./card";
 export { CardTitle } from "./card";

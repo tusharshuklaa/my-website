@@ -32,7 +32,7 @@ const components: MDXComponents = {
     </h3>
   ),
   h4: ({ ...props }) => (
-    <h4 {...props} className={cn("tracking-wide !leading-snug text-xl", props.className)}></h4>
+    <h4 {...props} className={cn("tracking-wide !leading-snug text-xl font-bold", props.className)}></h4>
   ),
   // Paragraph
   p: ({ ...props }) => (
@@ -40,14 +40,14 @@ const components: MDXComponents = {
   ),
   // List
   ol: ({ ...props }) => (
-    <ol {...props} className={cn("list-decimal [&:has(>li>label>input[type='checkbox'])]:list-none", props.className)}></ol>
+    <ol {...props} className={cn("list-decimal ml-5 mb-4 mt-2 [&:has(>li>label>input[type='checkbox'])]:list-none", props.className)}></ol>
   ),
   ul: ({ ...props }) => (
-    <ul {...props} className={cn("list-disc [&:has(>li>label>input[type='checkbox'])]:list-none", props.className)}></ul>
+    <ul {...props} className={cn("list-disc ml-5 mb-4 mt-2 [&:has(>li>label>input[type='checkbox'])]:list-none", props.className)}></ul>
   ),
   // List Item
   li: ({ ...props }) => (
-    <li {...props} className={cn("pl-2 [&>ul]:mt-2 [&>ul]:mb-2 [&>ul]:ml-3 [&>ol]:mt-2 [&>ol]:mb-2 [&>ol]:ml-3", props.className)}></li>
+    <li {...props} className={cn("pl-2 [&>ul]:list-inside [&>ol]:list-inside [&>ul]:mt-2 [&>ul]:mb-2 [&>ol]:mt-2 [&>ol]:mb-2", props.className)}></li>
   ),
   // Link
   a: ({ ...props }) => {

@@ -5,17 +5,17 @@ import { SparklesCore } from '@ui';
 import { cn } from '@/lib/utils';
 import { UiComponent } from '@/types';
 
-type BlogHeroProps = UiComponent<{
+type ArticleHeroProps = UiComponent<{
   text: string;
 }>;
 
-export const BlogHero: FC<BlogHeroProps> = ({ className, text }) => {
-  const blogHeroClasses = cn(
+export const ArticleHero: FC<ArticleHeroProps> = ({ className, text }) => {
+  const articleHeroClasses = cn(
     "h-64 md:h-[30rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md",
     className,
   );
   return (
-    <div data-testid="cmp-blog-hero" className={blogHeroClasses}>
+    <div data-testid="cmp-article-hero" className={articleHeroClasses}>
       <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold text-center text-white relative z-20 text-glow">
         {text}
       </h1>
@@ -40,4 +40,4 @@ export const BlogHero: FC<BlogHeroProps> = ({ className, text }) => {
   );
 };
 
-BlogHero.displayName = 'BlogHero';
+ArticleHero.displayName = 'BlogHero';
