@@ -26,3 +26,7 @@ export const CardDate: FC<UiComponent<{ date: string }>> = ({ className, date })
 export const CardDescription: FC<BasicUiComponent> = ({ className, children }) => {
   return <p className={cn("mt-4 text-sm leading-relaxed tracking-wide text-zinc-400", className)}>{children}</p>;
 };
+
+export const CardFooter: FC<BasicUiComponent> = ({ className, children }) => {
+  return <div className={cn("mt-4 flex", className)}>{children}</div>;
+};

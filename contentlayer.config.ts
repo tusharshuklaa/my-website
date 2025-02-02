@@ -128,6 +128,31 @@ export const UsesSoftware = defineDocumentType(() => ({
   },
 }));
 
+export const Showcase = defineDocumentType(() => ({
+  name: "Showcase",
+  filePathPattern: "showcase/**/*.mdx",
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    heroImg: {
+      type: "string",
+      required: true,
+    },
+    tags: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
+    url: {
+      type: "string",
+      required: true,
+    },
+  },
+}));
+
 const createLinkIcon = () => {
   return {
     type: "element",
@@ -165,7 +190,7 @@ const createLinkIcon = () => {
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Blog, UsesCoding, UsesGadgets, UsesSoftware],
+  documentTypes: [Blog, Showcase, UsesCoding, UsesGadgets, UsesSoftware],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
