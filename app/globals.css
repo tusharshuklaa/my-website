@@ -17,11 +17,9 @@
   /* END -  Variables for space mascot */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: radial-gradient(ellipse at bottom, #0d1d31 0%, #000 100%);
-    --foreground: #ededed;
-  }
+:root.dark {
+  --background: radial-gradient(ellipse at bottom, #0d1d31 0%, #000 100%);
+  --foreground: #ededed;
 }
 
 body {

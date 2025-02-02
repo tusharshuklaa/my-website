@@ -28,7 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} ${dongle.variable} font-poppins antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={false} disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          forcedTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
           <InfoBar hidden={true}>🚧 This website is under construction. Please expect bugs 🐛</InfoBar>
           {children}
         </ThemeProvider>

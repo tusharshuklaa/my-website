@@ -60,7 +60,7 @@ const config: Config = {
       backgroundImage: {
         background: "var(--background)",
         "collage-gradient":
-          "`conic-gradient(${conicGradientColors[0]} 12%, ${conicGradientColors[1]} 12%, ${conicGradientColors[1]} 33%, ${conicGradientColors[2]} 33%, ${conicGradientColors[2]} 55%, ${conicGradientColors[3]} 55%, ${conicGradientColors[3]} 70%, ${conicGradientColors[4]} 70%, ${conicGradientColors[4]} 87%, ${conicGradientColors[0]} 87%)`",
+          `conic-gradient(${conicGradientColors[0]} 12%, ${conicGradientColors[1]} 12%, ${conicGradientColors[1]} 33%, ${conicGradientColors[2]} 33%, ${conicGradientColors[2]} 55%, ${conicGradientColors[3]} 55%, ${conicGradientColors[3]} 70%, ${conicGradientColors[4]} 70%, ${conicGradientColors[4]} 87%, ${conicGradientColors[0]} 87%)`,
         "cosmic-bot": "url('/img/cosmic-bot.png')",
       },
       backgroundSize: {
