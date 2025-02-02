@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react"
 import { Dongle, Poppins } from "next/font/google";
 import { ThemeProvider } from "@components/theme-provider";
 import { InfoBar } from "@components/info-bar";
@@ -38,6 +39,7 @@ export default function RootLayout({
           <InfoBar hidden={true}>🚧 This website is under construction. Please expect bugs 🐛</InfoBar>
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
