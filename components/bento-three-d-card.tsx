@@ -13,9 +13,10 @@ type BentoThreeDCardProps = BasicUiComponent<{
   img: string;
   title: string;
   url: string;
+  readingTimeString?: string;
 }>;
 
-export const BentoThreeDCard:FC<BentoThreeDCardProps> = ({ date, description, img, title, url }) => {
+export const BentoThreeDCard:FC<BentoThreeDCardProps> = ({ date, description, img, readingTimeString, title, url }) => {
   return (
     <ThreeDCardContainer
       data-testid="cmp-bento-three-d-card"
@@ -51,6 +52,25 @@ export const BentoThreeDCard:FC<BentoThreeDCardProps> = ({ date, description, im
         >
           {date}
         </ThreeDCardItem>
+
+        {readingTimeString && (
+          <>
+            <ThreeDCardItem
+              as="span"
+              translateZ="60"
+              className="text-neutral-500 text-sm mt-4 dark:text-neutral-300 inline-block mx-1"
+            >
+              •
+            </ThreeDCardItem>
+            <ThreeDCardItem
+              as="span"
+              translateZ="60"
+              className="text-neutral-500 text-sm mt-4 dark:text-neutral-300 inline-block"
+            >
+              {readingTimeString}
+            </ThreeDCardItem>
+          </>
+        )}
 
         <ThreeDCardItem
           as="p"

@@ -26,6 +26,7 @@ type BentoGridItemProps = UiComponent<{
   header: React.ReactNode;
   maxLines?: 1 | 2 | 3 | 4 | 5;
   date: string;
+  readingTimeString?: string;
   url: string;
 }>;
 
@@ -36,6 +37,7 @@ export const BentoGridItem: FC<BentoGridItemProps> = ({
   header,
   maxLines = 3,
   date,
+  readingTimeString,
   url,
 }) => {
   return (
@@ -50,9 +52,17 @@ export const BentoGridItem: FC<BentoGridItemProps> = ({
         <Link href={url}>
           <GradientText text={title} className="font-bold line-clamp-1" />
 
-          <time dateTime={date} className="text-xs">
-            {date}
-          </time>
+          <div className="text-xs flex">
+            <time dateTime={date}>
+              {date}
+            </time>
+            {readingTimeString && (
+              <>
+                <span className="mx-1">•</span>
+                <span>{readingTimeString}</span>
+              </>
+            )}
+          </div>
 
           <p
             className={cn(

@@ -5,6 +5,7 @@ import rehypePrettyCode, { LineElement } from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { rehypeExternalEmbed } from "@/lib/rehypeExternalEmbed";
+import { formatReadingTime, getReadingTime } from "@/lib/utils";
 
 export const Blog = defineDocumentType(() => ({
   name: "Blog",
@@ -49,6 +50,14 @@ export const Blog = defineDocumentType(() => ({
     slug: {
       type: "string",
       resolve: post => post._raw.flattenedPath.replace(/^blog\//, ""),
+    },
+    readingTime: {
+      type: "number",
+      resolve: doc => getReadingTime(doc.body.raw),
+    },
+    readingTimeString: {
+      type: "string",
+      resolve: doc => formatReadingTime(getReadingTime(doc.body.raw)),
     },
   },
 }));

@@ -22,7 +22,7 @@ const components: MDXComponents = {
     );
   },
   h2: ({ ...props }) => (
-    <h2 {...props} className={cn("tracking-wide !leading-snug text-4xl mt-2", props.className)}>
+    <h2 {...props} className={cn("tracking-wide !leading-snug text-4xl mt-2 text-center", props.className)}>
       <GradientText text={props.children} color="purple" />
     </h2>
   ),

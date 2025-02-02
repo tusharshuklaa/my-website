@@ -40,7 +40,7 @@ const contactLinks: Array<AnimatedLinkProps> = [
 ];
 
 export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
-  const contactSectionClasses = cn('max-w-sm md:max-w-4xl lg:max-w-7xl m-auto py-4 pt-16 md:pt-28 flex flex-col justify-center', className);
+  const contactSectionClasses = cn('max-w-sm md:max-w-4xl lg:max-w-7xl m-auto py-4 px-4 sm:px-0 pt-16 md:pt-28 flex flex-col justify-center', className);
 
   return (
     <SnapSection data-testid={`cmp-contact-section`} className={contactSectionClasses} {...props}>

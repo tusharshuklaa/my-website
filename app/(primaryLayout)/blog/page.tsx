@@ -70,6 +70,7 @@ const AllBlogsPage: FC = () => {
         date: blog.date,
         img: blog.img,
         url: blog.url,
+        readingTimeString: blog.readingTimeString,
       };
     });
   }, [visibleBlogs]);

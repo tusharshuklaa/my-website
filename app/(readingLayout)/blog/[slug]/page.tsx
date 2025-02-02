@@ -36,14 +36,18 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
           </AnimatedHeading>
 
           <AnimateElement delay={0.5}>
-            <time dateTime={blog.date} className="mt-8 mb-2 block text-gray-600 font-bold sm:text-3xl">
+            <time dateTime={blog.date} className="mt-8 mb-2 block text-gray-600 font-bold text-xl sm:text-3xl">
               <GradientText color="purple" text={format(parseISO(blog.date), 'MMMM dd, yyyy')} />
             </time>
+          </AnimateElement>
+
+          <AnimateElement delay={0.5}>
+            <GradientText color="indigo" text={blog.readingTimeString} className="mt-8 mb-2 block text-gray-600 font-bold text-xl sm:text-2xl" />
           </AnimateElement>
         </LampContainer>
       </SnapSection>
 
-      <article className="mt-2 max-w-4xl mx-auto text-xl leading-relaxed">
+      <article className="mt-2 max-w-4xl px-4 mx-auto text-base sm:text-xl leading-relaxed">
         <Mdx code={blog.body.code} />
       </article>
     </>
