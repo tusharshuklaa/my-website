@@ -1,8 +1,7 @@
 import { FC } from "react";
-import Link from "next/link";
-import { GradientText, Underline } from "../text";
+import { GradientText } from "../text";
 import { ThemeImage } from "../theme-image";
-import { ArrowUpRight } from "lucide-react";
+import { PrettyLink } from "../pretty-link";
 
 type WorkType = "Full Time" | "Internship" | "Freelance";
 type Position = {
@@ -32,10 +31,7 @@ export const Company: FC<CompanyProps> = ({ company, img, imgDark, positions, ty
 
       <div className="flex flex-col">
         <h2 className="mb-4 flex items-center justify-start gap-2 text-xl font-normal text-neutral-800 dark:text-neutral-200 md:text-2xl">
-          <Link href={url} target="_blank" className="flex">
-            <Underline>{company}</Underline>
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
+          <PrettyLink href={url} target="_blank">{company}</PrettyLink>
         </h2>
 
         <ul className="list-disc">

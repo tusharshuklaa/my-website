@@ -1,0 +1,30 @@
+.mecha-card::before {
+  box-shadow: #ae5dfd 0px 30px 70px 0px, #96ffff 0px -10px 70px 0px;
+}
+
+.mecha-card:nth-child(2) {
+  filter: hue-rotate(60deg);
+}
+
+.mecha-card:nth-child(3) {
+  filter: hue-rotate(320deg);
+}
+
+.mecha-container {
+  background-image: linear-gradient(0deg, #ab28fa 0%, #6f1cbe 60%, #aa53b4 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 40px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 40px 100%, 0 calc(100% - 40px));
+  box-shadow: #ae5dfd 0px 7px 29px 0px;
+}
+
+.mecha-container svg {
+  width: 100%;
+  height: 100%;
+  color: #a78bfa;
+}
+
+.doors::before,
+.doors::after {
+  clip-path: polygon(0% 0%, 50% 0, 95% 45%, 100% 100%, 0% 100%);
+  border: 10px solid #0f1420;
+  border-radius: 1rem;
+}

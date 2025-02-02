@@ -2,14 +2,26 @@
 
 import { FC, useState } from "react";
 import Link from "next/link";
+import { compareDesc, format, parseISO } from 'date-fns';
 import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback, AvatarImage, Menu, MenuItem, HoveredLink, ProductItem } from "@/components/ui";
-import { CommandCenter } from "@/components/command-center";
-import { TextFlipper } from "@/components/text";
+import { Menu, MenuItem, HoveredLink, ProductItem } from "@components/ui";
+import { CommandCenter } from "@components/command-center";
+import { TextFlipper } from "@components/text";
 import { UiComponent } from "@/types";
+import { allBlogs } from '@content';
+import { MyAvatar } from "@components/my-avatar";
+import { DownloadResumeButton } from "./download-resume-button";
 
 export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
   const [active, setActive] = useState<string | null>(null);
+  const blogs = allBlogs
+    .filter(blog => blog.published)
+    .map(blog => ({
+      ...blog,
+      date: format(parseISO(blog.date), 'LLLL d, yyyy')
+    }))
+    .slice(0, 4)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return (
     <nav
@@ -23,10 +35,7 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
       />
       <Menu setActive={setActive}>
         <Link href="/" className="flex justify-between space-x-2 align-middle">
-          <Avatar>
-            <AvatarImage src="https://avatars.githubusercontent.com/u/7785066?v=4" alt="@tusharshuklaa" />
-            <AvatarFallback>TS</AvatarFallback>
-          </Avatar>
+          <MyAvatar />
 
           <div className="flex flex-col justify-center align-middle text-xs font-bold uppercase">
             <TextFlipper className="max-w-14">tushar shukla</TextFlipper>
@@ -34,52 +43,34 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
         </Link>
 
         <div className="flex items-center justify-center space-x-4">
-          <MenuItem setActive={setActive} active={active} item="About Me">
+          <MenuItem setActive={setActive} active={active} item="About Me" href="/about-me">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/web-dev">Web Development</HoveredLink>
-              <HoveredLink href="/interface-design">Interface Design</HoveredLink>
-              <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-              <HoveredLink href="/branding">Branding</HoveredLink>
+              <HoveredLink href="/uses">Uses</HoveredLink>
+              <HoveredLink href="/#my-crafts">My Crafts</HoveredLink>
+              <HoveredLink href="/#work-experience">Work Experience</HoveredLink>
+              <HoveredLink href="/#work-status">Work Status</HoveredLink>
+              <DownloadResumeButton containerClassName="my-4" />
             </div>
           </MenuItem>
 
-          <MenuItem setActive={setActive} active={active} item="Blogs">
+          <MenuItem setActive={setActive} active={active} item="Blogs" href="/blog">
+            <h3 className="text-center font-bold text-2xl mb-4">Recent Blogs</h3>
             <div className="grid grid-cols-2 gap-10 p-4 text-sm">
-              <ProductItem
-                title="Algochurn"
-                href="https://algochurn.com"
-                src="/img/my-app.png"
-                description="Prepare for tech interviews like never before."
-              />
-              <ProductItem
-                title="Tailwind Master Kit"
-                href="https://tailwindmasterkit.com"
-                src="/img/my-app.png"
-                description="Production ready Tailwind css components for your next project"
-              />
-              <ProductItem
-                title="Moonbeam"
-                href="https://gomoonbeam.com"
-                src="/img/my-app.png"
-                description="Never write from scratch again. Go from idea to blog in minutes."
-              />
-              <ProductItem
-                title="Rogue"
-                href="https://userogue.com"
-                src="/img/my-app.png"
-                description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
-              />
+              {
+                blogs.map((blog) => (
+                  <ProductItem
+                    key={blog.title}
+                    title={blog.title}
+                    href={blog.url}
+                    src={blog.img}
+                    description={blog.summary}
+                  />
+                ))
+              }
             </div>
           </MenuItem>
 
-          <MenuItem setActive={setActive} active={active} item="Showcase">
-            <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/hobby">Hobby</HoveredLink>
-              <HoveredLink href="/individual">Individual</HoveredLink>
-              <HoveredLink href="/team">Team</HoveredLink>
-              <HoveredLink href="/enterprise">Enterprise</HoveredLink>
-            </div>
-          </MenuItem>
+          <MenuItem item="Showcase" href="/showcase" />
         </div>
 
         <div className="flex justify-between space-x-2 align-middle">

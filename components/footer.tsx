@@ -1,8 +1,9 @@
-import { ArrowUpRight } from "lucide-react";
-import { Underline } from "./text";
-import Link from "next/link";
 import { FC } from "react";
-import { HighlightText } from "./text/underline";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { Underline } from "@components/text";
+import { HighlightText } from "@components/text/underline";
+import { DownloadResumeButton } from "@components/download-resume-button";
 
 type FooterItemProps = {
   url: string;
@@ -20,18 +21,19 @@ const FooterListItem: FC<FooterItemProps> = ({ url, text }) => (
 );
 
 const footerLinks = [
+  { url: "/blog", text: "Blog" },
   { url: "/", text: "Home" },
-  { url: "/", text: "About" },
-  { url: "/", text: "Work" },
-  { url: "/", text: "Contact" },
+  { url: "/about-me", text: "About Me" },
+  { url: "/showcase", text: "Showcase" },
+  { url: "/uses", text: "Uses" },
 ];
 
 export const Footer: FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="flex flex-col w-full pt-40 pb-8 bg-gradient-to-t from-60% from-sky-950/30 to-transparent to-100%">
-      <div className="mb-14 flex flex-col md:flex-row justify-between w-full sm:max-w-7xl m-auto px-3 md:px-0">
+    <footer className="flex flex-col w-full pt-24 md:pt-40 pb-4 sm:pb-8 px-4 sm:px-0 bg-gradient-to-t from-60% from-sky-950/30 to-transparent to-100%">
+      <div className="mb-14 flex flex-col md:flex-row justify-between w-full max-w-sm sm:max-w-7xl m-auto md:px-0">
         <div className="w-full md:w-1/2">
           <h3 className="text-3xl mb-4">Tushar's Personal Website</h3>
           <p>Design inspired by casual internet surfing 😆 and coded in <Link href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer"><Underline>Visual Studio Code</Underline></Link>. Built with <Link href="https://nextjs.org/" target="_blank" rel="noopener noreferrer"><Underline>Next.js</Underline></Link>, <Link href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer"><Underline>Tailwind</Underline></Link>, lots of coffee and ❤️</p>
@@ -39,6 +41,7 @@ export const Footer: FC = () => {
           <p className="mt-4">
             <HighlightText className="after:z-0">Pro Tip:</HighlightText> Don&apos;t forget to check command center by either clicking on the search bar in the navigation menu or by pessing keyboard keys (Cmd or Ctrl + K)
           </p>
+          <DownloadResumeButton containerClassName="mt-6" />
         </div>
 
         <div className="w-full md:w-1/4 shrink-0 mt-8 md:mt-0">
@@ -55,8 +58,8 @@ export const Footer: FC = () => {
 
       <div className="w-full h-[1px] bg-gradient-to-r from-transparent to-transparent via-[#68d0ee] mb-4" />
 
-      <div className="text-center text-gray-300 w-full max-w-7xl m-auto">
-        Copyright © {currentYear} Tushar Shukla. All rights reserved.
+      <div className="text-center text-gray-300 w-full max-w-7xl m-auto flex justify-around sm:justify-center sm:gap-2 flex-col sm:flex-row">
+        <span>Copyright © {currentYear} Tushar Shukla.</span> <span>All rights reserved.</span>
       </div>
     </footer>
   );

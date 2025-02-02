@@ -10,11 +10,11 @@ import { GlowingGradientBox } from '@components/glowing-gradient-box';
 import { Blip } from '@components/blip';
 import { GradientText } from '@components/text';
 
-export const WorkStatusMobile: FC<UiComponent<WorkStatusDeviceProps>> = ({ blipColor, blipShadowColor, className, textColor, workStatusText }) => {
+export const WorkStatusMobile: FC<UiComponent<WorkStatusDeviceProps>> = ({ blipColor, blipShadowColor, className, id, textColor, workStatusText }) => {
   const workStatusMobileClasses = cn('pt-12', className);
 
   return (
-    <SnapSection data-testid="cmp-work-status-mobile" className={workStatusMobileClasses}>
+    <SnapSection data-testid="cmp-work-status-mobile" className={workStatusMobileClasses} id={id}>
       <GlowingGradientBox className="z-10 before:rounded-[52px] after:rounded-[52px] rounded-[52px] w-max m-auto">
         <Iphone15Pro className="size-full max-w-xs" darkenVideo={true} videoSrc="./video/earth_mobile.mp4">
           <div className="relative h-full w-full flex flex-col">

@@ -29,6 +29,8 @@ const backfaceVisibility = plugin(function ({
 
 const conicGradientColors = ["#89FC00", "#F896D8", "#C879FF", "#06D6A0", "#75DDDD", "#9368B7"];
 
+const svgToDataUri = require("mini-svg-data-uri");
+
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -50,17 +52,16 @@ const config: Config = {
         "background-position-spin": "background-position-spin 3000ms infinite alternate",
         "gradient-shift": "gradient-shift 5s ease-in-out infinite",
         "blur-animation": "blur-animation 3s ease-in-out alternate infinite",
-        marquee: 'marquee 15s linear infinite',
+        marquee: "marquee 15s linear infinite",
+        "slider-anim": "slider-anim 20s linear infinite",
+        shimmer: "shimmer 2s linear infinite",
+        spotlight: "spotlight 2s ease .75s 1 forwards",
       },
       backgroundImage: {
         background: "var(--background)",
         "collage-gradient":
-          "`conic-gradient(${conicGradientColors[0]} 12%, ${conicGradientColors[1]} 12%, ${conicGradientColors[1]} 33%, ${conicGradientColors[2]} 33%, ${conicGradientColors[2]} 55%, ${conicGradientColors[3]} 55%, ${conicGradientColors[3]} 70%, ${conicGradientColors[4]} 70%, ${conicGradientColors[4]} 87%, ${conicGradientColors[0]} 87%)`",
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+          `conic-gradient(${conicGradientColors[0]} 12%, ${conicGradientColors[1]} 12%, ${conicGradientColors[1]} 33%, ${conicGradientColors[2]} 33%, ${conicGradientColors[2]} 55%, ${conicGradientColors[3]} 55%, ${conicGradientColors[3]} 70%, ${conicGradientColors[4]} 70%, ${conicGradientColors[4]} 87%, ${conicGradientColors[0]} 87%)`,
+        "cosmic-bot": "url('/img/cosmic-bot.png')",
       },
       backgroundSize: {
         "50%": "50%",
@@ -337,12 +338,42 @@ const config: Config = {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(-100%)" },
         },
+        "slider-anim": {
+          "0%": {
+            transform: "perspective(1000px) rotateX(-14deg) rotateY(0deg)",
+          },
+          "100%": {
+            transform: "perspective(1000px) rotateX(-14deg) rotateY(360deg)",
+          },
+        },
+        shimmer: {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
+        spotlight: {
+          "0%": {
+            opacity: "0",
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
       },
       lineHeight: {
         "extra-tight": "0.75",
       },
       maxWidth: {
         screen: "100vw",
+        full: "100%",
+        "1/2": "50%",
+        "2/3": "75%",
+        halfScreen: "50vw",
       },
       transformOrigin: {
         "almost-center": "50% 50% .4em",
@@ -353,10 +384,37 @@ const config: Config = {
       transitionTimingFunction: {
         "in-text": "cubic-bezier(0.445, 0.05, 0.55, 0.95)",
         "in-letter": "cubic-bezier(0.5, 0, 0, 1)",
+        "door-open": "cubic-bezier(0.785, 0.135, 0.15, 0.86)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), addVariablesForColors, backfaceVisibility],
+  plugins: [
+    require("tailwindcss-animate"),
+    addVariablesForColors,
+    function ({ matchUtilities, theme }: any) {
+      matchUtilities(
+        {
+          "bg-grid": (value: string) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`,
+            )}")`,
+          }),
+          "bg-grid-small": (value: string) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="8" height="8" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`,
+            )}")`,
+          }),
+          "bg-dot": (value: string) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle></svg>`,
+            )}")`,
+          }),
+        },
+        { values: flattenColorPalette(theme("backgroundColor")), type: "color" },
+      );
+    },
+    backfaceVisibility,
+  ],
 };
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).

@@ -34,6 +34,7 @@ const BLIP_SHADOW_COLOR = {
 type WorkStatusNumber = keyof typeof WORK_STATUS;
 
 export type WorkStatusDeviceProps = {
+  id: string;
   workStatusText: typeof WORK_STATUS[WorkStatusNumber];
   blipColor: typeof BLIP_COLOR[WorkStatusNumber];
   textColor: GradientColors;
@@ -47,9 +48,11 @@ export const WorkStatus: FC<UiComponent> = ({ className }) => {
   const blipColor = BLIP_COLOR[currentWorkStatus];
   const textColor = TEXT_COLOR[currentWorkStatus] as GradientColors;
   const blipShadowColor = BLIP_SHADOW_COLOR[currentWorkStatus] as GradientColors;
+  const id = "work-status";
 
   return isMobile ? (
     <WorkStatusMobile
+      id={id}
       blipColor={blipColor}
       blipShadowColor={blipShadowColor}
       className={className}
@@ -58,6 +61,7 @@ export const WorkStatus: FC<UiComponent> = ({ className }) => {
     />
   ) : (
     <WorkStatusDesktop
+      id={id}
       blipColor={blipColor}
       blipShadowColor={blipShadowColor}
       className={className}

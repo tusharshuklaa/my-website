@@ -6,40 +6,41 @@ import { SnapSection } from '@/components/snap-container';
 import { GradientText } from '@/components/text';
 import { AnimatedLink, AnimatedLinkProps } from '@/components/animated-link';
 
+const contactLinks: Array<AnimatedLinkProps> = [
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/tusharshuklaa/",
+    color: "blue"
+  },
+  {
+    name: "GitHub",
+    url: "https://github.com/tusharshuklaa",
+    color: "purple"
+  },
+  {
+    name: "X (Twitter)",
+    url: "https://x.com/theTSguy",
+    color: "indigo"
+  },
+  {
+    name: "Stack Overflow",
+    url: "https://stackoverflow.com/users/2996624/tushar-shukla",
+    color: "orange"
+  },
+  {
+    name: "Codepen",
+    url: "https://codepen.io/tusharshukla",
+    color: "green"
+  },
+  {
+    name: "Email",
+    url: "mailto:tusharshuklaa@gmail.com",
+    color: "red"
+  }
+];
+
 export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
-  const contactSectionClasses = cn('max-w-7xl m-auto pt-28 flex flex-col justify-center', className);
-  const contactLinks: Array<AnimatedLinkProps> = [
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/tusharshuklaa/",
-      color: "blue"
-    },
-    {
-      name: "GitHub",
-      url: "https://github.com/tusharshuklaa",
-      color: "purple"
-    },
-    {
-      name: "X (Twitter)",
-      url: "https://x.com/theTSguy",
-      color: "indigo"
-    },
-    {
-      name: "Stack Overflow",
-      url: "https://stackoverflow.com/users/2996624/tushar-shukla",
-      color: "orange"
-    },
-    {
-      name: "Codepen",
-      url: "https://codepen.io/tusharshukla",
-      color: "green"
-    },
-    {
-      name: "Email",
-      url: "mailto:tusharshuklaa@gmail.com",
-      color: "red"
-    }
-  ];
+  const contactSectionClasses = cn('max-w-sm md:max-w-4xl lg:max-w-7xl m-auto py-4 px-4 sm:px-0 pt-16 md:pt-28 flex flex-col justify-center', className);
 
   return (
     <SnapSection data-testid={`cmp-contact-section`} className={contactSectionClasses} {...props}>
@@ -107,7 +108,7 @@ export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
 
       <p className="mt-10 text-lg">With more than a decade into front-end wizardry, I can turn your ideas into pixel-perfect magic, with a side of witty banter and enough positivity to fuel a small city. Let's build something awesome together!</p>
 
-      <div className="grid grid-cols-2 gap-2 ms:gap-0 md:flex md:justify-between mt-32">
+      <div className="grid grid-cols-2 gap-2 sm:gap-0 md:flex md:justify-between mt-20 md:mt-32">
         {
           contactLinks.map(({color, name, url}, index) => (
             <AnimatedLink key={index} color={color} name={name} url={url} className="text-lg" />

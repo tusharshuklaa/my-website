@@ -65,6 +65,7 @@ export const Cover: FC<BasicUiComponent> = ({ children, className }) => {
                 particleDensity={500}
                 className="h-full w-full"
                 particleColor="#FFFFFF"
+                fullScreen={true}
               />
               <SparklesCore
                 background="transparent"
@@ -73,6 +74,7 @@ export const Cover: FC<BasicUiComponent> = ({ children, className }) => {
                 particleDensity={500}
                 className="h-full w-full"
                 particleColor="#FFFFFF"
+                fullScreen={true}
               />
             </motion.div>
           </motion.div>

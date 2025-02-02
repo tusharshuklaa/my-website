@@ -1,18 +1,16 @@
 "use client";
 
-import { FC, RefObject, useRef } from "react";
-import { motion } from "framer-motion";
+import { FC, useRef } from "react";
 import { Timeline } from "@ui";
-import { CareerCompany, Company } from "@/components/career";
-import { GradientText } from "@/components/text";
+import { CareerCompany, Company } from "@components/career";
+import { GradientText } from "@components/text";
+import { useIsMounted } from "@hooks/use-is-mounted";
 import CareerData from "@/data/career.json";
+import { AnimatedHeading } from "@components/text/heading";
 
-type CareerProps = {
-  pageRef?: RefObject<HTMLDivElement>;
-};
-
-export const Career: FC<CareerProps> = ({ pageRef }) => {
+export const Career: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isPageMounted = useIsMounted();
   const professionalData = CareerData.experience as Array<CareerCompany>;
 
   const data = professionalData.map(item => {
@@ -23,31 +21,15 @@ export const Career: FC<CareerProps> = ({ pageRef }) => {
   });
 
   return (
-    <div className="relative w-full md:px-10" ref={containerRef}>
+    <div className="relative w-full md:px-10" ref={containerRef} id="work-experience">
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
-        <motion.h3
-          initial={{
-            opacity: 0,
-            x: 100
-          }}
-          whileInView={{
-            opacity: 1,
-            x: 0,
-            transition: {
-              duration: 2
-            }
-          }}
-          viewport={{
-            once: true,
-            margin: "100px"
-          }}
-        >
+        <AnimatedHeading className="text-left">
           <GradientText
             text={"A Universe of Experience & Skills"}
             className="mb-4 max-w-4xl text-screen-md"
             color="indigo"
           />
-        </motion.h3>
+        </AnimatedHeading>
 
         <p className="text-base text-neutral-700 dark:text-neutral-300 md:text-lg">
           A journey from the cosmic dust of startups to the supernova of MNCs, my career has been a stellar exploration
@@ -55,7 +37,7 @@ export const Career: FC<CareerProps> = ({ pageRef }) => {
         </p>
       </div>
 
-      <Timeline data={data} containerRef={containerRef} targetRef={pageRef} />
+      { isPageMounted && <Timeline data={data} containerRef={containerRef} />}
     </div>
   );
 };
