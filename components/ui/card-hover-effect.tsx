@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { badgeVariants, Card, CardTitle, CardDescription, CardDate, CardFooter, } from "@ui";
 import { GradientText } from "@components/text";
 import { UiComponent } from "@/types";
-import { GradientText } from "../text";
 
 type HoverCardItem = {
   title: string;
