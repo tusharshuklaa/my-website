@@ -7,6 +7,7 @@ import { Underline } from '@components/text';
 
 type PrettyLinkProps = LinkProps & BasicUiComponent<{
   target?: "_blank" | "_self" | "_parent" | "_top";
+  title: string;
 }>;
 
 export const PrettyLink: FC<PrettyLinkProps> = ({ children, className, ...props }) => {

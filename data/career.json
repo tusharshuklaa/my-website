@@ -10,7 +10,6 @@
   "experience": [
     {
       "company": "Adidas",
-      "location": "Gurugram, Haryana",
       "url": "https://adidas.com",
       "heading": "Since 2022",
       "type": "Full Time",
@@ -18,12 +17,24 @@
         {
           "title": "Software Engineer L2",
           "duration": "Oct 2024 - Present",
-          "description": "Tempor ex deserunt ipsum incididunt."
+          "description": [
+            "Developed a software suite comprising multiple micro-frontend applications, using React, Typescript, SCSS, and AgGrid.",
+            "Set up foundational boilerplate code for micro-frontends, ensuring code quality and performance.",
+            "Presented a talk 'The Dark Knight Rises... In CSS' at Adidas Frontend community."
+          ],
+          "location": "Gurugram, Haryana"
         },
         {
           "title": "Software Engineer L1",
           "duration": "Jun 2022 - Sep 2024 | 2 yrs 4 mos",
-          "description": "Ut aute duis non mollit esse et ea."
+          "description": [
+            "Developed a PowerPoint like presentation tool for Adidas internal use, using React, Typescript, Redux, SCSS, and Node.js.",
+            "Ensured excellent code quality resulting in a highly performant tool that significantly aids the product team in planning the product market journey.",
+            "Daily tasks include reviewing pull requests, mentoring junior developers, and working on coding assignments.",
+            "Actively engaged in community-building initiatives to foster collaboration and knowledge sharing within the team.",
+            "Presented a talk on 'Typescript Tips & Tricks' to whole Frontend community at Adidas."
+          ],
+          "location": "Gurugram, Haryana"
         }
       ],
       "description": "Adidas AG is a multinational corporation, founded and headquartered in Herzogenaurach, Germany, that designs and manufactures shoes, clothing, and accessories. It is the largest sportswear manufacturer in Europe, and the second largest in the world, after Nike.",
@@ -32,7 +43,6 @@
     },
     {
       "company": "Publicis Sapient",
-      "location": "Gurugram, Haryana",
       "url": "https://www.publicissapient.com/",
       "heading": "2018 - 2022",
       "type": "Full Time",
@@ -40,17 +50,34 @@
         {
           "title": "Senior Associate Experience Technology L2",
           "duration": "Feb 2022 - Jun 2022 | 5 mos",
-          "description": "Tempor ex deserunt ipsum incididunt."
+          "description": [
+            "Set up foundational code structure enforcing industry best practices and project-specific guidelines using HTML, SCSS, jQuery, and Bootstrap.",
+            "Enhanced application performance by 40% by segregating essential scripts via webpack",
+            "Enhanced ESLint, Prettier, and Project coding guidelines to ensure apex code quality.",
+            "Offered tech guidance and code reviewing within the team and helped on-boarding new team members."
+          ],
+          "location": "Gurugram, Haryana"
         },
         {
           "title": "Senior Associate Experience Technology L1",
           "duration": "Feb 2019 - Jan 2022 | 3 yrs",
-          "description": "Ut aute duis non mollit esse et ea."
+          "description": [
+            "Implemented a scalable architecture accomodating multiple locales and introduced a shared code repository using Git Dub-modules.",
+            "Established coding guidelines and repository ethics, enforcing commit/push rules using Husky. Also integrated essential tools like ESLint, Prettier, and Stylelint.",
+            "Designed a versatile Next.js page generator for diverse page templates and added custom theming methodology using CSS Modules and SCSS.",
+            "Daily tasks included code reviews, writing unit test cases, rregular sprint tasks, bug fixes and helping team members with their tasks."
+          ],
+          "location": "Gurugram, Haryana"
         },
         {
           "title": "Associate Experience Technology L2",
           "duration": "Mar 2018 - Feb 2019 | 1 yr",
-          "description": "Ut aute duis non mollit esse et ea."
+          "description": [
+            "Maintained, added new features, and improved the legacy code of the platform of 58 AEM (Adobe Experience Manager) websites.",
+            "Enhanced frontend architecture, reduced code redundancy, and optimized performance.",
+            "Developed a custom Javascript framework for improved page performance. Google light house score increased from ~30 to ~80."
+          ],
+          "location": "Gurugram, Haryana"
         }
       ],
       "description": "Publicis Sapient is a digital business transformation company. It provides business consulting, technology, and customer experience services. The company is organized as a matrix, combining vertical expertise with a focus on technology and platforms.",
@@ -59,7 +86,6 @@
     },
     {
       "company": "Wazo Studio",
-      "location": "New Delhi, India",
       "url": "https://www.facebook.com/wazostudio/",
       "heading": "2016 - 2018",
       "type": "Full Time",
@@ -67,7 +93,12 @@
         {
           "title": "Frontend Developer",
           "duration": "Nov 2016 - Feb 2018 | 1 yr 4 mos",
-          "description": "Worked on a software suite meant for Real Estate Developers enabling them to handle most of the day to day tasks on the platform itself."
+          "description": [
+            "Developed a Real Estate software suite, catering to RERA requirements, utilizing Angular JS (v1), Typescript, and Node.js.",
+            "Implemented responsive designs and developed a comprehensive system, encompassing color schemes, spacings, typography, and SCSS.",
+            "Enabled 'offline usage' using Google Lovefield and the browser's local database."
+          ],
+          "location": "New Delhi, India"
         }
       ],
       "description": "Wazo Studio is a software development company that specializes in creating software for Real Estate Developers.",
@@ -83,7 +114,13 @@
         {
           "title": "Frontend Developer aka Code Junkie",
           "duration": "Mar 2016 - Oct 2016 | 8 mos",
-          "description": "Worked on a project which provides marketing automation and growth enhancement on social media platforms like Pinterest and Instagram.\nWorked on Viralwoot which already is a huge product in U.S. for Pinterest Promotions and Marketing.\nHave made several Google Chrome Extensions.\nWorked on a project to show live activity of users on a website. It was like a CCTV camera for a website which was capable of providing amazing analytics."
+          "description": [
+            "Contributed to a marketing automation and social media growth project on Pinterest and Instagram, utilizing PHP, jQuery, Bootstrap, HTML, and CSS.",
+            "Succesfully managed promotions and marketing for Viralwoot, Pricewoot, Piktoria, Storewoot and My Social Pig on Pinterest, Etsy , and Instagram.",
+            "Developed Google Chrome Extensions for Viralwoot, Piktoria and a GIF maker.",
+            "Implemented a real-time analytics application akin to a CCTV camera for websites, providing valuable insights into user activity."
+          ],
+          "location": "Noida, India"
         }
       ],
       "description": "SaaS Labs is a software development company that specializes in creating software for Social Media Marketing.",
@@ -91,7 +128,6 @@
     },
     {
       "company": "Hestabit Technologies Pvt. Ltd.",
-      "location": "Noida, India",
       "url": "https://www.hestabit.com/",
       "heading": "2014 - 2016",
       "type": "Full Time",
@@ -99,7 +135,12 @@
         {
           "title": "Frontend Developer",
           "duration": "Sep 2014 - Feb 2016 | 1 yr 6 mos",
-          "description": "Worked on building a CMS (built from scratch/without any framework) meant for Educational Institutes and Organizations.\nWorked on an internal tool to ease development by building plugins/ready-to-use codes.\nWorked on various projects in Wordpress and Magento as a frontend developer"
+          "description": [
+            "Developed an Educational Institution's CMS using JavaScript, jQuery, HTML, CSS, and PHP.",
+            "Created an internal tool with plugins and ready-to-use codes for streamlining the development process.",
+            "Executed multiple Wordpress projects."
+          ],
+          "location": "Noida, India"
         }
       ],
       "description": "Hestabit Technologies is a software development company that specializes in creating software for Educational Institutes and Organizations.",
@@ -107,7 +148,6 @@
     },
     {
       "company": "Genpact Headstrong Capital Markets",
-      "location": "Noida, India",
       "url": "https://www.genpact.com/",
       "heading": "2013",
       "type": "Internship",
@@ -115,7 +155,13 @@
         {
           "title": "Trainee",
           "duration": "May 2013 - Jun 2013 | 2 mos",
-          "description": "Used HTML5, CSS3, Javascript, Jquery Mobile, Parse and Apache Cordova for development of Hybrid Mobile Application for Android/iOS."
+          "description": [
+            "Acquired skills in creating Hybrid Mobile Applications with Apache Cordova, jQuery Mobile, Parse.com and HTML.",
+            "Conducted mobile app prototypingusing Fluid UI",
+            "Developed a thrilling Quiz game for Android and iOS using hybrid mobile app technology.",
+            "Designed an employee task management app for transport booking, food ordering via cafeteria and meeting room booking."
+          ],
+          "location": "Noida, India"
         }
       ],
       "description": "Genpact Headstrong Capital Markets (now Genpact) was a software development company",
