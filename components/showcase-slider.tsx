@@ -10,16 +10,16 @@ import Link from 'next/link';
 import { AnimatedHeading } from '@components/text/heading';
 import { SnapSection } from '@components/snap-container';
 
-type Showcase = {
+export type Showcase = {
   title: string;
   url: string;
   img: string;
   description: string;
-  date: string;
+  tags: Array<string>;
   featured: boolean;
 };
 
-const ShowcaseCard = ({ title, url, img, description, date, featured }: Showcase) => {
+const ShowcaseCard: FC<Showcase> = ({ title, url, img, description, tags, featured }) => {
   return (
     <Card className="p-0 relative">
       <div className="absolute inset-0 before:bg-black before:opacity-70 before:w-full before:h-full before:absolute before:z-[1] before:inset-0 before:margin-auto">
@@ -32,7 +32,6 @@ const ShowcaseCard = ({ title, url, img, description, date, featured }: Showcase
               <GradientText text={title} color='green' />
             </Link>
           </CardTitle>
-          <CardDate date={date} className='text-xs text-left -mt-1' />
         </div>
         <CardDescription className="text-left leading-none line-clamp-3 mt-1">{description}</CardDescription>
       </div>
@@ -61,7 +60,7 @@ export const ShowcaseSlider: FC<UiComponent> = ({ className }) => {
     className,
   );
 
-  const showcaseData = ShowcaseData.showcase as Array<Showcase>;
+  const showcaseData: Array<Showcase> = ShowcaseData.showcase.filter(item => item.featured).slice(0, 7);
 
   return (
     <SnapSection data-testid="cmp-showcase-slider" className={showcaseSliderClasses} id="my-crafts">
