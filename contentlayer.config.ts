@@ -299,7 +299,7 @@ const createLinkIcon = () => {
 
 export default makeSource({
   contentDirPath: "content",
-  documentTypes: [Blog, Showcase, UsesCoding, UsesGadgets, UsesSoftware],
+  documentTypes: [Blog, UsesCoding, UsesGadgets, UsesSoftware],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

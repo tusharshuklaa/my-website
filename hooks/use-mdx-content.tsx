@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Blog, Coding, Gadgets, Showcase, Software } from "@/.contentlayer/generated";
+import { Blog, Coding, Gadgets, Software } from "@/.contentlayer/generated";
+import { Showcase } from "@/components/showcase-slider";
 
 export const useMdxContent = (content: Array<Coding | Gadgets | Software | Blog | Showcase >) => {
   const [visibleItems, setVisibleItems] = useState(content);
