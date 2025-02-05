@@ -412,3 +412,7 @@ body {
     opacity: 0;
   }
 }
+
+.indian-flag {
+  background: linear-gradient(to bottom, #FF9933 33.33%, white 33.33% 66.66%, #138808 66.66%);
+}
