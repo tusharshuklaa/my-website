@@ -30,7 +30,7 @@ const ShowcasePage: FC = () => {
           className="mb-12 w-full"
         />
 
-        <SearchResults query={ searchQuery } itemsCount={items.length} onSearchClear={ onSearchClear } />
+        <SearchResults query={searchQuery} itemsCount={items.length} onSearchClear={onSearchClear} />
       </div>
 
       <HoverCards items={showcaseItems} onTagClick={onTagClick} cardClassName='p-6' titleClassName="h-12" />
