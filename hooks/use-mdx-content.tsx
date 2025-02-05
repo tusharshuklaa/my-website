@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Blog, Coding, Gadgets, Software } from "@/.contentlayer/generated";
 import { Showcase } from "@/components/showcase-slider";
 
-export const useMdxContent = (content: Array<Coding | Gadgets | Software | Blog | Showcase >) => {
+export const useMdxContent = (content: Array<Coding | Gadgets | Software | Blog | Showcase>) => {
   const [visibleItems, setVisibleItems] = useState(content);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -25,10 +25,10 @@ export const useMdxContent = (content: Array<Coding | Gadgets | Software | Blog 
   };
 
   const onSearchClear = () => {
-      setSearchQuery("");
-      setVisibleItems(content);
-    };
-  
+    setSearchQuery("");
+    setVisibleItems(content);
+  };
+
   const onTagClick = (tag: string) => {
     setSearchQuery(tag);
     const filteredItems = content.filter(item => item.tags.includes(tag));

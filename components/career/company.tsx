@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { GradientText } from "../text";
-import { ThemeImage } from "../theme-image";
-import { PrettyLink } from "../pretty-link";
+import { ThemeImage } from "@components/theme-image";
+import { PrettyLink } from "@components/pretty-link";
 
 type WorkType = "Full Time" | "Internship" | "Freelance";
 type Position = {

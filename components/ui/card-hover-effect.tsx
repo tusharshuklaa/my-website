@@ -43,7 +43,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
 
         return (
           <Link
-            target={ item?.url.startsWith('http') ? '_blank' : '_self' }
+            target={item?.url.startsWith('http') ? '_blank' : '_self'}
             href={item?.url}
             key={item?.url}
             className="group relative block h-full w-full"
@@ -102,7 +102,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
                   </div>
                 )
               }
-              
+
               {
                 item.summary && (
                   <CardDescription

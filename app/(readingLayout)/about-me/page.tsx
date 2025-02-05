@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { BasicUiComponent } from "@/types";
 
 const JustText: FC<BasicUiComponent> = ({ children, className }) => (
-  <p className={cn("mt-4 text-justify leading-8 tracking-wider", className)}>{ children }</p>
+  <p className={cn("mt-4 text-justify leading-8 tracking-wider", className)}>{children}</p>
 );
 
 const AboutMePage: FC = () => (
