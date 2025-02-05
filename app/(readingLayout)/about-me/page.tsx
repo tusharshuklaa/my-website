@@ -1,34 +1,63 @@
 import { FC } from "react";
 import Image from "next/image";
 import { SnapSection } from "@components/snap-container";
-import { AnimatedHeading } from "@components/text";
+import { AnimatedHeading, Heading2 } from "@components/text";
+import { PrettyLink } from "@components/pretty-link";
 import { Spotlight } from "@components/ui";
+import { cn } from "@/lib/utils";
+import { BasicUiComponent } from "@/types";
 
-const AboutMePage: FC = () => {
-  return (
-    <div className="grid md:grid-flow-col md:grid-cols-[minmax(20vw,auto)_1fr_minmax(150px,auto)] relative antialiased">
-      <div className="hidden md:block"></div>
-      <SnapSection className="max-w-4xl mx-auto mt-20 md:mt-40 relative px-4 md:px-2">
-        <AnimatedHeading>About Me</AnimatedHeading>
-        <p className="mt-4 text-justify leading-8 tracking-wider first-letter:-mb-4 first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left">
-          Aliquip eu excepteur ex qui eiusmod pariatur reprehenderit veniam id adipisicing laborum quis. Minim nulla deserunt id sunt aliqua amet veniam quis et non officia. Proident nulla nostrud minim exercitation adipisicing aute aliqua excepteur ullamco mollit adipisicing. Dolore ea mollit sunt cupidatat qui. Deserunt incididunt voluptate eiusmod laborum in exercitation aliqua cillum esse amet. Culpa ea aliqua deserunt officia cupidatat nostrud veniam. Consectetur eu anim sint tempor. Incididunt anim dolore laborum id tempor cupidatat occaecat irure quis mollit. Et enim fugiat excepteur incididunt ad officia. Amet consequat tempor occaecat quis. Sint voluptate sint duis. Ea ut in nulla et pariatur commodo incididunt et sunt incididunt. Anim incididunt id Lorem exercitation nostrud. Enim amet laborum elit. Do magna sit consequat nostrud commodo est incididunt mollit anim commodo sunt. Do id laborum ipsum incididunt dolor ex. Sunt aliqua laborum proident exercitation cupidatat anim ipsum in enim dolore ut enim anim reprehenderit ullamco. Ullamco non ea sint aliquip cillum fugiat proident nostrud aliquip aliqua quis commodo irure. Fugiat culpa elit ad veniam nisi veniam eiusmod eu incididunt reprehenderit velit nisi amet consectetur. Nisi aliquip in anim elit commodo incididunt enim ad. Elit eu deserunt quis minim nulla enim ex incididunt duis dolore adipisicing incididunt fugiat. Irure eiusmod velit pariatur veniam. Excepteur minim elit cupidatat voluptate incididunt adipisicing. Tempor sit velit adipisicing nisi esse. Ea consectetur culpa in commodo. Esse fugiat irure sunt aute anim non ad consequat quis dolor. Tempor anim ea aliqua sint dolore. Culpa commodo ullamco veniam qui ad adipisicing eiusmod fugiat aliqua. Adipisicing in aute minim adipisicing nisi incididunt aliqua in ex do ut anim amet magna mollit. Do dolore velit nisi. Dolore elit exercitation duis do ipsum deserunt proident laboris excepteur reprehenderit reprehenderit sint duis aute. Quis nostrud adipisicing ex sint sit nostrud dolor. Aute ut mollit et labore anim laborum adipisicing officia aliqua ea duis id id cillum aliqua. Amet laboris ipsum in ex laboris. Quis adipisicing non aliquip mollit eu laboris culpa excepteur elit exercitation. Ea excepteur nisi tempor sit ex enim id et eu eu deserunt. Esse quis id ea. Laborum sit amet sunt in nisi eiusmod labore. Commodo amet labore aliqua laboris duis quis veniam dolor nulla excepteur excepteur minim deserunt. Eu in id reprehenderit ullamco ut dolor voluptate voluptate aliquip. Excepteur reprehenderit proident nostrud esse. Veniam cillum irure magna do esse nisi anim ex adipisicing duis laboris exercitation reprehenderit Lorem. In irure amet ex et. Ullamco eiusmod non laborum adipisicing dolore id ut et do consequat irure ea. Eu non eiusmod consequat eu nostrud veniam proident est magna. Cillum culpa proident cillum laboris officia nulla laboris do. Culpa do consectetur in id anim commodo in eiusmod ut veniam est eu aute cillum. Cupidatat quis magna velit elit amet occaecat cupidatat aliqua nisi sint exercitation deserunt sint. Labore id commodo nostrud sunt commodo velit. Proident ea ea laboris excepteur sunt sint. Nostrud laboris nulla amet sint est velit qui. Culpa minim ullamco ullamco tempor qui aliqua excepteur irure aliqua exercitation cupidatat enim aliqua. Aute aute aliquip esse. Nulla ex eu do pariatur. Quis eiusmod ex duis aliqua in nisi adipisicing laborum est occaecat ad aute mollit dolor occaecat. Fugiat qui officia fugiat amet tempor. Magna sit tempor voluptate in ullamco. Aliqua cupidatat ex mollit commodo excepteur exercitation. Commodo nulla duis dolor officia laboris enim laboris eiusmod non deserunt exercitation excepteur adipisicing Lorem. Magna ipsum velit do laborum dolore magna pariatur qui. Anim in est nulla minim ut. Laboris et sunt labore exercitation minim reprehenderit laborum. Magna adipisicing do reprehenderit veniam proident veniam sit tempor sit excepteur Lorem exercitation. Occaecat aute anim et minim magna laborum adipisicing proident commodo. Amet id sit aliquip enim aute amet voluptate nisi nostrud ut sunt aliquip duis. Incididunt fugiat sint deserunt cillum esse magna pariatur deserunt ea consectetur do ex. Cillum aute occaecat proident nisi cillum do quis labore cillum dolore sint minim. Sit fugiat quis adipisicing ea sunt laborum nisi. Do exercitation qui officia incididunt minim ea. Velit mollit dolore reprehenderit. Culpa tempor do qui aute veniam veniam culpa culpa velit est. Ullamco veniam in mollit anim aliquip consequat. Ut fugiat sint deserunt laboris dolore cillum do. Lorem Lorem officia aliquip veniam reprehenderit ad. Aliquip veniam elit culpa reprehenderit cupidatat mollit et deserunt sit labore minim non ut velit. Aliqua mollit id dolor pariatur. Minim incididunt veniam ad non eiusmod nostrud dolore. Proident eiusmod proident nisi exercitation et magna officia eiusmod nisi excepteur est non excepteur quis ipsum. Enim tempor commodo magna anim sint irure nisi sit occaecat laborum elit enim. Dolor nulla labore excepteur consequat cillum voluptate incididunt. Adipisicing voluptate exercitation irure in. Cillum quis dolore cupidatat dolore eiusmod. Ut duis et minim. Aute Lorem do eiusmod ullamco tempor ipsum reprehenderit laboris. Esse tempor pariatur magna ex amet occaecat nulla eiusmod ipsum culpa eu sunt. Magna adipisicing ipsum Lorem aute dolor in sit ad eiusmod. Anim officia aliquip Lorem culpa proident irure id in esse cillum in adipisicing. Tempor incididunt culpa labore sunt laborum ea ad est in sunt labore ut cupidatat adipisicing. Elit dolor ea irure occaecat tempor amet cillum excepteur adipisicing mollit deserunt id ex mollit. Tempor non dolore do nostrud. Excepteur aliqua amet cupidatat pariatur anim ex deserunt ipsum velit aute voluptate aliquip eu. Eiusmod nulla laborum cillum dolor Lorem deserunt cupidatat aliqua dolore est. Ex consectetur incididunt aliqua id cillum sunt enim fugiat proident ex ea cillum amet et. Ut aliqua adipisicing ut enim voluptate anim deserunt ullamco non ullamco sunt. Anim aliquip Lorem ea velit cillum aliquip. Incididunt anim quis dolor cillum ullamco incididunt deserunt aliqua dolor ipsum culpa officia veniam adipisicing. Esse tempor aute culpa eu incididunt in consequat aliqua qui adipisicing tempor. Et ex elit laboris deserunt ea nisi minim. Nostrud irure tempor consectetur proident tempor ut tempor nisi consectetur. Non veniam reprehenderit exercitation tempor culpa aliquip minim irure.
-        </p>
-      </SnapSection>
+const JustText: FC<BasicUiComponent> = ({ children, className }) => (
+  <p className={cn("mt-4 text-justify leading-8 tracking-wider", className)}>{ children }</p>
+);
 
-      <div className="relative hidden md:block">
-        <div className="hidden md:block absolute w-screen h-full -left-full top-0 max-w-6xl z-10 pointer-events-none">
-          <Spotlight className="sticky -top-40 left-0 md:left-1/2 md:-top-20 max-h-dvh lg:w-full" fill="white" />
-        </div>
-        <Image
-          src="/img/tushar.jpg"
-          alt="Tushar Shukla's image"
-          width="285"
-          height="775"
-          className="sticky top-[20dvh] h-[80dvh] w-auto"
-        />
+const AboutMePage: FC = () => (
+  <div className="grid md:grid-flow-col md:grid-cols-[minmax(20vw,auto)_1fr_minmax(150px,auto)] relative antialiased">
+    <div className="hidden md:block"></div>
+    <SnapSection className="max-w-4xl mx-auto mt-20 md:mt-40 relative px-4 md:px-2">
+      <AnimatedHeading>About Me</AnimatedHeading>
+      <JustText className="first-letter:-mb-4 first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left">
+        Hey there! I&apos;m Tushar Shukla, a Senior Frontend Developer from <span className="indian-flag px-1 text-black font-bold">India</span> with over a decade of experience (yes, I&apos;ve been doing this long enough to remember Internet Explorer struggles 🥴). I specialize in building high-performance ⚡, responsive websites while making sure they don&apos;t just work — but feel amazing ❣️ to use.
+      </JustText>
+
+      <Heading2 className="mt-8 mb-2">What I do (a.k.a Why You Should Care)</Heading2>
+      <JustText>
+        My coding philosophy 🤔? Think like a user 🧑🏻‍💻, develop like a ninja 🥷🏻. I live and breathe web standards, performance optimization, and best coding practices — because let&apos;s be honest, no one likes slow websites 🐌. My tech stack includes React, TypeScript and all the fun things that make frontend development exciting (and occasionally frustrating 🙄).
+        <br />
+        I'm a firm believer in continuous learning, mostly because the web changes faster than I can keep up 🏃🏻‍♂️, but also because I genuinely enjoy it 😍. I'm always eager to explore and leverage new technologies, even the slightly weird ones, to create even better solutions.
+        <br />
+        Beyond just writing code, I thrive in collaboration, enjoy leading teams, and have a special talent for explaining complex dev concepts without making people&apos;s eyes glaze over 👀.
+      </JustText>
+
+      <Heading2 className="mt-8 mb-2">Fun Facts (Because I&apos;m Not Just a Code Machine)</Heading2>
+      <JustText>
+        When I'm not immersed in the world of code 🌐, you can find me indulging in some of my other passions:<br />
+        🦸🏻 <strong>Anime Enthusiast:</strong> When I&apos;m not coding, I&apos;m probably watching anime — One Piece and Naruto taught me more about perseverance than any self-help book.<br />
+        🎨 <strong>CSS Art:</strong> I create CSS Art in my free time because who needs a drawing tablet when you have clip-path and box-shadow?<br />
+        🔧 <strong>Tech &amp; Gadgets:</strong> I&apos;m always on the lookout for new tech and gadgets to geek out over because, let&apos;s be honest, who doesn&apos;t love a shiny new toy that makes life easier (or at least more fun)?<br />
+        🏍️ <strong>Motorcycle Riding:</strong> There&apos;s nothing quite like the feeling of the open road, wind in your face, and the hum of an engine beneath you (dug dug dug dug dug....💨). It&apos;s my way of escaping the digital world and recharging my creative batteries — though I&apos;m pretty sure my helmet hair is a CSS challenge I&apos;ll never fully solve..
+      </JustText>
+
+      <Heading2 className="mt-8 mb-2">Let&apos;s Connect!</Heading2>
+      <JustText>
+        I believe that my blend of professional expertise and personal interests brings a unique perspective to my work 😎, making me not just a developer but a creator who continuously seeks to push boundaries and innovate.
+        Feel free to explore my <PrettyLink href="/showcase" title="projects to showcase">projects</PrettyLink>, checkout <PrettyLink href="/uses" title="things that I use">things that I use in my daily life</PrettyLink> or <PrettyLink href="mailto:tusharshuklaa@gmail.com" title="get in touch">drop me a line, or just say hi</PrettyLink>. Let's connect and create something awesome together!
+      </JustText>
+    </SnapSection>
+
+    <div className="relative hidden md:block">
+      <div className="hidden md:block absolute w-screen h-full -left-full top-0 max-w-6xl z-10 pointer-events-none">
+        <Spotlight className="sticky -top-40 left-0 md:left-1/2 md:-top-20 max-h-dvh lg:w-full" fill="white" />
       </div>
+      <Image
+        src="/img/tushar.jpg"
+        alt="Tushar Shukla's image"
+        width="285"
+        height="775"
+        className="sticky top-[20dvh] h-[80dvh] w-auto"
+      />
     </div>
-  );
-};
+  </div>
+);
 
 export default AboutMePage;
