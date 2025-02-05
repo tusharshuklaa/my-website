@@ -16,16 +16,17 @@ type HoverCardItem = {
   summary?: string | React.ReactNode;
   url: string;
   tags?: Array<string>;
-  heroImg?: string;
+  img?: string;
 };
 
 type HoverCardsType = UiComponent<{
   items: Array<HoverCardItem>;
   cardClassName?: string;
+  titleClassName?: string;
   onTagClick?: (tag: string) => void;
 }>;
 
-export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className, onTagClick }) => {
+export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className, onTagClick, titleClassName }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const handleTagClick = (event: React.MouseEvent<HTMLButtonElement>, tag: string) => {
@@ -42,7 +43,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
 
         return (
           <Link
-            target={ item?.url.startsWith('http') ? '_blank' : '_self' }
+            target={item?.url.startsWith('http') ? '_blank' : '_self'}
             href={item?.url}
             key={item?.url}
             className="group relative block h-full w-full"
@@ -68,7 +69,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
             </AnimatePresence>
 
             <Card className={cardClassName}>
-              <CardTitle className="line-clamp-2">
+              <CardTitle className={cn("line-clamp-2", titleClassName)}>
                 {
                   isHovered ? (<GradientText text={item.title} />) : (item.title)
                 }
@@ -101,7 +102,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
                   </div>
                 )
               }
-              
+
               {
                 item.summary && (
                   <CardDescription
@@ -116,10 +117,10 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
               }
 
               {
-                item.heroImg && (
+                item.img && (
                   <div className="mt-2 w-full h-44">
                     <Image
-                      src={item.heroImg}
+                      src={item.img}
                       alt={item.title}
                       width={170}
                       height={170}

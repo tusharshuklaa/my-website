@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { FC } from "react";
 import { cn } from "@/lib/utils";
 import { BasicUiComponent } from "@/types";
@@ -20,7 +22,7 @@ export const AnimatedHeading: FC<BasicUiComponent> = ({ children, className }) =
         ease: "easeInOut",
       }}
       className={cn(
-        "mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-3xl sm:text-4xl font-medium tracking-tight text-transparent md:text-7xl m-auto max-w-[90%] sm:max-w-none",
+        "mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl",
         className
       )}
     >

@@ -1,7 +1,8 @@
 'use client';
 
 import { FC } from "react";
-import { allShowcases, Coding, Showcase } from "@/.contentlayer/generated";
+import ShowcaseData from "@/data/showcase.json";
+import { Showcase } from "@/components/showcase-slider";
 import { ArticleHero } from "@/components/blog-hero";
 import { SearchResults } from "@/components/search-results";
 import { PlaceholdersAndVanishInput, HoverCards } from "@ui";
@@ -15,7 +16,7 @@ const placeholders = [
 ];
 
 const ShowcasePage: FC = () => {
-  const { items, onSubmit, onSearchClear, onTagClick, searchQuery } = useMdxContent(allShowcases);
+  const { items, onSubmit, onSearchClear, onTagClick, searchQuery } = useMdxContent(ShowcaseData.showcase);
   const showcaseItems = items as Array<Showcase>;
 
   return (
@@ -29,10 +30,10 @@ const ShowcasePage: FC = () => {
           className="mb-12 w-full"
         />
 
-        <SearchResults query={ searchQuery } itemsCount={items.length} onSearchClear={ onSearchClear } />
+        <SearchResults query={searchQuery} itemsCount={items.length} onSearchClear={onSearchClear} />
       </div>
 
-      <HoverCards items={showcaseItems} onTagClick={onTagClick} cardClassName='p-6' />
+      <HoverCards items={showcaseItems} onTagClick={onTagClick} cardClassName='p-6' titleClassName="h-12" />
     </section>
   );
 };

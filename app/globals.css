@@ -20,6 +20,21 @@
 :root.dark {
   --background: radial-gradient(ellipse at bottom, #0d1d31 0%, #000 100%);
   --foreground: #ededed;
+  /* Variables for space mascot */
+  --origAstroWidth: 14vmin;
+  --astroWidth: var(--origAstroWidth);
+  --onePx: calc(var(--astroWidth) / 134);
+  --nOnePx: calc(var(--onePx) * -1);
+  --twoPx: calc(var(--astroWidth) / 66.6);
+  --nTwoPx: calc(var(--twoPx) * -1);
+  --threePx: calc(var(--astroWidth) / 45.161);
+  --nThreePx: calc(var(--threePx) * -1);
+  /* END -  Variables for space mascot */
+}
+
+:root.dark {
+  --background: radial-gradient(ellipse at bottom, #0d1d31 0%, #000 100%);
+  --foreground: #ededed;
 }
 
 body {
@@ -411,4 +426,8 @@ body {
     left: -100%;
     opacity: 0;
   }
+}
+
+.indian-flag {
+  background: linear-gradient(to bottom, #FF9933 33.33%, white 33.33% 66.66%, #138808 66.66%);
 }
