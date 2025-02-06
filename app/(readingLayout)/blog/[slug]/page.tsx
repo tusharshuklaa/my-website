@@ -1,14 +1,13 @@
 import { FC } from 'react';
 import { notFound } from 'next/navigation';
-import { getMDXComponent } from 'next-contentlayer2/hooks';
 import { format, parseISO } from 'date-fns';
 import { allBlogs } from '@content';
 import { AnimatedHeading } from '@components/text/heading';
 import { GradientText } from '@components/text';
 import { AnimateElement } from '@components/animate-element';
 import { LampContainer } from '@ui';
-import { SnapSection } from '@/components/snap-container';
-import { Mdx } from '@/components/mdx';
+import { SnapSection } from '@components/snap-container';
+import { Mdx } from '@components/mdx';
 
 type BlogPageParams = {
   params: {
