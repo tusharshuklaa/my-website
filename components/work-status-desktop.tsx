@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { cn } from "@/lib/utils";
 import { Safari } from "@ui";
 import { UiComponent } from "@/types";
-import { SnapSection } from '@components/snap-container';
 import { GradientText } from '@components/text';
 import { Blip } from '@components/blip';
 import { GlowingGradientBox } from '@components/glowing-gradient-box';
@@ -12,7 +11,7 @@ export const WorkStatusDesktop: FC<UiComponent<WorkStatusDeviceProps>> = ({ blip
   const workStatusDesktopClasses = cn('flex flex-col items-center justify-center py-16 min-h-screen', className);
 
   return (
-    <SnapSection data-testid={`cmp-work-status-desktop`} className={workStatusDesktopClasses} id={id}>
+    <section data-testid={`cmp-work-status-desktop`} className={workStatusDesktopClasses} id={id}>
       <GlowingGradientBox className="z-10 after:rounded-[11px]">
         <Safari
           className="sm:max-w-2xl md:max-w-3xl lg:max-w-5xl size-full"
@@ -52,7 +51,7 @@ export const WorkStatusDesktop: FC<UiComponent<WorkStatusDeviceProps>> = ({ blip
           </div>
         </Safari>
       </GlowingGradientBox>
-    </SnapSection>
+    </section>
   );
 };
 

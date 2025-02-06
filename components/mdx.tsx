@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import type { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import { AnimatedHeading } from './text/heading';
@@ -52,10 +53,12 @@ const components: MDXComponents = {
   // Link
   a: ({ ...props }) => {
     if (props.className?.includes("subheading-anchor")) {
-      return <a {...props} />;
+      return <Link {...props} href={props.href!} />;
     }
 
-    return <PrettyLink {...props as any} />;
+    const target = props.href?.startsWith("http") ? "_blank" : "_self";
+
+    return <PrettyLink {...props as any} target={target} />;
   },
   // Image
   img: ({ ...props }) => (

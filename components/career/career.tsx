@@ -21,7 +21,7 @@ export const Career: FC = () => {
   });
 
   return (
-    <div className="relative w-full md:px-10" ref={containerRef} id="work-experience">
+    <section className="relative w-full md:px-10" ref={containerRef} id="work-experience">
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
         <AnimatedHeading className="text-left">
           <GradientText
@@ -38,6 +38,6 @@ export const Career: FC = () => {
       </div>
 
       { isPageMounted && <Timeline data={data} containerRef={containerRef} />}
-    </div>
+    </section>
   );
 };

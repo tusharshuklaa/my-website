@@ -63,7 +63,7 @@ export const ShowcaseSlider: FC<UiComponent> = ({ className }) => {
   const showcaseData: Array<Showcase> = ShowcaseData.showcase.filter(item => item.featured).slice(0, 7);
 
   return (
-    <SnapSection data-testid="cmp-showcase-slider" className={showcaseSliderClasses} id="my-crafts">
+    <section data-testid="cmp-showcase-slider" className={showcaseSliderClasses} id="my-crafts">
       <AnimatedHeading className="text-center mb-20 w-full">
         <GradientText
           text={"A Cluster of my Crafts"}
@@ -81,7 +81,7 @@ export const ShowcaseSlider: FC<UiComponent> = ({ className }) => {
           ))
         }
       </ThreeDSliderContainer>
-    </SnapSection>
+    </section>
   );
 };
 
