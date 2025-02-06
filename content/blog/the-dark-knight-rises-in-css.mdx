@@ -1,0 +1,170 @@
+---
+title: The Dark Knight Rises... In CSS
+date: 2025-02-05
+summary: The Dark Knight, a pure CSS art created for fun. It is a simple and fun project to create Batman face using CSS.
+img: /img/showcase/batman-css.png
+published: true
+tags:
+  - css-art
+  - css
+  - github
+---
+![Batman image made with CSS](/img/showcase/batman-css.png "The Dark Knight Rises... In CSS")
+
+>It's not who I am underneath, but what I do that defines me.
+>
+> <footer>Bruce Wayne (Probably, if he were a frontend developer)</footer>
+
+Welcome, fellow web vigilantes! Ever dreamt of building Gotham's protector, not with Batarangs and brute force, but with the sheer power of CSS?  Well, I did. And let me tell you, it was a wild ride, a bit like chasing the Joker through the labyrinthine streets of Gotham, but ultimately, incredibly rewarding.
+
+## Our Mission (Difficult? Nah! Not much)
+
+This blog post chronicles my journey of creating a **responsive** **Batman face entirely with CSS** — yes, no images, not even SVGs. The Joker would love that shortcut, but we’re better than that. Why I took this challenge? Because some developers just want to watch the world learn (Batman quote - kinda 😄). Consider this my Bat-Signal to all frontend developers looking for a fun challenge. And yes, as Batman would say, “Have fun… because why not?”
+
+## Why CSS Art? (More Than Just a Pretty Face)
+
+First of all, what is CSS Art — It’s a digital image created using CSS. It’s a creative way for coders to express themselves by combining their programming and artistic skills. While it’s a lot of fun to create CSS art, it’s not just limited to the fun factor alone!
+
+Now, let's be real, building Batman's face in CSS is undeniably cool.  But the benefits go beyond bragging rights at the next tech meetup. Creating CSS art isn't just about showing off (though Alfred would approve). It is like a workout for your frontend skills. It’s a formidable exercise (training to be the Dark Knight himself) that challenges you to think creatively, deepens your understanding of CSS properties, selectors, and layouts, and sharpens your problem-solving abilities. And yes, it is also about impressing your colleagues with CSS wizardry that even the Riddler couldn't decode.
+
+## Gotham’s Villains – The Challenges (aka My "Aha!" Moments)
+
+Every hero faces villains, and in the CSS world, our nemeses come in the form of:
+
+- **Mindset Problem** (The Scarecrow): Like facing your fears in Scarecrow's fear toxin, the biggest challenge was mental: "Where do I even start?" It’s like standing before the Bat-Signal without knowing which direction to run.
+- **Shape Struggles** (The Penguin): Crafting those asymmetric curves can feel like trying to replicate the Joker’s smile with CSS. How do you even create those complex shapes?
+- **Stacking Index Zingers** (The Joker): Z-index can be a tricky beast. Managing it is like dealing with the Joker – chaotic at first, but manageable once you understand the method to the madness. Arranging elements with z-index is akin to managing the layered secrets of Bruce Wayne’s double life.
+- **Positioning Perils (The Catwoman)**: Achieving pixel-perfect alignment while keeping everything responsive is no less challenging than balancing a high-speed chase on Gotham’s rooftops.
+- **Debugging Dilemmas (The Two-Face)**: Ever wondered why that property isn’t behaving? It can feel like decoding a message from the Riddler himself.
+
+## Breaking Down the Bat: Thinking in Shapes
+
+Before diving headfirst into the code, I found it helpful to **visualize the Batman face in terms of basic shapes**. Just as Batman breaks down his opponents' fighting styles, we need to break down our artwork into basic shapes. Think like Batman analyzing a crime scene. Here’s what I did:
+
+1. **Dissect the image**: Be like a butcher, cut every part and think of them as individual shapes. I broke down the Batman face into simple geometric shapes — circles, rectangles, triangles and complex curves.
+2. **Use CSS tools**: For those tricky parts like Batman’s iconic lips or the asymmetric curves of his cowl, I relied on the `clip-path` property to mask and shape elements.
+3. **Determine a base shape**: I chose a central shape as the foundation (batman’s face in this case) and defined desired size (width and height) for it, and then derived all the other sizes relative to it. Choosing the right base shape is crucial – it's the foundation upon which everything else is built. Think of it as your Bat-cave — everything revolves around the core.
+
+Here’s a snippet demonstrating how I used `clip-path` to create a complex shape:
+
+```CSS
+/* CSS snippet for a complex bat-like shape */
+--base-size: 20vmin;
+
+.bat-lips {
+  width: var(--base-size);
+  height: var(--base-size);
+  background: #000;
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+  margin: auto;
+}
+
+```
+
+In this snippet, `--base-size` acts as our core dimension. All other elements can be derived relative to this variable, ensuring responsiveness across devices.
+
+## Becoming the CSS Vigilante: Let’s Code
+
+Now, it's time to don the cape and get to work. I kickstarted my journey by setting up a [CodePen](!!https://codepen.io/tusharshukla/pen/OJrGxPb) project (because every Batman needs a Batcave) and also pushed the code to [GitHub](https://github.com/tusharshuklaa/the-dark-knight-in-css) for those who want to fork their own version of the Dark Knight in CSS. The GitHub repo follows a structure that can help you understand the batman creation step-by-step. It’s a basic setup using Vite and has the following folder structure:
+
+→ src
+
+→ → styles
+
+→ → → (1-10).css
+
+All of the HTML code for the batman is already inside the `index.html` . Inside the `styles` folder, you can see a few CSS files numbered from 1 to 10. The first file, i.e. `1.css` has the initial setup for beginning our CSS art. As you increase the numbers one after another, you’ll see the batman getting created incrementally. I’d recommend you to checkout the repo and follow along for best understanding.
+
+## Enough talk, let's see some action!
+
+**Avoiding detailed code for now due to abundant laziness and lack of time but will add this section very soon**
+
+## The Dark Knight’s Secret: Tips & Tricks
+
+Over the course of this project, I uncovered several tricks that every CSS superhero should have in their utility belt:
+
+- **Responsive Sizing**: Use a core shape defined in viewport units. All other dimensions? Derive them as multiples of this core. CSS variables are your best friend for customization. It’s like having a master plan for every Gotham heist.
+![Diagram showing viewport units](/img/blogs/diag-responsive-unit.png "Diagram showing Viewport Units")
+    ```css
+    .batman-artwork {
+      --core-size: 40vmin;
+      --ear-height: calc(var(--core-size) * 0.4);
+      --jaw-width: calc(var(--core-size) * 0.8);
+    }
+    ```
+
+- **Border-Radius Wizardry**: Experiment with different border-radius values to morph a rectangle into an ellipse, or even a more complex shape. Each corner can be manipulated individually—just as Batman adapts to every new challenge. The key factor for creating complex curves is to understand that you can provide two radii instead of just one in `border-radius`. Most of us are already aware of this syntax `border-radius: 10px` but what many miss is the syntax for adding another radius like `border-radius: 10px / 15px` . The first part (before forward slash) determines the first radius (for each corner) and the latter defines the another radii. Think of it as an ellipse shape which has two radii. You can refer to [this MDN doc for more](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius) info on the syntax.
+![Diagram showing border-radius syntax](/img/blogs/diag-border-radius.png "Diagram showing border-radius syntax")
+    ```css
+    .batman-curve {
+      border-radius: 30% 30% 50% 50% / 30% 30% 70% 70%;
+    }
+    ```
+
+- **Box-Shadow & Scale**: Not just for drop shadows! Use `box-shadow` to mimic a mirror effect and `scale(-1)` to flip elements. It’s the secret behind many visual illusions in my code.
+
+![Diagram showing box-shadow layers](/img/blogs/diag-box-shadow.png "Diagram showing box-shadow layers")
+    ```css
+    .batman-symbol {
+      box-shadow:
+        calc(var(--base-size) * 2) 0 0 var(--batman-black),
+        calc(var(--base-size) * -2) 0 0 var(--batman-black);
+      /* Creates three identical shapes */
+    }
+    ```
+
+- **Translate vs. Margin**: Remember, `margin` creates space by affecting surrounding elements, whereas `translate` simply moves the element visually. Use them wisely — like choosing the right Batmobile for a quick getaway. Knowing the difference is key.
+
+![Diagram showing margin and translate difference](/img/blogs/diag-margin-translate.png "Diagram showing margin and translate difference")
+    ```css
+    /* Margin - creates space */
+    .spacing {
+    	margin-top: 50px;
+    }
+
+    /* Translate can move element visually without creating extra space */
+    .move {
+    	translate: transformY(50px);
+    }
+    ```
+
+
+## Beyond the Bat: Real-World Applications
+
+While our CSS Batman might seem like a fun, isolated project, these techniques have plenty of real-world applications:
+
+- **Artistic Expressions & Personal Portfolios**: Create CSS portraits or abstract designs that stand out. Imagine a personal website that’s as unique as Batman’s utility belt. For example, [my own personal website](http://tusharshukla.dev) used lot of CSS wizardry, tailwind magic and framer motion tactics.
+- **Interactive Experiences**: Implement interactive elements like animated menus, engaging forms, or even casual web games. Who says coding can’t be as entertaining as a night out with the Justice League?
+- **Business Needs**: There can be infinite kinds of business use-cases. For example, a clothing brand may use CSS-generated illustrations for character-based product displays or dynamic UI components in modern web applications – talk about dynamic product showcases!
+
+## Batman's Utility Belt: Resources & Inspirations (For the Aspiring Robin)
+
+No superhero works in isolation, even Batman often needs Alfred and Robin. — here are some resources that helped me on my journey:
+
+- [**Inspiring CSS Artists**](https://jsdev.space/11-css-artists/): A list of CSS art that sparks creativity.
+- [**Clip Path Generator**](https://bennettfeely.com/clippy/): Batrang for crafting those complex shapes.
+- [**Border Radius Generator**](https://10015.io/tools/css-border-radius-generator): Tackle those asymmetric curves with ease.
+- [**CSS Generators**](https://css-generators.com/): A toolkit to simplify your CSS workflow.
+- [**Trending Color Palettes**](https://coolors.co/palettes/trending): Find the perfect palette to make your art pop.
+- [**Mozilla Firefox Developer Edition**](https://www.mozilla.org/en-US/firefox/developer/): My go-to browser for CSS superpowers.
+- [**ShadCn UI**](https://ui.shadcn.com/): An amazing UI library for rapid prototyping.
+- [**My Personal SCSS Mixins Collection**](https://github.com/tusharshuklaa/SaSSEase---A-Mixins-Lab): A treasure trove of SCSS mixins for every occasion.
+
+## Key Takeaways & Conclusion
+
+Building a Batman face entirely in CSS was both a challenging and exhilarating experience—a perfect blend of art, logic, and a bit of chaos reminiscent of Gotham itself. Here are my key takeaways:
+
+- **Plan Your Shapes**: Break down complex images into manageable CSS shapes.
+- **Embrace the Challenges**: Each obstacle, from stacking issues to positioning dilemmas, is an opportunity to level up your skills.
+- **Leverage Modern CSS**: With properties like `clip-path`, `border-radius`, `box-shadow` and CSS variables, the possibilities are as endless as Batman’s gadgetry.
+- **Have Fun**: Whether you’re coding a superhero face or designing an entire website, a little fun goes a long way. After all, even Batman needs a break from brooding in the Batcave sometimes.
+
+I hope this journey inspires you to experiment with CSS in new and creative ways. Remember: In the world of front-end development, you’re always just one clever trick away from being the hero Gotham (or your project) needs. And remember, even the Dark Knight started somewhere.  Now, if you'll excuse me, I hear the Bat-Signal calling... Time to build a CSS Batmobile!
+
+Stay heroic, code hard, and never forget — *it’s not who you are underneath, but what you do with your CSS that counts.*
+
+Happy coding!

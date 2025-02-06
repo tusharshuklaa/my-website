@@ -22,7 +22,7 @@ const components: MDXComponents = {
     );
   },
   h2: ({ ...props }) => (
-    <h2 {...props} className={cn("tracking-wide !leading-snug text-4xl mt-2 text-center", props.className)}>
+    <h2 {...props} className={cn("tracking-wide !leading-snug text-3xl mt-6 mb-2", props.className)}>
       <GradientText text={props.children} color="purple" />
     </h2>
   ),
@@ -36,7 +36,7 @@ const components: MDXComponents = {
   ),
   // Paragraph
   p: ({ ...props }) => (
-    <p {...props} className={cn("mb-4", props.className)}></p>
+    <p {...props} className={cn("mb-4 text-justify leading-8 tracking-wider", props.className)}></p>
   ),
   // List
   ol: ({ ...props }) => (
@@ -47,7 +47,7 @@ const components: MDXComponents = {
   ),
   // List Item
   li: ({ ...props }) => (
-    <li {...props} className={cn("pl-2 [&>ul]:list-inside [&>ol]:list-inside [&>ul]:mt-2 [&>ul]:mb-2 [&>ol]:mt-2 [&>ol]:mb-2", props.className)}></li>
+    <li {...props} className={cn("pl-2 [&>ul]:list-inside [&>ol]:list-inside [&>ul]:mt-2 [&>ul]:mb-2 [&>ol]:mt-2 [&>ol]:mb-2 text-justify leading-8 tracking-wider mb-4", props.className)}></li>
   ),
   // Link
   a: ({ ...props }) => {
@@ -64,7 +64,7 @@ const components: MDXComponents = {
   // Code
   code: ({ ...props }) => (
     <code {...props} className={cn(
-      "overflow-auto relative inline-block rounded px-1 py-0 [pre_&]:p-4 [pre_&]:my-4 font-mono text-sm shadow border border-gray-200 dark:border-gray-700",
+      "overflow-auto relative inline-block rounded px-1 py-0 [pre_&]:p-4 [pre_&]:my-4 font-mono text-sm shadow border border-gray-200 dark:border-gray-700 translate-y-1",
       "before:[pre_&[data-language]]:content-[attr(data-language)] before:[pre_&[data-language]]:absolute before:[pre_&[data-language]]:right-2 before:[pre_&[data-language]]:top-2 before:[pre_&[data-language]]:p-2 before:[pre_&[data-language]]:bg-black/50 before:[pre_&[data-language]]:leading-none before:[pre_&[data-language]]:text-xs",
       props.className
     )}></code>
