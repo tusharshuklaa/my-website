@@ -23,12 +23,12 @@ const components: MDXComponents = {
     );
   },
   h2: ({ ...props }) => (
-    <h2 {...props} className={cn("tracking-wide !leading-snug text-3xl mt-6 mb-2", props.className)}>
+    <h2 {...props} className={cn("tracking-wide !leading-snug text-4xl mt-16 mb-2", props.className)}>
       <GradientText text={props.children} color="purple" />
     </h2>
   ),
   h3: ({ ...props }) => (
-    <h3 {...props} className={cn("tracking-wide !leading-snug text-2xl mt-2", props.className)}>
+    <h3 {...props} className={cn("tracking-wide !leading-snug text-2xl mt-8 mb-2", props.className)}>
       <GradientText text={props.children} color="green" />
     </h3>
   ),
@@ -37,7 +37,7 @@ const components: MDXComponents = {
   ),
   // Paragraph
   p: ({ ...props }) => (
-    <p {...props} className={cn("mb-4 text-justify leading-8 tracking-wider", props.className)}></p>
+    <span {...props} className={cn("mb-4 text-justify leading-8 tracking-wider", props.className)}></span>
   ),
   // List
   ol: ({ ...props }) => (
@@ -62,13 +62,17 @@ const components: MDXComponents = {
   },
   // Image
   img: ({ ...props }) => (
-    <img {...props}></img>
+    <figure className="shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)] rounded-lg overflow-hidden w-4/5 mx-auto mt-8 mb-12">
+      <img {...props}></img>
+      {props.alt && <figcaption className="text-sm text-center text-gray-600 dark:text-gray-400 py-2">{props.alt}</figcaption>}
+    </figure>
   ),
   // Code
   code: ({ ...props }) => (
     <code {...props} className={cn(
-      "overflow-auto relative inline-block rounded px-1 py-0 [pre_&]:p-4 [pre_&]:my-4 font-mono text-sm shadow border border-gray-200 dark:border-gray-700 translate-y-1",
-      "before:[pre_&[data-language]]:content-[attr(data-language)] before:[pre_&[data-language]]:absolute before:[pre_&[data-language]]:right-2 before:[pre_&[data-language]]:top-2 before:[pre_&[data-language]]:p-2 before:[pre_&[data-language]]:bg-black/50 before:[pre_&[data-language]]:leading-none before:[pre_&[data-language]]:text-xs",
+      "overflow-auto relative inline-block rounded px-1 py-0 [pre_&]:p-4 [pre_&]:my-4 [pre_&]:pt-10 font-mono text-sm shadow border border-gray-200 dark:border-gray-700 translate-y-1",
+      "before:[pre_&[data-language]]:content-[attr(data-language)] before:[pre_&[data-language]]:absolute before:[pre_&[data-language]]:right-0 before:[pre_&[data-language]]:top-0 before:[pre_&[data-language]]:left-0",
+      "before:[pre_&[data-language]]:p-2 before:[pre_&[data-language]]:bg-black/50 before:[pre_&[data-language]]:leading-none before:[pre_&[data-language]]:text-xs",
       props.className
     )}></code>
   ),

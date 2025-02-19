@@ -46,7 +46,7 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
         </LampContainer>
       </SnapSection>
 
-      <article className="mt-2 max-w-5xl px-4 mx-auto text-base sm:text-xl leading-relaxed">
+      <article className="mt-2 max-w-5xl px-4 mx-auto text-base leading-relaxed">
         <Mdx code={blog.body.code} />
       </article>
     </>

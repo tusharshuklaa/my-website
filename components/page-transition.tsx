@@ -13,7 +13,7 @@ export const PageTransition = forwardRef<HTMLDivElement, BasicUiRefComponent>(({
       transition={{ ease: "easeInOut", duration: 0.5 }}
       {...props}
       ref={ref}
-      className="fixed left-0 top-0 h-screen w-full overflow-y-auto overflow-x-hidden scroll-smooth snap-start snap-normal snap-y snap-proximity scroll-pt-10"
+      className="fixed left-0 top-0 h-screen w-full overflow-y-auto overflow-x-hidden scroll-smooth sm:snap-start sm:snap-normal sm:snap-y sm:snap-proximity sm:scroll-pt-10"
       data-testid="cmp-page-transition"
     >
       {children}

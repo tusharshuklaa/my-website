@@ -176,8 +176,7 @@ body {
 .subheading-anchor {
   position: absolute;
   color: blueviolet;
-  top: 0;
-  bottom: 0;
+  bottom: 0.5em;
   margin: auto;
   height: 0.6em;
   right: -1em;

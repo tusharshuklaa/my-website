@@ -46,7 +46,7 @@ const SliderBgContent: FC = () => {
       <Button
         variant="magic"
         size="auto"
-        className="absolute inset-0 m-auto w-[20vmin] max-h-max -bottom-40"
+        className="absolute inset-0 m-auto w-[40vmin] sm:w-[20vmin] max-h-max -bottom-40"
       >
         <Link href="/showcase">See More</Link>
       </Button>
@@ -72,7 +72,7 @@ export const ShowcaseSlider: FC<UiComponent> = ({ className }) => {
         />
       </AnimatedHeading>
 
-      <ThreeDSliderContainer className="overflow-visible" sliderClassName='w-[25vmin] h-[20vmin] z-[2]' extraContent={<SliderBgContent />}>
+      <ThreeDSliderContainer className="overflow-visible" sliderClassName='w-[35vmin] sm:w-[25vmin] h-[50vmin] sm:h-[20vmin] z-[2]' extraContent={<SliderBgContent />}>
         {
           showcaseData.map((item, index) => (
             <ThreeDSliderItem key={index} position={index + 1}>

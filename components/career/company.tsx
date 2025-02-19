@@ -26,12 +26,12 @@ type CompanyProps = Omit<CareerCompany, "heading">;
 export const Company: FC<CompanyProps> = ({ company, description, img, imgDark, positions, type, url }) => {
   return (
     <section className="flex gap-2 md:gap-8 flex-col md:flex-row">
-      <div className="mt-2 flex h-28 w-28 shrink-0 items-end md:items-start justify-center">
+      <div className="mt-2 mb-4 sm:mb-0 flex h-28 w-full sm:w-28 shrink-0 items-end md:items-start justify-center">
         <ThemeImage darkSrc={imgDark || ""} src={img} alt={`${company} logo`} title={`${description}`} width={112} height={112} />
       </div>
 
       <div className="flex flex-col">
-        <h2 className="mb-4 flex items-center justify-start gap-2 text-xl font-normal text-neutral-800 dark:text-neutral-200 md:text-2xl">
+        <h2 className="mb-4 flex items-center justify-center sm:justify-start gap-2 text-xl font-normal text-neutral-800 dark:text-neutral-200 md:text-2xl">
           <PrettyLink href={url} title={`${description}`} target="_blank">{company}</PrettyLink>
         </h2>
 
@@ -41,7 +41,7 @@ export const Company: FC<CompanyProps> = ({ company, description, img, imgDark, 
               <div>
                 <div className="flex items-center gap-2">
                   <GradientText text={position.title} className="text-lg font-bold" />
-                  <sub className="text-xs font-thin">( {type} )</sub>
+                  <sub className="text-xs font-thin min-w-fit">( {type} )</sub>
                 </div>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400">{`${position.duration} | ${position.location}`}</p>
               </div>

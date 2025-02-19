@@ -32,7 +32,7 @@ export const Footer: FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="flex flex-col w-full pt-24 md:pt-40 pb-4 sm:pb-8 px-4 sm:px-0 bg-gradient-to-t from-60% from-sky-950/30 to-transparent to-100%">
+    <footer className="flex mx- flex-col w-full pt-24 md:pt-40 pb-4 sm:pb-8 px-4 sm:px-0 bg-gradient-to-t from-60% from-sky-950/30 to-transparent to-100%">
       <div className="mb-14 flex flex-col md:flex-row justify-between w-full max-w-sm sm:max-w-7xl m-auto md:px-0">
         <div className="w-full md:w-1/2">
           <h3 className="text-3xl mb-4">Tushar's Personal Website</h3>
@@ -41,7 +41,7 @@ export const Footer: FC = () => {
           <p className="mt-4">
             <HighlightText className="after:z-0">Pro Tip:</HighlightText> Don&apos;t forget to check command center by either clicking on the search bar in the navigation menu or by pessing keyboard keys (Cmd or Ctrl + K)
           </p>
-          <DownloadResumeButton containerClassName="mt-6" />
+          <DownloadResumeButton containerClassName="mt-6 left-0 sm:left-auto right-0 sm:right-auto mx-auto sm:mx-0" />
         </div>
 
         <div className="w-full md:w-1/4 shrink-0 mt-8 md:mt-0">
