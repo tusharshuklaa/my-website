@@ -9,11 +9,11 @@ type ThreeDSliderContainerProps = BasicUiComponent<{
 
 export const ThreeDSliderContainer: FC<ThreeDSliderContainerProps> = ({ children, className, extraContent, sliderClassName }) => {
   const threeDSliderContainerClasses = cn(
-    'w-full h-[80dvh] text-center overflow-hidden relative px-20',
+    'w-full h-[30dvh] sm:h-[80dvh] text-center overflow-hidden relative px-20',
     className
   );
   const sliderClasses = cn(
-    "absolute w-[20vmin] h-[25vmin] top-[10%] left-[calc(50%-100px)] [transform-style:preserve-3d] [transform:perspective(1000px)] animate-slider-anim hover:[animation-play-state:paused]",
+    "absolute w-[20vmin] h-[25vmin] top-[10%] left-0 right-0 m-auto [transform-style:preserve-3d] [transform:perspective(1000px)] animate-slider-anim hover:[animation-play-state:paused]",
     sliderClassName,
   );
 

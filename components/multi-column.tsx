@@ -9,7 +9,7 @@ type MultiColumnProps = BasicUiComponent<{
 
 export const MultiColumn: FC<MultiColumnProps> = ({ children, className, columns = 2, gap = 4, ...props }) => {
   const multiColumnClasses = cn(
-    'grid',
+    'grid items-center',
     {
       'grid-cols-2': columns === 2,
       'grid-cols-3': columns === 3,
