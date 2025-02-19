@@ -11,8 +11,8 @@ export const MultiColumn: FC<MultiColumnProps> = ({ children, className, columns
   const multiColumnClasses = cn(
     'grid items-center',
     {
-      'grid-cols-2': columns === 2,
-      'grid-cols-3': columns === 3,
+      'grid-cols-1 sm:grid-cols-2': columns === 2,
+      'grid-cols-1 sm:grid-cols-3': columns === 3,
       'gap-4': gap === 4,
       'gap-6': gap === 6,
       'gap-8': gap === 8,
