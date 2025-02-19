@@ -32,6 +32,18 @@ export const Blog = defineDocumentType(() => ({
       type: "boolean",
       default: true,
     },
+    author: {
+      type: "string",
+      required: true,
+    },
+    authorImg: {
+      type: "string",
+      required: false,
+    },
+    authorDesc: {
+      type: "string",
+      required: false,
+    },
     tags: {
       type: "list",
       of: { type: "string" },
@@ -58,6 +70,10 @@ export const Blog = defineDocumentType(() => ({
     readingTimeString: {
       type: "string",
       resolve: doc => formatReadingTime(getReadingTime(doc.body.raw)),
+    },
+    authorAlias: {
+      type: "string",
+      resolve: doc => doc.author.split(" ").slice(0, 2).map((word) => word[0]).join("").toUpperCase(),
     },
   },
 }));
