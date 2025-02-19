@@ -5,7 +5,7 @@ import { allBlogs } from '@content';
 import { AnimatedHeading } from '@components/text/heading';
 import { GradientText } from '@components/text';
 import { AnimateElement } from '@components/animate-element';
-import { LampContainer } from '@ui';
+import { Avatar, AvatarFallback, AvatarImage, LampContainer } from '@ui';
 import { SnapSection } from '@components/snap-container';
 import { Mdx } from '@components/mdx';
 
@@ -34,15 +34,28 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
             <GradientText color="blue" text={blog.title} />
           </AnimatedHeading>
 
-          <AnimateElement delay={0.5}>
-            <time dateTime={blog.date} className="mt-8 mb-2 block text-gray-600 font-bold text-xl sm:text-3xl">
-              <GradientText color="purple" text={format(parseISO(blog.date), 'MMMM dd, yyyy')} />
-            </time>
-          </AnimateElement>
+          <div className="flex justify-between items-end mt-20 w-full">
+            <div className="flex gap-4 justify-between items-center">
+              <AnimateElement delay={0.15}>
+                <Avatar className="h-16 w-16">
+                  <AvatarImage src={blog.authorImg || "https://avatars.githubusercontent.com/u/7785066?v=4"} alt={blog.author} title={blog.authorDesc} />
+                  <AvatarFallback>{ blog.authorAlias }</AvatarFallback>
+                </Avatar>
+              </AnimateElement>
 
-          <AnimateElement delay={0.5}>
-            <GradientText color="indigo" text={blog.readingTimeString} className="mt-8 mb-2 block text-gray-600 font-bold text-xl sm:text-2xl" />
-          </AnimateElement>
+              <AnimateElement delay={0.25} className="flex flex-col gap-1">
+                <GradientText color="purple" text={blog.author} className="font-bold text-xl sm:text-2xl" />
+
+                <time dateTime={blog.date}>
+                  <GradientText color="purple" text={`Published on ${format(parseISO(blog.date), 'MMMM dd, yyyy')}`} />
+                </time>
+              </AnimateElement>
+            </div>
+
+            <AnimateElement delay={0.65}>
+              <GradientText color="green" text={blog.readingTimeString} className="text-sm" />
+            </AnimateElement>
+          </div>
         </LampContainer>
       </SnapSection>
 
