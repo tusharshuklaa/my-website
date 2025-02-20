@@ -80,7 +80,7 @@ const components: MDXComponents = {
   blockquote: ({ ...props }) => (
     <blockquote
       className={cn(
-        "my-8 pl-6 border-l-4 border-blue-500 dark:border-blue-400 bg-gray-50 dark:bg-gray-800/50 rounded-r-lg py-4 pr-4 relative [&:not(:has(footer))]:pb-4 [&:has(footer)]:pb-12 space-y-2 text-gray-700 dark:text-gray-200",
+        "my-8 pl-6 border-l-4 border-blue-500 dark:border-blue-400 bg-gray-50 dark:bg-gray-800/50 rounded-r-lg py-4 pr-8 relative [&:not(:has(footer))]:pb-4 [&:has(footer)]:pb-12 space-y-2 text-gray-700 dark:text-gray-200",
         "[&>p]:text-lg [&>p]:leading-relaxed [&>p]:font-medium [&>p:first-of-type]:before:content-['\u201C'] [&>p:first-of-type]:before:text-blue-500 [&>p:first-of-type]:before:dark:text-blue-400 [&>p:first-of-type]:before:text-4xl",
         "[&>p:first-of-type]:before:leading-3 [&>p:first-of-type]:before:mr-1 [&>p:first-of-type]:before:font-serif [&>p:last-of-type]:after:content-['\u201D'] [&>p:last-of-type]:after:text-blue-500 [&>p:last-of-type]:after:dark:text-blue-400 [&>p:last-of-type]:after:text-4xl [&>p:last-of-type]:after:leading-3 [&>p:last-of-type]:after:ml-1 [&>p:last-of-type]:after:font-serif",
         "before:content-['”'] before:text-blue-500 before:dark:text-blue-400 before:text-7xl before:leading-3 before:absolute before:top-8 before:opacity-50 before:right-1 before:font-serif",
