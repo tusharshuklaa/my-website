@@ -14,7 +14,7 @@ export const LampContainer: FC<LampContainerProps> = ({
   containerClassName,
 }) => {
   const containerClasses = cn(
-    "relative z-50 flex -translate-y-80 flex-col items-center px-5",
+    "relative z-50 flex -translate-y-48 sm:-translate-y-32 flex-col items-center px-5 gap-20 sm:gap-40",
     containerClassName
   );
 
@@ -25,7 +25,7 @@ export const LampContainer: FC<LampContainerProps> = ({
         className
       )}
     >
-      <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0">
+      <div className="relative flex w-full flex-1 scale-x-50 sm:scale-x-100 scale-y-75 sm:scale-y-125 items-center justify-center isolate z-0">
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
           whileInView={{ opacity: 1, width: "30rem" }}
