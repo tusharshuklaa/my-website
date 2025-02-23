@@ -1,4 +1,7 @@
 // contentlayer.config.ts
+import { spawn } from "child_process";
+import { statSync } from "fs";
+import path from "path";
 import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode, { LineElement } from "rehype-pretty-code";
@@ -6,6 +9,63 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { rehypeExternalEmbed } from "@/lib/rehypeExternalEmbed";
 import { formatReadingTime, getReadingTime } from "@/lib/utils";
+
+const lastModifiedCache = new Map<string, Date>();
+
+// Function to get git last modified date
+async function getLastModifiedDate(filePath: string): Promise<Date | null> {
+  if (lastModifiedCache.has(filePath)) {
+    return lastModifiedCache.get(filePath)!;
+  }
+
+  try {
+    return new Promise((resolve, reject) => {
+      // Git command to get the last modified date
+      const git = spawn("git", ["log", "-1", "--format=%at", "--", filePath]);
+
+      let output = "";
+
+      git.stdout.on("data", data => {
+        output += data;
+      });
+
+      git.on("close", code => {
+        if (code === 0 && output) {
+          // Convert git timestamp to Date
+          const timestamp = parseInt(output.trim()) * 1000;
+          const date = new Date(timestamp);
+          lastModifiedCache.set(filePath, date);
+          resolve(date);
+        } else {
+          try {
+            // Fallback to file system stats if git fails
+            const stats = statSync(filePath);
+            lastModifiedCache.set(filePath, stats.mtime);
+            resolve(stats.mtime);
+          } catch (error) {
+            console.warn(`Could not get file stats for ${filePath}:`, error);
+            resolve(null);
+          }
+        }
+      });
+
+      git.on("error", () => {
+        try {
+          // Fallback to file system stats if git fails
+          const stats = statSync(filePath);
+          lastModifiedCache.set(filePath, stats.mtime);
+          resolve(stats.mtime);
+        } catch (error) {
+          console.warn(`Could not get file stats for ${filePath}:`, error);
+          resolve(null);
+        }
+      });
+    });
+  } catch (error) {
+    console.error(`Error getting last modified date for ${filePath}:`, error);
+    return null;
+  }
+}
 
 export const Blog = defineDocumentType(() => ({
   name: "Blog",
@@ -73,7 +133,36 @@ export const Blog = defineDocumentType(() => ({
     },
     authorAlias: {
       type: "string",
-      resolve: doc => doc.author.split(" ").slice(0, 2).map((word) => word[0]).join("").toUpperCase(),
+      resolve: doc =>
+        doc.author
+          .split(" ")
+          .slice(0, 2)
+          .map(word => word[0])
+          .join("")
+          .toUpperCase(),
+    },
+    lastModified: {
+      type: "date",
+      resolve: async doc => {
+        // Get the relative path from the source file path
+        const relativePath = path.relative(path.join(process.cwd(), "content"), doc._raw.sourceFilePath);
+        const date = await getLastModifiedDate(relativePath);
+
+        return date?.toISOString() || doc.date;
+      },
+    },
+    formattedLastModified: {
+      type: "string",
+      resolve: async doc => {
+        const date = await getLastModifiedDate(doc._raw.sourceFilePath);
+        return (
+          date?.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }) || ""
+        );
+      },
     },
   },
 }));
