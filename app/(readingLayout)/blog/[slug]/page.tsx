@@ -8,6 +8,7 @@ import { AnimateElement } from '@components/animate-element';
 import { Avatar, AvatarFallback, AvatarImage, LampContainer } from '@ui';
 import { SnapSection } from '@components/snap-container';
 import { Mdx } from '@components/mdx';
+import { SocialShare } from '@/components/social-share';
 
 type BlogPageParams = {
   params: {
@@ -62,6 +63,8 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
       <article className="mt-2 max-w-5xl px-4 mx-auto text-base leading-relaxed">
         <Mdx code={blog.body.code} />
       </article>
+
+      <SocialShare />
     </>
   );
 };
