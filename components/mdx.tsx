@@ -1,5 +1,9 @@
+'use client';
+
 import { FC } from 'react';
 import Link from 'next/link';
+import { CldImage } from 'next-cloudinary';
+import Image from 'next/image';
 import type { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import { AnimatedHeading } from './text/heading';
@@ -61,12 +65,24 @@ const components: MDXComponents = {
     return <PrettyLink {...props as any} target={target} />;
   },
   // Image
-  img: ({ ...props }) => (
-    <figure className="shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)] rounded-lg overflow-hidden w-4/5 mx-auto mt-8 mb-12">
-      <img {...props}></img>
-      {props.alt && <figcaption className="text-sm text-center text-gray-600 dark:text-gray-400 py-2">{props.alt}</figcaption>}
-    </figure>
-  ),
+  img: ({ ...props }) => {
+    const altText = props.alt || props.title || '';
+    const isExternalImage = props.src?.startsWith('http');
+    const ImgComp = isExternalImage ? Image : CldImage;
+
+    return (
+      <figure className="shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)] rounded-lg overflow-hidden w-4/5 mx-auto mt-8 mb-12">
+        <ImgComp
+          src={props.src || ''}
+          width="500"
+          height="500"
+          alt={altText}
+          className="w-full h-full object-cover"
+        />
+        {altText && <figcaption className="text-sm text-center text-gray-600 dark:text-gray-400 py-2">{altText}</figcaption>}
+      </figure>
+    );
+  },
   // Code
   code: ({ ...props }) => (
     <code {...props} className={cn(

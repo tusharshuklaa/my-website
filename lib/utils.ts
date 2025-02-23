@@ -32,3 +32,7 @@ export const formatReadingTime = (minutes: number) => {
   
   return `${minutes} min${minutes === 1 ? '' : 's'} read`;
 };
+
+export const absoluteUrl = (path: string) => {
+  return `https://tusharshukla.dev${path}`;
+}

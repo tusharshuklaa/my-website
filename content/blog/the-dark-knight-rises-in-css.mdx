@@ -14,7 +14,7 @@ tags:
 ---
 import { MultiColumn } from '../../components/multi-column'
 
-![Batman image made with CSS](/img/showcase/batman-css.png "The Dark Knight Rises... In CSS")
+![Batman image made with CSS](the-dark-knight-rises-in-css "The Dark Knight Rises... In CSS")
 
 >It's not who I am underneath, but what I code that defines me.
 >
@@ -52,7 +52,7 @@ Before diving headfirst into the code, I found it helpful to **visualize the Bat
 2. **Use CSS tools**: For those tricky parts like Batman&apos;s iconic lips or the asymmetric curves of his cowl, I relied on the `clip-path` property to mask and shape elements.
 3. **Determine a base shape**: I chose a central shape as the foundation (batman&apos;s face in this case) and defined desired size (width and height) for it, and then derived all the other sizes relative to it. Choosing the right base shape is crucial – it's the foundation upon which everything else is built. Think of it as your Bat-cave — everything revolves around the core.
 
-![Batman face outline](/img/blogs/batman-outline.png "Batman face outline")
+![Batman face outline](batman-outline_lnpkuk "Batman face outline")
 </MultiColumn>
 Here&apos;s a snippet demonstrating how I used `clip-path` to create a complex shape:
 
@@ -174,11 +174,11 @@ First, we create a container element and give it a specific width (200px in this
 The real magic happens with the borders. Think of it like this: when you make a border transparent and give different sizes to different sides, CSS creates slanted edges (notice the peach slanted dotted lines between the outer and inner box).
 Now pay attention to the shaded border-bottom in the diagram. We already have our trapezoid (somewhat). We're using this behavior to our advantage:
 
-![Box with borders](/img/blogs/diag-trapezoid-1.png "Box with borders")
+![Box with borders](diag-trapezoid-1_exf05v "Box with borders")
 </MultiColumn>
 
 <MultiColumn>
-![Trapezoid Box with borders](/img/blogs/diag-trapezoid-2.png "Trapezoid Box with borders")
+![Trapezoid Box with borders](diag-trapezoid-2_sedyjt "Trapezoid Box with borders")
 
 - The bottom border creates the main body of the trapezoid with a solid color (in this case, a nice peach color).
 - The left and right borders are made transparent, and when they meet the bottom border, they create those characteristic slanted sides.
@@ -254,7 +254,7 @@ to create the slanted sides of the trapezoid. The `--bat-face-side` variable is 
 <br />
 <br />
 By now, we should have something like this:
-![Batman face with trapezoid](/img/blogs/batman-step-2.png "Batman face with trapezoid")
+![Batman face with trapezoid](batman-step-2_u9ke5g "Batman face with trapezoid")
 
 ### Adding ears (03.css)
 Now that we have the face, let's add the ears. Batman's ears are a simple triangle shape. We can create this using the border technique as well.<br />
@@ -292,7 +292,7 @@ I&apos;ve used psuedo elements to create ears. Psuedo elements are like invisibl
 ```
 
 Now our Batman face should look like this:
-![Batman face with ears](/img/blogs/batman-step-3.png "Batman face with ears")
+![Batman face with ears](batman-step-3_bsquei "Batman face with ears")
 
 ### Adding Eyes (04.css)
 The next prominent shape in Batman's face is his eyes. Batman's eyes are simple traingles. We can create this using the same logic as ears.
@@ -347,7 +347,7 @@ Also notice that instead of creating two separate elements for the eyes, I've us
 <br />
 <br />
 The Dark Knight can see now:
-![Batman face with eyes](/img/blogs/batman-step-4.png "Batman face with eyes")
+![Batman face with eyes](batman-step-4_qfhthd "Batman face with eyes")
 
 ### Adding Mouth (05.css)
 Once again, the mouth is a simple rectangle that contains a trapezoid shape chin and a triangle shaped the nose (let's ignore the lips for now). We can use the same technique as we did for the face, eyes and ears.
@@ -414,7 +414,7 @@ Once again, the mouth is a simple rectangle that contains a trapezoid shape chin
 ```
 
 Gradually, our Batman is taking shape:
-![Batman face with mouth](/img/blogs/batman-step-5.png "Batman face with mouth")
+![Batman face with mouth](batman-step-5_rm7kxr "Batman face with mouth")
 
 ### Adding Lips (06.css)
 The lips are a bit more complex than the other shapes we've created so far. The lips appear to be an oddly shaped polygon. We can use the [`clip-path`](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path) property to create this shape.
@@ -443,7 +443,7 @@ The lips are a bit more complex than the other shapes we've created so far. The 
 ```
 
 Guess who is laughing now:
-![Batman face with lips](/img/blogs/batman-step-6.png "Batman face with lips")
+![Batman face with lips](batman-step-6_np8y54 "Batman face with lips")
 
 ### Adding Shoulders (07.css)
 Now that we have the face, let's add the shoulders. The shoulders are once again simple trapezoid shapes (ignore the cape curves for now). We can use the same technique as we did for the face, eyes, ears, and mouth.
@@ -483,7 +483,7 @@ Now that we have the face, let's add the shoulders. The shoulders are once again
 ```
 
 Batman is now ready for action:
-![Batman face with shoulders](/img/blogs/batman-step-7.png "Batman face with shoulders")
+![Batman face with shoulders](batman-step-7_mbdlrq "Batman face with shoulders")
 
 ### Adding Cape (08.css)
 The cape is a bit more complex than the other shapes we've created so far. The cape appears to have a lot of inward curves which can be a bit tricky to create. My trick here is to create a transparent box, add curves to it's corners and then use `box-shadow` to create the illusion of curves.
@@ -608,7 +608,7 @@ Lastly, I've used the `transform: scaleX(-1)` property to flip the right side of
 <br />
 <br />
 Batman is now ready to take on the night:
-![Batman face with cape](/img/blogs/batman-step-8.png "Batman face with cape")
+![Batman face with cape](the-dark-knight-rises-in-css "Batman face with cape")
 
 ### Adding subtle animations (09.css)
 To add a bit of life to our Batman, let's add some subtle animations. We can use CSS animations to make Batman's eyes shrink and change it's color to red to show his anger. We'll also change his macho smile to a grim expression.
@@ -650,7 +650,7 @@ Now let's animate the lips. It's a lot simpler now that we know how to create co
 ```
 
 And now our Batman is ready to take on the night:
-![Batman face with cape](/img/blogs/batman-step-9.png "Batman face with cape")
+![Angry Batman face with cape](batman-step-9_ymetry "Angry Batman face with cape")
 
 ## The Dark Knight&apos;s Secret: Tips & Tricks
 
@@ -659,7 +659,7 @@ Over the course of this project, I uncovered several tricks that every CSS super
 <MultiColumn>
 - **Responsive Sizing**: Use a core shape defined in viewport units. All other dimensions? Derive them as multiples of this core. CSS variables are your best friend for customization. It&apos;s like having a master plan for every Gotham heist.
 
-![Diagram showing viewport units](/img/blogs/diag-responsive-unit.png "Diagram showing Viewport Units")
+![Diagram showing viewport units](diag-responsive-unit_oozw9t "Diagram showing Viewport Units")
 </MultiColumn>
 
 ```css
@@ -673,7 +673,7 @@ Over the course of this project, I uncovered several tricks that every CSS super
 <MultiColumn>
 - **Border-Radius Wizardry**: Experiment with different border-radius values to morph a rectangle into an ellipse, or even a more complex shape. Each corner can be manipulated individually—just as Batman adapts to every new challenge. The key factor for creating complex curves is to understand that you can provide two radii instead of just one in `border-radius`. Most of us are already aware of this syntax `border-radius: 10px` but what many miss is the syntax for adding another radius like `border-radius: 10px / 15px` . The first part (before forward slash) determines the first radius (for each corner) and the latter defines the another radii. Think of it as an ellipse shape which has two radii. You can refer to [this MDN doc for more](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius) info on the syntax.
 
-![Diagram showing border-radius syntax](/img/blogs/diag-border-radius.png "Diagram showing border-radius syntax")
+![Diagram showing border-radius syntax](diag-border-radius_hzojsj "Diagram showing border-radius syntax")
 </MultiColumn>
 ```css
 .batman-curve {
@@ -684,7 +684,7 @@ Over the course of this project, I uncovered several tricks that every CSS super
 <MultiColumn>
 - **Box-Shadow & Scale**: Not just for drop shadows! Use `box-shadow` to mimic a mirror effect and `scale(-1)` to flip elements. It&apos;s the secret behind many visual illusions in my code.
 
-![Diagram showing box-shadow layers](/img/blogs/diag-box-shadow.png "Diagram showing box-shadow layers")
+![Diagram showing box-shadow layers](diag-box-shadow_rqyl0w "Diagram showing box-shadow layers")
 </MultiColumn>
 ```css
 .batman-symbol {
@@ -698,7 +698,7 @@ Over the course of this project, I uncovered several tricks that every CSS super
 <MultiColumn>
 - **Translate vs. Margin**: Remember, `margin` creates space by affecting surrounding elements, whereas `translate` simply moves the element visually. Use them wisely — like choosing the right Batmobile for a quick getaway. Knowing the difference is key.
 
-![Diagram showing margin and translate difference](/img/blogs/diag-margin-translate.png "Diagram showing margin and translate difference")
+![Diagram showing margin and translate difference](diag-margin-translate_lieutq "Diagram showing margin and translate difference")
 </MultiColumn>
 ```css
 /* Margin - creates space */
