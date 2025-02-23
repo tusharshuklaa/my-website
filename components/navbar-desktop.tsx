@@ -2,37 +2,48 @@
 
 import { FC, useState } from "react";
 import Link from "next/link";
-import { compareDesc, format, parseISO } from 'date-fns';
+import { motion } from "framer-motion";
+import { compareDesc, format, parseISO } from "date-fns";
 import { cn } from "@/lib/utils";
 import { Menu, MenuItem, HoveredLink, ProductItem } from "@components/ui";
 import { CommandCenter } from "@components/command-center";
 import { TextFlipper } from "@components/text";
 import { UiComponent } from "@/types";
-import { allBlogs } from '@content';
+import { allBlogs, Blog } from '@content';
 import { MyAvatar } from "@components/my-avatar";
-import { DownloadResumeButton } from "./download-resume-button";
+import { DownloadResumeButton } from "@components/download-resume-button";
+import { CoolBorder } from "@components/cool-border";
+import { useHideOnScroll } from "@/hooks/use-hide-on-scroll";
+
+const getLimitedBlogs = (blogs: Array<Blog>, limit: number) => blogs
+  .filter(blog => blog.published)
+  .map(blog => ({
+    ...blog,
+    date: format(parseISO(blog.date), 'LLLL d, yyyy')
+  }))
+  .slice(0, limit)
+  .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
 export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
+  const blogs = getLimitedBlogs(allBlogs, 4);
+
   const [active, setActive] = useState<string | null>(null);
-  const blogs = allBlogs
-    .filter(blog => blog.published)
-    .map(blog => ({
-      ...blog,
-      date: format(parseISO(blog.date), 'LLLL d, yyyy')
-    }))
-    .slice(0, 4)
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  const { isHiddenOnScroll } = useHideOnScroll();
 
   return (
-    <nav
+    <motion.nav
       className={cn(
         "hidden sm:block group fixed inset-x-0 top-10 z-50 mx-auto sm:max-w-xl lg:max-w-3xl backdrop-blur-sm transition-shadow duration-500 ease-out [--bg-size:300%]",
         className,
       )}
+      animate={{
+        y: isHiddenOnScroll ? '-200%' : '0%',
+        opacity: isHiddenOnScroll ? 0 : 1,
+      }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      initial={{ y: 0, opacity: 1 }}
     >
-      <div
-        className={`absolute inset-0 block h-full w-full animate-gradient rounded-full bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] p-[1px] ![mask-composite:subtract] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`}
-      />
+      <CoolBorder />
       <Menu setActive={setActive}>
         <Link href="/" className="flex justify-between space-x-2 align-middle">
           <MyAvatar />
@@ -77,6 +88,6 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
           <CommandCenter />
         </div>
       </Menu>
-    </nav>
+    </motion.nav>
   );
 };

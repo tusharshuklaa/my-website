@@ -85,6 +85,7 @@ export { Safari } from "./safari";
 export { wrap } from "./scroll-based-velocity";
 export { VelocityScroll } from "./scroll-based-velocity";
 export { ShootingStars } from "./shooting-stars";
+export { Toaster } from "./sonner";
 export { SparklesCore } from "./sparkles";
 export { Spotlight } from "./spotlight";
 export { StarsBackground } from "./stars-background";
