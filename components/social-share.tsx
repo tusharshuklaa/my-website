@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { FC } from 'react';
 import {
@@ -23,11 +23,13 @@ import { Button } from '@ui';
 import { CoolBorder } from '@components/cool-border';
 
 export const SocialShare: FC<UiComponent> = ({ className }) => {
+  if (typeof window === 'undefined') return;
+
   const socialShareClasses = cn(
     "w-80 h-14 rounded-full py-2 px-6 flex justify-between items-center z-30 bg-black fixed left-0 right-0 bottom-6 m-auto",
     className
   );
-  const shareUrl = window.location.href;
+  const shareUrl = window?.location.href || "https://tusharshukla.dev/blog";
   const shareContent = `Hey! Checkout this article - "${document.title}" - `;
   const htmlTitle = "Share this article on ";
 
