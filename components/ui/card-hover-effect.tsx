@@ -2,8 +2,8 @@
 
 import { FC, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import { AdvImage } from "@components/adv-image";
 import { cn } from "@/lib/utils";
 import { badgeVariants, Card, CardTitle, CardDescription, CardDate, CardFooter, } from "@ui";
 import { GradientText } from "@components/text";
@@ -119,7 +119,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
               {
                 item.img && (
                   <div className="mt-2 w-full h-44">
-                    <Image
+                    <AdvImage
                       src={item.img}
                       alt={item.title}
                       width={170}

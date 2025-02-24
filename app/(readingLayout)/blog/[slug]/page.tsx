@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import type { Metadata, ResolvingMetadata } from 'next';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { format, parseISO } from 'date-fns';
 import { allBlogs } from '@content';
@@ -20,8 +20,7 @@ type BlogPageParams = {
 };
 
 export async function generateMetadata(
-  { params }: BlogPageParams,
-  parent: ResolvingMetadata
+  { params }: BlogPageParams
 ): Promise<Metadata> {
   // Find the post for the current slug
   const blogPost = allBlogs.find((blog) => blog.slug === params.slug);

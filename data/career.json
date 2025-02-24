@@ -38,8 +38,8 @@
         }
       ],
       "description": "Adidas AG is a multinational corporation, founded and headquartered in Herzogenaurach, Germany, that designs and manufactures shoes, clothing, and accessories. It is the largest sportswear manufacturer in Europe, and the second largest in the world, after Nike.",
-      "img": "/img/adidas.png",
-      "imgDark": "/img/adidas-white.png"
+      "img": "adidas_miqnav",
+      "imgDark": "adidas-white_agh379"
     },
     {
       "company": "Publicis Sapient",
@@ -81,8 +81,8 @@
         }
       ],
       "description": "Publicis Sapient is a digital business transformation company. It provides business consulting, technology, and customer experience services. The company is organized as a matrix, combining vertical expertise with a focus on technology and platforms.",
-      "img": "/img/ps.png",
-      "imgDark": "/img/ps-white.jpg"
+      "img": "ps_a0o56a",
+      "imgDark": "ps-white_k7xgqb"
     },
     {
       "company": "Wazo Studio",
@@ -102,7 +102,7 @@
         }
       ],
       "description": "Wazo Studio is a software development company that specializes in creating software for Real Estate Developers.",
-      "img": "/img/wazo.png"
+      "img": "wazo_jyw17l"
     },
     {
       "company": "SaaS Labs, Inc",
@@ -124,7 +124,7 @@
         }
       ],
       "description": "SaaS Labs is a software development company that specializes in creating software for Social Media Marketing.",
-      "img": "/img/saaslabs.png"
+      "img": "saaslabs_buylgj"
     },
     {
       "company": "Hestabit Technologies Pvt. Ltd.",
@@ -144,7 +144,7 @@
         }
       ],
       "description": "Hestabit Technologies is a software development company that specializes in creating software for Educational Institutes and Organizations.",
-      "img": "/img/hestabit.svg"
+      "img": "hestabit_ekyn8k"
     },
     {
       "company": "Genpact Headstrong Capital Markets",
@@ -165,7 +165,7 @@
         }
       ],
       "description": "Genpact Headstrong Capital Markets (now Genpact) was a software development company",
-      "img": "/img/headstrong.jpeg"
+      "img": "headstrong_n8tg21"
     }
   ]
 }

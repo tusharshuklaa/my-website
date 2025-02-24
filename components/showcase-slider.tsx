@@ -1,14 +1,13 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import { UiComponent } from "@/types";
 import { cn } from "@/lib/utils";
-import { ThreeDSliderContainer, ThreeDSliderItem } from './three-d-slider';
-import Image from 'next/image';
+import { ThreeDSliderContainer, ThreeDSliderItem } from '@components/three-d-slider';
 import ShowcaseData from "@/data/showcase.json";
-import { Button, Card, CardDate, CardDescription, CardTitle } from '@ui';
+import { Button, Card, CardDescription, CardTitle } from '@ui';
 import { GradientText } from '@components/text';
-import Link from 'next/link';
 import { AnimatedHeading } from '@components/text/heading';
-import { SnapSection } from '@components/snap-container';
+import { AdvImage } from '@components/adv-image';
 
 export type Showcase = {
   title: string;
@@ -23,7 +22,7 @@ const ShowcaseCard: FC<Showcase> = ({ title, url, img, description, tags, featur
   return (
     <Card className="p-0 relative">
       <div className="absolute inset-0 before:bg-black before:opacity-70 before:w-full before:h-full before:absolute before:z-[1] before:inset-0 before:margin-auto">
-        <Image src={img} alt={title} fill className="object-fit" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+        <AdvImage src={img} alt={title} fill className="object-fit" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
       </div>
       <div className="z-10 absolute inset-0 font-dongle text-white flex flex-col justify-end p-2">
         <div className="flex flex-col">
