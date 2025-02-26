@@ -10,13 +10,20 @@ export const AdvImage:FC<ImageProps> = ({ className, ...props }) => {
   const isExternalImage = src?.startsWith('http');
   const ImgComp = isExternalImage ? Image : CldImage;
   const defaultSize = "500";
+  const additionalProps: Record<string, unknown> = {};
+
+  if (props.fill) {
+    additionalProps.fill = props.fill;
+  } else {
+    additionalProps.width = props.width || defaultSize;
+    additionalProps.height = props.height || defaultSize;
+  }
 
   return (
     <ImgComp
       data-testid="cmp-adv-image"
       className={ className }
-      width={defaultSize}
-      height={defaultSize}
+      {...additionalProps}
       {...props}
       src={src}
       alt={altText}

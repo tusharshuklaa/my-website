@@ -38,8 +38,8 @@
         }
       ],
       "description": "Adidas AG is a multinational corporation, founded and headquartered in Herzogenaurach, Germany, that designs and manufactures shoes, clothing, and accessories. It is the largest sportswear manufacturer in Europe, and the second largest in the world, after Nike.",
-      "img": "adidas_miqnav",
-      "imgDark": "adidas-white_agh379"
+      "img": "adidas-white_agh379",
+      "imgLight": "adidas_miqnav"
     },
     {
       "company": "Publicis Sapient",
@@ -81,8 +81,8 @@
         }
       ],
       "description": "Publicis Sapient is a digital business transformation company. It provides business consulting, technology, and customer experience services. The company is organized as a matrix, combining vertical expertise with a focus on technology and platforms.",
-      "img": "ps_a0o56a",
-      "imgDark": "ps-white_k7xgqb"
+      "img": "ps-white_k7xgqb",
+      "imgLight": "ps_a0o56a"
     },
     {
       "company": "Wazo Studio",
