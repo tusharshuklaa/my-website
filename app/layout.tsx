@@ -24,10 +24,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tusharshukla.dev"),
-  title: "Portfolio website | Tushar Shukla",
+  title: "Tushar Shukla | Portfolio website",
   description: "Frontend Developer Portfolio Website",
   openGraph: {
-    siteName: "Portfolio website | Tushar Shukla",
+    siteName: "Tushar Shukla | Portfolio website",
     type: "website",
     locale: "en_US"
   },
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
       "application/rss+xml": "https://tusharshukla.dev/rss.xml"
     }
   },
-  applicationName: "Portfolio website | Tushar Shukla",
+  applicationName: "Tushar Shukla | Portfolio website",
   appleWebApp: {
-    title: "Portfolio website | Tushar Shukla",
+    title: "Tushar Shukla | Portfolio website",
     statusBarStyle: "default",
     capable: true
   },
