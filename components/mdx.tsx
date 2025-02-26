@@ -1,9 +1,5 @@
-'use client';
-
 import { FC } from 'react';
 import Link from 'next/link';
-import { CldImage } from 'next-cloudinary';
-import Image from 'next/image';
 import type { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 import { AnimatedHeading } from './text/heading';
@@ -12,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { PrettyLink } from '@components/pretty-link';
 import { ExternalEmbed } from '@components/external-embed';
 import { MultiColumn } from '@components/multi-column';
+import { AdvImage } from './adv-image';
 
 type MdxProps = {
   code: string;
@@ -67,12 +64,10 @@ const components: MDXComponents = {
   // Image
   img: ({ ...props }) => {
     const altText = props.alt || props.title || '';
-    const isExternalImage = props.src?.startsWith('http');
-    const ImgComp = isExternalImage ? Image : CldImage;
 
     return (
       <figure className="shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)] rounded-lg overflow-hidden w-4/5 mx-auto mt-8 mb-12">
-        <ImgComp
+        <AdvImage
           src={props.src || ''}
           width="500"
           height="500"

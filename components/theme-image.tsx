@@ -1,18 +1,20 @@
-/* eslint-disable jsx-a11y/alt-text */
+"use client";
+
 import { FC } from "react";
-import Image, { ImageProps } from "next/image";
+import { ImageProps } from "next/image";
+import { AdvImage } from "@components/adv-image";
 
 export type ThemeImageProps = ImageProps & {
-  darkSrc: string;
+  lightSrc: string;
 };
 
 export const ThemeImage: FC<ThemeImageProps> = props => {
-  const { darkSrc, ...imgProps } = props;
+  const { alt, lightSrc, src, ...restImgProps } = props;
 
   return (
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcSet={darkSrc} />
-      <Image {...imgProps} />
+      <source media="(prefers-color-scheme: light)" srcSet={lightSrc} />
+      <AdvImage src={src as string} alt={alt} {...restImgProps} />
     </picture>
   );
 };

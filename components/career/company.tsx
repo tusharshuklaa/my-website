@@ -15,7 +15,7 @@ export type CareerCompany = {
   description: string;
   heading: string;
   img: string;
-  imgDark?: string;
+  imgLight?: string;
   positions: Array<Position>;
   type: WorkType;
   url: string;
@@ -23,11 +23,11 @@ export type CareerCompany = {
 
 type CompanyProps = Omit<CareerCompany, "heading">;
 
-export const Company: FC<CompanyProps> = ({ company, description, img, imgDark, positions, type, url }) => {
+export const Company: FC<CompanyProps> = ({ company, description, img, imgLight, positions, type, url }) => {
   return (
     <section className="flex gap-2 md:gap-8 flex-col md:flex-row">
       <div className="mt-2 mb-4 sm:mb-0 flex h-28 w-full sm:w-28 shrink-0 items-end md:items-start justify-center">
-        <ThemeImage darkSrc={imgDark || ""} src={img} alt={`${company} logo`} title={`${description}`} width={112} height={112} />
+        <ThemeImage lightSrc={imgLight || ""} src={img} alt={`${company} logo`} title={`${description}`} width={112} height={112} />
       </div>
 
       <div className="flex flex-col">

@@ -3,7 +3,7 @@
     {
       "title": "The Dark Knight Rises... In CSS",
       "url": "https://github.com/tusharshuklaa/the-dark-knight-in-css",
-      "img": "/img/showcase/batman-css.png",
+      "img": "the-dark-knight-rises-in-css",
       "description": "The Dark Knight, a pure CSS art created for fun. It is a simple and fun project to create Batman face using CSS.",
       "tags": [
         "github",
@@ -15,7 +15,7 @@
     {
       "title": "CSS Art | Baby Girl | Crying",
       "url": "https://codepen.io/tusharshukla/full/qBBMWVp",
-      "img": "/img/showcase/baby-girl.png",
+      "img": "baby-girl_tihgki",
       "description": "A cooing little baby girl. It is a pure CSS art created for fun.",
       "tags": [
         "codepen",
@@ -27,7 +27,7 @@
     {
       "title": "CSS Art | One Piece | Jolly Roger",
       "url": "https://codepen.io/tusharshukla/full/RvgJXK",
-      "img": "/img/showcase/jolly-roger.png",
+      "img": "jolly-roger_b7a0kg",
       "description": "I just love One Piece anime. So, I created Luffy's Jolly Roger using pure CSS.",
       "tags": [
         "codepen",
@@ -39,7 +39,7 @@
     {
       "title": "CSS Art | Moustache | Single Div",
       "url": "https://codepen.io/tusharshukla/full/aGeZNL",
-      "img": "/img/showcase/moustache.png",
+      "img": "moustache_bn2k2x",
       "description": "A moustache created using a single div element. It is inspired from the awesome work done by Lynn Fisher. Do check out her work.",
       "tags": [
         "codepen",
@@ -51,7 +51,7 @@
     {
       "title": "CSS Art | Office Girl",
       "url": "https://codepen.io/tusharshukla/full/pmEwxZ",
-      "img": "/img/showcase/office-girl.png",
+      "img": "office-girl_i4adsh",
       "description": "A portrait of a professional looking girl made purely in CSS. A wall-sized poster in one of my previous offices inspired me to create this.",
       "tags": [
         "codepen",
@@ -63,7 +63,7 @@
     {
       "title": "CSS Art | One Punch Man | Saitama",
       "url": "https://codepen.io/tusharshukla/full/dyjOmKX",
-      "img": "/img/showcase/saitama.png",
+      "img": "saitama_ka4jmz",
       "description": "Saitama is the main protagonist of the anime and manga, One Punch Man. I loved the overall idea of this character so I created this using pure CSS.",
       "tags": [
         "codepen",
@@ -75,7 +75,7 @@
     {
       "title": "CSS Art | Merry Christmas | Santa with Deer",
       "url": "https://codepen.io/tusharshukla/full/QWqOLrW",
-      "img": "/img/showcase/santa_deer.png",
+      "img": "santa_deer_vkw0h1",
       "description": "Christmas has a very special vibe for everyone across the globe. I enjoyed this vibe by creating a CSS art of Santa with Deer.",
       "tags": [
         "codepen",
@@ -87,7 +87,7 @@
     {
       "title": "Driver Salary Slip Generator",
       "url": "https://driver-salary-slip-generator.vercel.app/",
-      "img": "/img/showcase/driver-salary-generator.png",
+      "img": "driver-salary-generator_yxqpvz",
       "description": "A simple web app to generate salary slips for drivers. I was looking for such tool myself but without any paywall or ads. So, I created one.",
       "tags": [
         "github",
@@ -99,7 +99,7 @@
     {
       "title": "Fun Javascript Game | Space Runner",
       "url": "https://tusharshuklaa.github.io/space-runner/",
-      "img": "/img/showcase/space-runner.png",
+      "img": "space-runner_phn4vp",
       "description": "A fun game created using HTML, CSS, and Javascript. It is a simple endless running game where you have to dodge the space obstacles and move as far as possible, much like Flappy Bird.",
       "tags": [
         "github",
@@ -123,7 +123,7 @@
     {
       "title": "Chrome Dev Tools Snippets Collection",
       "url": "https://github.com/tusharshuklaa/chrome-dev-tools-snippets-collection",
-      "img": "/img/showcase/chrome-dev-tools.webp",
+      "img": "chrome-dev-tools_nqljou",
       "description": "A collection of useful Chrome Dev Tools snippets that I use in my day-to-day coding. It includes snippets for debugging, performance, and more.",
       "tags": [
         "github",
@@ -134,7 +134,7 @@
     {
       "title": "Useful SCSS Mixins",
       "url": "https://github.com/tusharshuklaa/SaSSEase---A-Mixins-Lab",
-      "img": "/img/showcase/sassease.png",
+      "img": "sassease_lyxwrx",
       "description": "A collection of useful SCSS mixins that I use in my day-to-day coding. It includes mixins for animations, transitions, and more.",
       "tags": [
         "github",

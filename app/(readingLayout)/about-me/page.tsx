@@ -1,11 +1,11 @@
 import { FC } from "react";
-import Image from "next/image";
 import { SnapSection } from "@components/snap-container";
 import { AnimatedHeading, Heading2 } from "@components/text";
 import { PrettyLink } from "@components/pretty-link";
 import { Spotlight } from "@components/ui";
 import { cn } from "@/lib/utils";
 import { BasicUiComponent } from "@/types";
+import { AdvImage } from "@/components/adv-image";
 
 const JustText: FC<BasicUiComponent> = ({ children, className }) => (
   <p className={cn("mt-4 text-justify leading-8 tracking-wider", className)}>{children}</p>
@@ -49,8 +49,8 @@ const AboutMePage: FC = () => (
       <div className="hidden md:block absolute w-screen h-full -left-full top-0 max-w-6xl z-10 pointer-events-none">
         <Spotlight className="sticky -top-40 left-0 md:left-1/2 md:-top-20 max-h-dvh lg:w-full" fill="white" />
       </div>
-      <Image
-        src="/img/tushar.jpg"
+      <AdvImage
+        src="tushar-full_ji6wvh"
         alt="Tushar Shukla's image"
         width="285"
         height="775"
