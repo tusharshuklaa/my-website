@@ -2,6 +2,7 @@
 import { spawn } from "child_process";
 import { statSync } from "fs";
 import path from "path";
+import Slugger from "github-slugger";
 import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode, { LineElement } from "rehype-pretty-code";
@@ -67,6 +68,8 @@ async function getLastModifiedDate(filePath: string): Promise<Date | null> {
   }
 }
 
+const getBlogSlug = (blog: any) => blog._raw.flattenedPath.replace(/^blog\//, "");
+
 export const Blog = defineDocumentType(() => ({
   name: "Blog",
   filePathPattern: "blog/**/*.mdx",
@@ -120,13 +123,13 @@ export const Blog = defineDocumentType(() => ({
       type: "string",
       resolve: post => {
         // Remove 'blog/' from the beginning and add it back with a leading slash
-        const slug = post._raw.flattenedPath.replace(/^blog\//, "");
+        const slug = getBlogSlug(post);
         return `/blog/${slug}`;
       },
     },
     slug: {
       type: "string",
-      resolve: post => post._raw.flattenedPath.replace(/^blog\//, ""),
+      resolve: post => getBlogSlug(post),
     },
     readingTime: {
       type: "number",
@@ -156,17 +159,22 @@ export const Blog = defineDocumentType(() => ({
         return date?.toISOString() || doc.date;
       },
     },
-    formattedLastModified: {
-      type: "string",
-      resolve: async doc => {
-        const date = await getLastModifiedDate(doc._raw.sourceFilePath);
-        return (
-          date?.toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          }) || ""
-        );
+    toc: {
+      type: "json",
+      resolve: doc => {
+        const regExp = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+        const slugger = new Slugger();
+        const headings = Array.from(doc.body.raw.matchAll(regExp)).map(({ groups }) => {
+          const content = groups?.content || "";
+
+          return {
+            level: groups?.flag.length || 0,
+            content,
+            slug: content ? slugger.slug(content) : undefined,
+          };
+        });
+
+        return headings;
       },
     },
   },
