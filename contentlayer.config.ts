@@ -109,6 +109,11 @@ export const Blog = defineDocumentType(() => ({
       of: { type: "string" },
       required: true,
     },
+    keywords: {
+      type: "list",
+      of: { type: "string" },
+      required: false,
+    },
   },
   computedFields: {
     url: {
