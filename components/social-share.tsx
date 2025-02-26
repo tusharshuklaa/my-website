@@ -52,16 +52,16 @@ export const SocialShare: FC<UiComponent> = ({ className }) => {
       <TwitterShareButton
         url={shareUrl}
         title={shareContent}
-        htmlTitle={`${ htmlTitle } Twitter/X`}
+        htmlTitle={`${htmlTitle} Twitter/X`}
       >
         <XIcon size={28} round />
       </TwitterShareButton>
 
-      <LinkedinShareButton url={shareUrl} htmlTitle={`${ htmlTitle } Linkedin`}>
+      <LinkedinShareButton url={shareUrl} htmlTitle={`${htmlTitle} Linkedin`}>
         <LinkedinIcon size={28} round />
       </LinkedinShareButton>
 
-      <FacebookShareButton url={shareUrl} htmlTitle={`${ htmlTitle } Facebook`}>
+      <FacebookShareButton url={shareUrl} htmlTitle={`${htmlTitle} Facebook`}>
         <FacebookIcon size={28} round />
       </FacebookShareButton>
 
@@ -69,7 +69,7 @@ export const SocialShare: FC<UiComponent> = ({ className }) => {
         url={shareUrl}
         title={shareContent}
         separator=":: "
-        htmlTitle={`${ htmlTitle } Whatsapp`}
+        htmlTitle={`${htmlTitle} Whatsapp`}
       >
         <WhatsappIcon size={28} round />
       </WhatsappShareButton>
@@ -77,7 +77,7 @@ export const SocialShare: FC<UiComponent> = ({ className }) => {
       <TelegramShareButton
         url={shareUrl}
         title={shareContent}
-        htmlTitle={`${ htmlTitle } Telegram`}
+        htmlTitle={`${htmlTitle} Telegram`}
       >
         <TelegramIcon size={28} round />
       </TelegramShareButton>
@@ -86,7 +86,7 @@ export const SocialShare: FC<UiComponent> = ({ className }) => {
         url={shareUrl}
         subject="Check this out!"
         body={shareContent}
-        htmlTitle={`${ htmlTitle } Email`}
+        htmlTitle={`${htmlTitle} Email`}
       >
         <EmailIcon size={28} round />
       </EmailShareButton>
