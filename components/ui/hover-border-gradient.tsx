@@ -14,6 +14,7 @@ type HoverBorderGradientProps<T = HTMLElement> = React.PropsWithChildren<{
   clockwise?: boolean;
   href?: string;
   download?: boolean;
+  target?: string;
 }> & React.HTMLAttributes<T>;
 
 export const HoverBorderGradient: FC<HoverBorderGradientProps> = ({
@@ -59,7 +60,7 @@ export const HoverBorderGradient: FC<HoverBorderGradientProps> = ({
   }, [hovered]);
   return (
     <Tag
-      onMouseEnter={(event: React.MouseEvent<HTMLDivElement>) => {
+      onMouseEnter={() => {
         setHovered(true);
       }}
       onMouseLeave={() => setHovered(false)}

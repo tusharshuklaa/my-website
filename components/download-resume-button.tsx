@@ -15,11 +15,11 @@ export const DownloadResumeButton: FC<DownloadResumeButtonProps> = ({ className,
       data-testid="cmp-download-resume-button"
       className={downloadResumeButtonClasses}
       as="a"
-      href="/docs/resume.pdf"
+      href="https://drive.google.com/file/d/1FbUKhgGbrNY-dK8ZMX0CcDRnMCxQx3s5/view?usp=sharing"
       containerClassName={cn("rounded-full h-12", containerClassName)}
-      download
+      target="_blank"
     >
-      Download Resume
+      View Resume
     </HoverBorderGradient>
   );
 };
