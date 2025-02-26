@@ -128,11 +128,11 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
       <div className="mt-2 grid gap-2 sm:gap-4 grid-cols-1 sm:grid-cols-[10rem_minmax(60ch,_7fr)_3fr]">
         <aside className="hidden sm:block"></aside>
 
-        <article className="mx-auto px-4 text-base leading-relaxed order-2 sm:order-none">
+        <article className="mx-auto px-4 text-base leading-relaxed order-2 sm:order-none max-w-full">
           <Mdx code={blog.body.code} />
         </article>
 
-        <aside className="px-2 order-1 sm:order-none max-w-full">
+        <aside className="px-4 sm:px-2 order-1 sm:order-none">
           <TableOfContents
             tocs={blog.toc}
             className="mt-20 sticky top-32"
