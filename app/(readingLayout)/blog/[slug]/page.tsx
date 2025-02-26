@@ -2,6 +2,7 @@ import { FC } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { format, parseISO } from 'date-fns';
+import { getCldOgImageUrl } from 'next-cloudinary';
 import { allBlogs } from '@content';
 import { AnimatedHeading } from '@components/text/heading';
 import { GradientText } from '@components/text';
@@ -10,8 +11,8 @@ import { Avatar, AvatarFallback, AvatarImage, LampContainer } from '@ui';
 import { SnapSection } from '@components/snap-container';
 import { Mdx } from '@components/mdx';
 import { SocialShare } from '@/components/social-share';
+import { TableOfContents } from '@components/table-of-contents';
 import { absoluteUrl } from "@/lib/utils";
-import { getCldOgImageUrl } from 'next-cloudinary';
 
 type BlogPageParams = {
   params: {
@@ -124,9 +125,20 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
         </LampContainer>
       </SnapSection>
 
-      <article className="mt-2 max-w-5xl px-4 mx-auto text-base leading-relaxed">
-        <Mdx code={blog.body.code} />
-      </article>
+      <div className="mt-2 grid gap-2 sm:gap-4 grid-cols-1 sm:grid-cols-[10rem_minmax(60ch,_7fr)_3fr]">
+        <aside className="hidden sm:block"></aside>
+
+        <article className="mx-auto px-4 text-base leading-relaxed order-2 sm:order-none">
+          <Mdx code={blog.body.code} />
+        </article>
+
+        <aside className="px-2 order-1 sm:order-none max-w-full">
+          <TableOfContents
+            tocs={blog.toc}
+            className="mt-20 sticky top-32"
+          />
+        </aside>
+      </div>
 
       <SocialShare />
     </>
