@@ -2,10 +2,10 @@
 
 import { FC } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { BasicUiComponent } from "@/types";
 import { AspectRatio, ThreeDCardContainer, ThreeDCardBody, ThreeDCardItem } from '@ui';
 import { GradientText } from '@components/text';
+import { AdvImage } from '@components/adv-image';
 
 type BentoThreeDCardProps = BasicUiComponent<{
   date: string;
@@ -34,7 +34,7 @@ export const BentoThreeDCard:FC<BentoThreeDCardProps> = ({ date, description, im
 
         <ThreeDCardItem translateZ="100" className="w-full mt-4 overflow-hidden shrink-0">
           <AspectRatio ratio={16/9}>
-            <Image
+            <AdvImage
               src={img}
               height="1000"
               width="1000"

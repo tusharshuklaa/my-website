@@ -33,7 +33,6 @@ export async function generateMetadata(
     };
   }
 
-  // Construct image URL - replace with your actual image path pattern
   const ogImage = getCldOgImageUrl({
     src: blogPost.slug
   });
@@ -47,7 +46,7 @@ export async function generateMetadata(
         url: "https://tusharshukla.dev"
       }
     ],
-    keywords: blogPost.tags || [],
+    keywords: blogPost.keywords || blogPost.tags || [],
     creator: blogPost.author,
     publisher: blogPost.author,
     openGraph: {
@@ -72,7 +71,6 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: blogPost.title,
       description: blogPost.summary,
-      // Replace with your Twitter handle
       creator: "@theTSguy",
       images: [ogImage]
     },

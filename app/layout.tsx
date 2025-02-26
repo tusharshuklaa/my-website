@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Viewport, Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react"
 import { Dongle, Poppins } from "next/font/google";
 import { ThemeProvider } from "@components/theme-provider";
@@ -16,9 +16,66 @@ const dongle = Dongle({
   variable: "--font-dongle",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff"
+};
+
 export const metadata: Metadata = {
-  title: "Tushar Shukla",
-  description: "Frontend Developer Portfolio",
+  metadataBase: new URL("https://tusharshukla.dev"),
+  title: "Tushar Shukla | Portfolio website",
+  description: "Frontend Developer Portfolio Website",
+  openGraph: {
+    siteName: "Tushar Shukla | Portfolio website",
+    type: "website",
+    locale: "en_US"
+  },
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
+    googleBot: "index, follow"
+  },
+  alternates: {
+    types: {
+      "application/rss+xml": "https://tusharshukla.dev/rss.xml"
+    }
+  },
+  applicationName: "Tushar Shukla | Portfolio website",
+  appleWebApp: {
+    title: "Tushar Shukla | Portfolio website",
+    statusBarStyle: "default",
+    capable: true
+  },
+  icons: {
+    icon: [
+      {
+        url: "/favicon.ico",
+        type: "image/x-icon"
+      },
+      {
+        url: "/icon.png",
+        sizes: "192x192",
+        type: "image/png"
+      }
+    ],
+    shortcut: [
+      {
+        url: "/favicon.ico",
+        type: "image/x-icon"
+      }
+    ],
+    apple: [
+      {
+        url: "/apple-icon.png",
+        sizes: "180x180",
+        type: "image/png"
+      },
+    ]
+  }
 };
 
 export default function RootLayout({
