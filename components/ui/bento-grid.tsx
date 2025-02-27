@@ -52,7 +52,7 @@ export const BentoGridItem: FC<BentoGridItemProps> = ({
         <Link href={url}>
           <GradientText text={title} className="font-bold line-clamp-1" />
 
-          <div className="text-xs flex">
+          <div className="text-xs flex font-extrabold">
             <time dateTime={date}>
               {date}
             </time>
