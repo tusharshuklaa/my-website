@@ -3,9 +3,9 @@
 import React, { FC, PropsWithChildren } from "react";
 import { motion } from "framer-motion";
 import Link, { LinkProps } from "next/link";
-import Image from "next/image";
 import { BasicComponent } from "@/types";
 import { TextFlipper } from "@components/text";
+import { AdvImage } from "@components/adv-image";
 import { cn } from "@/lib/utils";
 
 const transition = {
@@ -80,7 +80,7 @@ type ProductItemProps = {
 
 export const ProductItem: FC<ProductItemProps> = ({ title, description, href, src }) => (
   <Link href={href} className="flex space-x-2">
-    <Image src={src} width={140} height={70} alt={title} className="flex-shrink-0 rounded-md shadow-2xl max-w-36 w-auto h-auto object-cover max-h-36" />
+    <AdvImage src={src} width={140} height={70} alt={title} className="flex-shrink-0 rounded-md shadow-2xl max-w-36 w-auto h-auto object-cover max-h-36" />
     <div className="max-w-48">
       <h4 className="mb-1 text-xl font-bold text-black dark:text-white line-clamp-2">{title}</h4>
       <p className="max-w-[10rem] text-sm text-neutral-700 dark:text-neutral-300 line-clamp-4">{description}</p>
