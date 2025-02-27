@@ -106,7 +106,7 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
               <AnimateElement delay={0.15}>
                 <Avatar className="h-16 w-16">
                   <AvatarImage src={blog.authorImg || "https://avatars.githubusercontent.com/u/7785066?v=4"} alt={blog.author} title={blog.authorDesc} />
-                  <AvatarFallback>{ blog.authorAlias }</AvatarFallback>
+                  <AvatarFallback>{blog.authorAlias}</AvatarFallback>
                 </Avatar>
               </AnimateElement>
 
