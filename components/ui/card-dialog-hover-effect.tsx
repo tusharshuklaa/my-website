@@ -8,9 +8,9 @@ import { Card, CardTitle, CardDescription } from "./card";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./dialog";
 import { GradientText } from "../text";
 import { badgeVariants } from "./badge";
-import Image from "next/image";
 import { Coding, Gadgets, Software } from "@/.contentlayer/generated";
 import { Mdx } from "@components/mdx";
+import { AdvImage } from "@components/adv-image";
 
 type DialogHoverCardsType = UiComponent<{
   items: Array<Coding | Gadgets | Software>;
@@ -72,7 +72,7 @@ export const DialogHoverCards: FC<DialogHoverCardsType> = ({ items, cardClassNam
               <DialogContent className="max-w-sm sm:max-w-lg lg:max-w-2xl">
                 <DialogHeader className="space-y-4">
                   <div className="mb-2">
-                    <Image
+                    <AdvImage
                       src={item.img}
                       alt={`Image for ${item.title}`}
                       width={450}

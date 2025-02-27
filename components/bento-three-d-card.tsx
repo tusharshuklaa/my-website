@@ -47,7 +47,7 @@ export const BentoThreeDCard:FC<BentoThreeDCardProps> = ({ date, description, im
         <ThreeDCardItem
           as="time"
           translateZ="60"
-          className="text-neutral-500 text-sm mt-4 dark:text-neutral-300 inline-block"
+          className="text-neutral-500 font-extrabold text-sm mt-4 dark:text-neutral-300 inline-block"
           dateTime={date}
         >
           {date}
@@ -58,14 +58,14 @@ export const BentoThreeDCard:FC<BentoThreeDCardProps> = ({ date, description, im
             <ThreeDCardItem
               as="span"
               translateZ="60"
-              className="text-neutral-500 text-sm mt-4 dark:text-neutral-300 inline-block mx-1"
+              className="text-neutral-500 font-extrabold text-sm mt-4 dark:text-neutral-300 inline-block mx-1"
             >
               •
             </ThreeDCardItem>
             <ThreeDCardItem
               as="span"
               translateZ="60"
-              className="text-neutral-500 text-sm mt-4 dark:text-neutral-300 inline-block"
+              className="text-neutral-500 font-extrabold text-sm mt-4 dark:text-neutral-300 inline-block"
             >
               {readingTimeString}
             </ThreeDCardItem>

@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { motion } from "framer-motion";
-import { AspectRatio } from "./ui";
+import { AspectRatio } from "@ui";
+import { AdvImage } from '@components/adv-image';
 
 export const LuminenceSkeleton = () => {
   const variants = {
@@ -133,7 +133,7 @@ export const ChatSkeleton = () => {
 
 export const ImageSkeleton = (alt: string, url: string) => (
   <AspectRatio ratio={10/2.8}>
-    <Image
+    <AdvImage
       src={url}
       height={1000}
       width={1000}

@@ -1,4 +1,4 @@
-// contentlayer.config.ts
+                                                                        // contentlayer.config.ts
 import { spawn } from "child_process";
 import { statSync } from "fs";
 import path from "path";
@@ -117,6 +117,11 @@ export const Blog = defineDocumentType(() => ({
       of: { type: "string" },
       required: false,
     },
+    related: {
+      type: "list",
+      of: { type: "string" },
+      required: false,
+    },
   },
   computedFields: {
     url: {
@@ -159,6 +164,22 @@ export const Blog = defineDocumentType(() => ({
         return date?.toISOString() || doc.date;
       },
     },
+    toc: {
+      type: "json",
+      resolve: doc => {
+        const regExp = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+        const slugger = new Slugger();
+        const headings = Array.from(doc.body.raw.matchAll(regExp)).map(({ groups }) => {
+          const content = groups?.content || "";
+
+          return {
+            level: groups?.flag.length || 0,
+            content,
+            slug: content ? slugger.slug(content) : undefined,
+          };
+        });
+
+        return headings;
     toc: {
       type: "json",
       resolve: doc => {

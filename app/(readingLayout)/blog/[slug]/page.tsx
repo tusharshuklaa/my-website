@@ -4,14 +4,15 @@ import { notFound } from 'next/navigation';
 import { format, parseISO } from 'date-fns';
 import { getCldOgImageUrl } from 'next-cloudinary';
 import { allBlogs } from '@content';
+import { Avatar, AvatarFallback, AvatarImage, LampContainer } from '@ui';
 import { AnimatedHeading } from '@components/text/heading';
 import { GradientText } from '@components/text';
 import { AnimateElement } from '@components/animate-element';
-import { Avatar, AvatarFallback, AvatarImage, LampContainer } from '@ui';
 import { SnapSection } from '@components/snap-container';
 import { Mdx } from '@components/mdx';
-import { SocialShare } from '@/components/social-share';
+import { SocialShare } from '@components/social-share';
 import { TableOfContents } from '@components/table-of-contents';
+import { MoreBlogContent } from '@components/more-blog-content';
 import { absoluteUrl } from "@/lib/utils";
 
 type BlogPageParams = {
@@ -105,7 +106,7 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
               <AnimateElement delay={0.15}>
                 <Avatar className="h-16 w-16">
                   <AvatarImage src={blog.authorImg || "https://avatars.githubusercontent.com/u/7785066?v=4"} alt={blog.author} title={blog.authorDesc} />
-                  <AvatarFallback>{ blog.authorAlias }</AvatarFallback>
+                  <AvatarFallback>{blog.authorAlias}</AvatarFallback>
                 </Avatar>
               </AnimateElement>
 
@@ -133,10 +134,16 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
         </article>
 
         <aside className="px-4 sm:px-2 order-1 sm:order-none">
-          <TableOfContents
-            tocs={blog.toc}
-            className="mt-20 sticky top-32"
-          />
+          <div className="flex flex-col items-start gap-4 mt-20 sticky top-32 max-h-none sm:max-h-[calc(98dvh-8rem)] overflow-y-auto">
+            <TableOfContents
+              tocs={blog.toc}
+            />
+
+            <MoreBlogContent
+              related={blog.related}
+              current={blog.slug}
+            />
+          </div>
         </aside>
       </div>
 
