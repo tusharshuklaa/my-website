@@ -183,7 +183,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
   return (
     <GlowingGradientBox
       className={cn(
-        "rounded-full after:rounded-full before:rounded-full max-w-xl mx-auto",
+        "rounded-full after:rounded-full before:rounded-full max-w-xl",
         className,
       )}
     >
