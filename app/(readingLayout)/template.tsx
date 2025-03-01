@@ -12,7 +12,10 @@ export default function Template({ children }: ComponentPropsWithoutRef<"div">) 
     <>
       <PageTransition>
         <Navbar />
-        <main className="bg-slate-950 fixed inset-0 overflow-x-hidden overflow-y-auto selection:bg-fuchsia-300 selection:text-fuchsia-900" id="main">
+        <main
+          className="fixed inset-0 overflow-y-auto overflow-x-hidden bg-slate-950 selection:bg-fuchsia-300 selection:text-fuchsia-900"
+          id="main"
+        >
           {children}
 
           <ContactSection />
@@ -22,4 +25,4 @@ export default function Template({ children }: ComponentPropsWithoutRef<"div">) 
       </PageTransition>
     </>
   );
-};
+}

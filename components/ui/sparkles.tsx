@@ -20,7 +20,17 @@ type ParticlesProps = UiComponent<{
   fullScreen?: boolean;
 }>;
 export const SparklesCore = (props: ParticlesProps) => {
-  const { id, className, background, minSize, maxSize, speed, particleColor, particleDensity, fullScreen = false } = props;
+  const {
+    id,
+    className,
+    background,
+    minSize,
+    maxSize,
+    speed,
+    particleColor,
+    particleDensity,
+    fullScreen = false,
+  } = props;
   const [init, setInit] = useState(false);
   useEffect(() => {
     initParticlesEngine(async engine => {

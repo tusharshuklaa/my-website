@@ -1,4 +1,4 @@
-                                                                        // contentlayer.config.ts
+// contentlayer.config.ts
 import { spawn } from "child_process";
 import { statSync } from "fs";
 import path from "path";

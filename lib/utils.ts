@@ -27,12 +27,12 @@ export const getReadingTime = (content: string) => {
 
 export const formatReadingTime = (minutes: number) => {
   if (minutes < 1) {
-    return 'Less than a minute';
+    return "Less than a minute";
   }
-  
-  return `${minutes} min${minutes === 1 ? '' : 's'} read`;
+
+  return `${minutes} min${minutes === 1 ? "" : "s"} read`;
 };
 
 export const absoluteUrl = (path: string) => {
   return `https://tusharshukla.dev${path}`;
-}
+};

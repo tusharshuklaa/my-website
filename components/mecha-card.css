@@ -1,5 +1,7 @@
 .mecha-card::before {
-  box-shadow: #ae5dfd 0px 30px 70px 0px, #96ffff 0px -10px 70px 0px;
+  box-shadow:
+    #ae5dfd 0px 30px 70px 0px,
+    #96ffff 0px -10px 70px 0px;
 }
 
 .mecha-card:nth-child(2) {
@@ -12,7 +14,15 @@
 
 .mecha-container {
   background-image: linear-gradient(0deg, #ab28fa 0%, #6f1cbe 60%, #aa53b4 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 40px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 40px 100%, 0 calc(100% - 40px));
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 40px,
+    100% calc(100% - 40px),
+    calc(100% - 40px) 100%,
+    40px 100%,
+    0 calc(100% - 40px)
+  );
   box-shadow: #ae5dfd 0px 7px 29px 0px;
 }
 

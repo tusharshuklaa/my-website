@@ -49,50 +49,48 @@ body {
   }
 
   .slider-3d-transform {
-    transform:
-      rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-      translateZ(45vmin);
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(45vmin);
   }
 }
 
 @layer components {
   .text-flipper:hover .text-flipper--text:first-child .char {
-    transform: rotate3d(1, .3, 0, -90deg);
+    transform: rotate3d(1, 0.3, 0, -90deg);
   }
 
   .text-flipper:hover .text-flipper--text:last-child .char {
-    transform: rotate3d(1, .3, 0, 0deg);
+    transform: rotate3d(1, 0.3, 0, 0deg);
   }
 }
 /* #89FC00", "#F896D8", "#C879FF", "#06D6A0", "#75DDDD", "#9368B7" */
 @keyframes welcomeText {
   0% {
-    stroke: #89FC00;
+    stroke: #89fc00;
     stroke-dashoffset: var(--dash-offset);
   }
   10% {
-    stroke: #9368B7;
+    stroke: #9368b7;
   }
   20% {
-    stroke: #F896D8;
+    stroke: #f896d8;
   }
   30% {
-    stroke: #89FC00;
+    stroke: #89fc00;
   }
   40% {
-    stroke: #C879FF;
+    stroke: #c879ff;
   }
   50% {
-    stroke: #9368B7;
+    stroke: #9368b7;
   }
   60% {
-    stroke: #06D6A0;
+    stroke: #06d6a0;
   }
   70% {
-    stroke: #C879FF;
+    stroke: #c879ff;
   }
   80% {
-    stroke: #75DDDD;
+    stroke: #75dddd;
     fill: transparent;
   }
   100% {
@@ -117,39 +115,71 @@ body {
 }
 
 .link-glow-yellow {
-  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(244, 211, 114, .5), rgba(255, 255, 255, 0));
+  background-image: radial-gradient(
+    circle closest-corner at 50% 200%,
+    rgba(244, 211, 114, 0.5),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .link-glow-blue {
-  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(174, 250, 255, .5), rgba(255, 255, 255, 0));
+  background-image: radial-gradient(
+    circle closest-corner at 50% 200%,
+    rgba(174, 250, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .link-glow-green {
-  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(186, 255, 179, .5), rgba(255, 255, 255, 0));
+  background-image: radial-gradient(
+    circle closest-corner at 50% 200%,
+    rgba(186, 255, 179, 0.5),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .link-glow-red {
-  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(255, 109, 165, .5), rgba(255, 255, 255, 0));
+  background-image: radial-gradient(
+    circle closest-corner at 50% 200%,
+    rgba(255, 109, 165, 0.5),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .link-glow-purple {
-  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(241, 154, 202, .5), rgba(255, 255, 255, 0));
+  background-image: radial-gradient(
+    circle closest-corner at 50% 200%,
+    rgba(241, 154, 202, 0.5),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .link-glow-pink {
-  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(255, 180, 215, .5), rgba(255, 255, 255, 0));
+  background-image: radial-gradient(
+    circle closest-corner at 50% 200%,
+    rgba(255, 180, 215, 0.5),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .link-glow-indigo {
-  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(104, 208, 238, .5), rgba(255, 255, 255, 0));
+  background-image: radial-gradient(
+    circle closest-corner at 50% 200%,
+    rgba(104, 208, 238, 0.5),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .link-glow-orange {
-  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(245, 176, 62, .5), rgba(255, 255, 255, 0));
+  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(245, 176, 62, 0.5), rgba(255, 255, 255, 0));
 }
 
 .link-glow-peach {
-  background-image: radial-gradient(circle closest-corner at 50% 200%, rgba(255, 202, 177, .5), rgba(255, 255, 255, 0));
+  background-image: radial-gradient(
+    circle closest-corner at 50% 200%,
+    rgba(255, 202, 177, 0.5),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .text-glow {
@@ -186,10 +216,12 @@ body {
 /* space mascot loading */
 
 .space-mascot {
-  animation: speeder 0.4s linear infinite, scaleMascot 1.5s linear infinite;
+  animation:
+    speeder 0.4s linear infinite,
+    scaleMascot 1.5s linear infinite;
   width: var(--astroWidth);
   height: calc(var(--astroWidth) / 3);
-  margin-left: calc((var(--astroWidth)/-2));
+  margin-left: calc((var(--astroWidth) / -2));
 }
 
 .jetpack {
@@ -271,7 +303,7 @@ body {
     left: 0;
   }
   100% {
-    left: calc(var(--astroWidth)/-0.856);
+    left: calc(var(--astroWidth) / -0.856);
     opacity: 0;
   }
 }
@@ -280,7 +312,7 @@ body {
     left: 0;
   }
   100% {
-    left: calc(var(--astroWidth)/-1.07);
+    left: calc(var(--astroWidth) / -1.07);
     opacity: 0;
   }
 }
@@ -289,7 +321,7 @@ body {
     left: 0;
   }
   100% {
-    left: calc(var(--astroWidth)/-0.535);
+    left: calc(var(--astroWidth) / -0.535);
     opacity: 0;
   }
 }
@@ -298,7 +330,7 @@ body {
     left: 0;
   }
   100% {
-    left: calc(var(--astroWidth)/-1.605);
+    left: calc(var(--astroWidth) / -1.605);
     opacity: 0;
   }
 }
@@ -364,7 +396,7 @@ body {
     --astroWidth: calc(var(--origAstroWidth) * 1.2);
   }
   90% {
-    --astroWidth: calc(var(--origAstroWidth) * 1.1)
+    --astroWidth: calc(var(--origAstroWidth) * 1.1);
   }
 }
 
@@ -428,5 +460,5 @@ body {
 }
 
 .indian-flag {
-  background: linear-gradient(to bottom, #FF9933 33.33%, white 33.33% 66.66%, #138808 66.66%);
+  background: linear-gradient(to bottom, #ff9933 33.33%, white 33.33% 66.66%, #138808 66.66%);
 }

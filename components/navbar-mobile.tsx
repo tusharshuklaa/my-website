@@ -1,31 +1,26 @@
-import { FC } from 'react';
-import Link from 'next/link';
-import { Menu } from 'lucide-react';
-import { Button } from '@ui';
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
-import { GradientText, TextFlipper } from '@components/text';
-import { GlowingGradientBox } from '@components/glowing-gradient-box';
-import { MyAvatar } from '@components/my-avatar';
-import { DownloadResumeButton } from '@components/download-resume-button';
+import { FC } from "react";
+import Link from "next/link";
+import { Menu } from "lucide-react";
+import { Button } from "@ui";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTrigger } from "@/components/ui/drawer";
+import { GradientText, TextFlipper } from "@components/text";
+import { GlowingGradientBox } from "@components/glowing-gradient-box";
+import { MyAvatar } from "@components/my-avatar";
+import { DownloadResumeButton } from "@components/download-resume-button";
 
 export const NavbarMobile: FC = () => {
   return (
     <Drawer data-testid="cmp-mobile-navbar">
-      <DrawerTrigger asChild className="sm:hidden z-10">
+      <DrawerTrigger asChild className="z-10 sm:hidden">
         <Button variant="clear" size="auto" aria-label="Open mobile navigation" className="fixed right-4 top-4">
-          <Menu className="w-10 h-10" />
+          <Menu className="h-10 w-10" />
         </Button>
       </DrawerTrigger>
 
       <DrawerContent>
         <DrawerHeader>
-          <Link href="/" className="flex justify-center space-y-4 items-center flex-col">
-            <GlowingGradientBox className="rounded-full after:rounded-full before:rounded-full">
+          <Link href="/" className="flex flex-col items-center justify-center space-y-4">
+            <GlowingGradientBox className="rounded-full before:rounded-full after:rounded-full">
               <MyAvatar />
             </GlowingGradientBox>
 
@@ -58,7 +53,7 @@ export const NavbarMobile: FC = () => {
             <GradientText text="Showcase" color="red" />
           </Link>
 
-          <div className="flex items-center justify-center my-4">
+          <div className="my-4 flex items-center justify-center">
             <DownloadResumeButton />
           </div>
         </div>
@@ -67,4 +62,4 @@ export const NavbarMobile: FC = () => {
   );
 };
 
-NavbarMobile.displayName = 'MobileNavbar';
+NavbarMobile.displayName = "MobileNavbar";

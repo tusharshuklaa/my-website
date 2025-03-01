@@ -8,20 +8,20 @@ export const useMdxContent = (content: Array<Coding | Gadgets | Software | Blog 
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const value = e.currentTarget.querySelector('input')?.value;
+    const value = e.currentTarget.querySelector("input")?.value;
 
     if (value) {
       setSearchQuery(value);
       const filteredItems = content.filter(item => {
         const title = item.title.toLowerCase();
-        const summary = 'summary' in item ? item.summary.toLowerCase() : '';
+        const summary = "summary" in item ? item.summary.toLowerCase() : "";
         const tags = item.tags.map(tag => tag.toLowerCase()).join(" ");
         const lowercaseValue = value.toLowerCase();
 
         return title.includes(lowercaseValue) || summary.includes(lowercaseValue) || tags.includes(value);
       });
       setVisibleItems(filteredItems);
-    };
+    }
   };
 
   const onSearchClear = () => {

@@ -25,15 +25,16 @@ keywords:
 related:
   - markdown-cheatsheet
 ---
-import { MultiColumn } from '../../components/multi-column'
+
+import { MultiColumn } from "../../components/multi-column";
 
 ![Batman image made with CSS](the-dark-knight-rises-in-css "The Dark Knight Rises... In CSS")
 
->It's not who I am underneath, but what I code that defines me.
+> It's not who I am underneath, but what I code that defines me.
 >
 > <footer>Bruce Wayne (Probably, if he were a frontend developer)</footer>
 
-Welcome, fellow web vigilantes! Ever dreamt of building Gotham's protector, not with Batarangs and brute force, but with the sheer power of CSS?  Well, I did. And let me tell you, it was a wild ride, a bit like chasing the Joker through the labyrinthine streets of Gotham, but ultimately, incredibly rewarding.
+Welcome, fellow web vigilantes! Ever dreamt of building Gotham's protector, not with Batarangs and brute force, but with the sheer power of CSS? Well, I did. And let me tell you, it was a wild ride, a bit like chasing the Joker through the labyrinthine streets of Gotham, but ultimately, incredibly rewarding.
 
 ## Our Mission (Difficult? Nah! Not much)
 
@@ -41,10 +42,16 @@ This blog post chronicles my journey of creating a **responsive** **Batman face 
 
 ## Why CSS Art? (More Than Just a Pretty Face)
 
-First of all, what is CSS Art — It&apos;s a *digital image created using CSS*. It&apos;s a creative way for coders to express themselves by combining their programming and artistic skills. While it&apos;s a lot of fun to create CSS art, it&apos;s not just limited to the fun factor alone!
+First of all, what is CSS Art — It&apos;s a _digital image created using CSS_. It&apos;s a creative way for coders to express themselves by combining their programming and artistic skills. While it&apos;s a lot of fun to create CSS art, it&apos;s not just limited to the fun factor alone!
+
 <br />
 <br />
-Now, let's be real, building Batman's face in CSS is undeniably cool.  But the benefits go beyond bragging rights at the next tech meetup. Creating CSS art isn't just about showing off (though Alfred would approve). It is like a workout for your frontend skills. It&apos;s a formidable exercise (training to be the Dark Knight himself) that challenges you to think creatively, deepens your understanding of CSS properties, selectors, and layouts, and sharpens your problem-solving abilities. And yes, it is also about impressing your colleagues with CSS wizardry that even the Riddler couldn't decode.
+Now, let's be real, building Batman's face in CSS is undeniably cool. But the benefits go beyond bragging rights at the
+next tech meetup. Creating CSS art isn't just about showing off (though Alfred would approve). It is like a workout for
+your frontend skills. It&apos;s a formidable exercise (training to be the Dark Knight himself) that challenges you to
+think creatively, deepens your understanding of CSS properties, selectors, and layouts, and sharpens your
+problem-solving abilities. And yes, it is also about impressing your colleagues with CSS wizardry that even the Riddler
+couldn't decode.
 
 ## Gotham&apos;s Villains – The Challenges
 
@@ -66,6 +73,7 @@ Before diving headfirst into the code, I found it helpful to **visualize the Bat
 3. **Determine a base shape**: I chose a central shape as the foundation (batman&apos;s face in this case) and defined desired size (width and height) for it, and then derived all the other sizes relative to it. Choosing the right base shape is crucial – it's the foundation upon which everything else is built. Think of it as your Bat-cave — everything revolves around the core.
 
 ![Batman face outline](batman-outline_lnpkuk "Batman face outline")
+
 </MultiColumn>
 Here&apos;s a snippet demonstrating how I used `clip-path` to create a complex shape:
 
@@ -101,12 +109,14 @@ I&apos;d recommend you to check out the repo and follow along for the best under
 ## Enough talk, let's see some action!
 
 ### Setting Up the Scene (01.css)
+
 Begin by creating an `index.html` file. This file will serve as the canvas for our CSS art.
+
 ```html
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="/src/styles/1.css">
+    <link rel="stylesheet" href="/src/styles/1.css" />
   </head>
   <body>
     <main class="scene">
@@ -117,6 +127,7 @@ Begin by creating an `index.html` file. This file will serve as the canvas for o
   </body>
 </html>
 ```
+
 In this structure, we have a `main` tag that will hold our entire art. Inside this, we have a `figure` tag with the class `.batman`, which will be styled to represent the Batman image.
 
 Let&apos;s start with setting up the basic styles for the scene and Batman.
@@ -158,10 +169,12 @@ body {
   margin: auto;
 }
 ```
+
 Notice that I've used viewport units [(`vmin`)](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units#:~:text=the%20root%20element.-,VIEWPORT%20UNITS,-Viewport%20unit%20lengths) for sizing. This ensures that the image scales proportionally with the viewport size. The `inset: 0` property is a shorthand for setting top, right, bottom, and left to 0.
 This, along with `position: absolute` and `margin: auto`, centers the `.batman` element within the `.scene`.
 
 ### Building the Base - The Face (02.css)
+
 Before we begin, scroll up to the top and look at the image of Batman. Notice how the face is a simple trapezoid shape.
 A trapezoid is like a rectangle that has at least one pair of parallel sides, making it look like a table top when viewed from the side. We can create this shape cleverly using CSS's border property.
 
@@ -176,18 +189,21 @@ A trapezoid is like a rectangle that has at least one pair of parallel sides, ma
   height: 100px; /* height can be removed once the border magic is done */
 
   /* The magic happens with borders */
-  border-bottom: 100px solid #3498db;  /* This creates the main body - height of the trapezoid */
-  border-left: 50px solid transparent;  /* Creates the left slant */
+  border-bottom: 100px solid #3498db; /* This creates the main body - height of the trapezoid */
+  border-left: 50px solid transparent; /* Creates the left slant */
   border-right: 50px solid transparent; /* Creates the right slant */
 }
 ```
+
 Let me break down how this works: <br />
+
 <MultiColumn>
 First, we create a container element and give it a specific width (200px in this case). The height is set to 100px, which will be the height of our trapezoid.<br />
 The real magic happens with the borders. Think of it like this: when you make a border transparent and give different sizes to different sides, CSS creates slanted edges (notice the peach slanted dotted lines between the outer and inner box).
 Now pay attention to the shaded border-bottom in the diagram. We already have our trapezoid (somewhat). We're using this behavior to our advantage:
 
 ![Box with borders](diag-trapezoid-1_exf05v "Box with borders")
+
 </MultiColumn>
 
 <MultiColumn>
@@ -197,17 +213,20 @@ Now pay attention to the shaded border-bottom in the diagram. We already have ou
 - The left and right borders are made transparent, and when they meet the bottom border, they create those characteristic slanted sides.
 - Border top is removed as we don't need it for a trapezoid shape.
 - The initial `height` property can be removed as it's not needed once the border magic is done.
-</MultiColumn>
+  </MultiColumn>
 
 You can adjust the measurements to make your trapezoid wider, taller, or change how much it slants. For example:
+
 - Making the left and right borders larger will create steeper slants
 - Changing the width will make the trapezoid wider or narrower
 - Adjusting the border-bottom size will make it taller or shorter
 
 This might seem like a tricky way to create a shape, but it's actually one of the most efficient methods in CSS. The border technique is widely used because it performs well and works across all modern browsers.
+
 <br />
 <br />
-Now that we know how to create a trapezoid, let's see how we can use this trick in our Batman face and start building the face of our Dark Knight.
+Now that we know how to create a trapezoid, let's see how we can use this trick in our Batman face and start building
+the face of our Dark Knight.
 
 ```html {3}
 <main class="scene">
@@ -237,7 +256,7 @@ Now that we know how to create a trapezoid, let's see how we can use this trick 
 }
 
 .batman__face {
-  --bat-face-side: calc(var(--bat-face-h)/10);
+  --bat-face-side: calc(var(--bat-face-h) / 10);
 
   border: 1px solid green;
   width: var(--bat-face-w);
@@ -253,36 +272,39 @@ Now that we know how to create a trapezoid, let's see how we can use this trick 
   margin: auto;
 }
 ```
+
 In this snippet, notice the usage of CSS variables in `:root`. Think of `:root` as JavaScript's global scope where you can define variables that can be used across the project.
-The trick is to define __ONE and ONLY ONE__ size of the base shape and derive all other sizes from it. There is no specific rule to define the base shape, but it should be the most prominent shape in the image. In this case, the face of Batman is the most prominent shape, so I've defined the width and height of the face as the base shape.
+The trick is to define **ONE and ONLY ONE** size of the base shape and derive all other sizes from it. There is no specific rule to define the base shape, but it should be the most prominent shape in the image. In this case, the face of Batman is the most prominent shape, so I've defined the width and height of the face as the base shape.
 As for the logic of deriving other sizes, it's a mix of trial and error and a bit of math. The `--bat-face-h` variable is derived from the `--bat-face-w` variable.
 This is one of the most crucial techniques to ensure that the image scales proportionally with the viewport size and is responsive.
 
 <br />
 <br />
-Now, let&apos;s focus on the trapezoid trick we learned earlier. I've used the same technique to create the head of Batman.
-I gave border-bottom a solid color (black) with the width of the desired height of the face. The left and right borders are transparent
-to create the slanted sides of the trapezoid. The `--bat-face-side` variable is used to control the slant of the trapezoid.
+Now, let&apos;s focus on the trapezoid trick we learned earlier. I've used the same technique to create the head of
+Batman. I gave border-bottom a solid color (black) with the width of the desired height of the face. The left and right
+borders are transparent to create the slanted sides of the trapezoid. The `--bat-face-side` variable is used to control
+the slant of the trapezoid.
 
 <br />
 <br />
-By now, we should have something like this:
-![Batman face with trapezoid](batman-step-2_u9ke5g "Batman face with trapezoid")
+By now, we should have something like this: ![Batman face with trapezoid](batman-step-2_u9ke5g "Batman face with
+trapezoid")
 
 ### Adding ears (03.css)
+
 Now that we have the face, let's add the ears. Batman's ears are a simple triangle shape. We can create this using the border technique as well.<br />
-*Creating a triangle* is very similar to creating a trapezoid. This can be achieved by setting the height __AND__ width of the element to 0 while retaining the trapezoid logic.
+_Creating a triangle_ is very similar to creating a trapezoid. This can be achieved by setting the height **AND** width of the element to 0 while retaining the trapezoid logic.
 
 I&apos;ve used pseudo elements to create ears. pseudo elements are like invisible elements that you can add to any element. They are very useful for adding decorative elements to your page without cluttering your HTML.
 
 ```css {9-12}#a {20}#b {25}#c
 .batman__face::before,
 .batman__face::after {
-  --ear-slant: calc(var(--bat-face-h)/10);
-  --ear-width: calc(var(--bat-face-h)/4);
-  --ear-tilt: calc(var(--ear-width)/10);
+  --ear-slant: calc(var(--bat-face-h) / 10);
+  --ear-width: calc(var(--bat-face-h) / 4);
+  --ear-tilt: calc(var(--ear-width) / 10);
 
-  content: '';
+  content: "";
   /* triangle code */
   height: 0;
   width: 0;
@@ -290,7 +312,7 @@ I&apos;ve used pseudo elements to create ears. pseudo elements are like invisibl
   border-color: transparent transparent var(--batman-color) transparent;
   /* triangle code end */
   position: absolute;
-  top: calc(var(--ear-width)/-1.1);
+  top: calc(var(--ear-width) / -1.1);
 }
 
 .batman__face::before {
@@ -308,6 +330,7 @@ Now our Batman face should look like this:
 ![Batman face with ears](batman-step-3_bsquei "Batman face with ears")
 
 ### Adding Eyes (04.css)
+
 The next prominent shape in Batman's face is his eyes. Batman's eyes are simple triangles. We can create this using the same logic as ears.
 
 ```html {4}
@@ -338,31 +361,34 @@ The next prominent shape in Batman's face is his eyes. Batman's eyes are simple 
 .batman__eyes::before,
 .batman__eyes::after {
   --eye-color: #fff;
-  --eye-width: calc(var(--bat-face-w)/3.2);
-  --eye-height: calc(var(--bat-face-w)/6.1);
+  --eye-width: calc(var(--bat-face-w) / 3.2);
+  --eye-height: calc(var(--bat-face-w) / 6.1);
 
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   border-style: solid;
   border-color: transparent transparent var(--eye-color) transparent;
-  border-width: 0 var(--eye-width) var(--eye-height) calc(var(--eye-width)/6);
+  border-width: 0 var(--eye-width) var(--eye-height) calc(var(--eye-width) / 6);
 }
 
 .batman__eyes::after {
   transform: scaleX(-1);
 }
 ```
+
 Pay attention to the `transform: scaleX(-1)` property in the `batman__eyes::after` selector. This flips the element horizontally, creating a mirror image of the `batman__eyes::before` element. This is a neat trick to create symmetrical shapes without writing additional code.
+
 <br />
-Also notice that instead of creating two separate elements for the eyes, I've used a single element and created two pseudo-elements to represent the eyes. This is a great way to keep your HTML clean and organized.
+Also notice that instead of creating two separate elements for the eyes, I've used a single element and created two
+pseudo-elements to represent the eyes. This is a great way to keep your HTML clean and organized.
 
 <br />
 <br />
-The Dark Knight can see now:
-![Batman face with eyes](batman-step-4_qfhthd "Batman face with eyes")
+The Dark Knight can see now: ![Batman face with eyes](batman-step-4_qfhthd "Batman face with eyes")
 
 ### Adding Mouth (05.css)
+
 Once again, the mouth is a simple rectangle that contains a trapezoid shape chin and a triangle-shaped the nose (let's ignore the lips for now). We can use the same technique as we did for the face, eyes, and ears.
 
 ```html {6-8}
@@ -430,6 +456,7 @@ Gradually, our Batman is taking shape:
 ![Batman face with mouth](batman-step-5_rm7kxr "Batman face with mouth")
 
 ### Adding Lips (06.css)
+
 The lips are a bit more complex than the other shapes we've created so far. The lips appear to be an oddly shaped polygon. We can use the [`clip-path`](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path) property to create this shape.
 
 ```css {11-19}
@@ -443,15 +470,7 @@ The lips are a bit more complex than the other shapes we've created so far. The 
   right: 0;
   margin: auto;
   background-color: var(--batman-color);
-  clip-path: polygon(
-    48% 32%,
-    71% 28%,
-    87.39% 23.5%,
-    75% 23%,
-    19% 24%,
-    2.39% 15.25%,
-    21% 28%
-  );
+  clip-path: polygon(48% 32%, 71% 28%, 87.39% 23.5%, 75% 23%, 19% 24%, 2.39% 15.25%, 21% 28%);
 }
 ```
 
@@ -459,6 +478,7 @@ Guess who is laughing now:
 ![Batman face with lips](batman-step-6_np8y54 "Batman face with lips")
 
 ### Adding Shoulders (07.css)
+
 Now that we have the face, let's add the shoulders. The shoulders are once again simple trapezoid shapes (ignore the cape curves for now). We can use the same technique as we did for the face, eyes, ears, and mouth.
 
 ```html {10}
@@ -499,7 +519,9 @@ Batman is now ready for action:
 ![Batman face with shoulders](batman-step-7_mbdlrq "Batman face with shoulders")
 
 ### Adding Cape (08.css)
+
 The cape is a bit more complex than the other shapes we've created so far. The cape appears to have a lot of inward curves which can be a bit tricky to create. My trick here is to create a transparent box, add curves to it's corners and then use `box-shadow` to create the illusion of curves.
+
 <br />
 Check the red outlined batman image above to understand what I mean.
 <br />
@@ -614,16 +636,20 @@ Let's see how we can create the cape:
 
 In the CSS code snippet above, I've used `border-radius` to create the curves in the cape. The `border-radius` property is a powerful tool that allows you to create rounded corners and complex shapes.
 Notice the `/` keyword in `border-radius` syntax. This is used to define the horizontal and vertical radii of the corners. I've covered this in detail in the tips and tricks section below.
+
 <br />
-I've also used `box-shadow` to create the illusion of curves in the cape. The `box-shadow` property is a versatile tool that allows you to add shadows to elements. By cleverly using multiple values in `box-shadow`, you can create a variety of visual effects, including curves, shadows, and highlights.
+I've also used `box-shadow` to create the illusion of curves in the cape. The `box-shadow` property is a versatile tool
+that allows you to add shadows to elements. By cleverly using multiple values in `box-shadow`, you can create a variety
+of visual effects, including curves, shadows, and highlights.
 <br />
-Lastly, I've used the `transform: scaleX(-1)` property to flip the right side of the cape horizontally. This creates a mirror image of the left side, giving the cape a symmetrical appearance.
+Lastly, I've used the `transform: scaleX(-1)` property to flip the right side of the cape horizontally. This creates a
+mirror image of the left side, giving the cape a symmetrical appearance.
 <br />
 <br />
-Batman is now ready to take on the night:
-![Batman face with cape](the-dark-knight-rises-in-css "Batman face with cape")
+Batman is now ready to take on the night: ![Batman face with cape](the-dark-knight-rises-in-css "Batman face with cape")
 
 ### Adding subtle animations (09.css)
+
 To add a bit of life to our Batman, let's add some subtle animations. We can use CSS animations to make Batman's eyes shrink and change it's color to red to show his anger. We'll also change his macho smile to a grim expression.
 
 First, let's animate the eyes:
@@ -639,26 +665,23 @@ First, let's animate the eyes:
   margin-top: calc(var(--bat-face-w) * 0.05);
 }
 ```
+
 In the CSS code snippet above, I've used the `:hover` pseudo-class to apply the animation when the user hovers over the Batman face.
+
 <br />
-Notice how I've used the `calc()` function to calculate the reduced height of the eyes based on the width of the face. I've not re-written the logic for height of the eye but have re-calculated the CSS variable that was being used for height of the eye. NEAT!! right?
+Notice how I've used the `calc()` function to calculate the reduced height of the eyes based on the width of the face.
+I've not re-written the logic for height of the eye but have re-calculated the CSS variable that was being used for
+height of the eye. NEAT!! right?
 <br />
-Since the eyes were made using a triangle shape, I've changed the border color to red to show Batman's anger. I've also used the `margin-top` property to move the eyes up a bit to give the impression that they are shrinking.
+Since the eyes were made using a triangle shape, I've changed the border color to red to show Batman's anger. I've also
+used the `margin-top` property to move the eyes up a bit to give the impression that they are shrinking.
 <br />
-<br/>
+<br />
 Now let's animate the lips. It's a lot simpler now that we know how to create complex shapes using `clip-path`.
 
 ```css
 .batman:hover .batman__lips {
-  clip-path: polygon(
-    48% 32%,
-    71% 28%,
-    89% 42%,
-    75% 23%,
-    19% 24%,
-    4% 43%,
-    21% 28%
-  );
+  clip-path: polygon(48% 32%, 71% 28%, 89% 42%, 75% 23%, 19% 24%, 4% 43%, 21% 28%);
 }
 ```
 
@@ -673,6 +696,7 @@ Over the course of this project, I uncovered several tricks that every CSS super
 - **Responsive Sizing**: Use a core shape defined in viewport units. All other dimensions? Derive them as multiples of this core. CSS variables are your best friend for customization. It&apos;s like having a master plan for every Gotham heist.
 
 ![Diagram showing viewport units](diag-responsive-unit_oozw9t "Diagram showing Viewport Units")
+
 </MultiColumn>
 
 ```css
@@ -687,6 +711,7 @@ Over the course of this project, I uncovered several tricks that every CSS super
 - **Border-Radius Wizardry**: Experiment with different border-radius values to morph a rectangle into an ellipse, or even a more complex shape. Each corner can be manipulated individually—just as Batman adapts to every new challenge. The key factor for creating complex curves is to understand that you can provide two radii instead of just one in `border-radius`. Most of us are already aware of this syntax `border-radius: 10px` but what many miss is the syntax for adding another radius like `border-radius: 10px / 15px` . The first part (before forward slash) determines the first radius (for each corner) and the latter defines the other radii. Think of it as an ellipse shape which has two radii. You can refer to [this MDN doc for more](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius) info on the syntax.
 
 ![Diagram showing border-radius syntax](diag-border-radius_hzojsj "Diagram showing border-radius syntax")
+
 </MultiColumn>
 ```css
 .batman-curve {
@@ -698,6 +723,7 @@ Over the course of this project, I uncovered several tricks that every CSS super
 - **Box-Shadow & Scale**: Not just for drop shadows! Use `box-shadow` to mimic a mirror effect and `scale(-1)` to flip elements. It&apos;s the secret behind many visual illusions in my code.
 
 ![Diagram showing box-shadow layers](diag-box-shadow_rqyl0w "Diagram showing box-shadow layers")
+
 </MultiColumn>
 ```css
 .batman-symbol {
@@ -712,6 +738,7 @@ Over the course of this project, I uncovered several tricks that every CSS super
 - **Translate vs. Margin**: Remember, `margin` creates space by affecting surrounding elements, whereas `translate` simply moves the element visually. Use them wisely — like choosing the right Batmobile for a quick getaway. Knowing the difference is key.
 
 ![Diagram showing margin and translate difference](diag-margin-translate_lieutq "Diagram showing margin and translate difference")
+
 </MultiColumn>
 ```css
 /* Margin - creates space */
@@ -719,10 +746,11 @@ Over the course of this project, I uncovered several tricks that every CSS super
   margin-top: 50px;
 }
 
-/* Translate can move element visually without creating extra space */
+/_ Translate can move element visually without creating extra space _/
 .move {
-  translate: transformY(50px);
+translate: transformY(50px);
 }
+
 ```
 
 
@@ -763,3 +791,4 @@ Stay heroic, code hard, and never forget — *it&apos;s not who you are undernea
 <br />
 <br />
 Happy coding!
+```

@@ -5,8 +5,8 @@ import { SnapSection } from "@/components/snap-container";
 export const Welcome: FC = () => {
   return (
     <SnapSection className="flex h-screen w-full flex-col items-center justify-center px-4 text-center">
-      <div className="leading-extra-tight absolute flex animate-welcome-text gap-4">
-        <span className="text-screen-2xl font-dongle font-extrabold tracking-wider [text-shadow:-2px_2px_0_navajowhite]">
+      <div className="absolute flex animate-welcome-text gap-4 leading-extra-tight">
+        <span className="font-dongle text-screen-2xl font-extrabold tracking-wider [text-shadow:-2px_2px_0_navajowhite]">
           Namaste
         </span>
         <span className="text-screen-xl">🙏🏻</span>

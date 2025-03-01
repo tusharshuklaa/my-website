@@ -2,8 +2,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Uses | tusharshukla",
-  description:
-    "A growing list of tools, programs and tech that I use to make my life easier and more productive.",
+  description: "A growing list of tools, programs and tech that I use to make my life easier and more productive.",
   keywords: [
     "tushar shukla uses",
     "uses",
@@ -24,22 +23,20 @@ export const metadata: Metadata = {
     url: "https://tusharshukla.dev",
     type: "website",
     title: "Uses | tusharshukla",
-    description:
-      "A growing list of tools, programs and tech that I use to make my life easier and more productive.",
+    description: "A growing list of tools, programs and tech that I use to make my life easier and more productive.",
     images: [
       {
         url: "https://tusharshukla.dev/images/tusharshukla_website.png",
         width: 1200,
         height: 630,
-        alt: "tusharshukla"
-      }
-    ]
+        alt: "tusharshukla",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Uses | tusharshukla",
-    description:
-      "A growing list of tools, programs and tech that I use to make my life easier and more productive.",
+    description: "A growing list of tools, programs and tech that I use to make my life easier and more productive.",
     creator: "@theTSguy",
     site: "@theTSguy",
     images: [
@@ -47,13 +44,13 @@ export const metadata: Metadata = {
         url: "https://tusharshukla.dev/images/tusharshukla_website.png",
         width: 1200,
         height: 630,
-        alt: "tusharshukla"
-      }
-    ]
+        alt: "tusharshukla",
+      },
+    ],
   },
   alternates: {
-    canonical: "https://tusharshukla.dev"
-  }
+    canonical: "https://tusharshukla.dev",
+  },
 };
 
 export default function UsesLayout({
@@ -61,5 +58,5 @@ export default function UsesLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children
+  return children;
 }

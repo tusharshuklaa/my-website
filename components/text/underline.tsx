@@ -13,17 +13,15 @@ export const Underline: FC<UnderlineProps> = ({ className, children, minimal }) 
       "bg-[length:100%_0.2em]": !minimal,
       "bg-[length:100%_0.0em]": minimal,
     },
-    className
+    className,
   );
-  return (
-    <span className={underlineClasses}>
-      {children}
-    </span>
-  );
+  return <span className={underlineClasses}>{children}</span>;
 };
 
 export const HighlightText: FC<BasicUiComponent> = ({ className, children }) => {
-  return <span className={cn("bg-gradient-to-r from-[#84fab0] to-[#8fd3f4] font-bold text-black px-1", className)}>
-    {children}
-  </span>;
+  return (
+    <span className={cn("bg-gradient-to-r from-[#84fab0] to-[#8fd3f4] px-1 font-bold text-black", className)}>
+      {children}
+    </span>
+  );
 };

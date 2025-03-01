@@ -1,45 +1,48 @@
-import { FC } from 'react';
+import { FC } from "react";
 import { motion } from "framer-motion";
 import { UiComponent } from "@/types";
 import { cn } from "@/lib/utils";
-import { GradientText } from '@/components/text';
-import { AnimatedLink, AnimatedLinkProps } from '@/components/animated-link';
+import { GradientText } from "@/components/text";
+import { AnimatedLink, AnimatedLinkProps } from "@/components/animated-link";
 
 const contactLinks: Array<AnimatedLinkProps> = [
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/tusharshuklaa/",
-    color: "blue"
+    color: "blue",
   },
   {
     name: "GitHub",
     url: "https://github.com/tusharshuklaa",
-    color: "purple"
+    color: "purple",
   },
   {
     name: "X (Twitter)",
     url: "https://x.com/theTSguy",
-    color: "indigo"
+    color: "indigo",
   },
   {
     name: "Stack Overflow",
     url: "https://stackoverflow.com/users/2996624/tushar-shukla",
-    color: "orange"
+    color: "orange",
   },
   {
     name: "Codepen",
     url: "https://codepen.io/tusharshukla",
-    color: "green"
+    color: "green",
   },
   {
     name: "Email",
     url: "mailto:tusharshuklaa@gmail.com",
-    color: "red"
-  }
+    color: "red",
+  },
 ];
 
 export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
-  const contactSectionClasses = cn('max-w-sm md:max-w-4xl lg:max-w-7xl m-auto py-4 px-4 sm:px-0 pt-16 md:pt-28 flex flex-col justify-center', className);
+  const contactSectionClasses = cn(
+    "max-w-sm md:max-w-4xl lg:max-w-7xl m-auto py-4 px-4 sm:px-0 pt-16 md:pt-28 flex flex-col justify-center",
+    className,
+  );
 
   return (
     <section data-testid={`cmp-contact-section`} className={contactSectionClasses} {...props}>
@@ -47,75 +50,64 @@ export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
         <motion.h3
           initial={{
             opacity: 0,
-            x: 50
+            x: 50,
           }}
           whileInView={{
             opacity: 1,
             x: 0,
             transition: {
-              duration: 1
+              duration: 1,
             },
           }}
         >
-          <GradientText
-            text="And that's a wrap!"
-            color="orange"
-            className="text-screen-lg"
-          />
+          <GradientText text="And that's a wrap!" color="orange" className="text-screen-lg" />
         </motion.h3>
 
         <motion.h3
           initial={{
             opacity: 0,
-            x: 100
+            x: 100,
           }}
           whileInView={{
             opacity: 1,
             x: 0,
             transition: {
-              duration: 2
-            }
+              duration: 2,
+            },
           }}
         >
-          <GradientText
-            text="Piqued your interest?"
-            color="purple"
-            className="text-screen-lg"
-          />
+          <GradientText text="Piqued your interest?" color="purple" className="text-screen-lg" />
         </motion.h3>
 
         <motion.h3
           initial={{
             opacity: 0,
-            x: 200
+            x: 200,
           }}
           whileInView={{
             opacity: 1,
             x: 0,
             transition: {
-              duration: 2.2
-            }
+              duration: 2.2,
+            },
           }}
         >
-          <GradientText
-            text="Let's connect!"
-            color="blue"
-            className="text-screen-lg"
-          />
+          <GradientText text="Let's connect!" color="blue" className="text-screen-lg" />
         </motion.h3>
       </div>
 
-      <p className="mt-10 text-lg">With more than a decade into front-end wizardry, I can turn your ideas into pixel-perfect magic, with a side of witty banter and enough positivity to fuel a small city. Let's build something awesome together!</p>
+      <p className="mt-10 text-lg">
+        With more than a decade into front-end wizardry, I can turn your ideas into pixel-perfect magic, with a side of
+        witty banter and enough positivity to fuel a small city. Let's build something awesome together!
+      </p>
 
-      <div className="grid grid-cols-2 gap-2 sm:gap-0 md:flex md:justify-between mt-20 md:mt-32">
-        {
-          contactLinks.map(({color, name, url}, index) => (
-            <AnimatedLink key={index} color={color} name={name} url={url} className="text-lg" />
-          ))
-        }
+      <div className="mt-20 grid grid-cols-2 gap-2 sm:gap-0 md:mt-32 md:flex md:justify-between">
+        {contactLinks.map(({ color, name, url }, index) => (
+          <AnimatedLink key={index} color={color} name={name} url={url} className="text-lg" />
+        ))}
       </div>
     </section>
   );
 };
 
-ContactSection.displayName = 'ContactSection';
+ContactSection.displayName = "ContactSection";

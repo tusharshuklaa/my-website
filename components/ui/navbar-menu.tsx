@@ -17,17 +17,21 @@ const transition = {
   restSpeed: 0.001,
 };
 
-type MenuItemProps = PropsWithChildren & LinkProps & {
-  className?: string;
-  setActive?: (item: string) => void;
-  active?: string | null;
-  item: string;
-};
+type MenuItemProps = PropsWithChildren &
+  LinkProps & {
+    className?: string;
+    setActive?: (item: string) => void;
+    active?: string | null;
+    item: string;
+  };
 
 export const MenuItem: FC<MenuItemProps> = ({ setActive, active, item, href, children, className }) => (
   <div onMouseEnter={() => setActive?.(item)} className={cn("relative", className)}>
     <Link href={href}>
-      <motion.p transition={{ duration: 0.3 }} className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white">
+      <motion.p
+        transition={{ duration: 0.3 }}
+        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+      >
         <TextFlipper>{item}</TextFlipper>
       </motion.p>
     </Link>
@@ -80,10 +84,16 @@ type ProductItemProps = {
 
 export const ProductItem: FC<ProductItemProps> = ({ title, description, href, src }) => (
   <Link href={href} className="flex space-x-2">
-    <AdvImage src={src} width={140} height={70} alt={title} className="flex-shrink-0 rounded-md shadow-2xl max-w-36 w-auto h-auto object-cover max-h-36" />
+    <AdvImage
+      src={src}
+      width={140}
+      height={70}
+      alt={title}
+      className="h-auto max-h-36 w-auto max-w-36 flex-shrink-0 rounded-md object-cover shadow-2xl"
+    />
     <div className="max-w-48">
-      <h4 className="mb-1 text-xl font-bold text-black dark:text-white line-clamp-2">{title}</h4>
-      <p className="max-w-[10rem] text-sm text-neutral-700 dark:text-neutral-300 line-clamp-4">{description}</p>
+      <h4 className="mb-1 line-clamp-2 text-xl font-bold text-black dark:text-white">{title}</h4>
+      <p className="line-clamp-4 max-w-[10rem] text-sm text-neutral-700 dark:text-neutral-300">{description}</p>
     </div>
   </Link>
 );

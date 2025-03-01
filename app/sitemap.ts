@@ -12,43 +12,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${ BASE_URL }/about-me`,
+      url: `${BASE_URL}/about-me`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.8,
     },
     {
-      url: `${ BASE_URL }/blog`,
+      url: `${BASE_URL}/blog`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${ BASE_URL }/showcase`,
+      url: `${BASE_URL}/showcase`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${ BASE_URL }/uses`,
+      url: `${BASE_URL}/uses`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 0.4,
     },
     {
-      url: `${ BASE_URL }/uses/coding`,
+      url: `${BASE_URL}/uses/coding`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: `${ BASE_URL }/uses/gadgets`,
+      url: `${BASE_URL}/uses/gadgets`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
-      url: `${ BASE_URL }/uses/software`,
+      url: `${BASE_URL}/uses/software`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
@@ -62,10 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  console.log('blogSitemaps', blogSitemaps);
+  console.log("blogSitemaps", blogSitemaps);
 
-  return [
-    ...staticPages,
-    ...blogSitemaps,
-  ];
+  return [...staticPages, ...blogSitemaps];
 }

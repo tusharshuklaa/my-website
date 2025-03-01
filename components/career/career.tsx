@@ -37,7 +37,7 @@ export const Career: FC = () => {
         </p>
       </div>
 
-      { isPageMounted && <Timeline data={data} containerRef={containerRef} />}
+      {isPageMounted && <Timeline data={data} containerRef={containerRef} />}
     </section>
   );
 };

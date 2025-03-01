@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { AdvImage } from "@components/adv-image";
 import { cn } from "@/lib/utils";
-import { badgeVariants, Card, CardTitle, CardDescription, CardDate, CardFooter, } from "@ui";
+import { badgeVariants, Card, CardTitle, CardDescription, CardDate, CardFooter } from "@ui";
 import { GradientText } from "@components/text";
 import { UiComponent } from "@/types";
 
@@ -37,13 +37,13 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
   };
 
   return (
-    <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5", className)}>
+    <div className={cn("grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3", className)}>
       {items.map((item, idx) => {
         const isHovered = hoveredIndex === idx;
 
         return (
           <Link
-            target={item?.url.startsWith('http') ? '_blank' : '_self'}
+            target={item?.url.startsWith("http") ? "_blank" : "_self"}
             href={item?.url}
             key={item?.url}
             className="group relative block h-full w-full"
@@ -70,83 +70,70 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
 
             <Card className={cardClassName}>
               <CardTitle className={cn("line-clamp-2", titleClassName)}>
-                {
-                  isHovered ? (<GradientText text={item.title} />) : (item.title)
-                }
+                {isHovered ? <GradientText text={item.title} /> : item.title}
               </CardTitle>
 
-              {
-                (item.date || item.readingTimeString) && (
-                  <div>
-                    {
-                      item.date && (
-                        <CardDate date={item.date} className={cn({
-                          "font-bold": isHovered,
-                        })} />
-                      )
-                    }
-
-                    {
-                      item.readingTimeString && (
-                        <>
-                          <span className="mx-1">•</span>
-                          <span className={cn(
-                            "text-neutral-500 text-sm mt-1 dark:text-neutral-300 inline-block",
-                            { "font-bold": isHovered }
-                          )}>
-                            {item.readingTimeString}
-                          </span>
-                        </>
-                      )
-                    }
-                  </div>
-                )
-              }
-
-              {
-                item.summary && (
-                  <CardDescription
-                    className={cn(
-                      "line-clamp-5", {
-                      "text-white": isHovered,
-                    })}
-                  >
-                    {item.summary}
-                  </CardDescription>
-                )
-              }
-
-              {
-                item.img && (
-                  <div className="mt-2 w-full h-44">
-                    <AdvImage
-                      src={item.img}
-                      alt={item.title}
-                      width={170}
-                      height={170}
-                      className="w-full h-full object-cover rounded-lg"
+              {(item.date || item.readingTimeString) && (
+                <div>
+                  {item.date && (
+                    <CardDate
+                      date={item.date}
+                      className={cn({
+                        "font-bold": isHovered,
+                      })}
                     />
-                  </div>
-                )
-              }
+                  )}
 
-              {
-                item.tags?.length && (
-                  <CardFooter className="justify-end gap-2">
-                    {
-                      item.tags.map((tag) => (
-                        <button
-                          key={tag}
-                          className={badgeVariants({ variant: "destructive" })}
-                          onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleTagClick(event, tag)}
-                        >
-                          {tag}
-                        </button>
-                      ))
-                    }
-                  </CardFooter>
-                )
-              }
+                  {item.readingTimeString && (
+                    <>
+                      <span className="mx-1">•</span>
+                      <span
+                        className={cn("mt-1 inline-block text-sm text-neutral-500 dark:text-neutral-300", {
+                          "font-bold": isHovered,
+                        })}
+                      >
+                        {item.readingTimeString}
+                      </span>
+                    </>
+                  )}
+                </div>
+              )}
+
+              {item.summary && (
+                <CardDescription
+                  className={cn("line-clamp-5", {
+                    "text-white": isHovered,
+                  })}
+                >
+                  {item.summary}
+                </CardDescription>
+              )}
+
+              {item.img && (
+                <div className="mt-2 h-44 w-full">
+                  <AdvImage
+                    src={item.img}
+                    alt={item.title}
+                    width={170}
+                    height={170}
+                    className="h-full w-full rounded-lg object-cover"
+                  />
+                </div>
+              )}
+
+              {item.tags?.length && (
+                <CardFooter className="justify-end gap-2">
+                  {item.tags.map(tag => (
+                    <button
+                      key={tag}
+                      className={badgeVariants({ variant: "destructive" })}
+                      onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleTagClick(event, tag)}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </CardFooter>
+              )}
             </Card>
           </Link>
         );

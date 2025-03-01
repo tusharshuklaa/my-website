@@ -3,29 +3,19 @@
 import { MouseEnterContext, useMouseEnter } from "@/hooks/use-mouse-enter";
 import { cn } from "@/lib/utils";
 import { BasicUiComponent } from "@/types";
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  FC,
-} from "react";
+import React, { useState, useRef, useEffect, FC } from "react";
 
 type ThreeDCardContainerProps = BasicUiComponent<{
   containerClassName?: string;
 }>;
 
-export const ThreeDCardContainer: FC<ThreeDCardContainerProps> = ({
-  children,
-  className,
-  containerClassName,
-}) => {
+export const ThreeDCardContainer: FC<ThreeDCardContainerProps> = ({ children, className, containerClassName }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMouseEntered, setIsMouseEntered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
-    const { left, top, width, height } =
-      containerRef.current.getBoundingClientRect();
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
     const x = (e.clientX - left - width / 2) / 25;
     const y = (e.clientY - top - height / 2) / 25;
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
@@ -45,10 +35,7 @@ export const ThreeDCardContainer: FC<ThreeDCardContainerProps> = ({
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
-        className={cn(
-          "py-20 flex items-center justify-center",
-          containerClassName
-        )}
+        className={cn("flex items-center justify-center py-20", containerClassName)}
         style={{
           perspective: "1000px",
         }}
@@ -58,10 +45,7 @@ export const ThreeDCardContainer: FC<ThreeDCardContainerProps> = ({
           onMouseEnter={handleMouseEnter}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className={cn(
-            "flex items-center justify-center relative transition-all duration-200 ease-linear",
-            className
-          )}
+          className={cn("relative flex items-center justify-center transition-all duration-200 ease-linear", className)}
           style={{
             transformStyle: "preserve-3d",
           }}
@@ -77,18 +61,11 @@ type ThreeDCardBodyProps = BasicUiComponent<{
   style?: React.CSSProperties;
 }>;
 
-export const ThreeDCardBody: FC<ThreeDCardBodyProps> = ({
-  children,
-  className,
-  style,
-}) => {
+export const ThreeDCardBody: FC<ThreeDCardBodyProps> = ({ children, className, style }) => {
   return (
     <div
       style={style}
-      className={cn(
-        "h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
-        className
-      )}
+      className={cn("h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]", className)}
     >
       {children}
     </div>
@@ -135,11 +112,7 @@ export const ThreeDCardItem: FC<ThreeDCardItemProps> = ({
   };
 
   return (
-    <Tag
-      ref={ref}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
-      {...rest}
-    >
+    <Tag ref={ref} className={cn("w-fit transition duration-200 ease-linear", className)} {...rest}>
       {children}
     </Tag>
   );

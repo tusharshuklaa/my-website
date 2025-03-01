@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { FC } from 'react';
-import Image, { ImageProps } from 'next/image';
-import { CldImage } from 'next-cloudinary';
+import { FC } from "react";
+import Image, { ImageProps } from "next/image";
+import { CldImage } from "next-cloudinary";
 
-export const AdvImage:FC<ImageProps> = ({ className, ...props }) => {
-  const altText = props.alt || props.title || '';
-  const src = props.src as string || '';
-  const isExternalImage = src?.startsWith('http');
+export const AdvImage: FC<ImageProps> = ({ className, ...props }) => {
+  const altText = props.alt || props.title || "";
+  const src = (props.src as string) || "";
+  const isExternalImage = src?.startsWith("http");
   const ImgComp = isExternalImage ? Image : CldImage;
   const defaultSize = "500";
   const additionalProps: Record<string, unknown> = {};
@@ -22,7 +22,7 @@ export const AdvImage:FC<ImageProps> = ({ className, ...props }) => {
   return (
     <ImgComp
       data-testid="cmp-adv-image"
-      className={ className }
+      className={className}
       {...additionalProps}
       {...props}
       src={src}
@@ -31,4 +31,4 @@ export const AdvImage:FC<ImageProps> = ({ className, ...props }) => {
   );
 };
 
-AdvImage.displayName = 'AdvImage';
+AdvImage.displayName = "AdvImage";

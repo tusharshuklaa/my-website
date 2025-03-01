@@ -24,7 +24,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const startAnimation = () => {
     intervalRef.current = setInterval(() => {
-      setCurrentPlaceholder((prev) => (prev + 1) % placeholders.length);
+      setCurrentPlaceholder(prev => (prev + 1) % placeholders.length);
     }, 3000);
   };
   const handleVisibilityChange = () => {
@@ -79,20 +79,11 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
       let i = 4 * t * 800;
       for (let n = 0; n < 800; n++) {
         let e = i + 4 * n;
-        if (
-          pixelData[e] !== 0 &&
-          pixelData[e + 1] !== 0 &&
-          pixelData[e + 2] !== 0
-        ) {
+        if (pixelData[e] !== 0 && pixelData[e + 1] !== 0 && pixelData[e + 2] !== 0) {
           newData.push({
             x: n,
             y: t,
-            color: [
-              pixelData[e],
-              pixelData[e + 1],
-              pixelData[e + 2],
-              pixelData[e + 3],
-            ],
+            color: [pixelData[e], pixelData[e + 1], pixelData[e + 2], pixelData[e + 3]],
           });
         }
       }
@@ -133,7 +124,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
         const ctx = canvasRef.current?.getContext("2d");
         if (ctx) {
           ctx.clearRect(pos, 0, 800, 800);
-          newDataRef.current.forEach((t) => {
+          newDataRef.current.forEach(t => {
             const { x: n, y: i, r: s, color: color } = t;
             if (n > pos) {
               ctx.beginPath();
@@ -167,10 +158,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
 
     const value = inputRef.current?.value || "";
     if (value && inputRef.current) {
-      const maxX = newDataRef.current.reduce(
-        (prev, current) => (current.x > prev ? current.x : prev),
-        0
-      );
+      const maxX = newDataRef.current.reduce((prev, current) => (current.x > prev ? current.x : prev), 0);
       animate(maxX);
     }
   };
@@ -181,28 +169,23 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
     onSubmit && onSubmit(e);
   };
   return (
-    <GlowingGradientBox
-      className={cn(
-        "rounded-full after:rounded-full before:rounded-full max-w-xl",
-        className,
-      )}
-    >
+    <GlowingGradientBox className={cn("max-w-xl rounded-full before:rounded-full after:rounded-full", className)}>
       <form
         className={cn(
-          "w-full relative bg-white dark:bg-slate-900/90 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
-          value && "bg-gray-50"
+          "relative h-12 w-full overflow-hidden rounded-full bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 dark:bg-slate-900/90",
+          value && "bg-gray-50",
         )}
         onSubmit={handleSubmit}
       >
         <canvas
           className={cn(
-            "absolute pointer-events-none text-base transform scale-50 top-[20%] left-2 sm:left-8 origin-top-left filter invert dark:invert-0 pr-20",
-            !animating ? "opacity-0" : "opacity-100"
+            "pointer-events-none absolute left-2 top-[20%] origin-top-left scale-50 transform pr-20 text-base invert filter dark:invert-0 sm:left-8",
+            !animating ? "opacity-0" : "opacity-100",
           )}
           ref={canvasRef}
         />
         <input
-          onChange={(e) => {
+          onChange={e => {
             if (!animating) {
               setValue(e.target.value);
               onChange && onChange(e);
@@ -213,8 +196,8 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
           value={value}
           type="text"
           className={cn(
-            "w-full relative text-sm sm:text-base z-50 border-none dark:text-white bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20",
-            animating && "text-transparent dark:text-transparent"
+            "relative z-50 h-full w-full rounded-full border-none bg-transparent pl-4 pr-20 text-sm text-black focus:outline-none focus:ring-0 dark:text-white sm:pl-10 sm:text-base",
+            animating && "text-transparent dark:text-transparent",
           )}
         />
 
@@ -223,7 +206,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
           type="submit"
           variant="clear"
           size="auto"
-          className="absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full transition duration-200 flex items-center justify-center"
+          className="absolute right-2 top-1/2 z-50 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full transition duration-200"
         >
           <motion.svg
             xmlns="http://www.w3.org/2000/svg"
@@ -257,7 +240,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
           </motion.svg>
         </Button>
 
-        <div className="absolute inset-0 flex items-center rounded-full pointer-events-none">
+        <div className="pointer-events-none absolute inset-0 flex items-center rounded-full">
           <AnimatePresence mode="wait">
             {!value && (
               <motion.p
@@ -278,7 +261,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
                   duration: 0.3,
                   ease: "linear",
                 }}
-                className="dark:text-zinc-500 text-sm sm:text-base font-normal text-neutral-500 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
+                className="w-[calc(100%-2rem)] truncate pl-4 text-left text-sm font-normal text-neutral-500 dark:text-zinc-500 sm:pl-12 sm:text-base"
               >
                 {placeholders[currentPlaceholder]}
               </motion.p>
@@ -288,4 +271,4 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
       </form>
     </GlowingGradientBox>
   );
-}
+};

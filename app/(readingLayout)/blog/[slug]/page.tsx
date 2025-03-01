@@ -1,42 +1,40 @@
-import { FC } from 'react';
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { format, parseISO } from 'date-fns';
-import { getCldOgImageUrl } from 'next-cloudinary';
-import { allBlogs } from '@content';
-import { Avatar, AvatarFallback, AvatarImage, LampContainer } from '@ui';
-import { AnimatedHeading } from '@components/text/heading';
-import { GradientText } from '@components/text';
-import { AnimateElement } from '@components/animate-element';
-import { SnapSection } from '@components/snap-container';
-import { Mdx } from '@components/mdx';
-import { SocialShare } from '@components/social-share';
-import { TableOfContents } from '@components/table-of-contents';
-import { MoreBlogContent } from '@components/more-blog-content';
+import { FC } from "react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { format, parseISO } from "date-fns";
+import { getCldOgImageUrl } from "next-cloudinary";
+import { allBlogs } from "@content";
+import { Avatar, AvatarFallback, AvatarImage, LampContainer } from "@ui";
+import { AnimatedHeading } from "@components/text/heading";
+import { GradientText } from "@components/text";
+import { AnimateElement } from "@components/animate-element";
+import { SnapSection } from "@components/snap-container";
+import { Mdx } from "@components/mdx";
+import { SocialShare } from "@components/social-share";
+import { TableOfContents } from "@components/table-of-contents";
+import { MoreBlogContent } from "@components/more-blog-content";
 import { absoluteUrl } from "@/lib/utils";
 
 type BlogPageParams = {
   params: {
     slug: string;
-  }
+  };
 };
 
-export async function generateMetadata(
-  { params }: BlogPageParams
-): Promise<Metadata> {
+export async function generateMetadata({ params }: BlogPageParams): Promise<Metadata> {
   // Find the post for the current slug
-  const blogPost = allBlogs.find((blog) => blog.slug === params.slug);
+  const blogPost = allBlogs.find(blog => blog.slug === params.slug);
 
   // If post not found, return minimal metadata
   if (!blogPost) {
     return {
       title: `Blog Not Found | Tushar Shukla`,
-      description: "The requested blog post could not be found."
+      description: "The requested blog post could not be found.",
     };
   }
 
   const ogImage = getCldOgImageUrl({
-    src: blogPost.slug
+    src: blogPost.slug,
   });
 
   return {
@@ -45,8 +43,8 @@ export async function generateMetadata(
     authors: [
       {
         name: blogPost.author,
-        url: "https://tusharshukla.dev"
-      }
+        url: "https://tusharshukla.dev",
+      },
     ],
     keywords: blogPost.keywords || blogPost.tags || [],
     creator: blogPost.author,
@@ -65,27 +63,27 @@ export async function generateMetadata(
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: blogPost.title
-        }
-      ]
+          alt: blogPost.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: blogPost.title,
       description: blogPost.summary,
       creator: "@theTSguy",
-      images: [ogImage]
+      images: [ogImage],
     },
     alternates: {
-      canonical: absoluteUrl(`/blog/${blogPost.slug}`)
-    }
+      canonical: absoluteUrl(`/blog/${blogPost.slug}`),
+    },
   };
 }
 
 const BlogPage: FC<BlogPageParams> = ({ params }) => {
-  const blog = allBlogs.find((post) => {
+  const blog = allBlogs.find(post => {
     // Remove 'blog/' from the beginning of the path
-    const slugWithoutPrefix = post._raw.flattenedPath.replace(/^blog\//, '');
+    const slugWithoutPrefix = post._raw.flattenedPath.replace(/^blog\//, "");
     return slugWithoutPrefix === params.slug;
   });
 
@@ -95,30 +93,34 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
 
   return (
     <>
-      <SnapSection className="max-w-sm md:max-w-5xl m-auto">
+      <SnapSection className="m-auto max-w-sm md:max-w-5xl">
         <LampContainer className="pt-[30dvh]">
-          <AnimatedHeading className="tracking-wide !leading-snug">
+          <AnimatedHeading className="!leading-snug tracking-wide">
             <GradientText color="blue" text={blog.title} />
           </AnimatedHeading>
 
-          <div className="flex justify-between items-end sm:items-center w-full flex-col sm:flex-row gap-8">
-            <div className="flex gap-4 justify-between items-center">
+          <div className="flex w-full flex-col items-end justify-between gap-8 sm:flex-row sm:items-center">
+            <div className="flex items-center justify-between gap-4">
               <AnimateElement delay={0.15}>
                 <Avatar className="h-16 w-16">
-                  <AvatarImage src={blog.authorImg || "https://avatars.githubusercontent.com/u/7785066?v=4"} alt={blog.author} title={blog.authorDesc} />
+                  <AvatarImage
+                    src={blog.authorImg || "https://avatars.githubusercontent.com/u/7785066?v=4"}
+                    alt={blog.author}
+                    title={blog.authorDesc}
+                  />
                   <AvatarFallback>{blog.authorAlias}</AvatarFallback>
                 </Avatar>
               </AnimateElement>
 
               <AnimateElement delay={0.25} className="flex flex-col gap-1">
-                <GradientText color="purple" text={blog.author} className="font-bold text-xl sm:text-2xl" />
+                <GradientText color="purple" text={blog.author} className="text-xl font-bold sm:text-2xl" />
                 <span className="text-xs sm:max-w-[60%]">{blog.authorDesc}</span>
               </AnimateElement>
             </div>
 
-            <AnimateElement delay={0.65} className="flex flex-col gap-1 w-[calc(100%-5rem)] sm:w-auto items-start">
+            <AnimateElement delay={0.65} className="flex w-[calc(100%-5rem)] flex-col items-start gap-1 sm:w-auto">
               <time dateTime={blog.date}>
-                <GradientText color="green" text={`Published on ${format(parseISO(blog.date), 'MMMM dd, yyyy')}`} />
+                <GradientText color="green" text={`Published on ${format(parseISO(blog.date), "MMMM dd, yyyy")}`} />
               </time>
               <GradientText color="purple" text={blog.readingTimeString} className="text-sm" />
             </AnimateElement>
@@ -126,23 +128,18 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
         </LampContainer>
       </SnapSection>
 
-      <div className="mt-2 grid gap-2 sm:gap-4 grid-cols-1 sm:grid-cols-[10rem_minmax(60ch,_7fr)_3fr]">
+      <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-[10rem_minmax(60ch,_7fr)_3fr] sm:gap-4">
         <aside className="hidden sm:block"></aside>
 
-        <article className="mx-auto px-4 text-base leading-relaxed order-2 sm:order-none max-w-full">
+        <article className="order-2 mx-auto max-w-full px-4 text-base leading-relaxed sm:order-none">
           <Mdx code={blog.body.code} />
         </article>
 
-        <aside className="px-4 sm:px-2 order-1 sm:order-none">
-          <div className="flex flex-col items-start gap-4 mt-20 sticky top-32 max-h-none sm:max-h-[calc(98dvh-8rem)] overflow-y-auto">
-            <TableOfContents
-              tocs={blog.toc}
-            />
+        <aside className="order-1 px-4 sm:order-none sm:px-2">
+          <div className="sticky top-32 mt-20 flex max-h-none flex-col items-start gap-4 overflow-y-auto sm:max-h-[calc(98dvh-8rem)]">
+            <TableOfContents tocs={blog.toc} />
 
-            <MoreBlogContent
-              related={blog.related}
-              current={blog.slug}
-            />
+            <MoreBlogContent related={blog.related} current={blog.slug} />
           </div>
         </aside>
       </div>

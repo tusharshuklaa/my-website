@@ -29,9 +29,9 @@ export const metadata: Metadata = {
         url: "https://tusharshukla.dev/images/tusharshukla_website.png",
         width: 1200,
         height: 630,
-        alt: "tusharshukla"
-      }
-    ]
+        alt: "tusharshukla",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
         url: "https://tusharshukla.dev/images/tusharshukla_website.png",
         width: 1200,
         height: 630,
-        alt: "tusharshukla"
-      }
-    ]
+        alt: "tusharshukla",
+      },
+    ],
   },
   alternates: {
-    canonical: "https://tusharshukla.dev"
-  }
+    canonical: "https://tusharshukla.dev",
+  },
 };
 
 export default function BlogLayout({
@@ -59,5 +59,5 @@ export default function BlogLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children
+  return children;
 }
