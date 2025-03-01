@@ -180,22 +180,6 @@ export const Blog = defineDocumentType(() => ({
         });
 
         return headings;
-    toc: {
-      type: "json",
-      resolve: doc => {
-        const regExp = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
-        const slugger = new Slugger();
-        const headings = Array.from(doc.body.raw.matchAll(regExp)).map(({ groups }) => {
-          const content = groups?.content || "";
-
-          return {
-            level: groups?.flag.length || 0,
-            content,
-            slug: content ? slugger.slug(content) : undefined,
-          };
-        });
-
-        return headings;
       },
     },
   },
