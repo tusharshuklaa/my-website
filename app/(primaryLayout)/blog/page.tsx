@@ -85,9 +85,9 @@ const AllBlogsPage: FC = () => {
         readingTimeString: blog.readingTimeString,
       };
     });
-  }, [visibleBlogs]);
+  }, [visibleBlogs, sortingType]);
 
-  const remainingBlogs = useMemo(() => visibleBlogs.slice(5), [visibleBlogs]);
+  const remainingBlogs = useMemo(() => visibleBlogs.slice(5), [visibleBlogs, sortingType]);
 
   const onSortingChange = useCallback(
     (value: SortingType) => {
