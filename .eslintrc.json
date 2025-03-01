@@ -4,6 +4,5 @@
     "next/typescript",
     "prettier",
     "plugin:prettier/recommended"
-  ],
-  "ignores": ["node_modules", "scripts"]
+  ]
 }
