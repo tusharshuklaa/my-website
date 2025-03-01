@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { BasicUiComponent } from "@/types";
+import { UiComponent } from "@/types";
 import { cn } from "@/lib/utils";
 
-export const SpaceMascot: FC<BasicUiComponent> = ({ children, className, ...props }) => {
+export const SpaceMascot: FC<UiComponent> = ({ className, ...props }) => {
   const spaceMascotClasses = cn("space-mascot absolute top-1/2 left-1/2", className);
 
   return (

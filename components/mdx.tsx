@@ -65,13 +65,16 @@ const components: MDXComponents = {
   ),
   // Link
   a: ({ ...props }) => {
+    const href = props.href || "";
+
     if (props.className?.includes("subheading-anchor")) {
-      return <Link {...props} href={props.href!} />;
+      return <Link {...props} href={href} />;
     }
 
     const target = props.href?.startsWith("http") ? "_blank" : "_self";
+    const title = props.title || "";
 
-    return <PrettyLink {...(props as any)} target={target} />;
+    return <PrettyLink {...props} href={href} target={target} title={title} />;
   },
   // Image
   img: ({ ...props }) => {

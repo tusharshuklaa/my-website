@@ -50,7 +50,7 @@ export const WorkStatusMobile: FC<UiComponent<WorkStatusDeviceProps>> = ({
             </div>
 
             <div className="absolute bottom-4 left-0 right-0 m-auto flex w-max flex-col text-center text-sm">
-              <span className="text-gray-300">28° 34' 32.88" N / 77° 22' 22.73" E</span>
+              <span className="text-gray-300">28° 34&apos; 32.88&quot; N / 77° 22&apos; 22.73&quot; E</span>
               <span className="text-white">Remote from Noida, India</span>
             </div>
           </div>

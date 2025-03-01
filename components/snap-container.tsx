@@ -1,4 +1,4 @@
-import { ComponentProps, FC, ReactNode } from "react";
+import { ComponentProps, FC } from "react";
 import { cn } from "@/lib/utils";
 import { BasicUiComponent } from "@/types";
 

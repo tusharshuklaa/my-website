@@ -18,7 +18,7 @@ export type Showcase = {
   featured: boolean;
 };
 
-const ShowcaseCard: FC<Showcase> = ({ title, url, img, description, tags, featured }) => {
+const ShowcaseCard: FC<Showcase> = ({ title, url, img, description }) => {
   return (
     <Card className="relative p-0">
       <div className="before:margin-auto absolute inset-0 before:absolute before:inset-0 before:z-[1] before:h-full before:w-full before:bg-black before:opacity-70">

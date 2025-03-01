@@ -35,7 +35,7 @@ export const Footer: FC = () => {
     <footer className="mx- flex w-full flex-col bg-gradient-to-t from-sky-950/30 from-60% to-transparent to-100% px-4 pb-4 pt-24 sm:px-0 sm:pb-8 md:pt-40">
       <div className="m-auto mb-14 flex w-full max-w-sm flex-col justify-between sm:max-w-7xl md:flex-row md:px-0">
         <div className="w-full md:w-1/2">
-          <h3 className="mb-4 text-3xl">Tushar's Personal Website</h3>
+          <h3 className="mb-4 text-3xl">Tushar&apos;s Personal Website</h3>
           <p>
             Design inspired by casual internet surfing 😆 and coded in{" "}
             <Link href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">
