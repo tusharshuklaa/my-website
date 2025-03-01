@@ -62,7 +62,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  console.log("blogSitemaps", blogSitemaps);
-
   return [...staticPages, ...blogSitemaps];
 }
