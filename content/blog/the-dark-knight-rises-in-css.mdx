@@ -174,7 +174,6 @@ Notice that I've used viewport units [(`vmin`)](https://developer.mozilla.org/en
 This, along with `position: absolute` and `margin: auto`, centers the `.batman` element within the `.scene`.
 
 ### Building the Base - The Face (02.css)
-
 Before we begin, scroll up to the top and look at the image of Batman. Notice how the face is a simple trapezoid shape.
 A trapezoid is like a rectangle that has at least one pair of parallel sides, making it look like a table top when viewed from the side. We can create this shape cleverly using CSS's border property.
 
@@ -213,7 +212,7 @@ Now pay attention to the shaded border-bottom in the diagram. We already have ou
 - The left and right borders are made transparent, and when they meet the bottom border, they create those characteristic slanted sides.
 - Border top is removed as we don't need it for a trapezoid shape.
 - The initial `height` property can be removed as it's not needed once the border magic is done.
-  </MultiColumn>
+</MultiColumn>
 
 You can adjust the measurements to make your trapezoid wider, taller, or change how much it slants. For example:
 
@@ -330,7 +329,6 @@ Now our Batman face should look like this:
 ![Batman face with ears](batman-step-3_bsquei "Batman face with ears")
 
 ### Adding Eyes (04.css)
-
 The next prominent shape in Batman's face is his eyes. Batman's eyes are simple triangles. We can create this using the same logic as ears.
 
 ```html {4}
@@ -388,7 +386,6 @@ pseudo-elements to represent the eyes. This is a great way to keep your HTML cle
 The Dark Knight can see now: ![Batman face with eyes](batman-step-4_qfhthd "Batman face with eyes")
 
 ### Adding Mouth (05.css)
-
 Once again, the mouth is a simple rectangle that contains a trapezoid shape chin and a triangle-shaped the nose (let's ignore the lips for now). We can use the same technique as we did for the face, eyes, and ears.
 
 ```html {6-8}
@@ -636,7 +633,6 @@ Let's see how we can create the cape:
 
 In the CSS code snippet above, I've used `border-radius` to create the curves in the cape. The `border-radius` property is a powerful tool that allows you to create rounded corners and complex shapes.
 Notice the `/` keyword in `border-radius` syntax. This is used to define the horizontal and vertical radii of the corners. I've covered this in detail in the tips and tricks section below.
-
 <br />
 I've also used `box-shadow` to create the illusion of curves in the cape. The `box-shadow` property is a versatile tool
 that allows you to add shadows to elements. By cleverly using multiple values in `box-shadow`, you can create a variety

@@ -27,6 +27,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
       setCurrentPlaceholder(prev => (prev + 1) % placeholders.length);
     }, 3000);
   };
+
   const handleVisibilityChange = () => {
     if (document.visibilityState !== "visible" && intervalRef.current) {
       clearInterval(intervalRef.current); // Clear the interval when the tab is not visible
@@ -46,7 +47,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
       }
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [placeholders]);
+  }, [handleVisibilityChange, startAnimation, placeholders]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const newDataRef = useRef<any[]>([]);

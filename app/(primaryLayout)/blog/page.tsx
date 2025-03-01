@@ -43,7 +43,7 @@ const AllBlogsPage: FC = () => {
           return 0;
       }
     });
-  }, [sortingType]);
+  }, [items, sortingType]);
 
   const recentBlogs = useMemo(() => {
     return visibleBlogs.slice(0, 5).map((blog, index) => {
@@ -85,9 +85,9 @@ const AllBlogsPage: FC = () => {
         readingTimeString: blog.readingTimeString,
       };
     });
-  }, [visibleBlogs, sortingType]);
+  }, [visibleBlogs]);
 
-  const remainingBlogs = useMemo(() => visibleBlogs.slice(5), [visibleBlogs, sortingType]);
+  const remainingBlogs = useMemo(() => visibleBlogs.slice(5), [visibleBlogs]);
 
   const onSortingChange = useCallback(
     (value: SortingType) => {
