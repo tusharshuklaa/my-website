@@ -1,11 +1,11 @@
 "use client";
 
-import { FC } from 'react';
+import { FC } from "react";
 import { UiComponent } from "@/types";
-import { GradientColors } from '@/components/text';
-import { useScreenType } from '@/hooks/use-screen-type';
-import { WorkStatusMobile } from './work-status-mobile';
-import { WorkStatusDesktop } from './work-status-desktop';
+import { GradientColors } from "@/components/text";
+import { useScreenType } from "@/hooks/use-screen-type";
+import { WorkStatusMobile } from "./work-status-mobile";
+import { WorkStatusDesktop } from "./work-status-desktop";
 
 const WORK_STATUS = {
   0: "NOT LOOKING",
@@ -35,8 +35,8 @@ type WorkStatusNumber = keyof typeof WORK_STATUS;
 
 export type WorkStatusDeviceProps = {
   id: string;
-  workStatusText: typeof WORK_STATUS[WorkStatusNumber];
-  blipColor: typeof BLIP_COLOR[WorkStatusNumber];
+  workStatusText: (typeof WORK_STATUS)[WorkStatusNumber];
+  blipColor: (typeof BLIP_COLOR)[WorkStatusNumber];
   textColor: GradientColors;
   blipShadowColor: GradientColors;
 };
@@ -71,4 +71,4 @@ export const WorkStatus: FC<UiComponent> = ({ className }) => {
   );
 };
 
-WorkStatus.displayName = 'ContactSection';
+WorkStatus.displayName = "ContactSection";

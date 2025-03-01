@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  CSSProperties,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { CSSProperties, ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -122,10 +115,7 @@ const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
           "--after-blur": `${dimensions.width / 3}px`,
         } as CSSProperties
       }
-      className={cn(
-        "relative z-10 size-full rounded-[var(--border-radius)]",
-        className,
-      )}
+      className={cn("relative z-10 size-full rounded-[var(--border-radius)]", className)}
       {...props}
     >
       <div

@@ -13,7 +13,7 @@ export const useHideOnScroll = () => {
     container: containerRef,
   });
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
+  useMotionValueEvent(scrollY, "change", latest => {
     const previous = Number(scrollY.getPrevious());
 
     // Hide nav when scrolling down, show when scrolling up

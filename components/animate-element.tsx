@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { FC } from 'react';
+import { FC } from "react";
 import { BasicUiComponent } from "@/types";
-import { Easing, motion } from 'framer-motion';
+import { Easing, motion } from "framer-motion";
 
 type AnimateElementProps = BasicUiComponent<{
   duration?: number;
@@ -10,7 +10,13 @@ type AnimateElementProps = BasicUiComponent<{
   ease?: Easing;
 }>;
 
-export const AnimateElement:FC<AnimateElementProps> = ({ children, className, delay = 0.3, duration = 0.8, ease = "easeInOut" }) => {
+export const AnimateElement: FC<AnimateElementProps> = ({
+  children,
+  className,
+  delay = 0.3,
+  duration = 0.8,
+  ease = "easeInOut",
+}) => {
   return (
     <motion.div
       data-testid="cmp-animate-element"
@@ -28,4 +34,4 @@ export const AnimateElement:FC<AnimateElementProps> = ({ children, className, de
   );
 };
 
-AnimateElement.displayName = 'AnimateElement';
+AnimateElement.displayName = "AnimateElement";

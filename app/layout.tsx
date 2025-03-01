@@ -1,5 +1,5 @@
 import type { Viewport, Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import { Dongle, Poppins } from "next/font/google";
 import { ThemeProvider } from "@components/theme-provider";
 import { InfoBar } from "@components/info-bar";
@@ -19,7 +19,7 @@ const dongle = Dongle({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffffff"
+  themeColor: "#ffffff",
 };
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: "Tushar Shukla | Portfolio website",
     type: "website",
-    locale: "en_US"
+    locale: "en_US",
   },
   robots: {
     index: true,
@@ -37,45 +37,45 @@ export const metadata: Metadata = {
     "max-image-preview": "large",
     "max-snippet": -1,
     "max-video-preview": -1,
-    googleBot: "index, follow"
+    googleBot: "index, follow",
   },
   alternates: {
     types: {
-      "application/rss+xml": "https://tusharshukla.dev/rss.xml"
-    }
+      "application/rss+xml": "https://tusharshukla.dev/rss.xml",
+    },
   },
   applicationName: "Tushar Shukla | Portfolio website",
   appleWebApp: {
     title: "Tushar Shukla | Portfolio website",
     statusBarStyle: "default",
-    capable: true
+    capable: true,
   },
   icons: {
     icon: [
       {
         url: "/favicon.ico",
-        type: "image/x-icon"
+        type: "image/x-icon",
       },
       {
         url: "/icon.png",
         sizes: "192x192",
-        type: "image/png"
-      }
+        type: "image/png",
+      },
     ],
     shortcut: [
       {
         url: "/favicon.ico",
-        type: "image/x-icon"
-      }
+        type: "image/x-icon",
+      },
     ],
     apple: [
       {
         url: "/apple-icon.png",
         sizes: "180x180",
-        type: "image/png"
+        type: "image/png",
       },
-    ]
-  }
+    ],
+  },
 };
 
 export default function RootLayout({

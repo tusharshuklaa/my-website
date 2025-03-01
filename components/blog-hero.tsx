@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { FC } from 'react';
-import { SparklesCore } from '@ui';
-import { cn } from '@/lib/utils';
-import { UiComponent } from '@/types';
+import { FC } from "react";
+import { SparklesCore } from "@ui";
+import { cn } from "@/lib/utils";
+import { UiComponent } from "@/types";
 
 type ArticleHeroProps = UiComponent<{
   text: string;
@@ -16,15 +16,15 @@ export const ArticleHero: FC<ArticleHeroProps> = ({ className, text }) => {
   );
   return (
     <div data-testid="cmp-article-hero" className={articleHeroClasses}>
-      <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold text-center text-white relative z-20 text-glow">
+      <h1 className="text-glow relative z-20 text-center text-5xl font-bold text-white md:text-7xl lg:text-9xl">
         {text}
       </h1>
-      <div className="w-80 sm:w-[40rem] h-28 sm:h-40 relative">
+      <div className="relative h-28 w-80 sm:h-40 sm:w-[40rem]">
         {/* Gradients */}
-        <div className="absolute inset-x-12 sm:inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
-        <div className="absolute inset-x-12 sm:inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
-        <div className="absolute inset-x-28 sm:inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-        <div className="absolute inset-x-28 sm:inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+        <div className="absolute inset-x-12 top-0 h-[2px] w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm sm:inset-x-20" />
+        <div className="absolute inset-x-12 top-0 h-px w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent sm:inset-x-20" />
+        <div className="absolute inset-x-28 top-0 h-[5px] w-1/4 bg-gradient-to-r from-transparent via-sky-500 to-transparent blur-sm sm:inset-x-60" />
+        <div className="absolute inset-x-28 top-0 h-px w-1/4 bg-gradient-to-r from-transparent via-sky-500 to-transparent sm:inset-x-60" />
 
         {/* Core component */}
         <SparklesCore
@@ -32,7 +32,7 @@ export const ArticleHero: FC<ArticleHeroProps> = ({ className, text }) => {
           minSize={0.4}
           maxSize={1}
           particleDensity={1200}
-          className="w-full h-full rounded-[20%_20%_50%_50%_/_40%_40%_100%_100%] overflow-hidden"
+          className="h-full w-full overflow-hidden rounded-[20%_20%_50%_50%_/_40%_40%_100%_100%]"
           particleColor="#FFFFFF"
         />
       </div>
@@ -40,4 +40,4 @@ export const ArticleHero: FC<ArticleHeroProps> = ({ className, text }) => {
   );
 };
 
-ArticleHero.displayName = 'BlogHero';
+ArticleHero.displayName = "BlogHero";

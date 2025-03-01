@@ -10,7 +10,7 @@ import { RootRefProvider } from "@contexts/use-root-ref";
 export default function Template({ children }: ComponentPropsWithoutRef<"div">) {
   return (
     <>
-      <div className="bg-background fixed inset-0 w-full h-screen overflow-hidden pointer-events-none z-0">
+      <div className="pointer-events-none fixed inset-0 z-0 h-screen w-full overflow-hidden bg-background">
         <ShootingStars />
         <StarsBackground />
       </div>

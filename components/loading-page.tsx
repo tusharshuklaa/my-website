@@ -1,23 +1,25 @@
-import { FC } from 'react';
-import { SpaceMascot } from '@components/space-mascot';
-import { Heading2 } from '@components/text/heading';
+import { FC } from "react";
+import { SpaceMascot } from "@components/space-mascot";
+import { Heading2 } from "@components/text/heading";
 
 export const LoadingPage: FC = () => {
   return (
     <div
       data-testid="cmp-loading-page"
-      className="fixed inset-0 w-[100vw] h-[100vh] flex items-center justify-center overflow-hidden bg-white dark:bg-background opacity-90 z-50"
+      className="fixed inset-0 z-50 flex h-[100vh] w-[100vw] items-center justify-center overflow-hidden bg-white opacity-90 dark:bg-background"
     >
       <SpaceMascot />
-      <div className='longfazers absolute w-full h-full'>
-        <span className="bg-black dark:bg-white w-1/5 absolute" />
-        <span className="bg-black dark:bg-white w-1/5 absolute" />
-        <span className="bg-black dark:bg-white w-1/5 absolute" />
-        <span className="bg-black dark:bg-white w-1/5 absolute" />
+      <div className="longfazers absolute h-full w-full">
+        <span className="absolute w-1/5 bg-black dark:bg-white" />
+        <span className="absolute w-1/5 bg-black dark:bg-white" />
+        <span className="absolute w-1/5 bg-black dark:bg-white" />
+        <span className="absolute w-1/5 bg-black dark:bg-white" />
       </div>
-      <Heading2 className="animate-pulse text-center absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-full">Just a sec...</Heading2>
+      <Heading2 className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-full animate-pulse text-center">
+        Just a sec...
+      </Heading2>
     </div>
   );
 };
 
-LoadingPage.displayName = 'LoadingPage';
+LoadingPage.displayName = "LoadingPage";

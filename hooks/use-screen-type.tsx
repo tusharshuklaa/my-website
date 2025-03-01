@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
 /**
  * Screen type object containing boolean values for isDesktop, isTablet, and isMobile.
@@ -13,9 +13,9 @@ export type ScreenType = {
 
 // Define breakpoints for mobile, tablet, and desktop
 const breakpoints = {
-  mobile: '(max-width: 767px)',
-  tablet: '(min-width: 768px) and (max-width: 1024px)',
-  desktop: '(min-width: 1025px)',
+  mobile: "(max-width: 767px)",
+  tablet: "(min-width: 768px) and (max-width: 1024px)",
+  desktop: "(min-width: 1025px)",
 };
 
 /**
@@ -26,7 +26,7 @@ const breakpoints = {
 export const useScreenType = (): ScreenType => {
   // Function to determine the current screen type
   const getScreenType = useCallback((): ScreenType => {
-    if (typeof window === 'undefined') return { isMobile: false, isTablet: false, isDesktop: true };
+    if (typeof window === "undefined") return { isMobile: false, isTablet: false, isDesktop: true };
     if (window.matchMedia(breakpoints.desktop).matches) return { isMobile: false, isTablet: false, isDesktop: true };
     if (window.matchMedia(breakpoints.mobile).matches) return { isMobile: true, isTablet: false, isDesktop: false };
     if (window.matchMedia(breakpoints.tablet).matches) return { isMobile: false, isTablet: true, isDesktop: false };
@@ -47,18 +47,18 @@ export const useScreenType = (): ScreenType => {
       timeoutId = setTimeout(() => {
         const newScreenType = getScreenType();
         // Update state only if the screen type has changed
-        setScreenType((prevScreenType) =>
+        setScreenType(prevScreenType =>
           prevScreenType.isMobile !== newScreenType.isMobile ||
           prevScreenType.isTablet !== newScreenType.isTablet ||
           prevScreenType.isDesktop !== newScreenType.isDesktop
             ? newScreenType
-            : prevScreenType
+            : prevScreenType,
         );
       }, 200); // Adjust debounce delay as needed
     };
 
     // Add event listener for resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Initial check in case the screen size changes before the first render
     handleResize();
@@ -66,7 +66,7 @@ export const useScreenType = (): ScreenType => {
     // Cleanup event listener and timeout on unmount
     return () => {
       clearTimeout(timeoutId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, [getScreenType]);
 

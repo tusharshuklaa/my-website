@@ -16,29 +16,21 @@ type VelocityScrollProps = {
   text: string;
   default_velocity?: number;
   className?: string;
-}
+};
 
 type ParallaxProps = {
   children: string;
   baseVelocity: number;
   className?: string;
-}
+};
 
 export const wrap = (min: number, max: number, v: number) => {
   const rangeSize = max - min;
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
 };
 
-export function VelocityScroll({
-  text,
-  default_velocity = 5,
-  className,
-}: VelocityScrollProps) {
-  function ParallaxText({
-    children,
-    baseVelocity = 100,
-    className,
-  }: ParallaxProps) {
+export function VelocityScroll({ text, default_velocity = 5, className }: VelocityScrollProps) {
+  function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps) {
     const baseX = useMotionValue(0);
     const { scrollY } = useScroll();
     const scrollVelocity = useVelocity(scrollY);
@@ -71,7 +63,7 @@ export function VelocityScroll({
       return () => window.removeEventListener("resize", calculateRepetitions);
     }, [children]);
 
-    const x = useTransform(baseX, (v) => `${wrap(-100 / repetitions, 0, v)}%`);
+    const x = useTransform(baseX, v => `${wrap(-100 / repetitions, 0, v)}%`);
 
     const directionFactor = React.useRef<number>(1);
     useAnimationFrame((t, delta) => {
@@ -89,14 +81,12 @@ export function VelocityScroll({
     });
 
     return (
-      <div
-        className="w-full overflow-hidden whitespace-nowrap"
-        ref={containerRef}
-      >
+      <div className="w-full overflow-hidden whitespace-nowrap" ref={containerRef}>
         <motion.div className={cn("inline-block", className)} style={{ x }}>
           {Array.from({ length: repetitions }).map((_, i) => (
             <span key={i} ref={i === 0 ? textRef : null}>
-              {children}{""}
+              {children}
+              {""}
             </span>
           ))}
         </motion.div>

@@ -1,14 +1,17 @@
-import { FC } from 'react';
+import { FC } from "react";
 import { UiComponent } from "@/types";
 import { cn } from "@/lib/utils";
-import { HoverBorderGradient } from '@ui';
+import { HoverBorderGradient } from "@ui";
 
 type DownloadResumeButtonProps = UiComponent & {
   containerClassName?: string;
 };
 
 export const DownloadResumeButton: FC<DownloadResumeButtonProps> = ({ className, containerClassName }) => {
-  const downloadResumeButtonClasses = cn('dark:bg-slate-950 bg-white text-black dark:text-white flex items-center space-x-2', className);
+  const downloadResumeButtonClasses = cn(
+    "dark:bg-slate-950 bg-white text-black dark:text-white flex items-center space-x-2",
+    className,
+  );
 
   return (
     <HoverBorderGradient
@@ -24,4 +27,4 @@ export const DownloadResumeButton: FC<DownloadResumeButtonProps> = ({ className,
   );
 };
 
-DownloadResumeButton.displayName = 'DownloadResumeButton';
+DownloadResumeButton.displayName = "DownloadResumeButton";

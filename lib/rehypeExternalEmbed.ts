@@ -1,11 +1,11 @@
-import { visit } from 'unist-util-visit';
-import type { Element } from 'hast';
-import type { Plugin } from 'unified';
+import { visit } from "unist-util-visit";
+import type { Element } from "hast";
+import type { Plugin } from "unified";
 
 export const rehypeExternalEmbed: Plugin = () => {
-  return (tree) => {
-    visit(tree, 'element', (node: Element, index: number, parent: any) => {
-      if (node.tagName === 'a' && node.properties?.href) {
+  return tree => {
+    visit(tree, "element", (node: Element, index: number, parent: any) => {
+      if (node.tagName === "a" && node.properties?.href) {
         const href = node.properties.href as string;
         // Using !! at the beginning of the URL to identify if the URL needs to be embedded or not
         if (href.startsWith("!!")) {

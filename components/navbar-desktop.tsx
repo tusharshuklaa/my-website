@@ -9,20 +9,21 @@ import { Menu, MenuItem, HoveredLink, ProductItem } from "@components/ui";
 import { CommandCenter } from "@components/command-center";
 import { TextFlipper } from "@components/text";
 import { UiComponent } from "@/types";
-import { allBlogs, Blog } from '@content';
+import { allBlogs, Blog } from "@content";
 import { MyAvatar } from "@components/my-avatar";
 import { DownloadResumeButton } from "@components/download-resume-button";
 import { CoolBorder } from "@components/cool-border";
 import { useHideOnScroll } from "@/hooks/use-hide-on-scroll";
 
-const getLimitedBlogs = (blogs: Array<Blog>, limit: number) => blogs
-  .filter(blog => blog.published)
-  .map(blog => ({
-    ...blog,
-    date: format(parseISO(blog.date), 'LLLL d, yyyy')
-  }))
-  .slice(0, limit)
-  .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+const getLimitedBlogs = (blogs: Array<Blog>, limit: number) =>
+  blogs
+    .filter(blog => blog.published)
+    .map(blog => ({
+      ...blog,
+      date: format(parseISO(blog.date), "LLLL d, yyyy"),
+    }))
+    .slice(0, limit)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
 export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
   const blogs = getLimitedBlogs(allBlogs, 4);
@@ -33,14 +34,14 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
   return (
     <motion.nav
       className={cn(
-        "hidden sm:block group fixed inset-x-0 top-10 z-50 mx-auto sm:max-w-xl lg:max-w-3xl backdrop-blur-sm transition-shadow duration-500 ease-out [--bg-size:300%]",
+        "group fixed inset-x-0 top-10 z-50 mx-auto hidden backdrop-blur-sm transition-shadow duration-500 ease-out [--bg-size:300%] sm:block sm:max-w-xl lg:max-w-3xl",
         className,
       )}
       animate={{
-        y: isHiddenOnScroll ? '-200%' : '0%',
+        y: isHiddenOnScroll ? "-200%" : "0%",
         opacity: isHiddenOnScroll ? 0 : 1,
       }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       initial={{ y: 0, opacity: 1 }}
     >
       <CoolBorder />
@@ -65,19 +66,17 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
           </MenuItem>
 
           <MenuItem setActive={setActive} active={active} item="Blogs" href="/blog">
-            <h3 className="text-center font-bold text-2xl mb-4">Recent Blogs</h3>
+            <h3 className="mb-4 text-center text-2xl font-bold">Recent Blogs</h3>
             <div className="grid grid-cols-2 gap-10 p-4 text-sm">
-              {
-                blogs.map((blog) => (
-                  <ProductItem
-                    key={blog.title}
-                    title={blog.title}
-                    href={blog.url}
-                    src={blog.img}
-                    description={blog.summary}
-                  />
-                ))
-              }
+              {blogs.map(blog => (
+                <ProductItem
+                  key={blog.title}
+                  title={blog.title}
+                  href={blog.url}
+                  src={blog.img}
+                  description={blog.summary}
+                />
+              ))}
             </div>
           </MenuItem>
 

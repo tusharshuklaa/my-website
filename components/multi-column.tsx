@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC } from "react";
 import { BasicUiComponent } from "@/types";
 import { cn } from "@/lib/utils";
 
@@ -9,17 +9,17 @@ type MultiColumnProps = BasicUiComponent<{
 
 export const MultiColumn: FC<MultiColumnProps> = ({ children, className, columns = 2, gap = 4, ...props }) => {
   const multiColumnClasses = cn(
-    'grid items-center',
+    "grid items-center",
     {
-      'grid-cols-1 sm:grid-cols-2': columns === 2,
-      'grid-cols-1 sm:grid-cols-3': columns === 3,
-      'gap-4': gap === 4,
-      'gap-6': gap === 6,
-      'gap-8': gap === 8,
-      'gap-10': gap === 10,
-      'gap-12': gap === 12,
+      "grid-cols-1 sm:grid-cols-2": columns === 2,
+      "grid-cols-1 sm:grid-cols-3": columns === 3,
+      "gap-4": gap === 4,
+      "gap-6": gap === 6,
+      "gap-8": gap === 8,
+      "gap-10": gap === 10,
+      "gap-12": gap === 12,
     },
-    className
+    className,
   );
 
   return (
@@ -29,4 +29,4 @@ export const MultiColumn: FC<MultiColumnProps> = ({ children, className, columns
   );
 };
 
-MultiColumn.displayName = 'MultiColumn';
+MultiColumn.displayName = "MultiColumn";

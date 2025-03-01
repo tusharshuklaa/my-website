@@ -25,14 +25,23 @@ type CompanyProps = Omit<CareerCompany, "heading">;
 
 export const Company: FC<CompanyProps> = ({ company, description, img, imgLight, positions, type, url }) => {
   return (
-    <section className="flex gap-2 md:gap-8 flex-col md:flex-row">
-      <div className="mt-2 mb-4 sm:mb-0 flex h-28 w-full sm:w-28 shrink-0 items-end md:items-start justify-center">
-        <ThemeImage lightSrc={imgLight || ""} src={img} alt={`${company} logo`} title={`${description}`} width={112} height={112} />
+    <section className="flex flex-col gap-2 md:flex-row md:gap-8">
+      <div className="mb-4 mt-2 flex h-28 w-full shrink-0 items-end justify-center sm:mb-0 sm:w-28 md:items-start">
+        <ThemeImage
+          lightSrc={imgLight || ""}
+          src={img}
+          alt={`${company} logo`}
+          title={`${description}`}
+          width={112}
+          height={112}
+        />
       </div>
 
       <div className="flex flex-col">
-        <h2 className="mb-4 flex items-center justify-center sm:justify-start gap-2 text-xl font-normal text-neutral-800 dark:text-neutral-200 md:text-2xl">
-          <PrettyLink href={url} title={`${description}`} target="_blank">{company}</PrettyLink>
+        <h2 className="mb-4 flex items-center justify-center gap-2 text-xl font-normal text-neutral-800 dark:text-neutral-200 sm:justify-start md:text-2xl">
+          <PrettyLink href={url} title={`${description}`} target="_blank">
+            {company}
+          </PrettyLink>
         </h2>
 
         <ul className="list-disc">
@@ -41,20 +50,22 @@ export const Company: FC<CompanyProps> = ({ company, description, img, imgLight,
               <div>
                 <div className="flex items-center gap-2">
                   <GradientText text={position.title} className="text-lg font-bold" />
-                  <sub className="text-xs font-thin min-w-fit">( {type} )</sub>
+                  <sub className="min-w-fit text-xs font-thin">( {type} )</sub>
                 </div>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400">{`${position.duration} | ${position.location}`}</p>
               </div>
 
-              {
-                Array.isArray(position.description) ? (
-                  <ul className="list-disc pl-4">
-                    {position.description.map((desc, idx) => (
-                      <li key={idx} className="text-sm">{desc}</li>
-                    ))}
-                  </ul>
-                ) : <div className="text-sm">{position.description}</div>
-              }
+              {Array.isArray(position.description) ? (
+                <ul className="list-disc pl-4">
+                  {position.description.map((desc, idx) => (
+                    <li key={idx} className="text-sm">
+                      {desc}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="text-sm">{position.description}</div>
+              )}
             </li>
           ))}
         </ul>

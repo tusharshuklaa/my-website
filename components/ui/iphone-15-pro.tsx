@@ -74,7 +74,7 @@ export function Iphone15Pro({
       )}
       {videoSrc && (
         <foreignObject x="21.25" y="19.25" width="389.5" height="843.5">
-          { darkenVideo && <div className="absolute size-full overflow-hidden bg-slate-900/25"></div>}
+          {darkenVideo && <div className="absolute size-full overflow-hidden bg-slate-900/25"></div>}
           <video
             className="size-full overflow-hidden rounded-[55.75px] object-cover"
             src={videoSrc}
@@ -86,8 +86,7 @@ export function Iphone15Pro({
         </foreignObject>
       )}
       {children && (
-        <foreignObject x="21.25" y="19.25" width="389.5" height="843.5"
-        >
+        <foreignObject x="21.25" y="19.25" width="389.5" height="843.5">
           {children}
         </foreignObject>
       )}
@@ -105,16 +104,9 @@ export function Iphone15Pro({
       />
       <defs>
         <clipPath id="roundedCorners">
-          <rect
-            x="21.25"
-            y="19.25"
-            width="389.5"
-            height="843.5"
-            rx="55.75"
-            ry="55.75"
-          />
+          <rect x="21.25" y="19.25" width="389.5" height="843.5" rx="55.75" ry="55.75" />
         </clipPath>
       </defs>
     </svg>
   );
-};
+}

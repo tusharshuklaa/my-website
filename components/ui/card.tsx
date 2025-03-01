@@ -20,7 +20,11 @@ export const CardTitle: FC<BasicUiComponent> = ({ className, children }) => {
 };
 
 export const CardDate: FC<UiComponent<{ date: string }>> = ({ className, date }) => {
-  return <time dateTime={date} className={cn("text-neutral-500 text-sm mt-1 dark:text-neutral-300 inline-block", className)}>{date}</time>;
+  return (
+    <time dateTime={date} className={cn("mt-1 inline-block text-sm text-neutral-500 dark:text-neutral-300", className)}>
+      {date}
+    </time>
+  );
 };
 
 export const CardDescription: FC<BasicUiComponent> = ({ className, children }) => {
