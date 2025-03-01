@@ -31,9 +31,9 @@ const AboutMePage: FC = () => (
         🐌. My tech stack includes React, TypeScript and all the fun things that make frontend development exciting (and
         occasionally frustrating 🙄).
         <br />
-        I'm a firm believer in continuous learning, mostly because the web changes faster than I can keep up 🏃🏻‍♂️, but
-        also because I genuinely enjoy it 😍. I'm always eager to explore and leverage new technologies, even the
-        slightly weird ones, to create even better solutions.
+        I&apos;m a firm believer in continuous learning, mostly because the web changes faster than I can keep up 🏃🏻‍♂️,
+        but also because I genuinely enjoy it 😍. I&apos;m always eager to explore and leverage new technologies, even
+        the slightly weird ones, to create even better solutions.
         <br />
         Beyond just writing code & blogs, I thrive in collaboration, enjoy leading teams, and have a special talent for
         explaining complex dev concepts without making people&apos;s eyes glaze over 👀.
@@ -41,7 +41,7 @@ const AboutMePage: FC = () => (
 
       <Heading2 className="mb-2 mt-12">Fun Facts (Because I&apos;m Not Just a Code Machine)</Heading2>
       <JustText>
-        When I'm not immersed in the world of code 🌐, you can find me indulging in some of my other passions:
+        When I&apos;m not immersed in the world of code 🌐, you can find me indulging in some of my other passions:
         <br />
         🦸🏻 <strong>Anime Enthusiast:</strong> When I&apos;m not coding, I&apos;m probably watching anime — One Piece and
         Naruto taught me more about perseverance than any self-help book.
@@ -75,7 +75,7 @@ const AboutMePage: FC = () => (
         <PrettyLink href="mailto:tusharshuklaa@gmail.com" title="get in touch">
           drop me a line, or just say hi
         </PrettyLink>
-        . Let's connect and create something awesome together!
+        . Let&apos;s connect and create something awesome together!
       </JustText>
     </SnapSection>
 

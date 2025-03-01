@@ -7,7 +7,7 @@ type BlipProps = UiComponent<{
   size?: number;
 }>;
 
-export const Blip: React.FC<BlipProps> = ({ className, color = "bg-red-500", size = 20 }) => {
+export const Blip: FC<BlipProps> = ({ className, color = "bg-red-500", size = 20 }) => {
   const sizeStyle = {
     width: `${size}px`,
     height: `${size}px`,

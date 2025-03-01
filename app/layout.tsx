@@ -48,7 +48,6 @@ export const metadata: Metadata = {
   appleWebApp: {
     title: "Tushar Shukla | Portfolio website",
     statusBarStyle: "default",
-    capable: true,
   },
   icons: {
     icon: [

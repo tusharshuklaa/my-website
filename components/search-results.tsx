@@ -18,8 +18,8 @@ export const SearchResults: FC<SearchResultsProps> = ({ className, itemsCount, o
     query.length > 0 && (
       <h3 data-testid="cmp-search-results" className={searchResultsClasses}>
         <span>
-          Found <GradientText text={itemsCount} /> item{itemsCount > 1 ? "s" : ""} for your search query "
-          <GradientText text={query} />"
+          Found <GradientText text={itemsCount} /> item{itemsCount > 1 ? "s" : ""} for your search query &ldquo;
+          <GradientText text={query} /> &rdquo;
         </span>
 
         <Button type="button" variant="outline" onClick={onSearchClear} className="flex gap-2 rounded-full">

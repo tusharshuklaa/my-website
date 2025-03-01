@@ -46,7 +46,7 @@ export const WorkStatusDesktop: FC<UiComponent<WorkStatusDeviceProps>> = ({
             </div>
 
             <div className="absolute bottom-2 right-3 flex flex-col text-screen-xs">
-              <span className="text-gray-500">28° 34' 32.88" N / 77° 22' 22.73" E</span>
+              <span className="text-gray-500">28° 34&apos; 32.88&quot; N / 77° 22&apos; 22.73&quot; E</span>
               <span className="text-white">Remote from Noida, India</span>
             </div>
           </div>
