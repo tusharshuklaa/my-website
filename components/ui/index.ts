@@ -103,3 +103,4 @@ export { StarsBackground } from "./stars-background";
 export { Timeline } from "./timeline";
 export { Toggle } from "./toggle";
 export { toggleVariants } from "./toggle";
+export { TracingBeam } from "./tracing-beam";
