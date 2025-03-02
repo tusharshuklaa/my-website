@@ -1,11 +1,19 @@
 import { FC } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@components/ui";
+import { Avatar, AvatarFallback } from "@components/ui";
+import { AdvImage } from "./adv-image";
 
-export const MyAvatar: FC = () => {
+type MyAvatarProps = {
+  src?: string;
+  alt?: string;
+  title?: string;
+  fallback?: string;
+};
+
+export const MyAvatar: FC<MyAvatarProps> = ({ alt, fallback, src, title }) => {
   return (
     <Avatar data-testid="cmp-my-avatar">
-      <AvatarImage src="https://avatars.githubusercontent.com/u/7785066?v=4" alt="@tusharshuklaa" />
-      <AvatarFallback>TS</AvatarFallback>
+      <AdvImage src={src || "tushar-shukla_xcsbbs"} alt={alt || "@tusharshuklaa"} title={title || "Tushar Shukla"} />
+      <AvatarFallback>{fallback || "TS"}</AvatarFallback>
     </Avatar>
   );
 };

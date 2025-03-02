@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { format, parseISO } from "date-fns";
 import { getCldOgImageUrl } from "next-cloudinary";
 import { allBlogs } from "@content";
-import { Avatar, AvatarFallback, AvatarImage, LampContainer } from "@ui";
+import { LampContainer } from "@ui";
 import { AnimatedHeading } from "@components/text/heading";
 import { GradientText } from "@components/text";
 import { AnimateElement } from "@components/animate-element";
@@ -13,6 +13,7 @@ import { SocialShare } from "@components/social-share";
 import { TableOfContents } from "@components/table-of-contents";
 import { MoreBlogContent } from "@components/more-blog-content";
 import { BlogContent } from "@components/blog-content";
+import { MyAvatar } from "@components/my-avatar";
 import { absoluteUrl } from "@/lib/utils";
 
 type BlogPageParams = {
@@ -102,14 +103,12 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
           <div className="flex w-full flex-col items-end justify-between gap-8 sm:flex-row sm:items-center">
             <div className="flex items-center justify-between gap-4">
               <AnimateElement delay={0.15}>
-                <Avatar className="h-16 w-16">
-                  <AvatarImage
-                    src={blog.authorImg || "https://avatars.githubusercontent.com/u/7785066?v=4"}
-                    alt={blog.author}
-                    title={blog.authorDesc}
-                  />
-                  <AvatarFallback>{blog.authorAlias}</AvatarFallback>
-                </Avatar>
+                <MyAvatar
+                  src={blog.authorImg || "https://avatars.githubusercontent.com/u/7785066?v=4"}
+                  alt={blog.author}
+                  title={blog.authorDesc}
+                  fallback={blog.authorAlias}
+                />
               </AnimateElement>
 
               <AnimateElement delay={0.25} className="flex flex-col gap-1">
