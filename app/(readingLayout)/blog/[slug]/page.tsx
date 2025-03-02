@@ -9,10 +9,10 @@ import { AnimatedHeading } from "@components/text/heading";
 import { GradientText } from "@components/text";
 import { AnimateElement } from "@components/animate-element";
 import { SnapSection } from "@components/snap-container";
-import { Mdx } from "@components/mdx";
 import { SocialShare } from "@components/social-share";
 import { TableOfContents } from "@components/table-of-contents";
 import { MoreBlogContent } from "@components/more-blog-content";
+import { BlogContent } from "@components/blog-content";
 import { absoluteUrl } from "@/lib/utils";
 
 type BlogPageParams = {
@@ -129,14 +129,10 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
       </SnapSection>
 
       <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-[10rem_minmax(60ch,_7fr)_3fr] sm:gap-4">
-        <aside className="hidden sm:block"></aside>
-
-        <article className="order-2 mx-auto max-w-full px-4 text-base leading-relaxed sm:order-none">
-          <Mdx code={blog.body.code} />
-        </article>
+        <BlogContent blogCode={blog.body.code} />
 
         <aside className="order-1 px-4 sm:order-none sm:px-2">
-          <div className="sticky top-32 mt-20 flex max-h-none flex-col items-start gap-4 overflow-y-auto sm:max-h-[calc(98dvh-8rem)]">
+          <div className="sticky top-32 mt-20 flex h-full max-h-none flex-col items-start gap-4 overflow-y-auto sm:max-h-[calc(98dvh-8rem)]">
             <TableOfContents tocs={blog.toc} />
 
             <MoreBlogContent related={blog.related} current={blog.slug} />
