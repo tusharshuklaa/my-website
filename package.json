@@ -17,8 +17,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "lint",
-      "format:fix"
+      "eslint --fix",
+      "prettier --write --ignore-path .gitignore ."
     ]
   },
   "dependencies": {

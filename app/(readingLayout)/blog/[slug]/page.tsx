@@ -140,7 +140,7 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
         </aside>
       </section>
 
-      <RaiseIssueBanner issueTitle={blog.title} issueSlug={blog.slug} />
+      <RaiseIssueBanner issueTitle={blog.title} />
 
       <SocialShare />
     </>
