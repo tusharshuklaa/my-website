@@ -14,6 +14,7 @@ import { TableOfContents } from "@components/table-of-contents";
 import { MoreBlogContent } from "@components/more-blog-content";
 import { BlogContent } from "@components/blog-content";
 import { MyAvatar } from "@components/my-avatar";
+import { RaiseIssueBanner } from "@components/raise-issue-banner";
 import { absoluteUrl } from "@/lib/utils";
 
 type BlogPageParams = {
@@ -127,7 +128,7 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
         </LampContainer>
       </SnapSection>
 
-      <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-[10rem_minmax(60ch,_7fr)_3fr] sm:gap-4">
+      <section className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-[10rem_minmax(60ch,_7fr)_3fr] sm:gap-4">
         <BlogContent blogCode={blog.body.code} />
 
         <aside className="order-1 px-4 sm:order-none sm:px-2">
@@ -137,7 +138,9 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
             <MoreBlogContent related={blog.related} current={blog.slug} />
           </div>
         </aside>
-      </div>
+      </section>
+
+      <RaiseIssueBanner issueTitle={blog.title} />
 
       <SocialShare />
     </>

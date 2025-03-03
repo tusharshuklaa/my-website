@@ -1,0 +1,47 @@
+"use client";
+
+import { FC, useEffect, useState } from "react";
+import { UiComponent } from "@/types";
+import { cn } from "@/lib/utils";
+import { GradientText } from "@components/text";
+import { GithubIssueButton } from "@components/github-issue-button";
+import { EvervaultCard } from "@ui";
+
+type RaiseIssueBannerProps = UiComponent & {
+  issueTitle?: string;
+};
+
+export const RaiseIssueBanner: FC<RaiseIssueBannerProps> = ({ issueTitle, className }) => {
+  const [titleForIssue, setTitleForIssue] = useState("Add page title here");
+  const raiseIssueBannerClasses = cn(
+    "max-w-sm md:max-w-4xl lg:max-w-7xl m-auto px-4 sm:px-0 mt-16 md:mt-28 flex flex-col justify-center h-[35dvh] sm:h-[50vh]",
+    "relative",
+    className,
+  );
+
+  useEffect(() => {
+    const title = issueTitle || document.title;
+
+    if (title) {
+      setTitleForIssue(title);
+    }
+  }, []);
+
+  return (
+    <section data-testid="cmp-raise-issue-banner" className={raiseIssueBannerClasses}>
+      <EvervaultCard className="z-10 hidden w-full sm:flex" randomStringCount={10000} />
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+        <GradientText color="blue" className="font-dongle text-7xl font-bold" text="Found an issue?" />
+
+        <p className="max-w-none px-2 text-center text-lg sm:max-w-1/2">
+          If you found a typo, incorrect information or have a feature request, please raise an issue by clicking this
+          button.
+        </p>
+
+        <GithubIssueButton issueTitle={titleForIssue} />
+      </div>
+    </section>
+  );
+};
+
+RaiseIssueBanner.displayName = "RaiseIssueBanner";

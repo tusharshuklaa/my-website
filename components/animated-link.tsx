@@ -20,6 +20,7 @@ const underlineVariations: Record<GradientColors, string> = {
   indigo: "via-[#68d0ee]",
   orange: "via-[#f5b03e]",
   peach: "via-[#ffcab1]",
+  darkBlue: "via-[#314ee0]",
 };
 
 const textShadowVariations: Record<GradientColors, string> = {
@@ -32,6 +33,7 @@ const textShadowVariations: Record<GradientColors, string> = {
   indigo: "group-hover:[text-shadow:_0_0_0.25rem_#68d0ee]",
   orange: "group-hover:[text-shadow:_0_0_0.25rem_#f5b03e]",
   peach: "group-hover:[text-shadow:_0_0_0.25rem_#ffcab1]",
+  darkBlue: "group-hover:[text-shadow:_0_0_0.25rem_#314ee0]",
 };
 
 export const AnimatedLink: FC<BasicUiComponent<AnimatedLinkProps>> = ({ className, color = "yellow", url, name }) => {
