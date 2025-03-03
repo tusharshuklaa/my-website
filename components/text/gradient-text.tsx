@@ -2,7 +2,17 @@ import React, { FC } from "react";
 import clsx from "clsx";
 import { UiComponent } from "@/types";
 
-export type GradientColors = "yellow" | "blue" | "green" | "red" | "purple" | "pink" | "indigo" | "orange" | "peach";
+export type GradientColors =
+  | "yellow"
+  | "blue"
+  | "green"
+  | "red"
+  | "purple"
+  | "pink"
+  | "indigo"
+  | "orange"
+  | "peach"
+  | "darkBlue";
 type GradientTextProps = UiComponent<{
   text: React.ReactNode;
   color?: GradientColors;
@@ -18,6 +28,7 @@ export const variations: Record<GradientColors, string> = {
   indigo: "bg-[linear-gradient(126deg,#68d0ee,#ffbdb2)]",
   orange: "bg-[linear-gradient(108deg,#f5b03e,#f53ec2)]",
   peach: "bg-[linear-gradient(138deg,#ffcab1,#ffb4d7_33%,#e2c5e7_66%,#b2e3ff)]",
+  darkBlue: "bg-gradient-to-r from-green-300 via-blue-500 to-purple-600",
 };
 
 export const GradientText: FC<GradientTextProps> = ({ className, color = "yellow", text }) => {
