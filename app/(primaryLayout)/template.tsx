@@ -21,7 +21,7 @@ export default function Template({ children }: ComponentPropsWithoutRef<"div">) 
 
         {children}
 
-        <RaiseIssueBanner issueTitle={document ? document.title : "Add page title here"} />
+        <RaiseIssueBanner />
         <ContactSection />
         <Footer />
       </RootRefProvider>
