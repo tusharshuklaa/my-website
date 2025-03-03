@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, FC, SVGProps } from "react";
+import React, { useState, useEffect, FC } from "react";
 import { useMotionTemplate, useMotionValue, motion, MotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { GradientText } from "../text";
+import { GradientText } from "@components/text";
 
 type EvervaultCardProps = {
   text?: string;
