@@ -44,15 +44,13 @@ export const EvervaultCard: FC<EvervaultCardProps> = ({ text, className, randomS
       >
         <CardPattern mouseX={mouseX} mouseY={mouseY} randomString={randomString} />
 
-        {
-          text && (
-            <div className="relative z-10 flex items-center justify-center">
-              <div className="relative flex h-44 w-44 items-center justify-center rounded-full text-4xl font-bold text-white">
-                <GradientText text={text} color="darkBlue" />
-              </div>
+        {text && (
+          <div className="relative z-10 flex items-center justify-center">
+            <div className="relative flex h-44 w-44 items-center justify-center rounded-full text-4xl font-bold text-white">
+              <GradientText text={text} color="darkBlue" />
             </div>
-          )
-        }
+          </div>
+        )}
       </div>
     </div>
   );
@@ -90,7 +88,7 @@ export const CardPattern: FC<CardPatternProps> = ({ mouseX, mouseY, randomString
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@&";
 export const generateRandomString = (length: number) => {
   let result = "";
-  for (let i = 0; i < Math.ceil(length/2); i++) {
+  for (let i = 0; i < Math.ceil(length / 2); i++) {
     result += `${characters.charAt(Math.floor(Math.random() * characters.length))} `;
   }
   return result;

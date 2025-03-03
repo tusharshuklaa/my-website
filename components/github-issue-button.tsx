@@ -2,7 +2,7 @@ import { FC } from "react";
 import Link from "next/link";
 import { UiComponent } from "@/types";
 import { cn } from "@/lib/utils";
-import { Button } from '@ui';
+import { Button } from "@ui";
 
 type GithubIssueButtonProps = UiComponent<{
   url?: string;
@@ -10,10 +10,7 @@ type GithubIssueButtonProps = UiComponent<{
 }>;
 
 export const GithubIssueButton: FC<GithubIssueButtonProps> = ({ issueTitle, className }) => {
-  const githubIssueButtonClasses = cn(
-    "overflow-hidden z-20 relative rounded-full p-1 h-12 text-xl mt-8",
-    className
-  );
+  const githubIssueButtonClasses = cn("overflow-hidden z-20 relative rounded-full p-1 h-12 text-xl mt-8", className);
 
   const title = `Found an issue for page - '${issueTitle}'`;
   const issueDescription = `
@@ -32,13 +29,10 @@ export const GithubIssueButton: FC<GithubIssueButtonProps> = ({ issueTitle, clas
 
   return (
     <div data-testid="cmp-github-issue-button" className={githubIssueButtonClasses}>
-      <Button
-        variant="magic"
-        asChild
-      >
+      <Button variant="magic" asChild>
         <Link
           href={issueUrl}
-          className="text-3xl px-2 font-dongle"
+          className="px-2 font-dongle text-3xl"
           title="Raise an issue for this post on Github"
           target="_blank"
         >
@@ -49,4 +43,4 @@ export const GithubIssueButton: FC<GithubIssueButtonProps> = ({ issueTitle, clas
   );
 };
 
-GithubIssueButton.displayName = 'GithubIssueButton';
+GithubIssueButton.displayName = "GithubIssueButton";
