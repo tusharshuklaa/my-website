@@ -7,17 +7,27 @@ import { Button } from '@ui';
 type GithubIssueButtonProps = UiComponent<{
   url?: string;
   issueTitle?: string;
-  issueSlug?: string;
 }>;
 
-export const GithubIssueButton: FC<GithubIssueButtonProps> = ({ issueSlug, issueTitle, className }) => {
+export const GithubIssueButton: FC<GithubIssueButtonProps> = ({ issueTitle, className }) => {
   const githubIssueButtonClasses = cn(
     "overflow-hidden z-20 relative rounded-full p-1 h-12 text-xl mt-8",
     className
   );
 
-  const title = `Found an issue for post - '${issueTitle}'`;
-  const issueDescription = `Issue raised for file - '/content/blog/${issueSlug}.mdx' \n\n **Describe the issue:**`;
+  const title = `Found an issue for page - '${issueTitle}'`;
+  const issueDescription = `
+    Issue raised for page - '${issueTitle}'
+    ---------------------------------------
+    \n\n
+    Issue Description:
+    \n\n
+    - [ ] Issue with content
+    \n\n
+    Note: Please provide detailed information about the issue you are facing.
+    \n\n
+    Help: Raise a PR if you want the problem fixed faster, thanks 🙏🏻.
+  `;
   const issueUrl = `https://github.com/tusharshuklaa/my-website/issues/new?title=${title}&body=${issueDescription}`;
 
   return (
