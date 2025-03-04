@@ -128,7 +128,7 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
         </LampContainer>
       </SnapSection>
 
-      <section className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-[10rem_minmax(60ch,_7fr)_3fr] sm:gap-4">
+      <section className="m-auto mt-2 grid max-w-readable grid-cols-1 gap-2 sm:grid-cols-[10rem_minmax(60ch,_7fr)_3fr] sm:gap-4">
         <BlogContent blogCode={blog.body.code} />
 
         <aside className="order-1 px-4 sm:order-none sm:px-2">
