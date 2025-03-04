@@ -1,12 +1,16 @@
 "use client";
 
 import React, { FC, useRef } from "react";
-import { TracingBeam } from "@ui";
+import dynamic from "next/dynamic";
 import { Mdx } from "@components/mdx";
 
 type BlogContentProps = {
   blogCode: string;
 };
+
+const TracingBeam = dynamic(() => import("../components/ui/tracing-beam").then(comp => comp.TracingBeam), {
+  ssr: false,
+});
 
 export const BlogContent: FC<BlogContentProps> = ({ blogCode }) => {
   const articleRef = useRef<HTMLDivElement>(null);
