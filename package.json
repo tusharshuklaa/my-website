@@ -13,7 +13,8 @@
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prod": "next build && next start"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
