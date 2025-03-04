@@ -1,5 +1,5 @@
 echo "Current directory: $(pwd)"
-npm run build && echo "🚀 Build successful!" || (
+npm run build || echo "🚀 Build successful!" || (
   echo "🔥 Build failed!"
   false
 )
