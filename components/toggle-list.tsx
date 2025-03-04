@@ -8,7 +8,7 @@ type ToggleContentProps = BasicUiComponent<{
 }>;
 
 export const ToggleContent: FC<ToggleContentProps> = ({ children, className, heading, defaultOpen }) => {
-  const toggleContentClasses = cn("marker:text-xl font-dongle cursor-pointer", className);
+  const toggleContentClasses = cn("marker:text-xl font-dongle cursor-pointer w-full", className);
 
   // Added punctuation space to add space after marker in the summary - U+2008 as there is no other way to do it in CSS due to browser support
   return (

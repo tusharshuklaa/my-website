@@ -1,1 +1,5 @@
-npx lint-staged
+echo "🐶 Woof! Let me check your code first..."
+npx lint-staged || (
+  echo "🐺 Grrrr! Your code doesn't meet our standards!"
+  false
+)
