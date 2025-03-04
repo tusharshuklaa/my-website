@@ -20,7 +20,7 @@ async function getLastModifiedDate(filePath: string): Promise<Date | null> {
   }
 
   try {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       // Git command to get the last modified date
       const git = spawn("git", ["log", "-1", "--format=%at", "--", filePath]);
 
@@ -68,6 +68,7 @@ async function getLastModifiedDate(filePath: string): Promise<Date | null> {
   }
 }
 
+// eslint-disable-next-line
 const getBlogSlug = (blog: any) => blog._raw.flattenedPath.replace(/^blog\//, "");
 
 export const Blog = defineDocumentType(() => ({
@@ -167,7 +168,7 @@ export const Blog = defineDocumentType(() => ({
     toc: {
       type: "json",
       resolve: doc => {
-        const regExp = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+        const regExp = /\n(?<flag>#{2,6})\s+(?<content>.+)/g;
         const slugger = new Slugger();
         const headings = Array.from(doc.body.raw.matchAll(regExp)).map(({ groups }) => {
           const content = groups?.content || "";
