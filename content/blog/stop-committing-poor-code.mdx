@@ -71,7 +71,7 @@ That's where Husky and lint-staged come in, like your code's personal bouncers, 
 
 - Setting up [Husky][1] for Git hooks
 - Configuring [lint-staged][2] for efficient linting
-- Configurations examples for projects of different sizes
+- Configuration examples for projects of different sizes
 - Bonus tips and tricks
 
 ## Step 1: Installing Husky - Your Git Hook Guardian
@@ -99,20 +99,28 @@ This creates a `.husky/` directory in your project root.
 In previous version, this was done by `npx husky install` but that isn&apos;t recommended anymore.
 
 <br />
+<MultiColumn>
 The `init` command creates a `pre-commit` script in `.husky/` and updates the prepare script in `package.json`.
 Modifications can be made to suit your workflow.
-<br />
-For now, let&apos;s open the `pre-commit` file and add some changes: ```bash echo 'Hold the door!... Hodor' ```
 
+![Husky folder at project root](husky-folder_sa6p2u "Husky folder at project root")
+</MultiColumn>
+<br />
+<MultiColumn>
+![pre-commit git hook in action](pre-commit-git-hook_pi88l9 "pre-commit git hook in action")
+
+For now, let&apos;s open the `pre-commit` file and add some changes: ```echo 'Hold the door!... Hodor' ```
 Now, every time you try to commit, you&apos;ll see `Hold the door!!...Hodor` printed.
 This is the simplest hook, and it proves Husky is working.
-You can now change the `echo` statement to something meaningful like:
+</MultiColumn>
+
+<MultiColumn>
+You can now change the `echo` statement to something meaningful like running all tests and then all of your tests will run before a commit is made.
 
 ```bash
 npm test
 ```
-
-Now all of your tests will run before a commit is made.
+</MultiColumn>
 
 <br />
 <br />
@@ -134,7 +142,7 @@ _Why is this needed?_
 Imagine you want to run your tests before every commit. This is where pre-commit hooks shine.
 They&apos;re your first line of defense against bad code.
 
-> Side Note: "Husky" sounds like a fluffy, loyal, wolf-like dog that guards your house, but in this case, it&apos;s more of a strict gatekeeper that stops bad code from entering the repo. Pair it with `lint-staged` and your dog gets an updated laser-guided sniffing system.
+> **Side Note:** "Husky" sounds like a fluffy, loyal, wolf-like dog that guards your house, but in this case, it&apos;s more of a strict gatekeeper that stops bad code from entering the repo. Pair it with `lint-staged` and your dog gets an updated laser-guided sniffing system.
 
 ## Step 3: Integrating lint-staged - Selective Cleaning
 
@@ -213,7 +221,11 @@ Here, we introduce Prettier and TypeScript checking:
 ```json
 {
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write", "tsc --noEmit"]
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "tsc --noEmit"
+    ]
   }
 }
 ```
@@ -244,6 +256,46 @@ For large projects, we add style linting and unit tests:
 
 </MultiColumn>
 
+## Bonus Tips and Tricks
+
+### 1. Skipping Hooks in Emergency
+
+Sometimes you need to "let the dog off the leash." To bypass Husky temporarily:
+
+```bash
+bash
+Copy
+git commit -m "Emergency fix" --no-verify
+```
+
+But use this sparingly - it's like letting your dog dig in the garden "just this once."
+
+### 2. Custom Messages When Commits Fail
+
+Add some personality to your hook failures:
+
+```bash
+echo "🐶 Woof! Let me check your code first..."
+npx lint-staged || (
+  echo "🐺 Grrrr! Your code doesn't meet our standards!"
+  false
+)
+```
+
+### 3. Performance for Large Codebases
+
+For massive projects, you might want to adjust the lint-staged config to optimize performance:
+
+```json
+{
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --cache",
+      "prettier --write"
+    ]
+  }
+}
+```
 ## Conclusion
 
 With Husky and lint-staged, you'll be committing much cleaner code than Zomato&apos;s pizza delivery (mine is always messed up for some reason).
