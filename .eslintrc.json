@@ -13,5 +13,6 @@
         "ignoreRestSiblings": true
       }
     ]
-  }
+  },
+  "ignorePatterns": ["/*.config.ts"]
 }

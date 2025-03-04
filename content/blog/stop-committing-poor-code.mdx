@@ -104,14 +104,16 @@ The `init` command creates a `pre-commit` script in `.husky/` and updates the pr
 Modifications can be made to suit your workflow.
 
 ![Husky folder at project root](husky-folder_sa6p2u "Husky folder at project root")
+
 </MultiColumn>
 <br />
 <MultiColumn>
 ![pre-commit git hook in action](pre-commit-git-hook_pi88l9 "pre-commit git hook in action")
 
-For now, let&apos;s open the `pre-commit` file and add some changes: ```echo 'Hold the door!... Hodor' ```
+For now, let&apos;s open the `pre-commit` file and add some changes: `echo 'Hold the door!... Hodor' `
 Now, every time you try to commit, you&apos;ll see `Hold the door!!...Hodor` printed.
 This is the simplest hook, and it proves Husky is working.
+
 </MultiColumn>
 
 <MultiColumn>
@@ -120,6 +122,7 @@ You can now change the `echo` statement to something meaningful like running all
 ```bash
 npm test
 ```
+
 </MultiColumn>
 
 <br />
@@ -296,6 +299,7 @@ For massive projects, you might want to adjust the lint-staged config to optimiz
   }
 }
 ```
+
 ## Conclusion
 
 With Husky and lint-staged, you'll be committing much cleaner code than Zomato&apos;s pizza delivery (mine is always messed up for some reason).

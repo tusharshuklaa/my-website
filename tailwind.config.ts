@@ -373,6 +373,7 @@ const config: Config = {
         "1/2": "50%",
         "2/3": "75%",
         halfScreen: "50vw",
+        readable: "1380px",
       },
       transformOrigin: {
         "almost-center": "50% 50% .4em",
