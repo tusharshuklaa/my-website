@@ -25,7 +25,7 @@ export const RaiseIssueBanner: FC<RaiseIssueBannerProps> = ({ issueTitle, classN
     if (title) {
       setTitleForIssue(title);
     }
-  }, []);
+  }, [issueTitle]);
 
   return (
     <section data-testid="cmp-raise-issue-banner" className={raiseIssueBannerClasses}>
