@@ -26,6 +26,7 @@ const footerLinks = [
   { url: "/about-me", text: "About Me" },
   { url: "/showcase", text: "Showcase" },
   { url: "/uses", text: "Uses" },
+  { url: "/privacy-policy", text: "Privacy Policy" },
 ];
 
 export const Footer: FC = () => {

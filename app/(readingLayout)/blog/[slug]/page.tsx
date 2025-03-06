@@ -15,6 +15,7 @@ import { MoreBlogContent } from "@components/more-blog-content";
 import { BlogContent } from "@components/blog-content";
 import { MyAvatar } from "@components/my-avatar";
 import { RaiseIssueBanner } from "@components/raise-issue-banner";
+import { BlogViewCounter } from "@components/blog-view-counter";
 import { absoluteUrl } from "@/lib/utils";
 
 type BlogPageParams = {
@@ -122,7 +123,11 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
               <time dateTime={blog.date}>
                 <GradientText color="green" text={`Published on ${format(parseISO(blog.date), "MMMM dd, yyyy")}`} />
               </time>
-              <GradientText color="purple" text={blog.readingTimeString} className="text-sm" />
+
+              <div className="flex w-full items-center justify-between gap-2">
+                <BlogViewCounter slug={blog.slug} />
+                <GradientText color="purple" text={blog.readingTimeString} className="text-sm" />
+              </div>
             </AnimateElement>
           </div>
         </LampContainer>
