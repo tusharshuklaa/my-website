@@ -11,6 +11,12 @@ export const Heading2: FC<BasicUiComponent> = ({ children, className }) => {
   return <h2 className={cn("font-poppins text-2xl text-black dark:text-white md:text-4xl", className)}>{children}</h2>;
 };
 
+export const Heading3: FC<BasicUiComponent> = ({ children, className }) => {
+  return (
+    <h3 className={cn("mt-4 font-poppins text-xl text-black dark:text-white md:text-2xl", className)}>{children}</h3>
+  );
+};
+
 export const AnimatedHeading: FC<BasicUiComponent> = ({ children, className }) => {
   return (
     <motion.h1
