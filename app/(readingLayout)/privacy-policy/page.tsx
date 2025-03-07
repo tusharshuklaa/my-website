@@ -5,7 +5,7 @@ import { BasicUiComponent } from "@/types";
 import { PrettyLink } from "@/components/pretty-link";
 
 const JustText: FC<BasicUiComponent> = ({ children, className }) => (
-  <p className={cn("mt-4 text-justify leading-8 tracking-wider", className)}>{children}</p>
+  <span className={cn("mt-4 text-justify leading-8 tracking-wider", className)}>{children}</span>
 );
 
 const PrivacyPolicyPage: FC = () => (
@@ -27,20 +27,20 @@ const PrivacyPolicyPage: FC = () => (
       <JustText>
         When you visit our website, we automatically collect certain information about your device and browsing
         activity, including:
-        <ul>
-          <li>
-            <strong>IP Address:</strong> Your IP address is used to help identify your location and prevent abuse.
-          </li>
-          <li>
-            <strong>Browser and Device Information:</strong> This includes your browser type, operating system, screen
-            resolution, and other technical details.
-          </li>
-          <li>
-            <strong>Usage Data:</strong> We collect information about how you interact with our website, such as the
-            pages you visit and the time spent on each page.
-          </li>
-        </ul>
       </JustText>
+      <ul>
+        <li>
+          <strong>IP Address:</strong> Your IP address is used to help identify your location and prevent abuse.
+        </li>
+        <li>
+          <strong>Browser and Device Information:</strong> This includes your browser type, operating system, screen
+          resolution, and other technical details.
+        </li>
+        <li>
+          <strong>Usage Data:</strong> We collect information about how you interact with our website, such as the visit
+          and the time spent on each page.
+        </li>
+      </ul>
       <Heading3>b. View Count Tracking</Heading3>
       <JustText>
         To provide accurate blog view counts, we use a combination of:
