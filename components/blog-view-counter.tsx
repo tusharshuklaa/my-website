@@ -39,8 +39,21 @@ export const BlogViewCounter: FC<BlogViewCounterProps> = ({ className, slug }) =
     const revalidateSeconds = 60 * 2; // 2 minutes
     // Fetch the view count with caching
     fetch(`/api/get-views?slug=${slug}`, { next: { revalidate: revalidateSeconds } })
-      .then(res => res.json())
-      .then((data: { views: number }) => setViews(data.views));
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch view count");
+        }
+
+        return res.json();
+      })
+      .then((data: { views: number }) => setViews(data.views))
+      .catch(error => {
+        if (process.env.NODE_ENV === "development") {
+          console.error("Error fetching view count:", error);
+        }
+
+        setViews(10);
+      });
   }, [slug]);
 
   return (
