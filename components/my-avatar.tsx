@@ -12,7 +12,12 @@ type MyAvatarProps = {
 export const MyAvatar: FC<MyAvatarProps> = ({ alt, fallback, src, title }) => {
   return (
     <Avatar data-testid="cmp-my-avatar">
-      <AdvImage src={src || "tushar-shukla_xcsbbs"} alt={alt || "@tusharshuklaa"} title={title || "Tushar Shukla"} />
+      <AdvImage
+        src={src || "tushar-shukla_xcsbbs"}
+        alt={alt || "@tusharshuklaa"}
+        title={title || "Tushar Shukla"}
+        priority
+      />
       <AvatarFallback>{fallback || "TS"}</AvatarFallback>
     </Avatar>
   );

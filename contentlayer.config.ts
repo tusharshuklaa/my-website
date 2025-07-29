@@ -40,7 +40,7 @@ async function getLastModifiedDate(filePath: string): Promise<Date | null> {
         } else {
           try {
             // Fallback to file system stats if git fails
-            const stats = statSync(filePath); // filePath is now absolute
+            const stats = statSync(filePath);
             lastModifiedCache.set(filePath, stats.mtime);
             resolve(stats.mtime);
           } catch (error) {
@@ -53,7 +53,7 @@ async function getLastModifiedDate(filePath: string): Promise<Date | null> {
       git.on("error", () => {
         try {
           // Fallback to file system stats if git fails
-          const stats = statSync(filePath); // filePath is now absolute
+          const stats = statSync(filePath);
           lastModifiedCache.set(filePath, stats.mtime);
           resolve(stats.mtime);
         } catch (error) {

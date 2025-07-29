@@ -8,7 +8,7 @@ type UnderlineProps = BasicUiComponent & {
 
 export const Underline: FC<UnderlineProps> = ({ className, children, minimal }) => {
   const underlineClasses = cn(
-    "duration-250 bg-gradient-to-r from-[#84fab0] to-[#8fd3f4] bg-[position:0_100%] md:bg-[position:0_88%] bg-no-repeat transition-[background-size] ease-in hover:bg-[length:100%_88%] grow-0 dark:hover:text-black",
+    "duration-250 bg-gradient-to-r from-[#84fab0] to-[#8fd3f4] bg-[position:0_100%] md:bg-[position:0_88%] bg-no-repeat transition-[background-size] ease-in hover:bg-[length:100%_100%] grow-0 dark:hover:text-black",
     {
       "bg-[length:100%_0.2em]": !minimal,
       "bg-[length:100%_0.0em]": minimal,

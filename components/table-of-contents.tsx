@@ -28,7 +28,13 @@ export const TableOfContents: FC<TableOfContentsProps> = ({ className, tocs }) =
 
         return (
           <li key={heading.slug} className={listClasses}>
-            <PrettyLink href={`#${heading.slug}`} title={heading.content} isExternal={false} minimal={true}>
+            <PrettyLink
+              href={`#${heading.slug}`}
+              title={heading.content}
+              isExternal={false}
+              minimal={true}
+              className="leading-5"
+            >
               {heading.content}
             </PrettyLink>
           </li>
