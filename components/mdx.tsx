@@ -2,13 +2,13 @@ import { FC } from "react";
 import Link from "next/link";
 import type { MDXComponents } from "mdx/types";
 import { useMDXComponent } from "next-contentlayer2/hooks";
-import { AnimatedHeading } from "./text/heading";
-import { GradientText, HighlightText } from "./text";
+import { AnimatedHeading } from "@components/text/heading";
+import { GradientText, HighlightText } from "@components/text";
 import { cn } from "@/lib/utils";
 import { PrettyLink } from "@components/pretty-link";
 import { ExternalEmbed } from "@components/external-embed";
 import { MultiColumn } from "@components/multi-column";
-import { AdvImage } from "./adv-image";
+import { ZoomableImgPreview } from "@components/zoomable-img-preview";
 
 type MdxProps = {
   code: string;
@@ -80,14 +80,7 @@ const components: MDXComponents = {
   img: ({ ...props }) => {
     const altText = props.alt || props.title || "";
 
-    return (
-      <figure className="mx-auto mb-12 mt-8 w-4/5 overflow-hidden rounded-lg shadow-[5px_5px_rgba(0,_98,_90,_0.4),_10px_10px_rgba(0,_98,_90,_0.3),_15px_15px_rgba(0,_98,_90,_0.2),_20px_20px_rgba(0,_98,_90,_0.1),_25px_25px_rgba(0,_98,_90,_0.05)]">
-        <AdvImage src={props.src || ""} width="500" height="500" alt={altText} className="h-full w-full object-cover" />
-        {altText && (
-          <figcaption className="py-2 text-center text-sm text-gray-600 dark:text-gray-400">{altText}</figcaption>
-        )}
-      </figure>
-    );
+    return props.src ? <ZoomableImgPreview src={props.src} alt={altText} /> : null;
   },
   // Code
   code: ({ ...props }) => (
