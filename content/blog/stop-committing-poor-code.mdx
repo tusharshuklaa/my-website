@@ -224,11 +224,7 @@ Here, we introduce Prettier and TypeScript checking:
 ```json
 {
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "tsc --noEmit"
-    ]
+    "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write", "tsc --noEmit"]
   }
 }
 ```
@@ -292,10 +288,7 @@ For massive projects, you might want to adjust the lint-staged config to optimiz
 ```json
 {
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix --cache",
-      "prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx}": ["eslint --fix --cache", "prettier --write"]
   }
 }
 ```

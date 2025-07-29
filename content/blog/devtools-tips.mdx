@@ -33,11 +33,15 @@ import { MultiColumn } from "../../components/multi-column";
 
 If you&apos;re a developer who lives in Chrome DevTools more than in your own house (no judgment), this blog is for you. Whether you're debugging layout issues, seeing if our API calls are returning `200 OK` or the dreaded `500 Internal Server Error` that signals another round of chai, or trying to look cool in front of your teammates, the DevTools are like [Batman's](/blog/the-dark-knight-rises-in-css) utility belt - but for the web.
 
-<br /><br />
+<br />
+<br />
 
 But what if I told you that you're probably only using about 20% of its power?
+
 <br /> <br />
-Over the years, I&apos;ve picked up some ridiculously cool (and underused) tricks in [Chrome DevTools](https://developer.chrome.com/docs/devtools). These aren't just fancy bells and whistles; they are massive time-savers that have transformed my workflow from frantic _jugaad_ to _Jedi_-level mastery.
+Over the years, I&apos;ve picked up some ridiculously cool (and underused) tricks in [Chrome
+DevTools](https://developer.chrome.com/docs/devtools). These aren't just fancy bells and whistles; they are massive
+time-savers that have transformed my workflow from frantic _jugaad_ to _Jedi_-level mastery.
 <br />
 These tips can definitely make you go:
 
@@ -46,23 +50,25 @@ These tips can definitely make you go:
 So buckle up! We&apos;re about to tour the secret sauce that makes frontend debugging less painful and weirdly satisfying.
 
 ## 🧱 1. Layouts & Styling — Like a Boss
+
 Most of us have been here — fighting with a flexbox or perfecting a button. Here&apos;s how DevTools can be your best layout therapist:
 
 ### 🔹 Copy All The Styles (Literally)
+
 Ever perfected the styles on an element directly in DevTools, only to manually transcribe each property back to your CSS file? I&apos;ve been there, and it&apos;s a pain. Here&apos;s a lifesaver:
 
 <MultiColumn>
-Right-click on any element in the **Elements tab**, and boom:
-![Copy Styles in DevTools](copy-styles_yua6nf)
-```text
-Copy > Copy styles
-```
+  Right-click on any element in the **Elements tab**, and boom: ![Copy Styles in DevTools](copy-styles_yua6nf) ```text
+  Copy > Copy styles ```
 </MultiColumn>
 <br />
-Paste it in your CSS file, and now you can pretend you wrote it all by hand. Works great when you&apos;re debugging third-party UI or reverse-engineering your own work at 3 AM 😅.
+Paste it in your CSS file, and now you can pretend you wrote it all by hand. Works great when you&apos;re debugging
+third-party UI or reverse-engineering your own work at 3 AM 😅.
 
 ### 🔹 Flex/Grid Inspectors
+
 Flexbox and Grid can sometimes feel like you're trying to solve a Rubik's Cube in the dark. Fear not!
+
 <br />
 That little “flex” or “grid” badge next to the element in the **Elements panel**? Click it.
 <br />
@@ -72,28 +78,35 @@ Chrome will highlight the layout visually—showing rows, columns, gaps, alignme
 Also, scroll down to the `display: flex` or `display: grid` property in the **Styles panel**. You&apos;ll find icons next to alignment properties — clicking those lets you *simulate different flex/grid variations* without touching the code. Instant prototyping? Yes, please!
 
 ![Flexbox Inspector](flex-inspector_cnvrl0)
+
 </MultiColumn>
 
 ## 🕵️‍♂️ 2. DOM Detective Tools
+
 Discovering hidden tricks that make navigating and manipulating the DOM easier? These DevTools features will transform how you investigate element behaviors.
 
 ### 🔹 Break On: Real-Time DOM Surveillance
+
 Picture this: some rogue JavaScript is messing with your DOM. An element is disappearing, or an attribute is changing mysteriously. Instead of pulling your hair out, let DevTools do the detective work.
+
 <br />
 Right-click on an element → `Break on` → and pick one:
 <br />
-<MultiColumn>
-![DOM - Break On](dom-break-on_irl0cy)
 
-- Subtree modifications (when a child is added/removed)
-- Attribute changes (like `class` or `style`)
-- Node removal
+<MultiColumn>
+  ![DOM - Break On](dom-break-on_irl0cy)
+
+  - Subtree modifications (when a child is added/removed)
+  - Attribute changes (like `class` or `style`)
+  - Node removal
 </MultiColumn>
 
 Now whenever a script messes with this element, Chrome will _pause the JS_ at the exact line that did the dirty work. Perfect for figuring out “who killed the DOM?” Mind you, this isn't a trick; it's magic.
 
 ### 🔹 $0 to $4 — The Secret Debugging Squad
+
 Select an element in the Elements panel. Then go to the Console and type `$0`.
+
 <br />
 That&apos;s your currently selected element.
 
@@ -102,40 +115,47 @@ This is incredibly useful for testing JavaScript interactions. It even remembers
 No more:
 
 > “Ugh, I lost that element. What was it called… div.something?”
->
 
 Just `$2` (or whatever relevant) and you&apos;re back.
 ![jQuery-like syntax in browser](jQuery-like-syntax-in-browser_g3swb2)
 
 ## 🧪 3. Console Sorcery
+
 Did you think the console was just for `console.log()`? How noob 😆. Let me introduce you to the dark arts of console magic that will make your debugging sessions feel like you've unlocked developer cheat codes.
 
 ### 🔹 `monitorEvents()` — Spy Mode Activated
+
 Want to track all clicks, scrolls, keypresses on an element?
+
 <br />
-Just run this in the console:
-```Javascript
-monitorEvents(document.getElementById('myElement'), 'click');
-```
-(You can use `$0` too or just pass the actual DOM node.)
+Just run this in the console: ```Javascript monitorEvents(document.getElementById('myElement'), 'click'); ``` (You can
+use `$0` too or just pass the actual DOM node.)
 <br />
-You&apos;ll see every event fired in real-time in the console. Pro tip: combine this with `$0` trick and you&apos;re now the James Bond of debugging.
+You&apos;ll see every event fired in real-time in the console. Pro tip: combine this with `$0` trick and you&apos;re now
+the James Bond of debugging.
 
 ### 🔹 Format Your Logs Like A Pro
+
 ![Style console messages like Facebook](style-console-fb_unewwm)
+
 ```Javascript
 console.log('%c🚀 Styling Logs!', 'color: green; font-size: 16px');
 ```
+
 <br />
-Make your `console.log` statements beautiful and readable. You can use format specifiers like `%c` to apply CSS styles, or use `console.table()` to display arrays of objects in a clean, tabular format.
+Make your `console.log` statements beautiful and readable. You can use format specifiers like `%c` to apply CSS styles,
+or use `console.table()` to display arrays of objects in a clean, tabular format.
 
 ## 🤖 4. Ask AI (No, Not Me—Chrome&apos;s)
+
 Chrome now ships with **“Ask AI”** in multiple panels — Elements, Console, Network.
+
 <br />
 <MultiColumn>
 It can help explain errors, suggest fixes, and clarify complex code. It's still evolving, but it's a fascinating glimpse into the future of debugging.
 
 ![AI in Devtools](dom_ai_qpuhpv)
+
 </MultiColumn>
 <br />
 Example: You get a cryptic error in the Console. Right-click → “Ask AI”
@@ -145,24 +165,31 @@ It will suggest a possible cause and even fix recommendations.
 Great when you&apos;re too tired to Google or when StackOverflow starts mocking you back.
 
 ## 🧩 5. Network Wizardry
+
 From intercepting network calls to throttling speeds like it's dial-up all over again, here's how to become the network ninja your team secretly fears:
 
 ### 🔹 Throttle Like It's 2010 — Simulate Real-World Suffering
+
 We developers often work on blazing-fast office Wi-Fi and powerful machines. Our users? Not so much. They might be on a spotty 3G connection on a budget smartphone.
+
 <br />
 Click the **“No throttling”** dropdown in the Network tab and simulate:
-<MultiColumn>
-![Network throttling](throttling_ewulfd)
 
-- 4G/3G speed
-- Slow CPU
-- Offline
+<MultiColumn>
+  ![Network throttling](throttling_ewulfd)
+
+  - 4G/3G speed
+  - Slow CPU
+  - Offline
 </MultiColumn>
+
 <br />
 Essential for performance testing.
 
 ### 🔹 Change API Response (Yes, Really!)
+
 This one is a game-changer. Imagine the backend API isn't ready yet, or you want to test a specific edge case (like a null value or a super long string).
+
 <br />
 Right-click on any API call in the **Network panel** → `Override content`.
 <br />
@@ -175,7 +202,9 @@ Testing error states and edge cases just got 1000x easier.
 This. Is. My. **FAVOURITE**.
 
 ### 🔹 Initiators Panel — Who Called This API?
+
 Ever wondered what piece of code triggered a specific network request?
+
 <br />
 Click on any network request → look for the **Initiator tab**
 <br />
@@ -184,31 +213,34 @@ It shows *exactly which line of code* initiated that request.
 No more tracing blindly through your codebase.
 
 ### 🔹 Search Filters in Network Panel
+
 You can definitely filter network requests based on Fetch/XHR, CSS, JS, Font, Img etc. and even type something in the filter bar to filter requests accordingly but the filter box in the Network tab is more than just a simple search.
+
 <br />
 Want to filter only POST requests with 200 status?
 <br />
-Use:
-```text
-method:POST status-code:200
-```
-Or `domain:*.google.com` will show requests made to any Google domain.
+Use: ```text method:POST status-code:200 ``` Or `domain:*.google.com` will show requests made to any Google domain.
 <br />
 Yep. That&apos;s a thing. You can combine filters and search smarter.
 
 ## 🌍 6. Location, Storage & System
 
 ### 🔹 Spoof Your Location
+
 Need to test a feature that depends on the user's location? You don't need to book a flight!
+
 <br />
 In the **Sensors tab** (hidden under the 3-dot menu > More tools > Sensors), set a fake latitude/longitude.
 
 ![Spoof location](spoof-location_dpkyiy)
+
 <br />
 Great for testing geo-based experiences like "Show nearest stores."
 
 ### 🔹 Find Unused Code with Coverage
+
 Are you shipping tons of CSS and JavaScript that your page never even uses? This bloat slows down your site.
+
 <br />
 Open the Command Menu (`Ctrl+Shift+P` or `Cmd+Shift+P`) and type 'Coverage' to open the coverage panel.
 <br />
@@ -219,7 +251,9 @@ It will show you what CSS and JS are unused.
 Great for cleaning up legacy projects or shaving off those KBs.
 
 ### 🔹 Paint Flashing — Repaint. Reflow. Rage.
+
 In the Rendering tab (you might need to enable it from the three-dot menu -> More tools -> Rendering), check the "Paint Flashing" option. Now, as you interact with your page, the browser will highlight in green any area that gets repainted. This is brilliant for identifying performance bottlenecks. If a tiny hover effect is causing the entire page to repaint, you know you have an optimization opportunity.
+
 <br />
 Helps identify:
 
@@ -230,41 +264,51 @@ Helps identify:
 ## 🎥 7. Sources Panel & Workspaces
 
 ### 🔹 Code Snippets
+
 Do you have handy JavaScript functions that you often use for debugging, like clearing all cookies or displaying hidden form fields? Stop re-typing them in the console! Go to the **Sources** panel, and on the left pane, find the **Snippets** tab (you may need to click the `>>` icon). Here, you can create, save, and run multi-line JavaScript files within DevTools.
+
 <br />
 You can save reusable JS snippets (like `monitorEvents`, `$0` inspectors, etc.) inside **Sources > Snippets**.
 <br />
 Run them anytime in any tab.
-<br />
-I keep a bunch of utility snippets here. Trust me, it saves *a lot* of typing.
+<br />I keep a bunch of utility snippets here. Trust me, it saves *a lot* of typing.
 
 ### 🔹 Workspaces
+
 Constantly making changes in DevTools and then re-applying them in your code editor? With Workspaces, you can connect a local folder on your machine directly to the Sources panel. Any changes you make to CSS or JS in DevTools will be saved directly to the source file. It&apos;s a seamless two-way street. Useful when debugging builds without switching between IDE and browser 300 times a day.
 
 ## 🎥 8. Bonus: Recorder Panel & 3D View
 
 ### 🔹 Recorder Panel
+
 The Recorder panel is a powerful tool for automating and replaying user journeys. You can record a sequence of actions (like a login flow or adding an item to a cart), and then replay it, measure its performance, or even export it as a Puppeteer script for end-to-end testing.
+
 <br />
 Great for test automation and profiling real UX journeys.
 
 ### 🔹 See your page in 3D
+
 ![3D View of a web page](3d-view_xafgpp)
 This is more of a "wow" feature, but it has its uses! Open the Command Menu, type '3D', and select "Show Layers". This will open a 3D visualization of your page's DOM layers. It can be surprisingly helpful for debugging complex z-index stacking issues.
+
 <br />
 <br />
 Useful? Maybe. Cool? Heck yes.
 <br />
 <br />
-Google Chrome and Microsoft Edge have implemented this feature a little differently, and I like Edge's implementation more. Check yourself and let me know which one do you like more.
+Google Chrome and Microsoft Edge have implemented this feature a little differently, and I like Edge's implementation
+more. Check yourself and let me know which one do you like more.
 
 ## 🚀 Final Thoughts
 
 Phew! That's a lot, but it's just scratching the surface. I hope you found this guide useful (and slightly entertaining).
+
 <br />
-Browser DevTools aren’t just tools—they’re *superpowers*. Use them wisely, and you'll not only debug faster but understand the web platform deeper than ever.
+Browser DevTools aren’t just tools—they’re *superpowers*. Use them wisely, and you'll not only debug faster but
+understand the web platform deeper than ever.
 <br />
-The next time you open DevTools, I challenge you to try just one of these new tricks. It might feel slow at first, but once it clicks, you'll wonder how you ever lived without it.
+The next time you open DevTools, I challenge you to try just one of these new tricks. It might feel slow at first, but
+once it clicks, you'll wonder how you ever lived without it.
 <br />
 Got a trick I missed?
 <br />
