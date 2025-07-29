@@ -17,7 +17,7 @@ type TableOfContentsProps = UiComponent<{
 }>;
 
 export const TableOfContents: FC<TableOfContentsProps> = ({ className, tocs }) => (
-  <ToggleContent heading="Table of Contents" className={className}>
+  <ToggleContent heading="Table of Contents" className={className} defaultOpen={true}>
     <ul className="list-disc text-2xl">
       {tocs.map(heading => {
         const listClasses = cn("", {

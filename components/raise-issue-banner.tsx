@@ -30,8 +30,8 @@ export const RaiseIssueBanner: FC<RaiseIssueBannerProps> = ({ issueTitle, classN
   return (
     <section data-testid="cmp-raise-issue-banner" className={raiseIssueBannerClasses}>
       <EvervaultCard className="z-10 hidden w-full sm:flex" randomStringCount={10000} />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-        <GradientText color="blue" className="font-dongle text-7xl font-bold" text="Found an issue?" />
+      <div className="flex flex-col items-center justify-center gap-4 sm:absolute sm:inset-0">
+        <GradientText color="blue" className="font-dongle text-6xl font-bold" text="Found an issue?" />
 
         <p className="max-w-none px-2 text-center text-lg sm:max-w-1/2">
           If you found a typo, incorrect information or have a feature request, please raise an issue by clicking this

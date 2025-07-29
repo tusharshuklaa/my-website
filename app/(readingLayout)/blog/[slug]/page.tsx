@@ -16,6 +16,7 @@ import { BlogContent } from "@components/blog-content";
 import { MyAvatar } from "@components/my-avatar";
 import { RaiseIssueBanner } from "@components/raise-issue-banner";
 import { BlogViewCounter } from "@components/blog-view-counter";
+import { MoreBlogContentMobile } from "@components/more-blog-content-mobile";
 import { absoluteUrl } from "@/lib/utils";
 
 type BlogPageParams = {
@@ -140,10 +141,12 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
           <div className="sticky top-32 mt-20 flex h-full max-h-none flex-col items-start gap-4 overflow-y-auto sm:max-h-[calc(98dvh-8rem)]">
             <TableOfContents tocs={blog.toc} />
 
-            <MoreBlogContent related={blog.related} current={blog.slug} />
+            <MoreBlogContent related={blog.related} current={blog.slug} className="hidden sm:block" />
           </div>
         </aside>
       </section>
+
+      <MoreBlogContentMobile related={blog.related} current={blog.slug} />
 
       <RaiseIssueBanner issueTitle={blog.title} />
 
