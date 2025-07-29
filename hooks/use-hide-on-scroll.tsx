@@ -1,30 +1,62 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useMemo, useEffect } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import { debounce } from "lodash";
+import { useRootRef } from "@/contexts/use-root-ref";
 
-export const useHideOnScroll = () => {
+type UseHideOnScrollOptions = {
+  threshold?: number;
+  debounceMs?: number;
+};
+
+export const useHideOnScroll = (options: UseHideOnScrollOptions = {}) => {
+  const { threshold = 150, debounceMs = 10 } = options;
+
   const [hidden, setHidden] = useState(false);
-  const containerRef = useRef<HTMLElement | null>(null);
+  const { mainRef, isMainReady } = useRootRef();
+  const lastScrollY = useRef(0);
+
+  const scrollConfig = useMemo(
+    () => ({
+      container: mainRef,
+      layoutEffect: false,
+    }),
+    [mainRef],
+  );
+
+  const { scrollY } = useScroll(scrollConfig);
+
+  const debouncedScrollHandler = useMemo(() => {
+    const handleScroll = (latest: number) => {
+      if (!mainRef.current || !isMainReady) return;
+
+      const previous = lastScrollY.current;
+      lastScrollY.current = latest;
+
+      if (Math.abs(latest - previous) < 10) return;
+
+      if (latest > previous && latest > threshold) {
+        setHidden(true);
+      } else if (latest < previous || latest <= threshold) {
+        setHidden(false);
+      }
+    };
+
+    return debounce(handleScroll, debounceMs, {
+      leading: false,
+      trailing: true,
+    });
+  }, [threshold, debounceMs, mainRef, isMainReady]);
 
   useEffect(() => {
-    containerRef.current = document.getElementById("main");
-  }, []);
+    return () => {
+      debouncedScrollHandler.cancel();
+    };
+  }, [debouncedScrollHandler]);
 
-  const { scrollY } = useScroll({
-    container: containerRef,
-  });
-
-  useMotionValueEvent(scrollY, "change", latest => {
-    const previous = Number(scrollY.getPrevious());
-
-    // Hide nav when scrolling down, show when scrolling up
-    if (latest > previous && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-  });
+  useMotionValueEvent(scrollY, "change", debouncedScrollHandler);
 
   return {
     isHiddenOnScroll: hidden,
+    isReady: isMainReady,
   };
 };

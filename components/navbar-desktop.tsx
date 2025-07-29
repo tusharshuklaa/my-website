@@ -3,7 +3,8 @@
 import { FC, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { compareDesc, format, parseISO } from "date-fns";
+import { format, parseISO } from "date-fns";
+import { take, filter, map, sortBy } from "lodash";
 import { cn } from "@/lib/utils";
 import { Menu, MenuItem, HoveredLink, ProductItem } from "@components/ui";
 import { CommandCenter } from "@components/command-center";
@@ -15,21 +16,25 @@ import { DownloadResumeButton } from "@components/download-resume-button";
 import { CoolBorder } from "@components/cool-border";
 import { useHideOnScroll } from "@/hooks/use-hide-on-scroll";
 
-const getLimitedBlogs = (blogs: Array<Blog>, limit: number) =>
-  blogs
-    .filter(blog => blog.published)
-    .map(blog => ({
-      ...blog,
-      date: format(parseISO(blog.date), "LLLL d, yyyy"),
-    }))
-    .slice(0, limit)
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+const getLimitedBlogs = (blogs: Array<Blog>, limit: number) => {
+  const publishedBlogs = filter(blogs, "published");
+  const blogsWithFormattedDate = map(publishedBlogs, blog => ({
+    ...blog,
+    date: format(parseISO(blog.date), "LLLL d, yyyy"),
+  }));
+  const sortedBlogs = sortBy(blogsWithFormattedDate, blog => new Date(blog.date)).reverse();
+
+  return take(sortedBlogs, limit);
+};
 
 export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
   const blogs = getLimitedBlogs(allBlogs, 4);
-
   const [active, setActive] = useState<string | null>(null);
-  const { isHiddenOnScroll } = useHideOnScroll();
+
+  const { isHiddenOnScroll, isReady } = useHideOnScroll({
+    threshold: 150,
+    debounceMs: 50,
+  });
 
   return (
     <motion.nav
@@ -41,14 +46,20 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
         y: isHiddenOnScroll ? "-200%" : "0%",
         opacity: isHiddenOnScroll ? 0 : 1,
       }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-      initial={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.3,
+        ease: "easeInOut",
+        ...(isReady ? {} : { duration: 0 }),
+      }}
+      initial={{
+        y: 0,
+        opacity: 1,
+      }}
     >
       <CoolBorder />
       <Menu setActive={setActive}>
         <Link href="/" className="flex justify-between space-x-2 align-middle">
           <MyAvatar />
-
           <div className="flex flex-col justify-center align-middle text-xs font-bold uppercase">
             <TextFlipper className="max-w-14">tushar shukla</TextFlipper>
           </div>
