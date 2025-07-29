@@ -54,7 +54,7 @@ export const useScreenType = (): ScreenType => {
             ? newScreenType
             : prevScreenType,
         );
-      }, 200); // Adjust debounce delay as needed
+      }, 200);
     };
 
     // Add event listener for resize
