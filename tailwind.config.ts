@@ -110,6 +110,7 @@ const config: Config = {
         },
         antiquewhite: "#FAEBD7",
         lightYellow: "hsl(40deg 52% 80%)",
+        blogText: "#CBCFD2",
       },
       fontSize: {
         "screen-xs": "2.3vmin",

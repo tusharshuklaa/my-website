@@ -134,11 +134,11 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
         </LampContainer>
       </SnapSection>
 
-      <section className="m-auto mt-2 grid max-w-readable grid-cols-1 gap-2 sm:grid-cols-[10rem_minmax(60ch,_7fr)_3fr] sm:gap-4">
+      <section className="m-auto mt-2 grid max-w-readable grid-cols-1 gap-2 sm:grid-cols-[14rem_minmax(60ch,_4fr)_3fr] sm:gap-4">
         <BlogContent blogCode={blog.body.code} />
 
-        <aside className="order-1 px-4 text-slate-400 sm:order-none sm:px-2">
-          <div className="sticky top-32 mt-20 flex h-full max-h-none flex-col items-start gap-4 overflow-y-auto sm:max-h-[calc(98dvh-8rem)]">
+        <aside className="order-1 flex justify-center px-4 text-slate-400 sm:order-none sm:pl-20 sm:pr-4">
+          <div className="sticky top-32 mt-20 flex h-full max-h-none w-[70%] flex-col items-start gap-4 overflow-y-auto sm:max-h-[calc(98dvh-8rem)]">
             <TableOfContents tocs={blog.toc} />
 
             <MoreBlogContent related={blog.related} current={blog.slug} className="hidden sm:block" />
