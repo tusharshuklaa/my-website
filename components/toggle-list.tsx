@@ -14,7 +14,7 @@ export const ToggleContent: FC<ToggleContentProps> = ({ children, className, hea
   return (
     <details data-testid="cmp-toggle-list" className={toggleContentClasses} open={defaultOpen}>
       <summary className="text-3xl font-bold">{heading.padStart(18, " ")}</summary>
-      <nav className="pl-6">{children}</nav>
+      <nav className="pl-2">{children}</nav>
     </details>
   );
 };

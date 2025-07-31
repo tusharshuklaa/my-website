@@ -160,7 +160,7 @@ export const ZoomableImgPreview: FC<ZoomableImagePreviewProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen} data-testid="cmp-zoomable-img-preview">
       <DialogTrigger asChild>
-        <figure className="mx-auto mb-12 mt-8 w-4/5 cursor-pointer overflow-hidden rounded-lg shadow-[5px_5px_rgba(0,98,90,0.4),_10px_10px_rgba(0,98,90,0.3),_15px_15px_rgba(0,98,90,0.2),_20px_20px_rgba(0,98,90,0.1),_25px_25px_rgba(0,98,90,0.05)] transition-transform hover:scale-105">
+        <figure className="mx-auto mb-12 mt-8 cursor-zoom-in overflow-hidden rounded-lg">
           <AdvImage
             src={src}
             width={width}

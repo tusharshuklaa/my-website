@@ -17,7 +17,7 @@ export const BlogContent: FC<BlogContentProps> = ({ blogCode }) => {
 
   return (
     <>
-      <aside className="sticky top-0 hidden h-screen sm:block">
+      <aside className="pointer-events-none sticky top-0 hidden h-screen sm:block">
         <TracingBeam className="left-[125%]" targetRef={articleRef}>
           <div className="h-screen"></div>
         </TracingBeam>

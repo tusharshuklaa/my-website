@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { MDXComponents } from "mdx/types";
 import { useMDXComponent } from "next-contentlayer2/hooks";
 import { AnimatedHeading } from "@components/text/heading";
-import { GradientText, HighlightText } from "@components/text";
+import { GradientText } from "@components/text";
 import { cn } from "@/lib/utils";
 import { PrettyLink } from "@components/pretty-link";
 import { ExternalEmbed } from "@components/external-embed";
@@ -24,22 +24,22 @@ const components: MDXComponents = {
     );
   },
   h2: ({ ...props }) => (
-    <h2 {...props} className={cn("mb-2 mt-16 text-4xl !leading-snug tracking-wide", props.className)}>
-      <GradientText text={props.children} color="purple" />
-    </h2>
+    <h2
+      {...props}
+      className={cn("mb-2 mt-24 text-2xl font-bold !leading-snug tracking-wide text-blogText", props.className)}
+    />
   ),
   h3: ({ ...props }) => (
-    <h3 {...props} className={cn("mb-2 mt-8 text-2xl !leading-snug tracking-wide", props.className)}>
-      <GradientText text={props.children} color="green" />
-    </h3>
+    <h3
+      {...props}
+      className={cn("mb-4 mt-12 text-xl font-bold !leading-snug tracking-wide text-blogText", props.className)}
+    />
   ),
   h4: ({ ...props }) => (
     <h4 {...props} className={cn("text-xl font-bold !leading-snug tracking-wide", props.className)}></h4>
   ),
   // Paragraph
-  p: ({ ...props }) => (
-    <span {...props} className={cn("mb-4 text-justify leading-8 tracking-wider", props.className)}></span>
-  ),
+  p: ({ ...props }) => <span {...props} className={cn("mb-4 leading-8 tracking-wider", props.className)}></span>,
   // List
   ol: ({ ...props }) => (
     <ol
@@ -58,7 +58,7 @@ const components: MDXComponents = {
     <li
       {...props}
       className={cn(
-        "mb-4 pl-2 text-justify leading-8 tracking-wider [&>ol]:mb-2 [&>ol]:mt-2 [&>ol]:list-inside [&>ul]:mb-2 [&>ul]:mt-2 [&>ul]:list-inside",
+        "mb-4 pl-2 leading-8 tracking-wider [&>ol]:mb-2 [&>ol]:mt-2 [&>ol]:list-inside [&>ul]:mb-2 [&>ul]:mt-2 [&>ul]:list-inside",
         props.className,
       )}
     ></li>
@@ -74,7 +74,7 @@ const components: MDXComponents = {
     const target = props.href?.startsWith("http") ? "_blank" : "_self";
     const title = props.title || "";
 
-    return <PrettyLink {...props} href={href} target={target} title={title} />;
+    return <PrettyLink {...props} href={href} target={target} title={title} hoverEffect={false} />;
   },
   // Image
   img: ({ ...props }) => {
@@ -87,7 +87,7 @@ const components: MDXComponents = {
     <code
       {...props}
       className={cn(
-        "relative inline-block translate-y-1 overflow-auto rounded border border-gray-200 px-1 py-0 font-mono text-sm shadow dark:border-gray-700 [pre_&]:my-4 [pre_&]:p-4 [pre_&]:pt-10",
+        "relative inline-block translate-y-1.5 overflow-auto rounded border border-gray-200 px-1 py-0 font-mono text-sm shadow dark:border-gray-700 [pre_&]:my-4 [pre_&]:p-4 [pre_&]:pt-10",
         "before:[pre_&[data-language]]:absolute before:[pre_&[data-language]]:left-0 before:[pre_&[data-language]]:right-0 before:[pre_&[data-language]]:top-0 before:[pre_&[data-language]]:content-[attr(data-language)]",
         "before:[pre_&[data-language]]:bg-black/50 before:[pre_&[data-language]]:p-2 before:[pre_&[data-language]]:text-xs before:[pre_&[data-language]]:leading-none",
         props.className,
@@ -152,11 +152,7 @@ const components: MDXComponents = {
   // Strong
   strong: ({ ...props }) => <strong {...props}></strong>,
   // Emphasis
-  em: ({ ...props }) => (
-    <em {...props}>
-      <HighlightText>{props.children}</HighlightText>
-    </em>
-  ),
+  em: ({ ...props }) => <em {...props} />,
   // Delete
   del: ({ ...props }) => <del {...props}></del>,
   // Inline Code

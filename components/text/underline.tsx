@@ -4,14 +4,16 @@ import { BasicUiComponent } from "@/types";
 
 type UnderlineProps = BasicUiComponent & {
   minimal?: boolean;
+  hoverEffect?: boolean;
 };
 
-export const Underline: FC<UnderlineProps> = ({ className, children, minimal }) => {
+export const Underline: FC<UnderlineProps> = ({ className, children, hoverEffect = true, minimal }) => {
   const underlineClasses = cn(
-    "duration-250 bg-gradient-to-r from-[#84fab0] to-[#8fd3f4] bg-[position:0_100%] md:bg-[position:0_88%] bg-no-repeat transition-[background-size] ease-in hover:bg-[length:100%_100%] grow-0 dark:hover:text-black",
+    "duration-250 bg-[position:0_100%] md:bg-[position:0_84%] bg-no-repeat bg-[length:100%_0.075em] grow-0",
     {
-      "bg-[length:100%_0.2em]": !minimal,
-      "bg-[length:100%_0.0em]": minimal,
+      "hover:bg-[length:100%_100%] dark:hover:text-black": hoverEffect,
+      "bg-gradient-to-r from-[#84fab0] to-[#8fd3f4] transition-[background-size] ease-in": !minimal,
+      "bg-white": minimal,
     },
     className,
   );

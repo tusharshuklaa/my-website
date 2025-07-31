@@ -15,9 +15,9 @@ export const MoreBlogContent: FC<MoreBlogContentProps> = ({ className, current, 
   return (
     relatedBlogs.length && (
       <ToggleContent heading="You may also like" defaultOpen={true} className={className}>
-        <ul className="text-3xl leading-6">
+        <ul className="text-2xl leading-5">
           {relatedBlogs.map(blog => (
-            <RelatedBlogListItem key={blog.slug} blog={blog} className="ml-4 border-b border-gray-200 py-4" />
+            <RelatedBlogListItem key={blog.slug} blog={blog} className="ml-2 border-b border-gray-200 py-4" />
           ))}
         </ul>
       </ToggleContent>
