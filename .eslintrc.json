@@ -1,10 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript", "prettier", "plugin:prettier/recommended"],
-  "plugins": [
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "tailwindcss/classnames-order": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
