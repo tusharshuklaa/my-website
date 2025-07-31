@@ -26,13 +26,13 @@ const components: MDXComponents = {
   h2: ({ ...props }) => (
     <h2
       {...props}
-      className={cn("mb-2 mt-40 text-2xl font-bold !leading-snug tracking-wide text-blogText", props.className)}
+      className={cn("mb-2 mt-24 text-2xl font-bold !leading-snug tracking-wide text-blogText", props.className)}
     />
   ),
   h3: ({ ...props }) => (
     <h3
       {...props}
-      className={cn("mb-2 mt-16 text-xl font-bold !leading-snug tracking-wide text-blogText", props.className)}
+      className={cn("mb-4 mt-12 text-xl font-bold !leading-snug tracking-wide text-blogText", props.className)}
     />
   ),
   h4: ({ ...props }) => (
@@ -87,7 +87,7 @@ const components: MDXComponents = {
     <code
       {...props}
       className={cn(
-        "relative inline-block translate-y-1 overflow-auto rounded border border-gray-200 px-1 py-0 font-mono text-sm shadow dark:border-gray-700 [pre_&]:my-4 [pre_&]:p-4 [pre_&]:pt-10",
+        "relative inline-block translate-y-1.5 overflow-auto rounded border border-gray-200 px-1 py-0 font-mono text-sm shadow dark:border-gray-700 [pre_&]:my-4 [pre_&]:p-4 [pre_&]:pt-10",
         "before:[pre_&[data-language]]:absolute before:[pre_&[data-language]]:left-0 before:[pre_&[data-language]]:right-0 before:[pre_&[data-language]]:top-0 before:[pre_&[data-language]]:content-[attr(data-language)]",
         "before:[pre_&[data-language]]:bg-black/50 before:[pre_&[data-language]]:p-2 before:[pre_&[data-language]]:text-xs before:[pre_&[data-language]]:leading-none",
         props.className,

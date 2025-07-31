@@ -3,8 +3,8 @@
 import { FC } from "react";
 import { UiComponent } from "@/types";
 import { cn } from "@/lib/utils";
-import { PrettyLink } from "@components/pretty-link";
 import { ToggleContent } from "@components/toggle-list";
+import Link from "next/link";
 
 export type TableOfContent = {
   content: string;
@@ -18,7 +18,7 @@ type TableOfContentsProps = UiComponent<{
 
 export const TableOfContents: FC<TableOfContentsProps> = ({ className, tocs }) => (
   <ToggleContent heading="Table of Contents" className={className}>
-    <ul className="list-disc text-2xl">
+    <ul className="text-2xl">
       {tocs.map(heading => {
         const listClasses = cn("", {
           "ml-4": heading.level === 2,
@@ -28,15 +28,9 @@ export const TableOfContents: FC<TableOfContentsProps> = ({ className, tocs }) =
 
         return (
           <li key={heading.slug} className={listClasses}>
-            <PrettyLink
-              href={`#${heading.slug}`}
-              title={heading.content}
-              isExternal={false}
-              minimal={true}
-              className="leading-5"
-            >
+            <Link href={`#${heading.slug}`} title={heading.content} className="leading-5 hover:text-white">
               {heading.content}
-            </PrettyLink>
+            </Link>
           </li>
         );
       })}
