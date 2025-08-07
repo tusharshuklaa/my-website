@@ -5,7 +5,7 @@
 import { FC } from "react";
 import { cn } from "@/lib/utils";
 import { BasicUiComponent } from "@/types";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export const Heading2: FC<BasicUiComponent> = ({ children, className }) => {
   return <h2 className={cn("font-poppins text-2xl text-black dark:text-white md:text-4xl", className)}>{children}</h2>;

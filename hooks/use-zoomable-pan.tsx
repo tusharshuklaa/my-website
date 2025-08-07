@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect, useMemo } from "react";
-import { PanInfo, useMotionValue, MotionValue } from "framer-motion";
+import { PanInfo, useMotionValue, MotionValue } from "motion/react";
 import { debounce } from "lodash";
 
 type ZoomState = { scale: number; x: number; y: number };

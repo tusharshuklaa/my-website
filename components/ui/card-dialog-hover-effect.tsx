@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, Fragment, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { UiComponent } from "@/types";
 import { Card, CardTitle, CardDescription } from "./card";

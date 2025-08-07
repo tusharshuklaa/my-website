@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { UiComponent } from "@/types";
 import { cn } from "@/lib/utils";
 import { GradientText } from "@components/text";

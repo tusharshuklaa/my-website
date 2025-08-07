@@ -2,7 +2,7 @@
 
 import React, { FC, useState, useEffect } from "react";
 import { ImageProps } from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@ui";

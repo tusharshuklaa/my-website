@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import clsx from "clsx";
 import { shuffle } from "lodash";
 import { isEmoji } from "@/lib/utils";

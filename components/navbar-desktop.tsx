@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { format, parseISO } from "date-fns";
 import { take, filter, map, sortBy } from "lodash";
 import { cn } from "@/lib/utils";

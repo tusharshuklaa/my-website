@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { AspectRatio } from "@ui";
 import { AdvImage } from "@components/adv-image";
 

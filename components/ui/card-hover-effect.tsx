@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { AdvImage } from "@components/adv-image";
 import { cn } from "@/lib/utils";
 import { badgeVariants, Card, CardTitle, CardDescription, CardDate, CardFooter } from "@ui";
