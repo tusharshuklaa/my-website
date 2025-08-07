@@ -11,34 +11,39 @@ type FlipWordsProps = UiComponent<{
   duration?: number;
 }>;
 
-export const FlipWords: FC<FlipWordsProps> = ({ duration = 3000, className }) => {
-  const words = shuffle([
-    "building stuff for the web 👨🏻‍💻",
-    "riding my Classic 🏍️",
-    "my 2 cute monsters 👻",
-    "creating CSS art 🧑🏻‍🎨",
-    "conversations about space 💫",
-    "tweaking my gadgets 📱",
-    "exploring latest tech 💿",
-    "talking to people 🗣️",
-    "loosing money in stocks 😤",
-    "using emojis 😼",
-    "anime and manga 🎌",
-    "money... bcz who doesn't? 🤑",
-    "learning new things 🧠",
-    "solving problems 🧩",
-    "playing mobile games 👾",
-    "stargazing 🌌",
-    "coding for fun 🤓",
-    "writing blogs 📝",
-    "helping others 🤝",
-    "making memories 📸",
-  ]);
+const ALL_WORDS = [
+  "building stuff for the web 👨🏻‍💻",
+  "riding my Classic 🏍️",
+  "my 2 cute monsters 👻",
+  "creating CSS art 🧑🏻‍🎨",
+  "conversations about space 💫",
+  "tweaking my gadgets 📱",
+  "exploring latest tech 💿",
+  "talking to people 🗣️",
+  "loosing money in stocks 😤",
+  "using emojis 😼",
+  "anime and manga 🎌",
+  "money... bcz who doesn't? 🤑",
+  "learning new things 🧠",
+  "solving problems 🧩",
+  "playing mobile games 👾",
+  "stargazing 🌌",
+  "coding for fun 🤓",
+  "writing blogs 📝",
+  "helping others 🤝",
+  "making memories 📸",
+];
 
+export const FlipWords: FC<FlipWordsProps> = ({ duration = 3000, className }) => {
+  const words = shuffle(ALL_WORDS);
+  const [isClient, setIsClient] = useState(false);
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
-  // thanks for the fix Julian - https://github.com/Julian-AT
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const startAnimation = useCallback(() => {
     const word = words[words.indexOf(currentWord) + 1] || words[0];
     setCurrentWord(word);
@@ -46,11 +51,19 @@ export const FlipWords: FC<FlipWordsProps> = ({ duration = 3000, className }) =>
   }, [currentWord, words]);
 
   useEffect(() => {
-    if (!isAnimating)
+    if (!isAnimating && isClient)
       setTimeout(() => {
         startAnimation();
       }, duration);
-  }, [isAnimating, duration, startAnimation]);
+  }, [isAnimating, duration, startAnimation, isClient]);
+
+  if (!isClient) {
+    return (
+      <div className={clsx("relative z-10 inline-block min-h-[67px] text-left", className)}>
+        <span className="opacity-0">{ALL_WORDS[0]}</span>
+      </div>
+    );
+  }
 
   return (
     <AnimatePresence
