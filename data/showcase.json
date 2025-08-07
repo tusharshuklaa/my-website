@@ -95,6 +95,18 @@
       "description": "A collection of useful SCSS mixins that I use in my day-to-day coding. It includes mixins for animations, transitions, and more.",
       "tags": ["github", "coding", "css"],
       "featured": false
+    },
+    {
+      "title": "Mask It | Chrome Extension",
+      "url": "https://chromewebstore.google.com/detail/mask-it/hnjciidpppkpofaddbmieniicmlebmfe?authuser=0&hl=en-GB",
+      "img": "mask-it_bmlkvf",
+      "description": "Mask items on a web page for privacy in open & public areas and save selections for future visits",
+      "tags": [
+        "chrome-extension",
+        "privacy",
+        "tools"
+      ],
+      "featured": true
     }
   ]
 }
