@@ -7,12 +7,14 @@ type MyAvatarProps = {
   alt?: string;
   title?: string;
   fallback?: string;
+  className?: string;
 };
 
-export const MyAvatar: FC<MyAvatarProps> = ({ alt, fallback, src, title }) => {
+export const MyAvatar: FC<MyAvatarProps> = ({ alt, className, fallback, src, title }) => {
   return (
-    <Avatar data-testid="cmp-my-avatar">
+    <Avatar data-testid="cmp-my-avatar" className={className}>
       <AdvImage
+        className="aspect-square"
         src={src || "tushar-shukla_xcsbbs"}
         alt={alt || "@tusharshuklaa"}
         title={title || "Tushar Shukla"}

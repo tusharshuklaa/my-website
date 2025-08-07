@@ -2,8 +2,8 @@ import { FC } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Underline } from "@components/text";
-import { HighlightText } from "@components/text/underline";
 import { DownloadResumeButton } from "@components/download-resume-button";
+import { SupportButton } from "@components/support-button";
 
 type FooterItemProps = {
   url: string;
@@ -59,11 +59,15 @@ export const Footer: FC = () => {
             </Link>{" "}
             for this website
           </p>
-          <p className="mt-4">
+          {/* <p className="mt-4">
             <HighlightText className="after:z-0">Pro Tip:</HighlightText> Don&apos;t forget to check command center by
             either clicking on the search bar in the navigation menu or by pessing keyboard keys (Cmd or Ctrl + K)
-          </p>
-          <DownloadResumeButton containerClassName="mt-6 left-0 sm:left-auto right-0 sm:right-auto mx-auto sm:mx-0" />
+          </p> */}
+
+          <div className="left-0 right-0 mx-auto mb-4 mt-12 flex flex-col items-center gap-6 sm:left-auto sm:right-auto sm:mx-0 sm:mb-0 sm:mt-6 sm:flex-row">
+            <DownloadResumeButton />
+            <SupportButton />
+          </div>
         </div>
 
         <div className="mt-8 w-full shrink-0 md:mt-0 md:w-1/4">

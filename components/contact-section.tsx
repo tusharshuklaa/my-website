@@ -2,8 +2,8 @@ import { FC } from "react";
 import { motion } from "framer-motion";
 import { UiComponent } from "@/types";
 import { cn } from "@/lib/utils";
-import { GradientText } from "@/components/text";
-import { AnimatedLink, AnimatedLinkProps } from "@/components/animated-link";
+import { GradientText } from "@components/text";
+import { AnimatedLink, AnimatedLinkProps } from "@components/animated-link";
 
 const contactLinks: Array<AnimatedLinkProps> = [
   {
@@ -95,11 +95,6 @@ export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
           <GradientText text="Let's connect!" color="blue" className="text-screen-lg" />
         </motion.h3>
       </div>
-
-      <p className="mt-10 text-lg">
-        With more than a decade into front-end wizardry, I can turn your ideas into pixel-perfect magic, with a side of
-        witty banter and enough positivity to fuel a small city. Let&apos;s build something awesome together!
-      </p>
 
       <div className="mt-20 grid grid-cols-2 gap-2 sm:gap-0 md:mt-32 md:flex md:justify-between">
         {contactLinks.map(({ color, name, url }, index) => (

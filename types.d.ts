@@ -4,6 +4,10 @@ declare module "tailwindcss/lib/util/flattenColorPalette" {
   export default function flattenColorPalette(pallette: Record<string, string>): Record<string, string>;
 }
 
+type Prettify<T> = {
+  [K in keyof T]: T[K];
+} & unknown;
+
 type BasicComponent<T = unknown> = PropsWithoutRef<PropsWithChildren> & T;
 
 type BasicRefComponent<T = unknown> = PropsWithRef<PropsWithChildren> & T;

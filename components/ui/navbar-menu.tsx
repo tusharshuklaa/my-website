@@ -3,7 +3,7 @@
 import React, { FC, PropsWithChildren } from "react";
 import { motion } from "framer-motion";
 import Link, { LinkProps } from "next/link";
-import { BasicComponent } from "@/types";
+import { BasicUiComponent } from "@/types";
 import { TextFlipper } from "@components/text";
 import { AdvImage } from "@components/adv-image";
 import { cn } from "@/lib/utils";
@@ -98,7 +98,7 @@ export const ProductItem: FC<ProductItemProps> = ({ title, description, href, sr
   </Link>
 );
 
-type HoveredLinkProps = BasicComponent<{
+type HoveredLinkProps = BasicUiComponent<{
   href: string;
 }>;
 

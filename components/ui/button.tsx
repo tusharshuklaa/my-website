@@ -3,9 +3,9 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import { BasicComponent, BasicUiComponent } from "@/types";
+import { BasicUiComponent } from "@/types";
 
-const PrimaryButtonInternal: React.FC<BasicComponent> = ({ children }) => {
+const PrimaryButtonInternal: React.FC<BasicUiComponent> = ({ children }) => {
   return (
     <>
       <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500" />
