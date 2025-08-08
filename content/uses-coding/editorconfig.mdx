@@ -1,0 +1,28 @@
+---
+title: My usual .editorConfig
+img: "https://images.unsplash.com/photo-1593358187406-fb1ccc698573?q=80&w=640&auto=format&fit=crop"
+tags:
+  - editorconfig
+  - config
+summary: A glimpse into my .editorConfig file.
+---
+
+[EditorConfig](https://editorconfig.org/) is a file format and collection of text editor plugins for maintaining consistent coding styles between different editors and IDEs.
+
+```ini
+# top-most EditorConfig file
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+```
+
+This `.editorconfig` file sets the default coding style for all files in the project, ensuring that spaces are used for indentation, with a size of 2 spaces. It also enforces line endings to be LF (Unix style), uses UTF-8 character encoding, and trims trailing whitespace. The last line ensures that a final newline is inserted at the end of files.
