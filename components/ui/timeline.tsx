@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC, useEffect, useRef, useState } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { UiComponent } from "@/types";
 import { useRootRef } from "@contexts/use-root-ref";

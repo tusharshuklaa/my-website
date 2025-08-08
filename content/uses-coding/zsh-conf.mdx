@@ -1,0 +1,51 @@
+---
+title: Glimpse of my ZSH config
+img: "https://images.unsplash.com/photo-1753998943413-8cba1b923c0e?q=80&w=640&auto=format&fit=crop"
+tags:
+  - zsh
+  - config
+summary: A glimpse into my ZSH configuration and setup.
+---
+
+[ZSH](https://www.zsh.org/) is a powerful shell that can be used as an interactive login shell and as a command interpreter for shell scripting.
+
+```zsh
+# Refresh terminal instance via zsh config
+alias refresh="source ~/.zshrc"
+
+# ---- Eza (better ls) -----
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --group-directories-first"
+
+# thefuck alias
+eval $(thefuck --alias)
+eval $(thefuck --alias fk)
+
+# ---- Node Versions -----
+alias node16="nvm alias default 16.20.1"
+alias node18="nvm alias default 18.17.1"
+alias node20="nvm alias default 20.18.0"
+
+# ---- NPM ----
+alias nilpd="npm i --legacy-peer-deps"
+
+# ---- Git ----
+alias gpdev="git pull origin develop --no-ff"
+alias gpmas="git pull origin master --no-ff"
+alias glog="git log --oneline --graph --all --decorate"
+
+# ---- Directory operations ----
+delDir() {
+  if [ -d "$1" ]; then
+    rm -rf "$1"
+    echo "Directory '$1' deleted successfully."
+  else
+    echo "Directory '$1' not found."
+  fi
+}
+
+alias home="cd $HOME"
+alias desk="cd $HOME/Desktop"
+alias doc="cd $HOME/Documents"
+alias main="cd /"
+alias rma="cd $HOME/__/work/rma"
+```

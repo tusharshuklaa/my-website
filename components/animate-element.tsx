@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { Easing, motion } from "framer-motion";
+import { Easing, motion } from "motion/react";
 import { BasicUiComponent } from "@/types";
 import { useScreenType } from "@hooks/use-screen-type";
 

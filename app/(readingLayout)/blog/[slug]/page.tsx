@@ -17,6 +17,7 @@ import { MyAvatar } from "@components/my-avatar";
 import { RaiseIssueBanner } from "@components/raise-issue-banner";
 import { BlogViewCounter } from "@components/blog-view-counter";
 import { MoreBlogContentMobile } from "@components/more-blog-content-mobile";
+import { SupportButton } from "@components/support-button";
 import { absoluteUrl } from "@/lib/utils";
 
 type BlogPageParams = {
@@ -142,11 +143,20 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
             <TableOfContents tocs={blog.toc} />
 
             <MoreBlogContent related={blog.related} current={blog.slug} className="hidden sm:block" />
+
+            <div className="mt-8 hidden sm:block">
+              <SupportButton />
+            </div>
           </div>
         </aside>
       </section>
 
       <MoreBlogContentMobile related={blog.related} current={blog.slug} />
+
+      <div className="my-32 flex flex-col items-center px-4 sm:hidden">
+        <span className="mb-8 text-center text-lg">If you like my work, consider supporting me.</span>
+        <SupportButton />
+      </div>
 
       <RaiseIssueBanner issueTitle={blog.title} />
 

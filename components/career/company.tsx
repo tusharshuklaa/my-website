@@ -32,8 +32,8 @@ export const Company: FC<CompanyProps> = ({ company, description, img, imgLight,
           src={img}
           alt={`${company} logo`}
           title={`${description}`}
-          width={112}
-          height={112}
+          className="w-[122px]"
+          quality={50}
         />
       </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, FC } from "react";
-import { useMotionTemplate, useMotionValue, motion, MotionValue } from "framer-motion";
+import { useMotionTemplate, useMotionValue, motion, MotionValue } from "motion/react";
 import { cn } from "@/lib/utils";
 import { GradientText } from "@components/text";
 

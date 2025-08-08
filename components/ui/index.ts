@@ -77,6 +77,7 @@ export { HoverBorderGradient } from "./hover-border-gradient";
 export type { Iphone15ProProps } from "./iphone-15-pro";
 export { Iphone15Pro } from "./iphone-15-pro";
 export { LampContainer } from "./lamp";
+export { MagicCard } from "./magic-card";
 export { MenuItem } from "./navbar-menu";
 export { Menu } from "./navbar-menu";
 export { ProductItem } from "./navbar-menu";

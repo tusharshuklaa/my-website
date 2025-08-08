@@ -1,15 +1,15 @@
 "use client";
 
 import React, { FC, PropsWithChildren } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Link, { LinkProps } from "next/link";
-import { BasicComponent } from "@/types";
+import { BasicUiComponent } from "@/types";
 import { TextFlipper } from "@components/text";
 import { AdvImage } from "@components/adv-image";
 import { cn } from "@/lib/utils";
 
 const transition = {
-  type: "spring",
+  type: "spring" as const,
   mass: 0.5,
   damping: 11.5,
   stiffness: 100,
@@ -98,7 +98,7 @@ export const ProductItem: FC<ProductItemProps> = ({ title, description, href, sr
   </Link>
 );
 
-type HoveredLinkProps = BasicComponent<{
+type HoveredLinkProps = BasicUiComponent<{
   href: string;
 }>;
 

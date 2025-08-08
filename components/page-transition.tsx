@@ -2,7 +2,7 @@
 
 import { forwardRef } from "react";
 import { BasicUiRefComponent } from "@/types";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const PageTransition = forwardRef<HTMLDivElement, BasicUiRefComponent>(

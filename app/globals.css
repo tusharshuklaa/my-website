@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --border: oklch(1 0 0 / 10%);
   /* Variables for space mascot */
   --origAstroWidth: 14vmin;
   --astroWidth: var(--origAstroWidth);

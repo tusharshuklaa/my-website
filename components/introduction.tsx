@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Cover, FlipWords } from "@ui";
-import { SnapSection } from "@/components/snap-container";
-import { GradientText } from "./text";
+import { SnapSection } from "@components/snap-container";
+import { GradientText } from "@components/text";
 
 export const Introduction: FC = () => {
   return (

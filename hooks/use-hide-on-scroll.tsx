@@ -1,5 +1,5 @@
 import { useState, useRef, useMemo, useEffect } from "react";
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useMotionValueEvent, useScroll } from "motion/react";
 import { debounce } from "lodash";
 import { useRootRef } from "@/contexts/use-root-ref";
 
@@ -15,15 +15,13 @@ export const useHideOnScroll = (options: UseHideOnScrollOptions = {}) => {
   const { mainRef, isMainReady } = useRootRef();
   const lastScrollY = useRef(0);
 
-  const scrollConfig = useMemo(
-    () => ({
-      container: mainRef,
-      layoutEffect: false,
-    }),
-    [mainRef],
+  const { scrollY } = useScroll(
+    isMainReady && mainRef.current
+      ? {
+          container: mainRef,
+        }
+      : {},
   );
-
-  const { scrollY } = useScroll(scrollConfig);
 
   const debouncedScrollHandler = useMemo(() => {
     const handleScroll = (latest: number) => {
