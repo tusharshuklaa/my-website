@@ -66,7 +66,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
     if (!inputRef.current) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
     canvas.width = 800;
@@ -220,7 +220,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
-            viewBox="0 24"
+            viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
