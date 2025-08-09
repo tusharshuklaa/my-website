@@ -16,6 +16,7 @@ export type Showcase = {
   description: string;
   tags: Array<string>;
   featured: boolean;
+  showInCommandCenter?: boolean;
 };
 
 const ShowcaseCard: FC<Showcase> = ({ title, url, img, description }) => {
