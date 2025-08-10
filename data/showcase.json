@@ -62,7 +62,8 @@
       "img": "driver-salary-generator_yxqpvz",
       "description": "A simple web app to generate salary slips for drivers. I was looking for such tool myself but without any paywall or ads. So, I created one.",
       "tags": ["github", "utility", "tools"],
-      "featured": true
+      "featured": true,
+      "showInCommandCenter": true
     },
     {
       "title": "Fun Javascript Game | Space Runner",
@@ -106,7 +107,8 @@
         "privacy",
         "tools"
       ],
-      "featured": true
+      "featured": true,
+      "showInCommandCenter": true
     }
   ]
 }

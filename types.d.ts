@@ -4,6 +4,8 @@ declare module "tailwindcss/lib/util/flattenColorPalette" {
   export default function flattenColorPalette(pallette: Record<string, string>): Record<string, string>;
 }
 
+declare module "canvas-confetti";
+
 type Prettify<T> = {
   [K in keyof T]: T[K];
 } & unknown;

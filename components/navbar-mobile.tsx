@@ -7,6 +7,8 @@ import { GradientText, TextFlipper } from "@components/text";
 import { GlowingGradientBox } from "@components/glowing-gradient-box";
 import { MyAvatar } from "@components/my-avatar";
 import { DownloadResumeButton } from "@components/download-resume-button";
+import { SupportButton } from "@components/support-button";
+import { CommandCenter } from "@components/command-center";
 
 export const NavbarMobile: FC = () => {
   return (
@@ -17,7 +19,7 @@ export const NavbarMobile: FC = () => {
         </Button>
       </DrawerTrigger>
 
-      <DrawerContent>
+      <DrawerContent aria-describedby="mobile-navbar-content" className="sm:hidden">
         <DrawerHeader>
           <Link href="/" className="flex flex-col items-center justify-center space-y-4">
             <GlowingGradientBox className="rounded-full before:rounded-full after:rounded-full">
@@ -28,6 +30,10 @@ export const NavbarMobile: FC = () => {
               <TextFlipper>tushar shukla</TextFlipper>
             </div>
           </Link>
+
+          <div className="mt-4 flex flex-col items-center justify-center gap-2">
+            <CommandCenter />
+          </div>
         </DrawerHeader>
 
         <div>
@@ -53,8 +59,9 @@ export const NavbarMobile: FC = () => {
             <GradientText text="Showcase" color="red" />
           </Link>
 
-          <div className="my-4 flex items-center justify-center">
+          <div className="my-4 flex items-center justify-center gap-4">
             <DownloadResumeButton />
+            <SupportButton />
           </div>
         </div>
       </DrawerContent>

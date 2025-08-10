@@ -21,6 +21,8 @@ import { UiComponent } from "@/types";
 import { cn } from "@/lib/utils";
 import { Button } from "@ui";
 import { CoolBorder } from "@components/cool-border";
+import { useHideOnScroll } from "@/hooks/use-hide-on-scroll";
+import { motion } from "motion/react";
 
 export const SocialShare: FC<UiComponent> = ({ className }) => {
   const [shareUrl, setShareUrl] = useState("https://tusharshukla.dev/blog");
@@ -30,6 +32,11 @@ export const SocialShare: FC<UiComponent> = ({ className }) => {
     setShareUrl(window.location.href);
     setShareContent(`Hey! Checkout this article - "${document.title}" - `);
   }, []);
+
+  const { isHiddenOnScroll, isReady } = useHideOnScroll({
+    threshold: 100,
+    debounceMs: 100,
+  });
 
   const socialShareClasses = cn(
     "w-80 h-14 rounded-full py-2 px-6 flex justify-between items-center z-30 bg-black fixed left-0 right-0 bottom-6 m-auto",
@@ -44,7 +51,23 @@ export const SocialShare: FC<UiComponent> = ({ className }) => {
   };
 
   return (
-    <div data-testid="cmp-social-share" className={socialShareClasses}>
+    <motion.div
+      data-testid="cmp-social-share"
+      className={socialShareClasses}
+      animate={{
+        y: isHiddenOnScroll ? "200%" : "0%",
+        opacity: isHiddenOnScroll ? 0 : 1,
+      }}
+      transition={{
+        duration: 0.3,
+        ease: "easeInOut",
+        ...(isReady ? {} : { duration: 0 }),
+      }}
+      initial={{
+        y: 0,
+        opacity: 1,
+      }}
+    >
       <CoolBorder />
       <TwitterShareButton url={shareUrl} title={shareContent} htmlTitle={`${htmlTitle} Twitter/X`}>
         <XIcon size={28} round />
@@ -79,7 +102,7 @@ export const SocialShare: FC<UiComponent> = ({ className }) => {
       >
         <ClipboardCopy className="cursor-pointer" size="14" />
       </Button>
-    </div>
+    </motion.div>
   );
 };
 

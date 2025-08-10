@@ -33,7 +33,7 @@ const contactLinks: Array<AnimatedLinkProps> = [
   },
   {
     name: "Email",
-    url: "mailto:tusharshuklaa@gmail.com",
+    url: "mailto:tusharshukla.dev@gmail.com",
     color: "red",
   },
 ];

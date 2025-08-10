@@ -31,7 +31,7 @@ type CommandDialogProps = UiComponent<DialogProps>;
 const CommandDialog: FC<CommandDialogProps> = ({ children, ...props }) => {
   return (
     <Dialog {...props}>
-      <DialogContent className="overflow-hidden p-0 shadow-lg dark:shadow-2xl dark:shadow-white/10">
+      <DialogContent className="top-[30%] h-[50dvh] w-[calc(100vw-2rem)] overflow-hidden p-0 shadow-lg dark:shadow-2xl dark:shadow-white/10 sm:top-[50%] sm:h-auto sm:w-full">
         <VisuallyHidden.Root>
           <DialogTitle>command center</DialogTitle>
         </VisuallyHidden.Root>
@@ -68,7 +68,7 @@ const CommandList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.List
     ref={ref}
-    className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)}
+    className={cn("overflow-y-auto overflow-x-hidden sm:max-h-[300px]", className)}
     {...props}
   />
 ));

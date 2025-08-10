@@ -32,8 +32,8 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
   const [active, setActive] = useState<string | null>(null);
 
   const { isHiddenOnScroll, isReady } = useHideOnScroll({
-    threshold: 150,
-    debounceMs: 50,
+    threshold: 100,
+    debounceMs: 100,
   });
 
   return (

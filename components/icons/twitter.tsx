@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { SvgWrapper } from "./svg-wrapper";
 import { CustomIcon } from "@/types/icons";
+import { UiComponent } from "@/types";
 
-export const TwitterIcon: FC<CustomIcon> = ({ width, height }) => (
-  <SvgWrapper width={width} height={height}>
+export const TwitterIcon: FC<CustomIcon & UiComponent> = ({ className, width, height }) => (
+  <SvgWrapper width={width} height={height} className={className}>
     <title>X</title>
     <path
       fill="currentColor"
