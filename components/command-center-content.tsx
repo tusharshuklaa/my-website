@@ -56,7 +56,7 @@ const Greetings: FC = () => {
   }, [today]);
 
   return (
-    <div className="flex items-center justify-between gap-4 px-3 py-6 text-center">
+    <div className="hidden items-center justify-between gap-4 px-3 py-6 text-center sm:flex">
       <span className="text-xl tracking-wider">{greeting}</span>
       <span className="font-mono text-xs tracking-wider text-muted">{fullDate}</span>
     </div>
@@ -70,8 +70,8 @@ const AllSuggestions: FC<{ latestBlog: Blog } & WithCloseCommandCenter> = ({ lat
     <CommandGroup heading="Suggestions">
       {latestBlog && (
         <CommandItem onSelect={() => openWebsite(latestBlog.url, closeCommandCenter)}>
-          <BookOpenText className="mr-2 h-4 w-4" />
-          <span>{latestBlog.title}</span>
+          <BookOpenText className="mr-2 h-4 w-4 shrink-0" />
+          <span className="line-clamp-2 sm:line-clamp-1">{latestBlog.title}</span>
           <CommandShortcut className="shrink-0">Latest Blog</CommandShortcut>
         </CommandItem>
       )}
@@ -129,11 +129,11 @@ const AllBlogs: FC<{ blogs: Array<Blog> }> = ({ blogs }) => {
         <CommandItem
           key={blog.slug}
           onSelect={() => openWebsite(blog.url)}
-          className="flex items-center justify-between"
+          className="flex items-center justify-between gap-1"
         >
           <div className="flex items-center">
-            <BookOpenText className="mr-2 h-4 w-4" />
-            <span>{blog.title}</span>
+            <BookOpenText className="mr-2 h-4 w-4 shrink-0" />
+            <span className="line-clamp-2 sm:line-clamp-1">{blog.title}</span>
           </div>
           <CommandShortcut className="shrink-0 text-xs">{`${blog.readingTime} min read`}</CommandShortcut>
         </CommandItem>
