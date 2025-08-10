@@ -56,11 +56,9 @@ const Greetings: FC = () => {
   }, [today]);
 
   return (
-    <div className="flex flex-col gap-2 px-3 py-4 text-xl">
-      <span>{greeting}</span>
-      <span className="text-sm text-muted-foreground">
-        Right now, it&apos;s <span className="font-semibold">{fullDate}</span>
-      </span>
+    <div className="flex items-center justify-between gap-4 px-3 py-6 text-center">
+      <span className="text-xl tracking-wider">{greeting}</span>
+      <span className="font-mono text-xs tracking-wider text-muted">{fullDate}</span>
     </div>
   );
 };
@@ -100,7 +98,7 @@ const AllFunStuff: FC<WithCloseCommandCenter> = ({ closeCommandCenter }) => {
   );
 
   return (
-    <CommandGroup heading="Fun Stuff">
+    <CommandGroup heading="Fun Stuff" className="mt-2">
       <CommandItem onSelect={confettiFn("basic")}>
         <Sparkles className="mr-2 h-4 w-4" />
         <span>Confetti</span>
@@ -126,7 +124,7 @@ const AllBlogs: FC<{ blogs: Array<Blog> }> = ({ blogs }) => {
   }
 
   return (
-    <CommandGroup heading={`Blogs (${blogs.length})`}>
+    <CommandGroup heading={`Blogs (${blogs.length})`} className="mt-2">
       {blogs.map(blog => (
         <CommandItem
           key={blog.slug}
@@ -266,7 +264,7 @@ export const CommandCenterContent: FC<CommandCenterContentProps> = ({ isOpen, se
   const closeCommandCenter = useCallback(() => setIsOpen(false), [setIsOpen]);
 
   return (
-    <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
+    <CommandDialog open={isOpen} onOpenChange={setIsOpen} aria-describedby="command-dialog">
       <CommandInput placeholder="Search blogs, pages, links..." />
 
       <Greetings />
@@ -278,13 +276,13 @@ export const CommandCenterContent: FC<CommandCenterContentProps> = ({ isOpen, se
 
         <AllSuggestions latestBlog={blogs[0]} closeCommandCenter={closeCommandCenter} />
 
-        <CommandSeparator />
+        <CommandSeparator className="my-2" />
 
         <AllFunStuff closeCommandCenter={closeCommandCenter} />
 
-        <CommandSeparator />
+        <CommandSeparator className="my-2" />
 
-        <CommandGroup>
+        <CommandGroup className="mt-2">
           <AllExtras closeCommandCenter={closeCommandCenter} />
 
           <AllContacts closeCommandCenter={closeCommandCenter} />
@@ -294,11 +292,11 @@ export const CommandCenterContent: FC<CommandCenterContentProps> = ({ isOpen, se
 
         {blogs.length > 0 && <AllBlogs blogs={blogs} />}
 
-        <CommandSeparator />
+        <CommandSeparator className="my-2" />
 
         <AllShowcase closeCommandCenter={closeCommandCenter} />
 
-        <CommandSeparator />
+        <CommandSeparator className="my-2" />
 
         <AllUses />
       </CommandList>

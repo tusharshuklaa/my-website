@@ -17,9 +17,9 @@ export const SvgWrapper: FC<SvgWrapperProps> = ({ children, width = 20, height =
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     stroke="currentColor"
-    stroke-width="0.5"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="0.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
     {children}
   </svg>
