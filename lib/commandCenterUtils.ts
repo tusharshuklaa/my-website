@@ -70,6 +70,10 @@ export const shootConfetti = (type: ConfettiTypes): void => {
     .catch(err => console.error("Confetti failed to load:", err));
 };
 
-export const openWebsite = (url: string): void => {
-  window.open(url, "_blank", "noopener,noreferrer");
+export const openWebsite = (url: string, callbackFn?: () => void): void => {
+  const isExternal = url.startsWith("http") || url.startsWith("mailto:");
+  const target = isExternal ? "_blank" : "_self";
+
+  window.open(url, target, "noopener,noreferrer");
+  callbackFn?.();
 };
