@@ -139,7 +139,7 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
         <BlogContent blogCode={blog.body.code} />
 
         <aside className="order-1 flex px-4 text-slate-400 sm:order-none sm:justify-center sm:pl-4 sm:pr-4">
-          <div className="sticky top-32 mt-20 flex h-full max-h-none w-[80%] flex-col items-start gap-4 overflow-y-auto sm:max-h-[calc(98dvh-8rem)]">
+          <div className="sticky top-32 mt-20 flex h-full max-h-none w-[80%] flex-col items-start gap-4 overflow-y-auto overscroll-contain sm:max-h-[calc(98dvh-8rem)]">
             <TableOfContents tocs={blog.toc} />
 
             <MoreBlogContent related={blog.related} current={blog.slug} className="hidden sm:block" />

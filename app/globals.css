@@ -206,12 +206,16 @@ body {
 
 .subheading-anchor {
   position: absolute;
-  color: blueviolet;
-  bottom: 0.5em;
+  color: #39c2b7;
+  bottom: 0.25em;
   margin: auto;
-  height: 0.6em;
-  right: -1em;
-  opacity: 0.5;
+  height: fit-content;
+  right: -1.2em;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 /* space mascot loading */
