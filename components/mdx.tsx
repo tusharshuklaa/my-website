@@ -26,20 +26,28 @@ const components: MDXComponents = {
   h2: ({ ...props }) => (
     <h2
       {...props}
-      className={cn("mb-2 mt-24 text-2xl font-bold !leading-snug tracking-wide text-blogText", props.className)}
+      className={cn(
+        "relative mb-2 mt-24 max-w-fit text-2xl font-bold !leading-snug tracking-wide text-blogText",
+        props.className,
+      )}
     />
   ),
   h3: ({ ...props }) => (
     <h3
       {...props}
-      className={cn("mb-4 mt-12 text-xl font-bold !leading-snug tracking-wide text-blogText", props.className)}
+      className={cn(
+        "relative mb-4 mt-12 max-w-fit text-xl font-bold !leading-snug tracking-wide text-blogText",
+        props.className,
+      )}
     />
   ),
   h4: ({ ...props }) => (
     <h4 {...props} className={cn("text-xl font-bold !leading-snug tracking-wide", props.className)}></h4>
   ),
   // Paragraph
-  p: ({ ...props }) => <span {...props} className={cn("mb-4 leading-8 tracking-wider", props.className)}></span>,
+  p: ({ ...props }) => (
+    <span {...props} className={cn("mb-4 text-balance leading-8 tracking-wider", props.className)}></span>
+  ),
   // List
   ol: ({ ...props }) => (
     <ol

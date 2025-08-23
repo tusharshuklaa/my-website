@@ -1,5 +1,5 @@
 ---
-title: Modern CSS Features You Probably Missed — Part 1
+title: Modern CSS Features You Probably Missed
 date: 2025-08-17
 summary: Discover the latest CSS features that can enhance your frontend development workflow.
 img: modern-css-features_chub5f
@@ -19,6 +19,7 @@ keywords:
   - web-design
 
 related:
+  - advanced-css-features
   - devtools-tips
 ---
 
@@ -56,8 +57,6 @@ This two-part series will cover modern CSS features that make your life easier. 
 - **Browser Support:** Widely supported in modern Chromium, Firefox, Safari — see [Can I use](https://caniuse.com/mdn-css_properties_aspect-ratio)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio)
 
----
-
 ### 1.2 `content-visibility`
 
 **What it does:** Skips rendering off-screen content until needed.
@@ -82,8 +81,6 @@ Keyword values for `content-visibility`:
 - **Production Readiness:** **9/10** (great in Chromium; test fallbacks for non-supporting browsers)
 - **Browser Support:** Strong in Chromium; limited elsewhere — see [Can I use](https://caniuse.com/mdn-css_properties_content-visibility)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility)
-
----
 
 ### 1.3 `display: contents`
 
@@ -118,8 +115,6 @@ Keyword values for `content-visibility`:
 - **Browser Support:** Good support, some accessibility caveats in Safari - see [Can I use](https://caniuse.com/css-display-contents)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/display#contents)
 
----
-
 ### 1.4 Multi-value `display` (e.g., `display: inline flex`)
 
 **What it does:** Combines outer and inner display types.
@@ -146,8 +141,6 @@ From what I understand, there is NO FUNCTIONAL DIFFERENCE between `display: inli
 - **Browser Support:** Good across modern browsers — see [Can I use](https://caniuse.com/mdn-css_properties_display_multi-keyword_values)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
----
-
 ### 1.5 `subgrid`
 
 **What it does:** Allows child grids to align directly to their parent grid tracks.
@@ -173,8 +166,6 @@ From what I understand, there is NO FUNCTIONAL DIFFERENCE between `display: inli
 - **Browser Support:** Now available in all major engines — see [Can I use](https://caniuse.com/css-subgrid)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid)
 
----
-
 ### 1.6 Container Queries
 
 **What it does:** Lets you style elements based on the size of their container, not the viewport.
@@ -195,12 +186,38 @@ From what I understand, there is NO FUNCTIONAL DIFFERENCE between `display: inli
   }
 }
 ```
+<br />
+Container queries isn't just about the width of a container, you can also query based on the `style`, `scroll-state` of the container itself.
+
+```css
+@container (style: focus) {
+  .card__content {
+    background: lightgray;
+  }
+}
+
+@container (scroll-state: scrolled) {
+  .card__content {
+    transform: scale(0.95);
+  }
+}
+
+.theme-container {
+  container-type: inline-size; /* Still needed for style queries */
+  --theme-mode: dark;
+}
+
+@container style(--theme-mode: dark) {
+  .text-element {
+    color: white;
+    background-color: black;
+  }
+}
+```
 
 - **Production Readiness:** **8/10** (excellent support; watch performance in deeply nested UIs)
 - **Browser Support:** Strong across major browsers — see [Can I use](https://caniuse.com/css-container-queries)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries)
-
----
 
 ## 2. Styling & Readability
 
@@ -221,8 +238,6 @@ h2,
 - **Browser Support:** Good in Chromium/Safari; Firefox partial — see [Can I use](https://caniuse.com/mdn-css_properties_text-wrap)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap)
 
----
-
 ### 2.2 `white-space-collapse`
 
 **What it does:** Controls how sequences of whitespace are collapsed.
@@ -238,8 +253,6 @@ h2,
 - **Production Readiness:** **7/10**
 - **Browser Support:** Supported in Chromium/Safari; Firefox pending — see [Can I use](https://caniuse.com/mdn-css_properties_white-space-collapse)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space-collapse)
-
----
 
 ### 2.3 `overscroll-behavior`
 
@@ -260,8 +273,6 @@ In above code example, the modal will not allow scrolling to propagate to the pa
 - **Browser Support:** Wide support across modern browsers — see [Can I use](https://caniuse.com/css-overscroll-behavior)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior)
 
----
-
 ### 2.4 `scrollbar-gutter: stable`
 
 **What it does:** Reserves space for scrollbars to avoid layout shifts when they appear.
@@ -277,8 +288,6 @@ html {
 - **Production Readiness:** **8/10**
 - **Browser Support:** Good in Chromium/Safari; Firefox pending — see [Can I use](https://caniuse.com/mdn-css_properties_scrollbar-gutter)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter)
-
----
 
 ### 2.5 `light-dark()` color function
 
@@ -296,8 +305,6 @@ html {
 - **Production Readiness:** **7/10**
 - **Browser Support:** Chromium/Safari support; Firefox work ongoing — see [Can I use](https://caniuse.com/mdn-css_types_color_light-dark)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark)
-
----
 
 ## 3. Organizing Your CSS
 
@@ -319,8 +326,6 @@ html {
 - **Production Readiness:** **10/10**
 - **Browser Support:** Excellent across modern browsers — see [Can I use](https://caniuse.com/css-featurequeries)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports)
-
----
 
 ### 3.2 `@layer` (cascade layers)
 
@@ -364,8 +369,6 @@ In above code, notice that `@layer utilities` is defined before `@layer componen
 - **Browser Support:** Strong across major browsers — see [Can I use](https://caniuse.com/css-cascade-layers)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer)
 
----
-
 ### 3.3 Native CSS Nesting
 
 **What it does:** Lets you nest selectors without preprocessors like Sass, Less etc.
@@ -393,8 +396,6 @@ In above code, notice that `@layer utilities` is defined before `@layer componen
 - **Browser Support:** Broad in modern engines — see [Can I use](https://caniuse.com/css-nesting)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting)
 
----
-
 ### 3.3 `:has()` (parent selector)
 
 **What it does:** Styles an element based on its children.
@@ -417,8 +418,6 @@ article:has(> img:first-child:last-child) {
 - **Production Readiness:** **8/10**
 - **Browser Support:** Supported in all modern browsers — see [Can I use](https://caniuse.com/css-has)
 - **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:has)
-
----
 
 ## Wrapping Up Part 1
 

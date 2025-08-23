@@ -1,0 +1,449 @@
+---
+title: Advanced CSS Features You Should Not Miss
+date: 2025-08-24
+summary: Explore advanced CSS features that can elevate your frontend game.
+img: advanced-css-features_dgjzey
+published: true
+author: Tushar Shukla
+authorImg: tushar-shukla_xcsbbs
+authorDesc: A senior frontend developer, curious tech tinkerer and an anime fan.
+tags:
+  - css
+  - frontend
+  - web-development
+keywords:
+  - css
+  - modern-css
+  - css-features
+  - frontend-development
+  - web-design
+
+related:
+  - modern-css-features
+  - devtools-tips
+---
+
+In [my previous blog](1), we explored beginner-friendly CSS features that are production-ready and easy to adopt.
+
+This post is kinda **Part 2** of the series, where we&apos;ll go deeper into advanced CSS concepts. Some of these are already stable and usable today, while others are experimental and should be used with caution.
+
+<br />
+Let&apos;s dive in!
+
+> Just like [Part 1](1), we&apos;ll rate each feature on a scale of **Adoption Readiness Value (1-10)** (Production Readiness in Part 1):<br />
+> **1-2** → Experimental or behind flags; use only for demos and learning.<br />
+> **3-5** → Limited support or niche usage; experiment but don&apos;t rely fully in production.<br />
+> **6-8** → Usable with some caution; check browser support.<br />
+> **9-10** → Solid and widely supported, use it freely.
+
+## 1. Scoped Styles with `@scope`
+
+**What it is:** A way to scope CSS rules to a specific part of the DOM, avoiding the global cascade mess.<br />
+**Why it matters:** Helpful in dealing with specificity related challenges.<br />
+**Use it for:** Component libraries, design systems, or any complex UI where you want to avoid style conflicts.
+
+```css
+/* A product card where styles are scoped to .product-card only */
+@scope (.product-card) {
+  /* ★ scoped selectors apply only inside .product-card */
+  :scope {
+    --pad: 12px;
+  }
+  h3 {
+    margin: 0 0 4px;
+  }
+  .price {
+    font-weight: 700;
+  }
+}
+```
+
+Here, `h3` elements inside `.product-card` are only affected - no accidental overrides elsewhere.
+
+<br />
+
+- **Adoption Readiness:** **7/10** (use with fallbacks)<br />
+- **Browser Readiness:** Chrome/Safari solid; check Firefox status - see [Can I use](https://caniuse.com/mdn-css_at-rules_scope)<br />
+- Docs: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@scope)
+
+## 2. Entry Animations with `@starting-style`
+
+**What it is:** Lets you define a starting style for elements when they first appear, making entry animations smoother.<br />
+**Why it matters:** Provides a way to create more polished and visually appealing transitions without relying on JavaScript.<br />
+**Use it for:** Popovers, accordions, toasts - anything that enters smoothly.
+
+```css
+.popover[popover] {
+  opacity: 0;
+  transform: translateY(4px) scale(0.98);
+  transition:
+    opacity 150ms,
+    transform 150ms;
+  /* ★ allow discrete transitions like display/visibility with related features */
+  transition-behavior: allow-discrete;
+}
+
+@starting-style {
+  /* ★ declared starting style for the first frame */
+  .popover[popover]:popover-open {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+}
+
+.popover[popover]:popover-open {
+  opacity: 1;
+  transform: none;
+}
+```
+
+This avoids the common “flash of unanimated content.”
+
+<br />
+
+- **Adoption Readiness:** **7/10**<br />
+- **Browser Readiness:** Great in Chromium-based; check others - see [Can I use](https://caniuse.com/mdn-css_at-rules_starting-style)<br />
+- Docs: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style)
+
+## 3. Discrete Transitions with `transition-behavior: allow-discrete`
+
+**What it is:** Lets certain **discrete** properties (e.g. `display`, `visibility`) participate in transitions when paired with patterns like `@starting-style`.<br />
+**Why it matters:** Enables smoother transitions for properties that usually can&apos;t animate, like toggling visibility or display.<br />
+**Use it for:** Animating **in**/out UI without JS toggling hacks.
+
+```css
+.drawer {
+  display: none;
+  transition:
+    display 0.001s,
+    transform 200ms ease-out;
+  transform: translateX(20px);
+  /* ★ enable discrete property transitions */
+  transition-behavior: allow-discrete;
+}
+
+.drawer[open] {
+  display: block; /* ★ will coordinate with animation */
+  transform: none;
+}
+```
+
+- **Adoption Readiness:** **6/10**<br />
+- **Browser Readiness:** Powerful; still maturing across engines - see [Can I use](https://caniuse.com/mdn-css_properties_transition-behavior)<br />
+- Docs: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-behavior)
+
+## 4. Custom Properties with `@property`
+
+**What it is:** Register CSS custom properties with **syntax**, **initial value**, and **inheritable** behavior. Enables transitions of custom props.<br />
+**Why it matters:** Allows animating custom properties directly, making them first-class citizens in CSS animations.<br />
+**Use it for:** Color themes, design tokens, animatable numbers without JS or via CSS Houdini.
+
+```css
+/* ★ register type + initial value so it can animate */
+@property --ring {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+.button {
+  box-shadow: 0 0 0 var(--ring) rgba(0, 0, 0, 0.2);
+  transition: --ring 200ms; /* ★ animate the custom prop itself */
+}
+
+.button:focus-visible {
+  --ring: 6px;
+}
+```
+
+- **Adoption Readiness:** **8/10**<br />
+- **Browser Readiness**: Widely supported; mind Safari versions - see [Can I use](https://caniuse.com/mdn-css_at-rules_property)<br />
+- Docs: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/@property), [CSS Houdini](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Houdini)
+
+## 5. Relative colors with `oklch()`
+
+**What it is:** Next-gen color function with perceptual accuracy. You can even derive colors from others.<br />
+**Why it matters:** Avoids color contrast issues, provides a consistent way to derive colors based on a base color.<br />
+**Use it for:** Consistent contrast, light/dark adjustments, deriving tints/shades, define themes.
+
+```css
+:root {
+  --brand: oklch(62% 0.16 260);
+} /* base brand */
+.button {
+  background: var(--brand);
+  /* ★ derive a subtle hover from base brand */
+  --hover: color-mix(in oklch, var(--brand), white 12%);
+}
+.button:hover {
+  background: var(--hover);
+}
+```
+
+- **Adoption Readiness:** **8/10**<br />
+- **Browser Readiness**: Great today; ensure fallbacks if supporting older browsers - see [Can I use](https://caniuse.com/css-oklab)<br />
+- Docs: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch), [Color Mix](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix)
+
+## 6. Scroll-driven animations — `animation-timeline: view()`
+
+**What it is:** Bind animations to scroll progress instead of relying on JS scroll listeners. Drive animations from **scroll** or **element visibility** instead of time. Fine-grained control with `animation-range`.<br />
+**Why it matters:** Enables smooth, performant scroll-driven effects without heavy JS. Great for parallax, reveal animations, and more.<br />
+**Use it for:** Parallax headers, section reveals, scrubbed charts—without JS.
+
+```css
+.progress-bar {
+  animation: grow linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 100%;
+}
+
+@keyframes grow {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+```
+
+- **Adoption Readiness:** **7/10**<br />
+- **Browser Readiness**: Chrome/Safari good; verify Firefox status - see [Can I use](https://caniuse.com/mdn-css_properties_animation-timeline)<br />
+- Docs: [Chrome Blog](https://developer.chrome.com/blog/new-in-web-ui-io-2024#scroll-driven_animations)
+
+## 7. View Transitions API — page/route morphing
+
+**What it is:** Smooth transitions between pages or UI states with *almost* no JS. Declarative cross-state transitions (SPAs and increasingly MPA) that snapshot old/new DOM and animate between.<br />
+**Why it matters:** Enhances user experience by providing fluid, context-aware transitions without the need for complex JavaScript logic.<br />
+**Use it for:** Seamless route changes, list-to-detail morphs, theme switches.
+
+```css
+/* CSS: style the transition pseudo-elements */
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: 250ms; }
+
+/* JS: opt-in and wrap DOM updates */
+document.startViewTransition(async () => {
+  // ★ update the DOM (navigate, toggle, etc.)
+  await router.navigate('/product/42');
+});
+```
+
+- **Adoption Readiness:** **7/10**<br />
+- **Browser Readiness**: SPA flows widely usable; MPA expanding - see [Can I use](https://caniuse.com/mdn-api_document_startviewtransition)<br />
+- Docs: [Chrome Docs](https://developer.chrome.com/docs/web-platform/view-transitions)
+
+## 8. Popover API - menus, tooltips, toasts
+
+**What it is:** Native popover behavior (like dropdowns or tooltips) without complex JS. `[popover]` elements render in the **top layer** with built-in light-dismiss & focus management.<br />
+**Why it matters:** Simplifies popover management, avoids z-index issues, and provides a consistent API for popover-like components.<br />
+**Use it for:** Action menus, non-modal tips, in-product help.
+
+```html
+<button popovertarget="menu1">Actions</button>
+<div id="menu1" popover>
+  <button>Rename</button>
+  <button>Duplicate</button>
+</div>
+
+<style>
+  /* ★ animate with @starting-style + :popover-open */
+  #menu1 {
+    opacity: 0;
+    transform: scale(0.98);
+    transition: 120ms;
+  }
+  @starting-style {
+    #menu1:popover-open {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+  #menu1:popover-open {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+```
+
+- **Adoption Readiness:** **8/10**<br />
+- **Browser Readiness**: Solid across modern browsers - see [Can I use](https://caniuse.com/mdn-html_global_attributes_popover)<br />
+- **Docs:** [Chrome Docs](https://developer.chrome.com/blog/new-in-web-ui-io-2024#the_popover_api)
+
+## 9. Responsive Images with `image-set()`
+
+**What it is:** Serve multiple image resolutions depending on device pixel ratio.<br />
+**Why it matters:** Automatically picks the best image for the device, improving performance and visual quality.<br />
+**Use it for:** Variant-aware components (e.g., compact cards inside dense sidebars).
+
+```css
+.hero {
+  background-image: image-set("banner-1x.jpg" 1x, "banner-2x.jpg" 2x);
+}
+```
+
+- **Adoption Readiness:** **9/10**<br />
+- **Browser Readiness**: Widely supported - see [Can I use](https://caniuse.com/mdn-css_properties_background-image_image-set)<br />
+- **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/image/image-set)
+
+## 10. Smart Textareas with field-sizing
+
+**What it is:** Automatically resizes a `<textarea>` as the user types. Native control over text field sizing behavior i.e. auto-expand without JS.<br />
+**Why it matters:** Improves usability by allowing users to see all their input without scrolling or resizing the field manually.<br />
+**Use it for:** Comments/chat inputs with minimal code.
+
+```css
+textarea {
+  /* ★ let the UA auto-grow based on content */
+  field-sizing: content;
+  max-height: 40svh; /* keep it reasonable */
+}
+```
+
+- **Adoption Readiness:** **4/10**<br />
+- **Browser Readiness**: Chrome 114+, Safari 17+, no Firefox - see [Can I use](https://caniuse.com/mdn-css_properties_field-sizing)<br />
+- **Docs:** [Chrome Blog](https://developer.chrome.com/blog/new-in-web-ui-io-2024#field-sizing)
+
+## 11. Position Anchoring with `anchor()`
+
+**What it is:** Position elements relative to an **anchor element** without JS math.<br />
+**Why it matters:** Simplifies positioning logic, making it easier to create dynamic layouts.<br />
+**Use it for:** Tooltips, badges, teaching bubbles.
+
+```css
+/* mark the anchor */
+.button {
+  anchor-name: --btn;
+}
+
+/* ★ position relative to the anchor’s edges */
+.tooltip {
+  position-anchor: --btn;
+  inset-area: top span-right; /* or use anchor() with offsets */
+  translate: 0 -6px;
+}
+```
+
+- **Adoption Readiness:** **5/10**<br />
+- **Browser Readiness**: Usable in Chromium; others catching up - see [Can I use](https://caniuse.com/mdn-css_properties_anchor)<br />
+- **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/anchor)
+
+## 12. Animating `height: auto` with `interpolate-size`
+
+**What it is:** Allows animating from fixed to intrinsic sizes.<br />
+**Why it matters:** Simplifies transitions and animations like animating between `height: 2rem` and `height: max-content` without hacks.<br />
+**Use it for:** Expanding cards/FAQ answers with real content height.
+
+```css
+.faq__answer {
+  overflow: clip;
+  height: 0;
+  transition: height 200ms;
+  /* ★ enable interpolating intrinsic sizes */
+  interpolate-size: allow-keywords;
+}
+.faq[open] .faq__answer {
+  height: max-content;
+}
+```
+
+- **Adoption Readiness:** **5/10**<br />
+- **Browser Readiness**: Shipping in some engines - see [Can I use](https://caniuse.com/mdn-css_properties_interpolate-size)<br />
+- **Docs:** [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size)
+
+## 13. Conditional Rules with `@if`
+
+**What it is:** Allows defining styles based on conditions, similar to programming `if` statements.<br />
+**Why it matters:** Enables more dynamic and context-aware styling without complex workarounds.<br />
+**Use it for:** Theme switching, responsive design tweaks, or any scenario where styles depend on specific conditions.
+
+```css
+@if (prefers-color-scheme: dark) {
+  body {
+    background: black;
+    color: white;
+  }
+} @else  {
+  body {
+    background: white;
+    color: black;
+  }
+}
+```
+
+- **Adoption Readiness:** **2/10**<br />
+- **Browser Readiness**: Still draft<br />
+- **Docs:** [Spec](https://drafts.csswg.org/css-conditions-1/#if-rule)
+
+## 14. Styling Native `<select>`
+
+**What it is:** Ongoing work to make `<select>` more themeable (top-layer, popover-based internals, new hooks).<br />
+**Why it matters:** Finally style selects without full custom widgets and JS.<br />
+**Use it for:** Prototyping native-feeling selects without full custom widgets.
+
+```html
+<label>
+  Sort
+  <select>
+    <option>Popular</option>
+    <option>Newest</option>
+    <option>Price</option>
+  </select>
+</label>
+
+<style>
+  /* ★ follow platform guidance; expect evolving hooks */
+  select {
+    appearance: base-select;
+    background: white;
+    border: 1px solid gray;
+    padding: 0.5rem 0.75rem;
+  }
+</style>
+```
+
+- **Adoption Readiness:** **3/10**<br />
+- **Browser Readiness**: Experiments; APIs evolving - see [Can I use](https://caniuse.com/mdn-css_properties_appearance_base-select)<br />
+- **Docs:** [Chrome Blog](https://developer.chrome.com/blog/a-customizable-select)
+
+## 15. CSS mixins & functions (proposal)
+
+**What it is:** A proposal for **native mixins/functions** in CSS with Sass-like ergonomics without a build step.<br />
+**Why it matters:** Reduces reliance on preprocessors for reusable styles and logic.<br />
+**Use it for:** R&D and design system experiments.
+
+```css
+/* syntax subject to change in proposals */
+@function grid-gap($n) {
+  gap: calc($n * 4px);
+}
+
+@mixin card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
+}
+
+.card {
+  @mixin card; /* ★ apply proposed mixin */
+}
+.list {
+  @function grid-gap(3);
+}
+```
+
+- **Adoption Readiness:** **2/10**<br />
+- **Browser Readiness**: Experiments; not standardized<br />
+- **Docs:** [Spec](https://css.oddbird.net/sasslike/mixins-functions/)
+
+## Upcoming/Behind flags
+
+These are not production ready but worth keeping an eye on:
+- CSS Mixins & Functions - Spec in progress
+- `@if` Rule - Conditional CSS
+- Some parts of Anchor Positioning - Still evolving
+
+## Closing thoughts
+
+Advanced CSS is finally replacing a lot of JS glue. Use these features **progressively**: ship what helps now (`image-set`, Popover, View Transitions in SPAs), prototype the rest behind capability checks, and keep your components future-friendly.
+
+[1]: /blog/modern-css-features
