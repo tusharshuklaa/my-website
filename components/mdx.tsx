@@ -9,6 +9,7 @@ import { PrettyLink } from "@components/pretty-link";
 import { ExternalEmbed } from "@components/external-embed";
 import { MultiColumn } from "@components/multi-column";
 import { ZoomableImgPreview } from "@components/zoomable-img-preview";
+import { CodeBlock } from "@components/code-block";
 
 type MdxProps = {
   code: string;
@@ -27,7 +28,7 @@ const components: MDXComponents = {
     <h2
       {...props}
       className={cn(
-        "relative mb-2 mt-24 max-w-fit text-2xl font-bold !leading-snug tracking-wide text-blogText",
+        "relative mb-2 mt-20 max-w-fit text-2xl font-bold !leading-snug tracking-wide text-blogText",
         props.className,
       )}
     />
@@ -36,7 +37,7 @@ const components: MDXComponents = {
     <h3
       {...props}
       className={cn(
-        "relative mb-4 mt-12 max-w-fit text-xl font-bold !leading-snug tracking-wide text-blogText",
+        "relative mb-4 mt-8 max-w-fit text-xl font-bold !leading-snug tracking-wide text-blogText",
         props.className,
       )}
     />
@@ -90,16 +91,10 @@ const components: MDXComponents = {
 
     return props.src ? <ZoomableImgPreview src={props.src} alt={altText} /> : null;
   },
-  // Code
   code: ({ ...props }) => (
     <code
       {...props}
-      className={cn(
-        "relative inline-block translate-y-1.5 overflow-auto rounded border border-gray-200 px-1 py-0 font-mono text-sm shadow dark:border-gray-700 [pre_&]:my-4 [pre_&]:p-4 [pre_&]:pt-10",
-        "before:[pre_&[data-language]]:absolute before:[pre_&[data-language]]:left-0 before:[pre_&[data-language]]:right-0 before:[pre_&[data-language]]:top-0 before:[pre_&[data-language]]:content-[attr(data-language)]",
-        "before:[pre_&[data-language]]:bg-black/50 before:[pre_&[data-language]]:p-2 before:[pre_&[data-language]]:text-xs before:[pre_&[data-language]]:leading-none",
-        props.className,
-      )}
+      className={cn("inline px-[6px] py-[3px] font-mono [pre_&]:px-0 [pre_&]:py-0", props.className)}
     ></code>
   ),
   // Blockquote
@@ -164,9 +159,17 @@ const components: MDXComponents = {
   // Delete
   del: ({ ...props }) => <del {...props}></del>,
   // Inline Code
-  inlineCode: ({ ...props }) => <code {...props}></code>,
+  inlineCode: ({ ...props }) => (
+    <code
+      {...props}
+      className={cn(
+        "rounded bg-rose-50 px-1.5 py-0.5 font-mono text-[13px] text-rose-700 dark:bg-rose-900/30 dark:text-rose-200",
+        props.className,
+      )}
+    ></code>
+  ),
   // Preformatted Text
-  pre: ({ ...props }) => <pre {...props}></pre>,
+  pre: ({ ...props }) => <CodeBlock {...props} />,
   input: ({ ...props }) => {
     if (props.type === "checkbox") {
       return (

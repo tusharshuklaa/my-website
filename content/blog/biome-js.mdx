@@ -1,0 +1,260 @@
+---
+title: Why I’m Seriously Considering Biome.js Over ESLint + Prettier
+date: 2026-01-12
+summary: My experience simplifying JavaScript tooling with Biome.js
+img: biome-js_wdeibb
+published: true
+author: Tushar Shukla
+authorImg: tushar-shukla_xcsbbs
+authorDesc: A senior frontend developer, curious tech tinkerer and an anime fan.
+tags:
+  - tools
+  - frontend-setup
+keywords:
+  - Biome.js
+  - JavaScript
+  - TypeScript
+  - Code Quality
+  - Developer Experience
+  - Linting
+  - Formatting
+  - JavaScript Tooling
+  - Developer Productivity
+  - Engineering Experience
+  - ESLint vs Biome
+  - Prettier alternative
+related:
+  - stop-committing-poor-code
+  - devtools-tips
+---
+
+![A robot taking shower using Biome.js for hygiene while discarding eslint and prettier](biome-js_wdeibb)
+
+I’ve been coding professionally for a while now across hobby projects, freelance work, and large production codebases. One thing has remained constant throughout: **poor code hygiene slowly kills developer productivity and sanity**.
+
+<br />
+<br />
+Messy formatting, inconsistent styles, unused variables, unsafe `any` types, unnecessary `!important` in CSS, and
+avoidable runtime errors make code reviews painful and long-term maintenance exhausting. Linters and formatters exist
+precisely to prevent this, but ironically, the tooling ecosystem around them has grown increasingly complex.
+<br />
+<br />
+Tools like ESLint, Prettier, and Stylelint are excellent and battle-tested. I’ve used them extensively. But in many
+teams, configurations are either missing, too lenient, or so complicated that people quietly ignore them.
+<br />
+<br />
+This is where [**Biome.js**][1] entered the picture for me.
+
+## The Problem with the ESLint + Prettier Setup
+
+ESLint and Prettier were **never designed to solve the same problem**:
+
+- **ESLint** focuses on code correctness and best practices
+- **Prettier** focuses purely on formatting
+
+Conflicts arise when formatting rules leak into ESLint, which is why we rely on glue packages like:
+
+- `eslint-config-prettier`
+- `eslint-plugin-prettier`
+
+This setup works, but over time it introduces friction:
+
+1. **Conflicting rules** - ESLint complains, Prettier rewrites
+2. **Performance issues** - linting slows down on large repos or weaker machines
+3. **Configuration sprawl** - rules spread across ESLint, Prettier, and multiple plugins
+4. **Dependency fatigue** - managing versions and compatibility becomes a chore
+
+None of this is a failure of ESLint or Prettier individually. It’s the cost of stitching multiple tools together over years.
+
+## Why Biome.js Felt Different
+
+I came across **Biome.js** while looking for ways to simplify this setup, not replace it blindly, but reduce the overhead.
+
+<br />
+Biome is written in **Rust** and uses a **custom parser and AST**, which is why it’s noticeably faster than the typical
+Node-based toolchain. More importantly, it treats linting, formatting, and import organization as **one cohesive
+problem**, not three separate ones.
+<br />
+<br />
+What stood out to me:
+
+- **One tool, one config, one CLI**
+- **No formatting vs linting conflicts**
+- **Very fast feedback loops**
+- **Sensible defaults that actually work**
+- **Clear, contextual diagnostics**
+- **Git-aware by default** (respects `.gitignore` automatically)
+
+Biome is still relatively young, but for JavaScript and TypeScript projects, it already feels production-ready.
+
+## Getting Started (Quickly)
+
+I’ll use `npm` here, but yarn, pnpm, or bun work just as well.
+
+### Install
+
+```bash
+npm i -D -E @biomejs/biome
+```
+
+The `-E` flag is intentional. Formatters should be **version-pinned**. You don’t want a minor update reformatting half your codebase unexpectedly.
+
+### Initialize
+
+```bash
+npx @biomejs/biome init
+```
+
+This creates a `biome.json` file with a solid default setup.
+
+### The one command you’ll use most
+
+```bash
+biome check --write
+```
+
+It formats, lints, and organizes imports in a single pass.
+
+I usually wire this up as:
+
+```json
+{
+  "scripts": {
+    "hygiene": "biome check --write"
+  }
+}
+```
+
+## Git Awareness (A Small but Huge Win)
+
+One feature I didn’t fully appreciate until I used it: **Biome is Git-aware out of the box**.
+
+```json
+{
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
+  }
+}
+```
+
+This means:
+
+- `.gitignore` is respected automatically
+- You can lint **only what changed**
+- No need for extra tools like `lint-staged`
+
+```bash
+biome check --changed
+biome check --staged
+
+```
+
+For large repos, this alone makes a noticeable difference in local dev and CI times.
+
+## Editor Integration (VS Code)
+
+Install the Biome extension from the [VS Code Marketplace][3] and configure it **per workspace**:
+
+```json
+{
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  }
+}
+```
+
+Using `"explicit"` keeps things predictable for teams. Some prefer `"always"`, but I’ve found explicit actions safer in shared codebases.
+
+## How I Think About `biome.json`
+
+I won’t deep-dive into the config here, that’s [documentation territory][2], but conceptually:
+
+- **Formatter** → how code looks
+- **Linter** → what’s wrong with the code
+- **Assist actions** → optional automations (like sorting imports)
+
+What I like is that these concerns live in **one file**, with clear intent, instead of being spread across multiple tools.
+
+## CI Command: `biome check` vs `biome ci`
+
+| Feature              | `biome check` | `biome ci` |
+| -------------------- | ------------- | ---------- |
+| Auto-fix (`--write`) | ✅ Yes        | ❌ No      |
+| Uses changed files   | ❌ Optional   | ✅ Default |
+| Staged files         | ✅ Yes        | ❌ No      |
+| CI-friendly output   | ❌            | ✅         |
+
+In short:
+
+- Use **`biome check`** locally
+- Use **`biome ci`** in pipelines
+
+## Migrating Existing Projects
+
+If you already run [ESLint][4] and [Prettier][5] in production, Biome doesn’t force a big-bang rewrite.
+
+```bash
+biome migrate eslint --write
+biome migrate prettier --write
+```
+
+For larger codebases, I’ve found this approach works well:
+
+1. Migrate config first
+2. Suppress violations where needed
+3. Enable Biome in CI
+4. Gradually remove suppressions over time
+
+Biome also supports **nested `biome.json` files**, which makes it practical for monorepos with different rules per workspace.
+
+## What Biome Still Doesn’t Cover (Yet)
+
+Biome is promising, but it’s not magic.
+
+- Smaller rule ecosystem compared to ESLint
+- JSON-only configuration (no dynamic JS configs)
+- Some frameworks and languages are still evolving
+
+That said, **Biome 2.0** added a plugin system, multi-file analysis, and expanded language support, and the roadmap looks solid. This doesn’t feel like a short-lived experiment.
+
+## So… Should You Switch?
+
+### I’d recommend Biome if:
+
+- Performance matters (especially in CI)
+- You’re tired of ESLint + Prettier coordination issues
+- You’re starting a new project
+- You want simpler tooling and faster onboarding
+
+### I’d stick with ESLint + Prettier if:
+
+- You rely heavily on niche plugins (accessibility, security, etc.)
+- Your org has deeply customized ESLint rules
+- You need language support Biome doesn’t offer yet
+
+## My Take
+
+For **new projects**, I’d start with Biome today without hesitation.
+
+<br />
+<br />
+For **existing projects**, migration is realistic and the payoff - simpler config, faster CI, better DX, usually shows
+up within a sprint or two.
+<br />
+<br />
+The broader trend is clear: JavaScript tooling is moving toward **unified, opinionated, and performant solutions**.
+Biome fits squarely into that future.
+<br />
+The days of juggling ESLint, Prettier, and half a dozen plugins feel numbered, and honestly, I’m okay with that.
+
+[1]: https://biomejs.dev/ "Biome.js"
+[2]: https://biomejs.dev/guides/getting-started/ "Biome.js Docs"
+[3]: https://marketplace.visualstudio.com/items?itemName=biomejs.biome "Biom.js Official VS Code Extension"
+[4]: https://eslint.org/ "EsLint"
+[5]: https://prettier.io/ "Prettier"
