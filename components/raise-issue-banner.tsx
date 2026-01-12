@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { FC, useEffect, useState } from "react";
-import { UiComponent } from "@/types";
-import { cn } from "@/lib/utils";
-import { GradientText } from "@components/text";
-import { GithubIssueButton } from "@components/github-issue-button";
-import { EvervaultCard } from "@ui";
+import { GithubIssueButton } from '@components/github-issue-button';
+import { GradientText } from '@components/text';
+import { EvervaultCard } from '@ui';
+import { type FC, useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type RaiseIssueBannerProps = UiComponent & {
   issueTitle?: string;
 };
 
 export const RaiseIssueBanner: FC<RaiseIssueBannerProps> = ({ issueTitle, className }) => {
-  const [titleForIssue, setTitleForIssue] = useState("Add page title here");
+  const [titleForIssue, setTitleForIssue] = useState('Add page title here');
   const raiseIssueBannerClasses = cn(
-    "max-w-sm md:max-w-4xl lg:max-w-7xl m-auto px-4 sm:px-0 mt-16 md:mt-28 flex flex-col justify-center h-[35dvh] sm:h-[50vh]",
-    "relative",
+    'max-w-sm md:max-w-4xl lg:max-w-7xl m-auto px-4 sm:px-0 mt-16 md:mt-28 flex flex-col justify-center h-[35dvh] sm:h-[50vh]',
+    'relative',
     className,
   );
 
@@ -44,4 +44,4 @@ export const RaiseIssueBanner: FC<RaiseIssueBannerProps> = ({ issueTitle, classN
   );
 };
 
-RaiseIssueBanner.displayName = "RaiseIssueBanner";
+RaiseIssueBanner.displayName = 'RaiseIssueBanner';

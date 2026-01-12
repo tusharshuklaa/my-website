@@ -1,14 +1,14 @@
-import { visit } from "unist-util-visit";
-import type { Element } from "hast";
-import type { Plugin } from "unified";
+import type { Element } from 'hast';
+import type { Plugin } from 'unified';
+import { visit } from 'unist-util-visit';
 
 export const rehypeExternalEmbed: Plugin = () => {
   return tree => {
-    visit(tree, "element", (node: Element, _, parent: Element | null) => {
-      if (node.tagName === "a" && node.properties?.href) {
+    visit(tree, 'element', (node: Element, _, parent: Element | null) => {
+      if (node.tagName === 'a' && node.properties?.href) {
         const href = node.properties.href as string;
         // Using !! at the beginning of the URL to identify if the URL needs to be embedded or not
-        if (href.startsWith("!!")) {
+        if (href.startsWith('!!')) {
           // Remove the "!!" prefix and keep the link as is
           node.properties.href = href.slice(2);
           return;
@@ -18,10 +18,10 @@ export const rehypeExternalEmbed: Plugin = () => {
 
         // Determine embed type
         const getEmbedType = (url: string) => {
-          if (url.includes("youtube.com") || url.includes("youtu.be")) return "youtube";
-          if (url.includes("twitter.com") || url.includes("x.com")) return "x";
-          if (url.includes("codepen.io")) return "codepen";
-          if (url.includes("codesandbox.io")) return "codesandbox";
+          if (url.includes('youtube.com') || url.includes('youtu.be')) return 'youtube';
+          if (url.includes('twitter.com') || url.includes('x.com')) return 'x';
+          if (url.includes('codepen.io')) return 'codepen';
+          if (url.includes('codesandbox.io')) return 'codesandbox';
 
           return null;
         };
@@ -29,8 +29,8 @@ export const rehypeExternalEmbed: Plugin = () => {
         const embedType = getEmbedType(url);
 
         if (embedType) {
-          node.tagName = "external-embed";
-          node.type = "element";
+          node.tagName = 'external-embed';
+          node.type = 'element';
           // Clear children
           node.children = [];
           node.properties = {
@@ -40,10 +40,10 @@ export const rehypeExternalEmbed: Plugin = () => {
           };
 
           if (parent) {
-            parent.tagName = "div";
+            parent.tagName = 'div';
             parent.properties = {
               ...parent.properties,
-              className: "my-4",
+              className: 'my-4',
             };
           }
         }

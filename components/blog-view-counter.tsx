@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { FC, useEffect, useState } from "react";
-import { EyeIcon } from "lucide-react";
-import { UiComponent } from "@/types";
-import { cn } from "@/lib/utils";
-import { GradientText } from "@components/text";
+import { GradientText } from '@components/text';
+import { EyeIcon } from 'lucide-react';
+import { type FC, useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type BlogViewCounterProps = UiComponent & {
   slug: string;
@@ -20,7 +20,7 @@ const generateFingerprint = () => {
 
 export const BlogViewCounter: FC<BlogViewCounterProps> = ({ className, slug }) => {
   const [views, setViews] = useState<number>(0);
-  const blogViewCounterClasses = cn("flex items-center justify-between gap-2", className);
+  const blogViewCounterClasses = cn('flex items-center justify-between gap-2', className);
 
   useEffect(() => {
     if (!slug) return;
@@ -28,10 +28,10 @@ export const BlogViewCounter: FC<BlogViewCounterProps> = ({ className, slug }) =
     const fingerprint = generateFingerprint();
 
     // Track the view
-    fetch("/api/view-count", {
-      method: "POST",
+    fetch('/api/view-count', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ slug, userIdentifier: fingerprint }),
     });
@@ -41,15 +41,15 @@ export const BlogViewCounter: FC<BlogViewCounterProps> = ({ className, slug }) =
     fetch(`/api/get-views?slug=${slug}`, { next: { revalidate: revalidateSeconds } })
       .then(res => {
         if (!res.ok) {
-          throw new Error("Failed to fetch view count");
+          throw new Error('Failed to fetch view count');
         }
 
         return res.json();
       })
       .then((data: { views: number }) => setViews(data.views))
       .catch(error => {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error fetching view count:", error);
+        if (process.env.NODE_ENV === 'development') {
+          console.error('Error fetching view count:', error);
         }
 
         setViews(10);
@@ -64,4 +64,4 @@ export const BlogViewCounter: FC<BlogViewCounterProps> = ({ className, slug }) =
   );
 };
 
-BlogViewCounter.displayName = "BlogViewCounter";
+BlogViewCounter.displayName = 'BlogViewCounter';

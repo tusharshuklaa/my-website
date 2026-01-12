@@ -1,7 +1,7 @@
-import { useState, useRef, useMemo, useEffect } from "react";
-import { useMotionValueEvent, useScroll } from "motion/react";
-import { debounce } from "lodash";
-import { useRootRef } from "@/contexts/use-root-ref";
+import { debounce } from 'lodash';
+import { useMotionValueEvent, useScroll } from 'motion/react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useRootRef } from '@/contexts/use-root-ref';
 
 type UseHideOnScrollOptions = {
   threshold?: number;
@@ -51,7 +51,7 @@ export const useHideOnScroll = (options: UseHideOnScrollOptions = {}) => {
     };
   }, [debouncedScrollHandler]);
 
-  useMotionValueEvent(scrollY, "change", debouncedScrollHandler);
+  useMotionValueEvent(scrollY, 'change', debouncedScrollHandler);
 
   return {
     isHiddenOnScroll: hidden,

@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import { MouseEnterContext, useMouseEnter } from "@/hooks/use-mouse-enter";
-import { cn } from "@/lib/utils";
-import { BasicUiComponent } from "@/types";
-import React, { useState, useRef, useEffect, FC } from "react";
+import type React from 'react';
+import { type FC, useEffect, useRef, useState } from 'react';
+import { MouseEnterContext, useMouseEnter } from '@/hooks/use-mouse-enter';
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent } from '@/types';
 
 type ThreeDCardContainerProps = BasicUiComponent<{
   containerClassName?: string;
@@ -35,19 +36,20 @@ export const ThreeDCardContainer: FC<ThreeDCardContainerProps> = ({ children, cl
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
-        className={cn("flex items-center justify-center py-20", containerClassName)}
+        className={cn('flex items-center justify-center py-20', containerClassName)}
         style={{
-          perspective: "1000px",
+          perspective: '1000px',
         }}
       >
         <div
+          role="none"
           ref={containerRef}
           onMouseEnter={handleMouseEnter}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className={cn("relative flex items-center justify-center transition-all duration-200 ease-linear", className)}
+          className={cn('relative flex items-center justify-center transition-all duration-200 ease-linear', className)}
           style={{
-            transformStyle: "preserve-3d",
+            transformStyle: 'preserve-3d',
           }}
         >
           {children}
@@ -65,7 +67,7 @@ export const ThreeDCardBody: FC<ThreeDCardBodyProps> = ({ children, className, s
   return (
     <div
       style={style}
-      className={cn("h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]", className)}
+      className={cn('h-96 w-96 [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]', className)}
     >
       {children}
     </div>
@@ -84,7 +86,7 @@ type ThreeDCardItemProps = BasicUiComponent<{
 }>;
 
 export const ThreeDCardItem: FC<ThreeDCardItemProps> = ({
-  as: Tag = "div",
+  as: Tag = 'div',
   children,
   className,
   translateX = 0,
@@ -112,7 +114,7 @@ export const ThreeDCardItem: FC<ThreeDCardItemProps> = ({
   }, [isMouseEntered, translateX, translateY, translateZ, rotateX, rotateY, rotateZ]);
 
   return (
-    <Tag ref={ref} className={cn("w-fit transition duration-200 ease-linear", className)} {...rest}>
+    <Tag ref={ref} className={cn('w-fit transition duration-200 ease-linear', className)} {...rest}>
       {children}
     </Tag>
   );

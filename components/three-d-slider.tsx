@@ -1,6 +1,6 @@
-import { Children, FC } from "react";
-import { BasicUiComponent } from "@/types";
-import { cn } from "@/lib/utils";
+import { Children, type FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent } from '@/types';
 
 type ThreeDSliderContainerProps = BasicUiComponent<{
   sliderClassName?: string;
@@ -14,11 +14,11 @@ export const ThreeDSliderContainer: FC<ThreeDSliderContainerProps> = ({
   sliderClassName,
 }) => {
   const threeDSliderContainerClasses = cn(
-    "w-full h-[30dvh] sm:h-[80dvh] text-center overflow-hidden relative px-20",
+    'w-full h-[30dvh] sm:h-[80dvh] text-center overflow-hidden relative px-20',
     className,
   );
   const sliderClasses = cn(
-    "absolute w-[20vmin] h-[25vmin] top-[10%] left-0 right-0 m-auto [transform-style:preserve-3d] [transform:perspective(1000px)] animate-slider-anim hover:[animation-play-state:paused]",
+    'absolute w-[20vmin] h-[25vmin] top-[10%] left-0 right-0 m-auto [transform-style:preserve-3d] [transform:perspective(1000px)] animate-slider-anim hover:[animation-play-state:paused]',
     sliderClassName,
   );
 
@@ -26,7 +26,7 @@ export const ThreeDSliderContainer: FC<ThreeDSliderContainerProps> = ({
 
   return (
     <div data-testid="cmp-three-d-slider" className={threeDSliderContainerClasses}>
-      <ul className={sliderClasses} style={{ "--quantity": `${childrenCount}` } as React.CSSProperties}>
+      <ul className={sliderClasses} style={{ '--quantity': `${childrenCount}` } as React.CSSProperties}>
         {children}
       </ul>
 
@@ -40,18 +40,18 @@ export type ThreeDSliderItemProps = BasicUiComponent<{
 }>;
 
 export const ThreeDSliderItem: FC<ThreeDSliderItemProps> = ({ children, className, position }) => {
-  const threeDSliderItemClasses = cn("absolute w-full h-full inset-0 slider-3d-transform", className);
+  const threeDSliderItemClasses = cn('absolute w-full h-full inset-0 slider-3d-transform', className);
 
   return (
     <li
       data-testid="cmp-three-d-slider-item"
       className={threeDSliderItemClasses}
-      style={{ "--position": `${position}` } as React.CSSProperties}
+      style={{ '--position': `${position}` } as React.CSSProperties}
     >
       {children}
     </li>
   );
 };
 
-ThreeDSliderContainer.displayName = "ThreeDSliderContainer";
-ThreeDSliderItem.displayName = "ThreeDSliderItem";
+ThreeDSliderContainer.displayName = 'ThreeDSliderContainer';
+ThreeDSliderItem.displayName = 'ThreeDSliderItem';

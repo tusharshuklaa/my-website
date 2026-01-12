@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import React, { FC, useEffect, useRef, useState, useMemo, useCallback } from "react";
-import { motion, useTransform, useScroll, useSpring, useMotionValueEvent } from "motion/react";
-import { cn } from "@/lib/utils";
-import { useRootRef } from "@/contexts/use-root-ref";
+import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from 'motion/react';
+import type React from 'react';
+import { type FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useRootRef } from '@/contexts/use-root-ref';
+import { cn } from '@/lib/utils';
 
 type TracingBeamProps = {
   children: React.ReactNode;
@@ -23,11 +24,11 @@ export const TracingBeam: FC<TracingBeamProps> = ({ children, className, targetR
         container: mainRef,
         target: targetRef || ref,
         // Fixed: Explicit type assertion to match Motion's expected offset type
-        offset: ["start start", "end center"] as ["start start", "end center"],
+        offset: ['start start', 'end center'] as ['start start', 'end center'],
       };
     }
     return undefined; // Return undefined instead of empty object for cleaner conditional logic
-  }, [isMainReady, mainRef, targetRef, ref]);
+  }, [isMainReady, mainRef, targetRef]);
 
   const { scrollYProgress } = useScroll(scrollConfig);
 
@@ -47,7 +48,7 @@ export const TracingBeam: FC<TracingBeamProps> = ({ children, className, targetR
     setPercentageRead(progress);
   }, []);
 
-  useMotionValueEvent(scrollYProgress, "change", updatePercentage);
+  useMotionValueEvent(scrollYProgress, 'change', updatePercentage);
 
   // Memoize spring animations for performance
   const springConfig = useMemo(
@@ -70,7 +71,7 @@ export const TracingBeam: FC<TracingBeamProps> = ({ children, className, targetR
   const progressLabel = `Reading Progress: ${percentageRead}% complete`;
 
   return (
-    <motion.div ref={ref} className={cn("relative mx-auto h-full w-full max-w-4xl", className)}>
+    <motion.div ref={ref} className={cn('relative mx-auto h-full w-full max-w-4xl', className)}>
       <div className="absolute -left-4 top-3 h-full md:-left-20">
         {/* Progress percentage indicator */}
         <motion.span
@@ -92,14 +93,14 @@ export const TracingBeam: FC<TracingBeamProps> = ({ children, className, targetR
           className="ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border border-neutral-200 shadow-lg shadow-emerald-200"
           animate={{
             scale: percentageRead > 0 ? 1 : 0.8,
-            borderColor: percentageRead === 100 ? "#10b981" : "#e5e7eb",
+            borderColor: percentageRead === 100 ? '#10b981' : '#e5e7eb',
           }}
           transition={{ duration: 0.3 }}
         >
           <motion.div
             className="h-2 w-2 rounded-full border border-emerald-600 bg-emerald-500"
             animate={{
-              backgroundColor: percentageRead === 100 ? "#10b981" : "#6ee7b7",
+              backgroundColor: percentageRead === 100 ? '#10b981' : '#6ee7b7',
               scale: percentageRead === 100 ? 1.2 : 1,
             }}
             transition={{ duration: 0.3 }}

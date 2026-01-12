@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from 'react';
 
 export const CoolBorder: FC = () => (
   <div
@@ -7,4 +7,4 @@ export const CoolBorder: FC = () => (
   />
 );
 
-CoolBorder.displayName = "CoolBorder";
+CoolBorder.displayName = 'CoolBorder';

@@ -1,11 +1,10 @@
-"use client";
+'use client';
 
-import React, { ComponentProps, FC, useEffect, useId, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { useRef } from "react";
-import { cn } from "@/lib/utils";
-import { SparklesCore } from "@/components/ui/sparkles";
-import { BasicUiComponent, UiComponent } from "@/types";
+import { AnimatePresence, motion } from 'motion/react';
+import { type ComponentProps, type FC, useEffect, useId, useRef, useState } from 'react';
+import { SparklesCore } from '@/components/ui/sparkles';
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent, UiComponent } from '@/types';
 
 export const Cover: FC<BasicUiComponent> = ({ children, className }) => {
   const [hovered, setHovered] = useState(false);
@@ -28,7 +27,7 @@ export const Cover: FC<BasicUiComponent> = ({ children, className }) => {
   }, []);
 
   return (
-    <div
+    <figure
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       ref={ref}
@@ -49,12 +48,12 @@ export const Cover: FC<BasicUiComponent> = ({ children, className }) => {
           >
             <motion.div
               animate={{
-                translateX: ["-50%", "0%"],
+                translateX: ['-50%', '0%'],
               }}
               transition={{
                 translateX: {
                   duration: 10,
-                  ease: "linear",
+                  ease: 'linear',
                   repeat: Infinity,
                 },
               }}
@@ -83,9 +82,9 @@ export const Cover: FC<BasicUiComponent> = ({ children, className }) => {
         )}
       </AnimatePresence>
 
-      {beamPositions.map((position, index) => (
+      {beamPositions.map(position => (
         <Beam
-          key={index}
+          key={position}
           hovered={hovered}
           duration={Math.random() * 2 + 1}
           delay={Math.random() * 2 + 1}
@@ -104,7 +103,7 @@ export const Cover: FC<BasicUiComponent> = ({ children, className }) => {
           y: hovered ? [0, 30, -30, 30, -30, 0] : 0,
         }}
         exit={{
-          filter: "none",
+          filter: 'none',
           scale: 1,
           x: 0,
           y: 0,
@@ -114,12 +113,12 @@ export const Cover: FC<BasicUiComponent> = ({ children, className }) => {
           x: {
             duration: 0.2,
             repeat: Infinity,
-            repeatType: "loop",
+            repeatType: 'loop',
           },
           y: {
             duration: 0.2,
             repeat: Infinity,
-            repeatType: "loop",
+            repeatType: 'loop',
           },
           scale: {
             duration: 0.2,
@@ -129,13 +128,13 @@ export const Cover: FC<BasicUiComponent> = ({ children, className }) => {
           },
         }}
         className={cn(
-          "relative z-20 inline-block text-neutral-900 transition duration-200 group-hover/cover:text-white dark:text-white",
+          'relative z-20 inline-block text-neutral-900 transition duration-200 group-hover/cover:text-white dark:text-white',
           className,
         )}
       >
         {children}
       </motion.span>
-    </div>
+    </figure>
   );
 };
 
@@ -156,15 +155,16 @@ export const Beam = ({
 
   return (
     <motion.svg
-      width={width ?? "600"}
+      width={width ?? '600'}
       height="1"
-      viewBox={`0 0 ${width ?? "600"} 1`}
+      viewBox={`0 0 ${width ?? '600'} 1`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("absolute inset-x-0 w-full", className)}
+      className={cn('absolute inset-x-0 w-full', className)}
       {...svgProps}
     >
-      <motion.path d={`M0 0.5H${width ?? "600"}`} stroke={`url(#svgGradient-${id})`} />
+      <title>Beam Gradient</title>
+      <motion.path d={`M0 0.5H${width ?? '600'}`} stroke={`url(#svgGradient-${id})`} />
 
       <defs>
         <motion.linearGradient
@@ -172,20 +172,20 @@ export const Beam = ({
           key={String(hovered)}
           gradientUnits="userSpaceOnUse"
           initial={{
-            x1: "0%",
-            x2: hovered ? "-10%" : "-5%",
+            x1: '0%',
+            x2: hovered ? '-10%' : '-5%',
             y1: 0,
             y2: 0,
           }}
           animate={{
-            x1: "110%",
-            x2: hovered ? "100%" : "105%",
+            x1: '110%',
+            x2: hovered ? '100%' : '105%',
             y1: 0,
             y2: 0,
           }}
           transition={{
             duration: hovered ? 0.5 : (duration ?? 2),
-            ease: "linear",
+            ease: 'linear',
             repeat: Infinity,
             delay: hovered ? Math.random() * (1 - 0.2) + 0.2 : 0,
             repeatDelay: hovered ? Math.random() * (2 - 1) + 1 : (delay ?? 1),

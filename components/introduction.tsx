@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { Cover, FlipWords } from "@ui";
-import { SnapSection } from "@components/snap-container";
-import { GradientText } from "@components/text";
+import { SnapSection } from '@components/snap-container';
+import { GradientText } from '@components/text';
+import { Cover, FlipWords } from '@ui';
+import type { FC } from 'react';
 
 export const Introduction: FC = () => {
   return (
@@ -15,7 +15,7 @@ export const Introduction: FC = () => {
       </div>
 
       <div className="text-screen-sm">
-        over <GradientText text="10 years" color="blue" /> of experience & I{" "}
+        over <GradientText text="10 years" color="blue" /> of experience & I{' '}
         <span className="[text-shadow:0_0_1rem_red]">❤️</span>
       </div>
 

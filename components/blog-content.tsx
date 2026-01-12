@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import React, { FC, useRef } from "react";
-import dynamic from "next/dynamic";
-import { Mdx } from "@components/mdx";
+import { Mdx } from '@components/mdx';
+import dynamic from 'next/dynamic';
+import { type FC, useRef } from 'react';
 
 type BlogContentProps = {
   blogCode: string;
 };
 
-const TracingBeam = dynamic(() => import("../components/ui/tracing-beam").then(comp => comp.TracingBeam), {
+const TracingBeam = dynamic(() => import('../components/ui/tracing-beam').then(comp => comp.TracingBeam), {
   ssr: false,
 });
 

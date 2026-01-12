@@ -1,23 +1,24 @@
-import { FC, useState } from "react";
-import { UiComponent } from "@/types";
-import { cn } from "@/lib/utils";
-import { VelocityScroll } from "./ui";
+import { type FC, useState } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
+import { VelocityScroll } from './ui';
 
 const DEFAULT_SPEED = 4;
-const DEFAULT_TEXT = "Interested in collaborating with me? 😏";
+const DEFAULT_TEXT = 'Interested in collaborating with me? 😏';
 
 export const TextTicker: FC<UiComponent> = ({ className }) => {
   const [text, setText] = useState(DEFAULT_TEXT);
   const [speed, setSpeed] = useState(DEFAULT_SPEED);
-  const textTickerClasses = cn("text-ticker", className);
+  const textTickerClasses = cn('text-ticker', className);
 
   return (
     <div
       data-testid={`cmp-text-ticker`}
+      role="feed"
       className={textTickerClasses}
       onMouseEnter={() => {
         setSpeed(DEFAULT_SPEED * 5);
-        setText("Great! Catch me if you can 😆");
+        setText('Great! Catch me if you can 😆');
       }}
       onMouseLeave={() => {
         setSpeed(DEFAULT_SPEED);
@@ -29,4 +30,4 @@ export const TextTicker: FC<UiComponent> = ({ className }) => {
   );
 };
 
-TextTicker.displayName = "TextTicker";
+TextTicker.displayName = 'TextTicker';

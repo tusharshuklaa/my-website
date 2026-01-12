@@ -1,14 +1,14 @@
-import { FC } from "react";
-import Link from "next/link";
-import { Menu } from "lucide-react";
-import { Button } from "@ui";
-import { Drawer, DrawerContent, DrawerHeader, DrawerTrigger } from "@/components/ui/drawer";
-import { GradientText, TextFlipper } from "@components/text";
-import { GlowingGradientBox } from "@components/glowing-gradient-box";
-import { MyAvatar } from "@components/my-avatar";
-import { DownloadResumeButton } from "@components/download-resume-button";
-import { SupportButton } from "@components/support-button";
-import { CommandCenter } from "@components/command-center";
+import { CommandCenter } from '@components/command-center';
+import { DownloadResumeButton } from '@components/download-resume-button';
+import { GlowingGradientBox } from '@components/glowing-gradient-box';
+import { MyAvatar } from '@components/my-avatar';
+import { SupportButton } from '@components/support-button';
+import { GradientText, TextFlipper } from '@components/text';
+import { Button } from '@ui';
+import { Menu } from 'lucide-react';
+import Link from 'next/link';
+import type { FC } from 'react';
+import { Drawer, DrawerContent, DrawerHeader, DrawerTrigger } from '@/components/ui/drawer';
 
 export const NavbarMobile: FC = () => {
   return (
@@ -69,4 +69,4 @@ export const NavbarMobile: FC = () => {
   );
 };
 
-NavbarMobile.displayName = "MobileNavbar";
+NavbarMobile.displayName = 'MobileNavbar';

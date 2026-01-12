@@ -1,10 +1,10 @@
-export type ConfettiTypes = "basic" | "fireworks" | "emoji";
+export type ConfettiTypes = 'basic' | 'fireworks' | 'emoji';
 
 export const randomInRange = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export const fireWorks = (confetti: typeof import("canvas-confetti")) => {
+export const fireWorks = (confetti: typeof import('canvas-confetti')) => {
   const duration = 15 * 1000;
   const animationEnd = Date.now() + duration;
   const defaults = {
@@ -12,7 +12,7 @@ export const fireWorks = (confetti: typeof import("canvas-confetti")) => {
     spread: 360,
     ticks: 60,
     zIndex: 0,
-    colors: ["#FFE400", "#FFBD00", "#E89400", "#FFCA6C", "#FDFFB8"],
+    colors: ['#FFE400', '#FFBD00', '#E89400', '#FFCA6C', '#FDFFB8'],
   };
 
   const interval = setInterval(() => {
@@ -28,22 +28,22 @@ export const fireWorks = (confetti: typeof import("canvas-confetti")) => {
       ...defaults,
       particleCount,
       origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-      shapes: ["star"],
+      shapes: ['star'],
     });
     confetti({
       ...defaults,
       particleCount,
       origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-      shapes: ["star"],
+      shapes: ['star'],
     });
   }, 250);
 };
 
 export const shootConfetti = (type: ConfettiTypes): void => {
-  import("canvas-confetti")
+  import('canvas-confetti')
     .then(confetti => {
       switch (type) {
-        case "basic":
+        case 'basic':
           confetti.default({
             angle: randomInRange(45, 135),
             spread: randomInRange(50, 190),
@@ -51,14 +51,14 @@ export const shootConfetti = (type: ConfettiTypes): void => {
             origin: { y: 0.7 },
           });
           break;
-        case "fireworks":
+        case 'fireworks':
           fireWorks(confetti.default);
           break;
-        case "emoji":
+        case 'emoji':
           confetti.default({
             particleCount: 100,
             spread: 150,
-            shapes: [confetti.default.shapeFromText("🥳")],
+            shapes: [confetti.default.shapeFromText('🥳')],
             scalar: 3,
             origin: { y: 0.7 },
           });
@@ -67,13 +67,13 @@ export const shootConfetti = (type: ConfettiTypes): void => {
           console.warn(`Unknown confetti type: ${type}`);
       }
     })
-    .catch(err => console.error("Confetti failed to load:", err));
+    .catch(err => console.error('Confetti failed to load:', err));
 };
 
 export const openWebsite = (url: string, callbackFn?: () => void): void => {
-  const isExternal = url.startsWith("http") || url.startsWith("mailto:");
-  const target = isExternal ? "_blank" : "_self";
+  const isExternal = url.startsWith('http') || url.startsWith('mailto:');
+  const target = isExternal ? '_blank' : '_self';
 
-  window.open(url, target, "noopener,noreferrer");
+  window.open(url, target, 'noopener,noreferrer');
   callbackFn?.();
 };

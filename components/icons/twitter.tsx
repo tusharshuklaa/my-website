@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { SvgWrapper } from "./svg-wrapper";
-import { CustomIcon } from "@/types/icons";
-import { UiComponent } from "@/types";
+import type { FC } from 'react';
+import type { UiComponent } from '@/types';
+import type { CustomIcon } from '@/types/icons';
+import { SvgWrapper } from './svg-wrapper';
 
 export const TwitterIcon: FC<CustomIcon & UiComponent> = ({ className, width, height }) => (
   <SvgWrapper width={width} height={height} className={className}>

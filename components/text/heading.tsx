@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { cn } from "@/lib/utils";
-import { BasicUiComponent } from "@/types";
-import { motion } from "motion/react";
+import { motion } from 'motion/react';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent } from '@/types';
 
 export const Heading2: FC<BasicUiComponent> = ({ children, className }) => {
-  return <h2 className={cn("font-poppins text-2xl text-black dark:text-white md:text-4xl", className)}>{children}</h2>;
+  return <h2 className={cn('font-poppins text-2xl text-black dark:text-white md:text-4xl', className)}>{children}</h2>;
 };
 
 export const Heading3: FC<BasicUiComponent> = ({ children, className }) => {
   return (
-    <h3 className={cn("mt-4 font-poppins text-xl text-black dark:text-white md:text-2xl", className)}>{children}</h3>
+    <h3 className={cn('mt-4 font-poppins text-xl text-black dark:text-white md:text-2xl', className)}>{children}</h3>
   );
 };
 
@@ -23,10 +23,10 @@ export const AnimatedHeading: FC<BasicUiComponent> = ({ children, className }) =
       transition={{
         delay: 0.3,
         duration: 0.8,
-        ease: "easeInOut",
+        ease: 'easeInOut',
       }}
       className={cn(
-        "mt-8 bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text py-4 text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl",
+        'mt-8 bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text py-4 text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl',
         className,
       )}
     >

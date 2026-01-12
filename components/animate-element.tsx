@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { Easing, motion } from "motion/react";
-import { BasicUiComponent } from "@/types";
-import { useScreenType } from "@hooks/use-screen-type";
+import { useScreenType } from '@hooks/use-screen-type';
+import { type Easing, motion } from 'motion/react';
+import type { FC } from 'react';
+import type { BasicUiComponent } from '@/types';
 
 type AnimateElementProps = BasicUiComponent<{
   duration?: number;
@@ -17,7 +17,7 @@ export const AnimateElement: FC<AnimateElementProps> = ({
   className,
   delay = 0.3,
   duration = 0.8,
-  ease = "easeInOut",
+  ease = 'easeInOut',
   ignoreMobileDelay = false,
 }) => {
   const { isMobile } = useScreenType();
@@ -41,4 +41,4 @@ export const AnimateElement: FC<AnimateElementProps> = ({
   );
 };
 
-AnimateElement.displayName = "AnimateElement";
+AnimateElement.displayName = 'AnimateElement';

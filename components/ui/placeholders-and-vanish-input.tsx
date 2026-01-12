@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { AnimatePresence, motion } from "motion/react";
-import { FC, useCallback, useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
-import { Button } from "./button";
-import { GlowingGradientBox } from "../glowing-gradient-box";
-import { UiComponent } from "@/types";
+import { AnimatePresence, motion } from 'motion/react';
+import { type FC, useCallback, useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
+import { GlowingGradientBox } from '../glowing-gradient-box';
+import { Button } from './button';
 
 type PlaceholdersAndVanishInputProps = UiComponent<{
   placeholders: string[];
@@ -36,37 +36,37 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
   }, [placeholders.length]);
 
   const handleVisibilityChange = useCallback(() => {
-    if (document.visibilityState !== "visible" && intervalRef.current) {
+    if (document.visibilityState !== 'visible' && intervalRef.current) {
       clearInterval(intervalRef.current); // Clear the interval when the tab is not visible
       intervalRef.current = null;
-    } else if (document.visibilityState === "visible") {
+    } else if (document.visibilityState === 'visible') {
       startAnimation(); // Restart the interval when the tab becomes visible
     }
   }, [startAnimation]);
 
   useEffect(() => {
     startAnimation();
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [handleVisibilityChange, startAnimation, placeholders]);
+  }, [handleVisibilityChange, startAnimation]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const newDataRef = useRef<PixelColorData[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const [animating, setAnimating] = useState(false);
 
   const draw = useCallback(() => {
     if (!inputRef.current) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
 
     canvas.width = 800;
@@ -74,9 +74,9 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
     ctx.clearRect(0, 0, 800, 800);
     const computedStyles = getComputedStyle(inputRef.current);
 
-    const fontSize = parseFloat(computedStyles.getPropertyValue("font-size"));
+    const fontSize = parseFloat(computedStyles.getPropertyValue('font-size'));
     ctx.font = `${fontSize * 2}px ${computedStyles.fontFamily}`;
-    ctx.fillStyle = "#FFF";
+    ctx.fillStyle = '#FFF';
     ctx.fillText(value, 16, 40);
 
     const imageData = ctx.getImageData(0, 0, 800, 800);
@@ -107,7 +107,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
 
   useEffect(() => {
     draw();
-  }, [value, draw]);
+  }, [draw]);
 
   const animate = (start: number) => {
     const animateFrame = (pos: number = 0) => {
@@ -129,16 +129,16 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
           }
         }
         newDataRef.current = newArr;
-        const ctx = canvasRef.current?.getContext("2d");
+        const ctx = canvasRef.current?.getContext('2d');
         if (ctx) {
           ctx.clearRect(pos, 0, 800, 800);
           newDataRef.current.forEach(t => {
-            const { x: n, y: i, r: s, color: color } = t;
+            const { x: n, y: i, r: s, color } = t;
             if (n > pos) {
               ctx.beginPath();
-              ctx.rect(n, i, s!, s!);
-              ctx.fillStyle = typeof color === "string" ? color : `rgba(${color.join(",")})`;
-              ctx.strokeStyle = typeof color === "string" ? color : `rgba(${color.join(",")})`;
+              !!s && ctx.rect(n, i, s, s);
+              ctx.fillStyle = typeof color === 'string' ? color : `rgba(${color.join(',')})`;
+              ctx.strokeStyle = typeof color === 'string' ? color : `rgba(${color.join(',')})`;
               ctx.stroke();
             }
           });
@@ -146,7 +146,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
         if (newDataRef.current.length > 0) {
           animateFrame(pos - 8);
         } else {
-          setValue("");
+          setValue('');
           setAnimating(false);
         }
       });
@@ -155,7 +155,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && !animating) {
+    if (e.key === 'Enter' && !animating) {
       vanishAndSubmit();
     }
   };
@@ -164,7 +164,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
     setAnimating(true);
     draw();
 
-    const value = inputRef.current?.value || "";
+    const value = inputRef.current?.value || '';
     if (value && inputRef.current) {
       const maxX = newDataRef.current.reduce((prev, current) => (current.x > prev ? current.x : prev), 0);
       animate(maxX);
@@ -174,21 +174,21 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     vanishAndSubmit();
-    onSubmit && onSubmit(e);
+    onSubmit?.(e);
   };
   return (
-    <GlowingGradientBox className={cn("max-w-xl rounded-full before:rounded-full after:rounded-full", className)}>
+    <GlowingGradientBox className={cn('max-w-xl rounded-full before:rounded-full after:rounded-full', className)}>
       <form
         className={cn(
-          "relative h-12 w-full overflow-hidden rounded-full bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 dark:bg-slate-900/90",
-          value && "bg-gray-50",
+          'relative h-12 w-full overflow-hidden rounded-full bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 dark:bg-slate-900/90',
+          value && 'bg-gray-50',
         )}
         onSubmit={handleSubmit}
       >
         <canvas
           className={cn(
-            "pointer-events-none absolute left-2 top-[20%] origin-top-left scale-50 transform pr-20 text-base invert filter dark:invert-0 sm:left-8",
-            !animating ? "opacity-0" : "opacity-100",
+            'pointer-events-none absolute left-2 top-[20%] origin-top-left scale-50 transform pr-20 text-base invert filter dark:invert-0 sm:left-8',
+            !animating ? 'opacity-0' : 'opacity-100',
           )}
           ref={canvasRef}
         />
@@ -196,7 +196,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
           onChange={e => {
             if (!animating) {
               setValue(e.target.value);
-              onChange && onChange(e);
+              onChange?.(e);
             }
           }}
           onKeyDown={handleKeyDown}
@@ -204,8 +204,8 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
           value={value}
           type="text"
           className={cn(
-            "relative z-50 h-full w-full rounded-full border-none bg-transparent pl-4 pr-20 text-sm text-black focus:outline-none focus:ring-0 dark:text-white sm:pl-10 sm:text-base",
-            animating && "text-transparent dark:text-transparent",
+            'relative z-50 h-full w-full rounded-full border-none bg-transparent pl-4 pr-20 text-sm text-black focus:outline-none focus:ring-0 dark:text-white sm:pl-10 sm:text-base',
+            animating && 'text-transparent dark:text-transparent',
           )}
         />
 
@@ -228,19 +228,20 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
             strokeLinejoin="round"
             className="text-gray-300"
           >
+            <title>Clear Input</title>
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path
               d="M5 12l14 0"
               initial={{
-                strokeDasharray: "50%",
-                strokeDashoffset: "50%",
+                strokeDasharray: '50%',
+                strokeDashoffset: '50%',
               }}
               animate={{
-                strokeDashoffset: value ? 0 : "50%",
+                strokeDashoffset: value ? 0 : '50%',
               }}
               transition={{
                 duration: 0.3,
-                ease: "linear",
+                ease: 'linear',
               }}
             />
             <path d="M13 18l6 -6" />
@@ -267,7 +268,7 @@ export const PlaceholdersAndVanishInput: FC<PlaceholdersAndVanishInputProps> = (
                 }}
                 transition={{
                   duration: 0.3,
-                  ease: "linear",
+                  ease: 'linear',
                 }}
                 className="w-[calc(100%-2rem)] truncate pl-4 text-left text-sm font-normal text-neutral-500 dark:text-zinc-500 sm:pl-12 sm:text-base"
               >

@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { UiComponent } from "@/types";
-import { cn } from "@/lib/utils";
-import { HoverBorderGradient } from "@components/ui";
+import { HoverBorderGradient } from '@components/ui';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type SupportButtonProps = UiComponent & {
   containerClassName?: string;
@@ -9,7 +9,7 @@ type SupportButtonProps = UiComponent & {
 
 export const SupportButton: FC<SupportButtonProps> = ({ containerClassName, className }) => {
   const supportButtonClasses = cn(
-    "dark:bg-slate-950 bg-white text-black dark:text-white flex items-center space-x-2",
+    'dark:bg-slate-950 bg-white text-black dark:text-white flex items-center space-x-2',
     className,
   );
 
@@ -19,11 +19,11 @@ export const SupportButton: FC<SupportButtonProps> = ({ containerClassName, clas
       className={supportButtonClasses}
       as="a"
       href="/support-me"
-      containerClassName={cn("rounded-full h-12", containerClassName)}
+      containerClassName={cn('rounded-full h-12', containerClassName)}
     >
       Support My Work
     </HoverBorderGradient>
   );
 };
 
-SupportButton.displayName = "SupportButton";
+SupportButton.displayName = 'SupportButton';

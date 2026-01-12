@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { ImageProps } from "next/image";
-import { AdvImage } from "@components/adv-image";
+import { AdvImage } from '@components/adv-image';
+import type { ImageProps } from 'next/image';
+import type { FC } from 'react';
 
 export type ThemeImageProps = ImageProps & {
   lightSrc: string;

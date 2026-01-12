@@ -1,6 +1,6 @@
-import { useState, useCallback, useRef, useEffect, useMemo } from "react";
-import { PanInfo, useMotionValue, MotionValue } from "motion/react";
-import { debounce } from "lodash";
+import { debounce } from 'lodash';
+import { type MotionValue, type PanInfo, useMotionValue } from 'motion/react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type ZoomState = { scale: number; x: number; y: number };
 
@@ -40,8 +40,8 @@ interface UseZoomablePanReturn {
   onPan: (event: Event, info: PanInfo) => void;
 
   // Utilities
-  setupWheelZoom: () => (() => void) | void;
-  setupResizeObserver: () => (() => void) | void;
+  setupWheelZoom: () => (() => void) | undefined;
+  setupResizeObserver: () => (() => void) | undefined;
   handleImageLoad: () => void;
 }
 
@@ -185,9 +185,9 @@ export const useZoomablePan = ({
       applyScale(newScale);
     };
 
-    container.addEventListener("wheel", handleWheel, { passive: false });
+    container.addEventListener('wheel', handleWheel, { passive: false });
 
-    return () => container.removeEventListener("wheel", handleWheel);
+    return () => container.removeEventListener('wheel', handleWheel);
   }, [isOpen, isImageLoaded, zoomState.scale, applyScale, zoomStep, minZoom, maxZoom]);
 
   const setupResizeObserver = useCallback(() => {

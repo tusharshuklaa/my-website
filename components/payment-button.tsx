@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { UiComponent } from "@/types";
-import Link from "next/link";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
+import Image from 'next/image';
+import Link from 'next/link';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type PaymentButtonProps = UiComponent<{
   url: string;
@@ -10,7 +10,7 @@ type PaymentButtonProps = UiComponent<{
   logoAlt: string;
   buttonText: string;
   buttonSubText?: string;
-  variant: "yellow" | "blue";
+  variant: 'yellow' | 'blue';
   iconWidth?: number;
   iconHeight?: number;
 }>;
@@ -21,15 +21,15 @@ export const PaymentButton: FC<PaymentButtonProps> = ({
   logoAlt,
   buttonText,
   buttonSubText,
-  variant = "yellow",
+  variant = 'yellow',
   iconWidth = 25,
   iconHeight = 32,
 }) => {
   const buttonClasses = cn(
     "gap-2 inline-flex items-center px-5 py-3 text-white font-semibold rounded-lg shadow transition-colors duration-200 transform before:content-[''] before:absolute before:top-0 before:left-[-6px] before:w-16 before:h-full before:rounded-lt-lg before:transform before:skew-x-[-15deg] overflow-hidden",
     {
-      "bg-[#072654] hover:bg-[#1e40a0] before:bg-[#1e40a0]": variant === "blue",
-      "bg-yellow-700 hover:bg-yellow-500 before:bg-yellow-500": variant === "yellow",
+      'bg-[#072654] hover:bg-[#1e40a0] before:bg-[#1e40a0]': variant === 'blue',
+      'bg-yellow-700 hover:bg-yellow-500 before:bg-yellow-500': variant === 'yellow',
     },
   );
 
@@ -51,4 +51,4 @@ export const PaymentButton: FC<PaymentButtonProps> = ({
   );
 };
 
-PaymentButton.displayName = "BuyMeACoffee";
+PaymentButton.displayName = 'BuyMeACoffee';

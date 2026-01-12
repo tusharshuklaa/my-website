@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
-import { X } from "lucide-react";
-import { BasicUiComponent } from "@/types";
-import { cn } from "@/lib/utils";
-import { HighlightText } from "@/components/text";
-import { Marquee } from "@/components/marquee";
-import { Button } from "./ui";
+import { X } from 'lucide-react';
+import { type FC, useState } from 'react';
+import { Marquee } from '@/components/marquee';
+import { HighlightText } from '@/components/text';
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent } from '@/types';
+import { Button } from './ui';
 
 type InfoBarProps = BasicUiComponent<{
   hidden?: boolean;
@@ -15,7 +15,7 @@ type InfoBarProps = BasicUiComponent<{
 export const InfoBar: FC<InfoBarProps> = ({ children, className, hidden = false, ...props }) => {
   const [isHidden, setIsHidden] = useState(hidden);
   const infoBarClasses = cn(
-    "z-10 fixed top-0 w-full overflow-hidden left-0 right-0 py-1 pl-2 pr-10 text-sm font-normal",
+    'z-10 fixed top-0 w-full overflow-hidden left-0 right-0 py-1 pl-2 pr-10 text-sm font-normal',
     className,
   );
 
@@ -36,4 +36,4 @@ export const InfoBar: FC<InfoBarProps> = ({ children, className, hidden = false,
   );
 };
 
-InfoBar.displayName = "InfoBar";
+InfoBar.displayName = 'InfoBar';

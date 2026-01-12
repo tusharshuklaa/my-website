@@ -1,11 +1,11 @@
-import { FC } from "react";
-import { AnimatedHeading, Heading2, Heading3 } from "@components/text";
-import { cn } from "@/lib/utils";
-import { BasicUiComponent } from "@/types";
-import { PrettyLink } from "@/components/pretty-link";
+import { AnimatedHeading, Heading2, Heading3 } from '@components/text';
+import type { FC } from 'react';
+import { PrettyLink } from '@/components/pretty-link';
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent } from '@/types';
 
 const JustText: FC<BasicUiComponent> = ({ children, className }) => (
-  <span className={cn("mt-4 text-justify leading-8 tracking-wider", className)}>{children}</span>
+  <span className={cn('mt-4 text-justify leading-8 tracking-wider', className)}>{children}</span>
 );
 
 const PrivacyPolicyPage: FC = () => (
@@ -53,10 +53,10 @@ const PrivacyPolicyPage: FC = () => (
             non-personal attributes to create a unique identifier.
           </li>
         </ul>
-        This information is stored securely in{" "}
+        This information is stored securely in{' '}
         <PrettyLink href="https://upstash.com/" title="Redis Upstash">
           Redis Upstash
-        </PrettyLink>{" "}
+        </PrettyLink>{' '}
         and is used solely for tracking view counts. It is not linked to any personally identifiable information (PII).
       </JustText>
       <Heading2 className="mb-2 mt-12">2. How We Use Your Information</Heading2>

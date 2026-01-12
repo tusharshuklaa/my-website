@@ -1,26 +1,26 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
-import Link from "next/link";
-import { motion } from "motion/react";
-import { format, parseISO } from "date-fns";
-import { take, filter, map, sortBy } from "lodash";
-import { cn } from "@/lib/utils";
-import { Menu, MenuItem, HoveredLink, ProductItem } from "@components/ui";
-import { CommandCenter } from "@components/command-center";
-import { TextFlipper } from "@components/text";
-import { UiComponent } from "@/types";
-import { allBlogs, Blog } from "@content";
-import { MyAvatar } from "@components/my-avatar";
-import { DownloadResumeButton } from "@components/download-resume-button";
-import { CoolBorder } from "@components/cool-border";
-import { useHideOnScroll } from "@/hooks/use-hide-on-scroll";
+import { CommandCenter } from '@components/command-center';
+import { CoolBorder } from '@components/cool-border';
+import { DownloadResumeButton } from '@components/download-resume-button';
+import { MyAvatar } from '@components/my-avatar';
+import { TextFlipper } from '@components/text';
+import { HoveredLink, Menu, MenuItem, ProductItem } from '@components/ui';
+import { allBlogs, type Blog } from '@content';
+import { format, parseISO } from 'date-fns';
+import { filter, map, sortBy, take } from 'lodash';
+import { motion } from 'motion/react';
+import Link from 'next/link';
+import { type FC, useState } from 'react';
+import { useHideOnScroll } from '@/hooks/use-hide-on-scroll';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 const getLimitedBlogs = (blogs: Array<Blog>, limit: number) => {
-  const publishedBlogs = filter(blogs, "published");
+  const publishedBlogs = filter(blogs, 'published');
   const blogsWithFormattedDate = map(publishedBlogs, blog => ({
     ...blog,
-    date: format(parseISO(blog.date), "LLLL d, yyyy"),
+    date: format(parseISO(blog.date), 'LLLL d, yyyy'),
   }));
   const sortedBlogs = sortBy(blogsWithFormattedDate, blog => new Date(blog.date)).reverse();
 
@@ -39,16 +39,16 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
   return (
     <motion.nav
       className={cn(
-        "group fixed inset-x-0 top-10 z-50 mx-auto hidden backdrop-blur-sm transition-shadow duration-500 ease-out [--bg-size:300%] sm:block sm:max-w-xl lg:max-w-3xl",
+        'group fixed inset-x-0 top-10 z-50 mx-auto hidden backdrop-blur-sm transition-shadow duration-500 ease-out [--bg-size:300%] sm:block sm:max-w-xl lg:max-w-3xl',
         className,
       )}
       animate={{
-        y: isHiddenOnScroll ? "-200%" : "0%",
+        y: isHiddenOnScroll ? '-200%' : '0%',
         opacity: isHiddenOnScroll ? 0 : 1,
       }}
       transition={{
         duration: 0.3,
-        ease: "easeInOut",
+        ease: 'easeInOut',
         ...(isReady ? {} : { duration: 0 }),
       }}
       initial={{

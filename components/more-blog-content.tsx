@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { UiComponent } from "@/types";
-import { allBlogs } from "@/.contentlayer/generated";
-import { ToggleContent } from "@components/toggle-list";
-import { RelatedBlogListItem } from "@components/related-blog-list-item";
+import { RelatedBlogListItem } from '@components/related-blog-list-item';
+import { ToggleContent } from '@components/toggle-list';
+import type { FC } from 'react';
+import { allBlogs } from '@/.contentlayer/generated';
+import type { UiComponent } from '@/types';
 
 export type MoreBlogContentProps = UiComponent<{
   related?: Array<string>;
@@ -25,4 +25,4 @@ export const MoreBlogContent: FC<MoreBlogContentProps> = ({ className, current, 
   );
 };
 
-MoreBlogContent.displayName = "MoreBlogContent";
+MoreBlogContent.displayName = 'MoreBlogContent';

@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { UiComponent } from "@/types";
-import { cn } from "@/lib/utils";
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 export const SpaceMascot: FC<UiComponent> = ({ className, ...props }) => {
-  const spaceMascotClasses = cn("space-mascot absolute top-1/2 left-1/2", className);
+  const spaceMascotClasses = cn('space-mascot absolute top-1/2 left-1/2', className);
 
   return (
     <div data-testid="cmp-space-mascot" className={spaceMascotClasses} {...props}>
@@ -21,4 +21,4 @@ export const SpaceMascot: FC<UiComponent> = ({ className, ...props }) => {
   );
 };
 
-SpaceMascot.displayName = "SpaceMascot";
+SpaceMascot.displayName = 'SpaceMascot';

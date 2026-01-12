@@ -1,10 +1,15 @@
-"use client";
+'use client';
 
-import { FC, Fragment, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { cn } from "@/lib/utils";
-import { UiComponent } from "@/types";
-import { Card, CardTitle, CardDescription } from "./card";
+import { AdvImage } from '@components/adv-image';
+import { Mdx } from '@components/mdx';
+import { AnimatePresence, motion } from 'motion/react';
+import { type FC, Fragment, useState } from 'react';
+import type { Coding, Gadgets, Software } from '@/.contentlayer/generated';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
+import { GradientText } from '../text';
+import { badgeVariants } from './badge';
+import { Card, CardDescription, CardTitle } from './card';
 import {
   Dialog,
   DialogClose,
@@ -14,12 +19,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./dialog";
-import { GradientText } from "../text";
-import { badgeVariants } from "./badge";
-import { Coding, Gadgets, Software } from "@/.contentlayer/generated";
-import { Mdx } from "@components/mdx";
-import { AdvImage } from "@components/adv-image";
+} from './dialog';
 
 type DialogHoverCardsType = UiComponent<{
   items: Array<Coding | Gadgets | Software>;
@@ -31,12 +31,13 @@ export const DialogHoverCards: FC<DialogHoverCardsType> = ({ items, cardClassNam
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className={cn("grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3", className)}>
+    <div className={cn('grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3', className)}>
       {items.map((item, idx) => (
         <Fragment key={encodeURI(item.title)}>
           <Dialog>
             <DialogTrigger asChild>
               <div
+                role="none"
                 className="group relative block h-full w-full cursor-pointer"
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -65,8 +66,8 @@ export const DialogHoverCards: FC<DialogHoverCardsType> = ({ items, cardClassNam
                   </CardTitle>
 
                   <CardDescription
-                    className={cn("line-clamp-5", {
-                      "text-white": hoveredIndex === idx,
+                    className={cn('line-clamp-5', {
+                      'text-white': hoveredIndex === idx,
                     })}
                   >
                     {item.summary}
@@ -96,7 +97,11 @@ export const DialogHoverCards: FC<DialogHoverCardsType> = ({ items, cardClassNam
               <DialogFooter className="mt-4">
                 {item.tags.map(tag => (
                   <DialogClose asChild key={tag}>
-                    <button className={badgeVariants({ variant: "destructive" })} onClick={() => onTagClick?.(tag)}>
+                    <button
+                      type="button"
+                      className={badgeVariants({ variant: 'destructive' })}
+                      onClick={() => onTagClick?.(tag)}
+                    >
                       {tag}
                     </button>
                   </DialogClose>

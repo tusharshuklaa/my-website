@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect, FC } from "react";
-import { useMotionTemplate, useMotionValue, motion, MotionValue } from "motion/react";
-import { cn } from "@/lib/utils";
-import { GradientText } from "@components/text";
+import { GradientText } from '@components/text';
+import { type MotionValue, motion, useMotionTemplate, useMotionValue } from 'motion/react';
+import type React from 'react';
+import { type FC, useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 type EvervaultCardProps = {
   text?: string;
@@ -15,7 +16,7 @@ export const EvervaultCard: FC<EvervaultCardProps> = ({ text, className, randomS
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const [randomString, setRandomString] = useState("");
+  const [randomString, setRandomString] = useState('');
 
   useEffect(() => {
     const str = generateRandomString(randomStringCount);
@@ -34,11 +35,12 @@ export const EvervaultCard: FC<EvervaultCardProps> = ({ text, className, randomS
   return (
     <div
       className={cn(
-        "relative flex aspect-square h-full w-full items-center justify-center bg-transparent p-0.5",
+        'relative flex aspect-square h-full w-full items-center justify-center bg-transparent p-0.5',
         className,
       )}
     >
       <div
+        role="none"
         onMouseMove={onMouseMove}
         className="group/card relative flex h-full w-full items-center justify-center overflow-hidden rounded-3xl bg-transparent"
       >
@@ -85,9 +87,9 @@ export const CardPattern: FC<CardPatternProps> = ({ mouseX, mouseY, randomString
   );
 };
 
-const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@&";
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@&';
 export const generateRandomString = (length: number) => {
-  let result = "";
+  let result = '';
   for (let i = 0; i < Math.ceil(length / 2); i++) {
     result += `${characters.charAt(Math.floor(Math.random() * characters.length))} `;
   }

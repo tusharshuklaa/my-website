@@ -1,22 +1,22 @@
-const fs = require("fs");
-const templateString = require("es6-template-strings");
+const fs = require('node:fs');
+const templateString = require('es6-template-strings');
 
-const clearAndUpper = text => text.replace(/-/, "").toUpperCase();
+const clearAndUpper = text => text.replace(/-/, '').toUpperCase();
 
 const toPascalCase = input => input.replace(/(^\w|-\w)/g, clearAndUpper);
 
 const toCamelCase = text => {
-  const a = text.toLowerCase().replace(/[-_\s.]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ""));
+  const a = text.toLowerCase().replace(/[-_\s.]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''));
   return a.substring(0, 1).toLowerCase() + a.substring(1);
 };
 
 const readTextFile = (file, pascalName, camelName, name) => {
-  const data = fs.readFileSync(`scripts/${file}.txt`, "utf8");
+  const data = fs.readFileSync(`scripts/${file}.txt`, 'utf8');
   return templateString(data, { camelName, pascalName, name });
 };
 
 const writeComponent = (isClient, needType, componentDir, name, pascalName, camelName) => {
-  let componentSrcFile = isClient ? "write-client-component" : "write-component";
+  let componentSrcFile = isClient ? 'write-client-component' : 'write-component';
 
   componentSrcFile = needType ? `${componentSrcFile}-with-type` : componentSrcFile;
 
@@ -28,32 +28,32 @@ const writeComponent = (isClient, needType, componentDir, name, pascalName, came
   fs.writeFileSync(`${componentDir}/${name}.tsx`, readTextFile(componentSrcFile, pascalName, camelName, name));
 };
 
-import("@inquirer/input")
+import('@inquirer/input')
   .then(async inputModule => {
     const input = inputModule.default;
 
     const componentName = await input({
-      name: "name",
-      message: "What is the name of the component (kebab-case)",
+      name: 'name',
+      message: 'What is the name of the component (kebab-case)',
       validate: name => {
-        if (!name) return "Please provide a name";
+        if (!name) return 'Please provide a name';
         if (!/^[a-z-]+$/.test(name)) return 'Please provide a name using kebab-case (i.e. : "text-area")';
         else return true;
       },
     });
 
-    import("@inquirer/confirm")
+    import('@inquirer/confirm')
       .then(async confirmModule => {
         const confirm = confirmModule.default;
 
         const isClient = await confirm({
-          message: "Is it a client component?",
-          name: "isClient",
+          message: 'Is it a client component?',
+          name: 'isClient',
         });
 
         const needType = await confirm({
-          message: "Does this component need defined type?",
-          name: "needType",
+          message: 'Does this component need defined type?',
+          name: 'needType',
         });
 
         const pascalName = toPascalCase(componentName);
@@ -62,7 +62,7 @@ import("@inquirer/input")
         // File name is in kebab case always
         const componentFileName = `${componentDir}/${componentName}.tsx`;
 
-        if (fs.existsSync(componentFileName)) throw new Error("A component with that name already exists.");
+        if (fs.existsSync(componentFileName)) throw new Error('A component with that name already exists.');
 
         writeComponent(isClient, needType, componentDir, componentName, pascalName, camelName);
 
@@ -72,33 +72,33 @@ import("@inquirer/input")
           |___________________________________________________|\n
         `);
 
-        import("@inquirer/confirm")
+        import('@inquirer/confirm')
           .then(async confirmModule => {
             const confirm = confirmModule.default;
 
             const isUpdateIndexNeeded = await confirm({
-              message: "Do you want to update all index files too?",
-              name: "isUpdateIndexNeeded",
+              message: 'Do you want to update all index files too?',
+              name: 'isUpdateIndexNeeded',
               default: false,
             });
 
             if (isUpdateIndexNeeded) {
               try {
-                const { writeIndexInFolder } = await import("./update-index.js");
-                writeIndexInFolder("./components");
+                const { writeIndexInFolder } = await import('./update-index.js');
+                writeIndexInFolder('./components');
               } catch (error) {
-                console.error("Failed to import ./update-index.js", error);
+                console.error('Failed to import ./update-index.js', error);
               }
             }
           })
           .catch(error => {
-            console.error("Failed to import @inquirer/confirm:", error);
+            console.error('Failed to import @inquirer/confirm:', error);
           });
       })
       .catch(error => {
-        console.error("Failed to import @inquirer/confirm:", error);
+        console.error('Failed to import @inquirer/confirm:', error);
       });
   })
   .catch(error => {
-    console.error("Failed to import @inquirer/input:", error);
+    console.error('Failed to import @inquirer/input:', error);
   });

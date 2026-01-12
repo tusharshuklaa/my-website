@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { UiComponent } from "@/types";
-import { cn } from "@/lib/utils";
-import { ToggleContent } from "@components/toggle-list";
-import Link from "next/link";
+import { ToggleContent } from '@components/toggle-list';
+import Link from 'next/link';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 export type TableOfContent = {
   content: string;
@@ -20,10 +20,10 @@ export const TableOfContents: FC<TableOfContentsProps> = ({ className, tocs }) =
   <ToggleContent heading="Table of Contents" className={className}>
     <ul className="text-2xl">
       {tocs.map(heading => {
-        const listClasses = cn("", {
-          "ml-4": heading.level === 2,
-          "ml-8 first:mt-4": heading.level === 3,
-          "ml-12": heading.level === 4,
+        const listClasses = cn('', {
+          'ml-4': heading.level === 2,
+          'ml-8 first:mt-4': heading.level === 3,
+          'ml-12': heading.level === 4,
         });
 
         return (
@@ -38,4 +38,4 @@ export const TableOfContents: FC<TableOfContentsProps> = ({ className, tocs }) =
   </ToggleContent>
 );
 
-TableOfContents.displayName = "TableOfContents";
+TableOfContents.displayName = 'TableOfContents';

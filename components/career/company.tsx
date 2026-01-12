@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { GradientText } from "../text";
-import { ThemeImage } from "@components/theme-image";
-import { PrettyLink } from "@components/pretty-link";
+import { PrettyLink } from '@components/pretty-link';
+import { ThemeImage } from '@components/theme-image';
+import type { FC } from 'react';
+import { GradientText } from '../text';
 
-type WorkType = "Full Time" | "Internship" | "Freelance";
+type WorkType = 'Full Time' | 'Internship' | 'Freelance';
 type Position = {
   title: string;
   duration: string;
@@ -21,14 +21,14 @@ export type CareerCompany = {
   url: string;
 };
 
-type CompanyProps = Omit<CareerCompany, "heading">;
+type CompanyProps = Omit<CareerCompany, 'heading'>;
 
 export const Company: FC<CompanyProps> = ({ company, description, img, imgLight, positions, type, url }) => {
   return (
     <section className="flex flex-col gap-2 md:flex-row md:gap-8">
       <div className="mb-4 mt-2 flex h-28 w-full shrink-0 items-end justify-center sm:mb-0 sm:w-28 md:items-start">
         <ThemeImage
-          lightSrc={imgLight || ""}
+          lightSrc={imgLight || ''}
           src={img}
           alt={`${company} logo`}
           title={`${description}`}
@@ -57,8 +57,8 @@ export const Company: FC<CompanyProps> = ({ company, description, img, imgLight,
 
               {Array.isArray(position.description) ? (
                 <ul className="list-disc pl-4">
-                  {position.description.map((desc, idx) => (
-                    <li key={idx} className="text-sm">
+                  {position.description.map(desc => (
+                    <li key={desc} className="text-sm">
                       {desc}
                     </li>
                   ))}

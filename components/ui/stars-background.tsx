@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { UiComponent } from "@/types";
-import React, { FC, useState, useEffect, useRef, RefObject, useCallback } from "react";
+import { type FC, type RefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type StarProps = {
   x: number;
@@ -54,7 +54,7 @@ export const StarsBackground: FC<StarBackgroundProps> = ({
     const updateStars = () => {
       if (canvasRef.current) {
         const canvas = canvasRef.current;
-        const ctx = canvas.getContext("2d");
+        const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
         const { width, height } = canvas.getBoundingClientRect();
@@ -77,13 +77,13 @@ export const StarsBackground: FC<StarBackgroundProps> = ({
         resizeObserver.unobserve(canvasElement);
       }
     };
-  }, [starDensity, allStarsTwinkle, twinkleProbability, minTwinkleSpeed, maxTwinkleSpeed, generateStars]);
+  }, [generateStars]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     let animationFrameId: number;
@@ -115,7 +115,7 @@ export const StarsBackground: FC<StarBackgroundProps> = ({
     <div className="absolute h-full w-full">
       <canvas
         ref={canvasRef}
-        className={cn("pointer-events-none absolute inset-0 h-full w-full animate-zoom-in", className)}
+        className={cn('pointer-events-none absolute inset-0 h-full w-full animate-zoom-in', className)}
       />
     </div>
   );

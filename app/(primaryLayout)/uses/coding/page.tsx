@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { allCodings, Coding } from "@content";
-import { DialogHoverCards, PlaceholdersAndVanishInput } from "@ui";
-import { ArticleHero } from "@components/blog-hero";
-import { SearchResults } from "@components/search-results";
-import { useMdxContent } from "@/hooks/use-mdx-content";
+import { ArticleHero } from '@components/blog-hero';
+import { SearchResults } from '@components/search-results';
+import { allCodings, type Coding } from '@content';
+import { DialogHoverCards, PlaceholdersAndVanishInput } from '@ui';
+import type { FC } from 'react';
+import { useMdxContent } from '@/hooks/use-mdx-content';
 
-const placeholders = ["vs code", "extensions", "dev tools", "bash"];
+const placeholders = ['vs code', 'extensions', 'dev tools', 'bash'];
 
 const UsesCodingPage: FC = () => {
   const { items, onSubmit, onSearchClear, onTagClick, searchQuery } = useMdxContent(allCodings);

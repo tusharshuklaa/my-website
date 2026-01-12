@@ -1,6 +1,5 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -9,8 +8,9 @@ import {
   useSpring,
   useTransform,
   useVelocity,
-} from "motion/react";
-import { cn } from "@/lib/utils";
+} from 'motion/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 type VelocityScrollProps = {
   text: string;
@@ -59,9 +59,9 @@ export function VelocityScroll({ text, default_velocity = 5, className }: Veloci
 
       calculateRepetitions();
 
-      window.addEventListener("resize", calculateRepetitions);
-      return () => window.removeEventListener("resize", calculateRepetitions);
-    }, [children]);
+      window.addEventListener('resize', calculateRepetitions);
+      return () => window.removeEventListener('resize', calculateRepetitions);
+    }, []);
 
     const x = useTransform(baseX, v => `${wrap(-100 / repetitions, 0, v)}%`);
 
@@ -82,11 +82,12 @@ export function VelocityScroll({ text, default_velocity = 5, className }: Veloci
 
     return (
       <div className="w-full overflow-hidden whitespace-nowrap" ref={containerRef}>
-        <motion.div className={cn("inline-block", className)} style={{ x }}>
+        <motion.div className={cn('inline-block', className)} style={{ x }}>
           {Array.from({ length: repetitions }).map((_, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: trivial
             <span key={i} ref={i === 0 ? textRef : null}>
               {children}
-              {""}
+              {''}
             </span>
           ))}
         </motion.div>

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { forwardRef } from "react";
-import { BasicUiRefComponent } from "@/types";
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
+import { motion } from 'motion/react';
+import { forwardRef } from 'react';
+import { cn } from '@/lib/utils';
+import type { BasicUiRefComponent } from '@/types';
 
 export const PageTransition = forwardRef<HTMLDivElement, BasicUiRefComponent>(
   ({ children, className, ...props }, ref) => {
@@ -11,11 +11,11 @@ export const PageTransition = forwardRef<HTMLDivElement, BasicUiRefComponent>(
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ ease: "easeInOut", duration: 0.5 }}
+        transition={{ ease: 'easeInOut', duration: 0.5 }}
         {...props}
         ref={ref}
         className={cn(
-          "fixed left-0 top-0 h-screen w-full overflow-y-auto overflow-x-hidden scroll-smooth sm:snap-y sm:snap-proximity sm:snap-start sm:snap-normal sm:scroll-pt-10",
+          'fixed left-0 top-0 h-screen w-full overflow-y-auto overflow-x-hidden scroll-smooth sm:snap-y sm:snap-proximity sm:snap-start sm:snap-normal sm:scroll-pt-10',
           className,
         )}
         data-testid="cmp-page-transition"
@@ -26,4 +26,4 @@ export const PageTransition = forwardRef<HTMLDivElement, BasicUiRefComponent>(
   },
 );
 
-PageTransition.displayName = "PageTransition";
+PageTransition.displayName = 'PageTransition';

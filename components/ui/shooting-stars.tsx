@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { UiComponent } from "@/types";
-import React, { useEffect, useState, useRef } from "react";
+import type React from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type ShootingStar = {
   id: number;
@@ -42,17 +43,17 @@ const getRandomStartPoint = () => {
 };
 
 const starColors = [
-  "#9E00FF",
-  "#FF00FF",
-  "#00FFD5",
-  "#FFD500",
-  "#FF0000",
-  "#00FF00",
-  "#0000FF",
-  "#FF7F00",
-  "#FF00FF",
-  "#00FFFF",
-  "#2EB9DF",
+  '#9E00FF',
+  '#FF00FF',
+  '#00FFD5',
+  '#FFD500',
+  '#FF0000',
+  '#00FF00',
+  '#0000FF',
+  '#FF7F00',
+  '#FF00FF',
+  '#00FFFF',
+  '#2EB9DF',
 ];
 
 export const ShootingStars: React.FC<ShootingStarsProps> = ({
@@ -65,8 +66,8 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
   className,
 }) => {
   const [star, setStar] = useState<ShootingStar | null>(null);
-  const [starColor, setStarColor] = useState("#9E00FF");
-  const [trailColor, setTrailColor] = useState("#2EB9DF");
+  const [starColor, setStarColor] = useState('#9E00FF');
+  const [trailColor, setTrailColor] = useState('#2EB9DF');
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -128,7 +129,8 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
   }, [star]);
 
   return (
-    <svg ref={svgRef} className={cn("pointer-events-none absolute inset-0 h-full w-full", className)}>
+    <svg ref={svgRef} className={cn('pointer-events-none absolute inset-0 h-full w-full', className)}>
+      <title>Shooting Stars</title>
       {star && (
         <rect
           key={star.id}

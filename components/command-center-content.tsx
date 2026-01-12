@@ -1,8 +1,18 @@
-"use client";
+'use client';
 
-import { FC, useCallback, useMemo } from "react";
-import { UiComponent } from "@/types";
-import { useTheme } from "next-themes";
+import { TwitterIcon } from '@components/icons/twitter';
+import { allBlogs, type Blog } from '@content';
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from '@ui';
+import { compareDesc, parseISO } from 'date-fns';
 import {
   AtSign,
   BookOpenText,
@@ -18,22 +28,12 @@ import {
   Sparkles,
   SquareChevronRight,
   Sun,
-} from "lucide-react";
-import { compareDesc, parseISO } from "date-fns";
-import {
-  CommandDialog,
-  CommandInput,
-  CommandList,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-  CommandShortcut,
-  CommandSeparator,
-} from "@ui";
-import { TwitterIcon } from "@components/icons/twitter";
-import { allBlogs, Blog } from "@content";
-import { openWebsite, ConfettiTypes, shootConfetti } from "@/lib/commandCenterUtils";
-import ShowcaseData from "@/data/showcase.json";
+} from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { type FC, useCallback, useMemo } from 'react';
+import ShowcaseData from '@/data/showcase.json';
+import { type ConfettiTypes, openWebsite, shootConfetti } from '@/lib/commandCenterUtils';
+import type { UiComponent } from '@/types';
 
 type WithCloseCommandCenter = {
   closeCommandCenter: () => void;
@@ -41,18 +41,18 @@ type WithCloseCommandCenter = {
 
 const Greetings: FC = () => {
   const today = useMemo(() => new Date(), []);
-  const fullDate = today.toLocaleDateString("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  const fullDate = today.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
 
   const greeting = useMemo(() => {
     const hour = today.getHours();
-    if (hour < 12) return "Good Morning 🌅";
-    if (hour < 18) return "Good Afternoon ☀️";
-    return "Good Evening 🌃";
+    if (hour < 12) return 'Good Morning 🌅';
+    if (hour < 18) return 'Good Afternoon ☀️';
+    return 'Good Evening 🌃';
   }, [today]);
 
   return (
@@ -99,18 +99,18 @@ const AllFunStuff: FC<WithCloseCommandCenter> = ({ closeCommandCenter }) => {
 
   return (
     <CommandGroup heading="Fun Stuff" className="mt-2">
-      <CommandItem onSelect={confettiFn("basic")}>
+      <CommandItem onSelect={confettiFn('basic')}>
         <Sparkles className="mr-2 h-4 w-4" />
         <span>Confetti</span>
         <CommandShortcut className="shrink-0">⌘J</CommandShortcut>
       </CommandItem>
 
-      <CommandItem onSelect={confettiFn("fireworks")}>
+      <CommandItem onSelect={confettiFn('fireworks')}>
         <Sparkles className="mr-2 h-4 w-4" />
         <span>Fireworks</span>
       </CommandItem>
 
-      <CommandItem onSelect={confettiFn("emoji")}>
+      <CommandItem onSelect={confettiFn('emoji')}>
         <Sparkles className="mr-2 h-4 w-4" />
         <span>Emoji Party</span>
       </CommandItem>
@@ -164,34 +164,34 @@ const AllShowcase: FC<WithCloseCommandCenter> = ({ closeCommandCenter }) => {
 const AllContacts: FC<WithCloseCommandCenter> = ({ closeCommandCenter }) => {
   return (
     <>
-      <CommandItem onSelect={() => openWebsite("https://x.com/theTSguy", closeCommandCenter)}>
+      <CommandItem onSelect={() => openWebsite('https://x.com/theTSguy', closeCommandCenter)}>
         <TwitterIcon className="mr-2 h-4 w-4" />
         <span>Find me on X (Twitter)</span>
       </CommandItem>
 
-      <CommandItem onSelect={() => openWebsite("https://www.linkedin.com/in/tusharshuklaa/", closeCommandCenter)}>
+      <CommandItem onSelect={() => openWebsite('https://www.linkedin.com/in/tusharshuklaa/', closeCommandCenter)}>
         <LinkedinIcon className="mr-2 h-4 w-4" />
         <span>Find me on LinkedIn</span>
       </CommandItem>
 
-      <CommandItem onSelect={() => openWebsite("https://github.com/tusharshuklaa", closeCommandCenter)}>
+      <CommandItem onSelect={() => openWebsite('https://github.com/tusharshuklaa', closeCommandCenter)}>
         <GithubIcon className="mr-2 h-4 w-4" />
         <span>Find me on GitHub</span>
       </CommandItem>
 
       <CommandItem
-        onSelect={() => openWebsite("https://stackoverflow.com/users/2996624/tushar-shukla", closeCommandCenter)}
+        onSelect={() => openWebsite('https://stackoverflow.com/users/2996624/tushar-shukla', closeCommandCenter)}
       >
         <Layers className="mr-2 h-4 w-4" />
         <span>Find me on Stack Overflow</span>
       </CommandItem>
 
-      <CommandItem onSelect={() => openWebsite("https://codepen.io/tusharshukla", closeCommandCenter)}>
+      <CommandItem onSelect={() => openWebsite('https://codepen.io/tusharshukla', closeCommandCenter)}>
         <Codepen className="mr-2 h-4 w-4" />
         <span>Find me on CodePen</span>
       </CommandItem>
 
-      <CommandItem onSelect={() => openWebsite("mailto:tusharshukla.dev@gmail.com", closeCommandCenter)}>
+      <CommandItem onSelect={() => openWebsite('mailto:tusharshukla.dev@gmail.com', closeCommandCenter)}>
         <AtSign className="mr-2 h-4 w-4" />
         <span>Send me an Email</span>
       </CommandItem>
@@ -202,7 +202,7 @@ const AllContacts: FC<WithCloseCommandCenter> = ({ closeCommandCenter }) => {
 const AllExtras: FC<WithCloseCommandCenter> = ({ closeCommandCenter }) => {
   const { setTheme, theme } = useTheme();
   const toggleTheme = useCallback(() => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(theme === 'light' ? 'dark' : 'light');
   }, [theme, setTheme]);
 
   return (
@@ -217,7 +217,7 @@ const AllExtras: FC<WithCloseCommandCenter> = ({ closeCommandCenter }) => {
       <CommandItem
         onSelect={() =>
           openWebsite(
-            "https://drive.google.com/file/d/1FbUKhgGbrNY-dK8ZMX0CcDRnMCxQx3s5/view?usp=sharing",
+            'https://drive.google.com/file/d/1FbUKhgGbrNY-dK8ZMX0CcDRnMCxQx3s5/view?usp=sharing',
             closeCommandCenter,
           )
         }
@@ -233,17 +233,17 @@ const AllExtras: FC<WithCloseCommandCenter> = ({ closeCommandCenter }) => {
 const AllUses: FC = () => {
   return (
     <CommandGroup heading="Uses">
-      <CommandItem onSelect={() => openWebsite("/uses/coding")}>
+      <CommandItem onSelect={() => openWebsite('/uses/coding')}>
         <SquareChevronRight className="mr-2 h-4 w-4" />
         <span>Coding</span>
       </CommandItem>
 
-      <CommandItem onSelect={() => openWebsite("/uses/gadgets")}>
+      <CommandItem onSelect={() => openWebsite('/uses/gadgets')}>
         <PocketKnife className="mr-2 h-4 w-4" />
         <span>Gadgets</span>
       </CommandItem>
 
-      <CommandItem onSelect={() => openWebsite("/uses/software")}>
+      <CommandItem onSelect={() => openWebsite('/uses/software')}>
         <FolderCode className="mr-2 h-4 w-4" />
         <span>Software</span>
       </CommandItem>
@@ -304,4 +304,4 @@ export const CommandCenterContent: FC<CommandCenterContentProps> = ({ isOpen, se
   );
 };
 
-CommandCenterContent.displayName = "CommandCenterContent";
+CommandCenterContent.displayName = 'CommandCenterContent';
