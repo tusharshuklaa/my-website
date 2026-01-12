@@ -1,0 +1,17 @@
+name: Setup Biome
+
+on: [push, pull_request] # This tells GitHub when to run the workflow
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2.7.0
+        
+      # Example of a following step to actually run Biome
+      - name: Run Biome
+        run: npx @biomejs/biome ci .
