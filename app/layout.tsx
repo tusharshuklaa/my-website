@@ -1,5 +1,6 @@
 import type { Viewport, Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Dongle, Poppins } from "next/font/google";
 import { ThemeProvider } from "@components/theme-provider";
 import { InfoBar } from "@components/info-bar";
@@ -30,6 +31,14 @@ export const metadata: Metadata = {
     siteName: "Tushar Shukla | Portfolio website",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dx91z87ok/image/upload/v1/og-default",
+        width: 1200,
+        height: 630,
+        alt: "Tushar Shukla | Portfolio website",
+      },
+    ],
   },
   robots: {
     index: true,
@@ -96,6 +105,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

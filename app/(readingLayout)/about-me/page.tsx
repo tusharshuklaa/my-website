@@ -1,11 +1,37 @@
 import { FC } from "react";
+import type { Metadata } from "next";
 import { SnapSection } from "@components/snap-container";
 import { AnimatedHeading, Heading2 } from "@components/text";
 import { PrettyLink } from "@components/pretty-link";
 import { Spotlight } from "@components/ui";
-import { cn } from "@/lib/utils";
+import { cn, absoluteUrl } from "@/lib/utils";
 import { BasicUiComponent } from "@/types";
 import { AdvImage } from "@/components/adv-image";
+
+export const metadata: Metadata = {
+  title: "About Me | Tushar Shukla",
+  description:
+    "Learn about Tushar Shukla, a Senior Frontend Developer with 11+ years of experience in React, TypeScript, and web performance optimization. Passionate about CSS art and continuous learning.",
+  keywords: [
+    "about",
+    "frontend developer",
+    "React",
+    "TypeScript",
+    "web performance",
+    "CSS art",
+  ],
+  openGraph: {
+    type: "website",
+    title: "About Me | Tushar Shukla",
+    description:
+      "Senior Frontend Developer with 11+ years of experience. Specializing in React, TypeScript, web performance, and CSS art.",
+    url: absoluteUrl("/about-me"),
+    siteName: "Tushar Shukla | Portfolio",
+  },
+  alternates: {
+    canonical: absoluteUrl("/about-me"),
+  },
+};
 
 const JustText: FC<BasicUiComponent> = ({ children, className }) => (
   <p className={cn("mt-4 text-justify leading-8 tracking-wider", className)}>{children}</p>

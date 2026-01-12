@@ -39,7 +39,72 @@ export async function generateMetadata({ params }: BlogPageParams): Promise<Meta
   }
 
   const ogImage = getCldOgImageUrl({
-    src: blogPost.slug,
+    src: blogPost.img,
+    width: 1200,
+    height: 630,
+    crop: "fill",
+    gravity: "auto",
+    overlays: [
+      {
+        publicId: "overlay",
+        width: 1200,
+        height: 630,
+        effects: [
+          {
+            colorize: "100,co_black",
+          },
+          {
+            opacity: 50,
+          },
+        ],
+      },
+      {
+        text: {
+          text: blogPost.title,
+          fontFamily: "Georgia",
+          fontSize: 60,
+          fontWeight: "bold",
+          letterSpacing: -2,
+          lineSpacing: -10,
+          color: "white",
+        },
+        position: {
+          x: 80,
+          y: 100,
+        },
+        width: 1040,
+        crop: "fit",
+      },
+      {
+        text: {
+          text: blogPost.summary.substring(0, 120) + (blogPost.summary.length > 120 ? "..." : ""),
+          fontFamily: "Georgia",
+          fontSize: 20,
+          fontWeight: "normal",
+          lineSpacing: 3,
+          color: "#d1d5db",
+        },
+        position: {
+          x: 80,
+          y: 380,
+        },
+        width: 1040,
+        crop: "fit",
+      },
+      {
+        text: {
+          text: `by ${blogPost.author}`,
+          fontFamily: "Georgia",
+          fontSize: 16,
+          fontWeight: "normal",
+          color: "#9ca3af",
+        },
+        position: {
+          x: 80,
+          y: 590,
+        },
+      },
+    ],
   });
 
   return {
