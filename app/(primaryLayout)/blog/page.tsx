@@ -1,9 +1,8 @@
-"use client";
-
+import type { Metadata } from "next";
 import { FC, useCallback, useMemo, useState } from "react";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allBlogs, Blog } from "@content";
-import { cn } from "@/lib/utils";
+import { cn, absoluteUrl } from "@/lib/utils";
 import { BentoGrid, BentoGridItem, HoverCards, PlaceholdersAndVanishInput } from "@ui";
 import { ArticleHero } from "@components/blog-hero";
 import { BentoThreeDCard } from "@components/bento-three-d-card";
@@ -11,6 +10,34 @@ import { LuminenceSkeleton, AnimatedContentSkeleton, ChatSkeleton, ImageSkeleton
 import { SearchResults } from "@components/search-results";
 import { BlogSortDropdown, BlogSortTypes, SortingType } from "@components/blog-sort-dropdown";
 import { useMdxContent } from "@/hooks/use-mdx-content";
+
+export const metadata: Metadata = {
+  title: "Blog | Tushar Shukla",
+  description:
+    "Explore articles on frontend development, web performance, React, TypeScript, CSS art, and web development best practices. Insights from a Senior Frontend Developer.",
+  keywords: [
+    "blog",
+    "frontend development",
+    "React",
+    "TypeScript",
+    "web performance",
+    "CSS art",
+    "web development",
+  ],
+  openGraph: {
+    type: "website",
+    title: "Blog | Tushar Shukla",
+    description:
+      "Explore articles on frontend development, web performance, React, TypeScript, CSS art, and web development best practices.",
+    url: absoluteUrl("/blog"),
+    siteName: "Tushar Shukla | Portfolio",
+  },
+  alternates: {
+    canonical: absoluteUrl("/blog"),
+  },
+};
+
+"use client";
 
 const placeholders = ["react", "performance", "css art", "productivity"];
 

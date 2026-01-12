@@ -30,6 +30,14 @@ export const metadata: Metadata = {
     siteName: "Tushar Shukla | Portfolio website",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dx91z87ok/image/upload/v1/og-default",
+        width: 1200,
+        height: 630,
+        alt: "Tushar Shukla | Portfolio website",
+      },
+    ],
   },
   robots: {
     index: true,

@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import { FC } from "react";
 import ShowcaseData from "@/data/showcase.json";
 import { Showcase } from "@/components/showcase-slider";
@@ -7,6 +6,26 @@ import { ArticleHero } from "@/components/blog-hero";
 import { SearchResults } from "@/components/search-results";
 import { PlaceholdersAndVanishInput, HoverCards } from "@ui";
 import { useMdxContent } from "@/hooks/use-mdx-content";
+import { absoluteUrl } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Showcase | Tushar Shukla",
+  description:
+    "Explore my creative projects and showcase of work including CSS art, interactive games, and code experiments on GitHub Gists and CodePen.",
+  keywords: ["showcase", "projects", "CSS art", "interactive design", "CodePen", "GitHub"],
+  openGraph: {
+    type: "website",
+    title: "Showcase | Tushar Shukla",
+    description: "Creative projects and portfolio showcase including CSS art, games, and interactive experiments.",
+    url: absoluteUrl("/showcase"),
+    siteName: "Tushar Shukla | Portfolio",
+  },
+  alternates: {
+    canonical: absoluteUrl("/showcase"),
+  },
+};
+
+"use client";
 
 const placeholders = ["css art", "game", "codepen", "github gist"];
 

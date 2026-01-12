@@ -49,7 +49,7 @@
     "lucide-react": "^0.439.0",
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.23.12",
-    "next": "^14.2.13",
+    "next": "14.2.35",
     "next-cloudinary": "^6.16.0",
     "next-contentlayer2": "^0.5.3",
     "next-themes": "^0.3.0",

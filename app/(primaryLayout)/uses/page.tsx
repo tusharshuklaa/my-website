@@ -1,7 +1,26 @@
 import { FC } from "react";
+import type { Metadata } from "next";
 import { FileCode2, MonitorCog, PocketKnife } from "lucide-react";
 import { MechaCard } from "@components/mecha-card";
 import { SnapSection } from "@components/snap-container";
+import { absoluteUrl } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Uses | Tushar Shukla",
+  description:
+    "Discover the tools, software, gadgets, and technologies I use daily for web development and productivity.",
+  keywords: ["uses", "tools", "coding", "gadgets", "software", "development stack"],
+  openGraph: {
+    type: "website",
+    title: "Uses | Tushar Shukla",
+    description: "The tools, software, and gadgets I use for web development and daily work.",
+    url: absoluteUrl("/uses"),
+    siteName: "Tushar Shukla | Portfolio",
+  },
+  alternates: {
+    canonical: absoluteUrl("/uses"),
+  },
+};
 
 const UsesPage: FC = () => {
   return (
