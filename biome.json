@@ -8,18 +8,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": [
-      "app",
-      "components",
-      "contexts",
-      "data",
-      "hooks",
-      "lib",
-      "scripts",
-      "types",
-      "!.vscode",
-      "!*.config.*"
-    ]
+    "includes": ["app", "components", "contexts", "data", "hooks", "lib", "scripts", "types", "!.vscode", "!*.config.*"]
   },
   "formatter": {
     "enabled": true,
