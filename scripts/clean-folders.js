@@ -1,8 +1,8 @@
-const fs = require("fs");
+const fs = require('node:fs');
 
-const foldersToDelete = ["node_modules", ".turbo", "dist", ".next"];
+const foldersToDelete = ['node_modules', '.turbo', 'dist', '.next'];
 
-const dirStartPath = ["apps", "packages"];
+const dirStartPath = ['apps', 'packages'];
 process.stdout.write(`Folder cleanup started...\n`);
 
 const findFoldersByName = (startPath, folders) => {

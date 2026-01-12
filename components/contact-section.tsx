@@ -1,46 +1,46 @@
-import { FC } from "react";
-import { motion } from "motion/react";
-import { UiComponent } from "@/types";
-import { cn } from "@/lib/utils";
-import { GradientText } from "@components/text";
-import { AnimatedLink, AnimatedLinkProps } from "@components/animated-link";
+import { AnimatedLink, type AnimatedLinkProps } from '@components/animated-link';
+import { GradientText } from '@components/text';
+import { motion } from 'motion/react';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 const contactLinks: Array<AnimatedLinkProps> = [
   {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/tusharshuklaa/",
-    color: "blue",
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/tusharshuklaa/',
+    color: 'blue',
   },
   {
-    name: "GitHub",
-    url: "https://github.com/tusharshuklaa",
-    color: "purple",
+    name: 'GitHub',
+    url: 'https://github.com/tusharshuklaa',
+    color: 'purple',
   },
   {
-    name: "X (Twitter)",
-    url: "https://x.com/theTSguy",
-    color: "indigo",
+    name: 'X (Twitter)',
+    url: 'https://x.com/theTSguy',
+    color: 'indigo',
   },
   {
-    name: "Stack Overflow",
-    url: "https://stackoverflow.com/users/2996624/tushar-shukla",
-    color: "orange",
+    name: 'Stack Overflow',
+    url: 'https://stackoverflow.com/users/2996624/tushar-shukla',
+    color: 'orange',
   },
   {
-    name: "Codepen",
-    url: "https://codepen.io/tusharshukla",
-    color: "green",
+    name: 'Codepen',
+    url: 'https://codepen.io/tusharshukla',
+    color: 'green',
   },
   {
-    name: "Email",
-    url: "mailto:tusharshukla.dev@gmail.com",
-    color: "red",
+    name: 'Email',
+    url: 'mailto:tusharshukla.dev@gmail.com',
+    color: 'red',
   },
 ];
 
 export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
   const contactSectionClasses = cn(
-    "max-w-sm md:max-w-4xl lg:max-w-7xl m-auto py-4 px-4 sm:px-0 pt-16 md:pt-28 flex flex-col justify-center",
+    'max-w-sm md:max-w-4xl lg:max-w-7xl m-auto py-4 px-4 sm:px-0 pt-16 md:pt-28 flex flex-col justify-center',
     className,
   );
 
@@ -97,12 +97,12 @@ export const ContactSection: FC<UiComponent> = ({ className, ...props }) => {
       </div>
 
       <div className="mt-20 grid grid-cols-2 gap-2 sm:gap-0 md:mt-32 md:flex md:justify-between">
-        {contactLinks.map(({ color, name, url }, index) => (
-          <AnimatedLink key={index} color={color} name={name} url={url} className="text-lg" />
+        {contactLinks.map(({ color, name, url }) => (
+          <AnimatedLink key={name} color={color} name={name} url={url} className="text-lg" />
         ))}
       </div>
     </section>
   );
 };
 
-ContactSection.displayName = "ContactSection";
+ContactSection.displayName = 'ContactSection';

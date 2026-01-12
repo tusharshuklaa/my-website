@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { SparklesCore } from "@ui";
-import { cn } from "@/lib/utils";
-import { UiComponent } from "@/types";
+import { SparklesCore } from '@ui';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type ArticleHeroProps = UiComponent<{
   text: string;
@@ -11,7 +11,7 @@ type ArticleHeroProps = UiComponent<{
 
 export const ArticleHero: FC<ArticleHeroProps> = ({ className, text }) => {
   const articleHeroClasses = cn(
-    "h-64 md:h-[30rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md",
+    'h-64 md:h-[30rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md',
     className,
   );
   return (
@@ -40,4 +40,4 @@ export const ArticleHero: FC<ArticleHeroProps> = ({ className, text }) => {
   );
 };
 
-ArticleHero.displayName = "BlogHero";
+ArticleHero.displayName = 'BlogHero';

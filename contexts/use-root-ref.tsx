@@ -1,5 +1,13 @@
-import React, { FC, createContext, useContext, useRef, ComponentPropsWithRef, useEffect, useCallback } from "react";
-import { PageTransition } from "@components/page-transition";
+import { PageTransition } from '@components/page-transition';
+import React, {
+  type ComponentPropsWithRef,
+  createContext,
+  type FC,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react';
 
 type RootRefContextType = {
   rootRef: React.RefObject<HTMLDivElement>;
@@ -9,14 +17,14 @@ type RootRefContextType = {
 
 const RootRefContext = createContext<RootRefContextType | undefined>(undefined);
 
-export const RootRefProvider: FC<ComponentPropsWithRef<"div">> = ({ children }) => {
+export const RootRefProvider: FC<ComponentPropsWithRef<'div'>> = ({ children }) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const [isMainReady, setIsMainReady] = React.useState(false);
 
   const setMainRef = useCallback((element: HTMLElement | null) => {
     if (element) {
-      Object.defineProperty(mainRef, "current", {
+      Object.defineProperty(mainRef, 'current', {
         value: element,
         writable: false,
         configurable: true,
@@ -26,12 +34,12 @@ export const RootRefProvider: FC<ComponentPropsWithRef<"div">> = ({ children }) 
   }, []);
 
   useEffect(() => {
-    const mainElement = document.getElementById("main") as HTMLElement;
+    const mainElement = document.getElementById('main') as HTMLElement;
     if (mainElement) {
       setMainRef(mainElement);
     } else {
       const timer = setTimeout(() => {
-        const retryElement = document.getElementById("main") as HTMLElement;
+        const retryElement = document.getElementById('main') as HTMLElement;
         if (retryElement) {
           setMainRef(retryElement);
         }
@@ -52,7 +60,7 @@ export const useRootRef = (): RootRefContextType => {
   const context = useContext(RootRefContext);
 
   if (!context) {
-    throw new Error("useRootRef must be used within a RootRefProvider");
+    throw new Error('useRootRef must be used within a RootRefProvider');
   }
   return context;
 };

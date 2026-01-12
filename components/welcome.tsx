@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { FunText } from "@/components/text";
-import { SnapSection } from "@/components/snap-container";
+import type { FC } from 'react';
+import { SnapSection } from '@/components/snap-container';
+import { FunText } from '@/components/text';
 
 export const Welcome: FC = () => {
   return (

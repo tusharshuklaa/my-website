@@ -1,8 +1,8 @@
-import { FC } from "react";
-import Link from "next/link";
-import { UiComponent } from "@/types";
-import { Blog } from "@/.contentlayer/generated";
-import { AdvImage } from "@components/adv-image";
+import { AdvImage } from '@components/adv-image';
+import Link from 'next/link';
+import type { FC } from 'react';
+import type { Blog } from '@/.contentlayer/generated';
+import type { UiComponent } from '@/types';
 
 type RelatedBlogListItemProps = UiComponent<{
   blog: Blog;
@@ -28,4 +28,4 @@ export const RelatedBlogListItem: FC<RelatedBlogListItemProps> = ({ blog, classN
   );
 };
 
-RelatedBlogListItem.displayName = "RelatedBlogListItem";
+RelatedBlogListItem.displayName = 'RelatedBlogListItem';

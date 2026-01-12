@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import React, { FC, PropsWithChildren } from "react";
-import { motion } from "motion/react";
-import Link, { LinkProps } from "next/link";
-import { BasicUiComponent } from "@/types";
-import { TextFlipper } from "@components/text";
-import { AdvImage } from "@components/adv-image";
-import { cn } from "@/lib/utils";
+import { AdvImage } from '@components/adv-image';
+import { TextFlipper } from '@components/text';
+import { motion } from 'motion/react';
+import Link, { type LinkProps } from 'next/link';
+import type { FC, PropsWithChildren } from 'react';
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent } from '@/types';
 
 const transition = {
-  type: "spring" as const,
+  type: 'spring' as const,
   mass: 0.5,
   damping: 11.5,
   stiffness: 100,
@@ -26,7 +26,7 @@ type MenuItemProps = PropsWithChildren &
   };
 
 export const MenuItem: FC<MenuItemProps> = ({ setActive, active, item, href, children, className }) => (
-  <div onMouseEnter={() => setActive?.(item)} className={cn("relative", className)}>
+  <div role="none" onMouseEnter={() => setActive?.(item)} className={cn('relative', className)}>
     <Link href={href}>
       <motion.p
         transition={{ duration: 0.3 }}
@@ -45,13 +45,10 @@ export const MenuItem: FC<MenuItemProps> = ({ setActive, active, item, href, chi
           <div className="absolute left-1/2 top-[calc(100%_+_1.2rem)] -translate-x-1/2 transform pt-4">
             <motion.div
               transition={transition}
-              layoutId="active" // layoutId ensures smooth animation
+              layoutId="active"
               className="overflow-hidden rounded-2xl border border-black/[0.2] bg-white shadow-xl backdrop-blur-sm dark:border-white/[0.2] dark:bg-black"
             >
-              <motion.div
-                layout // layout ensures smooth animation
-                className="h-full w-max p-4"
-              >
+              <motion.div layout className="h-full w-max p-4">
                 {children}
               </motion.div>
             </motion.div>

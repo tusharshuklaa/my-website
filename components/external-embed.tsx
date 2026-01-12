@@ -1,25 +1,25 @@
-"use client";
+'use client';
 
-import Script from "next/script";
-import React, { FC, useRef, useState } from "react";
+import Script from 'next/script';
+import { type FC, useRef, useState } from 'react';
 
 type EmbedProps = {
   url: string;
-  type?: "youtube" | "x" | "codepen" | "codesandbox";
-  aspectRatio?: "16:9" | "4:3" | "1:1";
+  type?: 'youtube' | 'x' | 'codepen' | 'codesandbox';
+  aspectRatio?: '16:9' | '4:3' | '1:1';
 };
 
-export const ExternalEmbed: FC<EmbedProps> = ({ url, type, aspectRatio = "16:9" }) => {
+export const ExternalEmbed: FC<EmbedProps> = ({ url, type, aspectRatio = '16:9' }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const theme = "dark";
+  const theme = 'dark';
 
   // Validate URL
   const isValidUrl = (url: string): boolean => {
     try {
       const parsedUrl = new URL(url);
-      return ["x.com", "twitter.com", "youtube.com", "youtu.be", "codepen.io", "codesandbox.io"].some(domain =>
+      return ['x.com', 'twitter.com', 'youtube.com', 'youtu.be', 'codepen.io', 'codesandbox.io'].some(domain =>
         parsedUrl.hostname.includes(domain),
       );
     } catch {
@@ -35,30 +35,30 @@ export const ExternalEmbed: FC<EmbedProps> = ({ url, type, aspectRatio = "16:9" 
 
   const getEmbedContent = (url: string, type?: string) => {
     switch (type) {
-      case "x": {
+      case 'x': {
         const tweetId = extractTweetId(url);
         if (!tweetId) {
-          setError("Invalid X/Twitter URL");
+          setError('Invalid X/Twitter URL');
           return null;
         }
         return (
           <>
             <blockquote className="twitter-tweet" data-theme={theme} data-dnt="true">
-              <a href={url}></a>
+              <a href={url}>-</a>
             </blockquote>
             <Script
               src="https://platform.twitter.com/widgets.js"
               strategy="lazyOnload"
               onLoad={() => setIsLoading(false)}
-              onError={() => setError("Failed to load X/Twitter embed")}
+              onError={() => setError('Failed to load X/Twitter embed')}
             />
           </>
         );
       }
-      case "youtube": {
+      case 'youtube': {
         const videoId = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/)?.[1];
         if (!videoId) {
-          setError("Invalid YouTube URL");
+          setError('Invalid YouTube URL');
           return null;
         }
         return (
@@ -73,10 +73,10 @@ export const ExternalEmbed: FC<EmbedProps> = ({ url, type, aspectRatio = "16:9" 
           />
         );
       }
-      case "codepen": {
+      case 'codepen': {
         const penMatch = url.match(/codepen\.io\/([^/]+)\/pen\/([^/?]+)/);
         if (!penMatch) {
-          setError("Invalid CodePen URL");
+          setError('Invalid CodePen URL');
           return null;
         }
         const [_, username, penId] = penMatch;
@@ -90,10 +90,10 @@ export const ExternalEmbed: FC<EmbedProps> = ({ url, type, aspectRatio = "16:9" 
           />
         );
       }
-      case "codesandbox": {
-        const sandboxId = url.split("/").pop();
+      case 'codesandbox': {
+        const sandboxId = url.split('/').pop();
         if (!sandboxId) {
-          setError("Invalid CodeSandbox URL");
+          setError('Invalid CodeSandbox URL');
           return null;
         }
         return (
@@ -110,19 +110,19 @@ export const ExternalEmbed: FC<EmbedProps> = ({ url, type, aspectRatio = "16:9" 
         );
       }
       default:
-        setError("Unsupported embed type");
+        setError('Unsupported embed type');
         return null;
     }
   };
 
   if (!isValidUrl(url)) {
-    console.error("Invalid URL provided to ExternalEmbed");
+    console.error('Invalid URL provided to ExternalEmbed');
     return null;
   }
 
   // Calculate aspect ratio
   const getPaddingTop = (ratio: string): string => {
-    const [width, height] = ratio.split(":").map(Number);
+    const [width, height] = ratio.split(':').map(Number);
     return `${(height / width) * 100}%`;
   };
 
@@ -130,7 +130,7 @@ export const ExternalEmbed: FC<EmbedProps> = ({ url, type, aspectRatio = "16:9" 
     <div
       ref={containerRef}
       className="relative w-full"
-      style={{ minHeight: "300px", paddingTop: type === "x" ? "0" : getPaddingTop(aspectRatio) }}
+      style={{ minHeight: '300px', paddingTop: type === 'x' ? '0' : getPaddingTop(aspectRatio) }}
     >
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100">

@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import React, { FC, useState, useEffect } from "react";
-import { ImageProps } from "next/image";
-import { motion } from "motion/react";
-import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@ui";
-import { AdvImage } from "@components/adv-image";
-import { UiComponent } from "@/types";
-import { useZoomablePan } from "@/hooks/use-zoomable-pan";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { AdvImage } from '@components/adv-image';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@ui';
+import { RotateCcw, ZoomIn, ZoomOut } from 'lucide-react';
+import { motion } from 'motion/react';
+import type { ImageProps } from 'next/image';
+import React, { type FC, useEffect, useState } from 'react';
+import { useZoomablePan } from '@/hooks/use-zoomable-pan';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type ZoomableImagePreviewProps = UiComponent &
-  Omit<ImageProps, "width" | "height"> & {
+  Omit<ImageProps, 'width' | 'height'> & {
     width?: number;
     height?: number;
   };
@@ -25,7 +25,7 @@ const ZoomInstructions = React.memo(() => (
   </div>
 ));
 
-ZoomInstructions.displayName = "ZoomInstructions";
+ZoomInstructions.displayName = 'ZoomInstructions';
 
 const SkeletonLoader = React.memo(() => (
   <div className="flex h-full w-full items-center justify-center bg-gray-800">
@@ -33,7 +33,7 @@ const SkeletonLoader = React.memo(() => (
   </div>
 ));
 
-SkeletonLoader.displayName = "SkeletonLoader";
+SkeletonLoader.displayName = 'SkeletonLoader';
 
 const ErrorState = React.memo(() => (
   <div className="flex h-full w-full items-center justify-center bg-gray-800 text-gray-400">
@@ -44,7 +44,7 @@ const ErrorState = React.memo(() => (
   </div>
 ));
 
-ErrorState.displayName = "ErrorState";
+ErrorState.displayName = 'ErrorState';
 
 const ZoomLevelBadge: FC<{ scale: number }> = ({ scale }) => (
   <div className="absolute left-4 top-4 z-50 rounded-lg bg-gray-800/90 px-3 py-1 text-sm text-gray-200 backdrop-blur-sm">
@@ -62,6 +62,7 @@ type ZoomControlsProps = {
 const ZoomControls = React.memo(({ zoomState, zoomIn, zoomOut, reset }: ZoomControlsProps) => (
   <div className="mb-3 flex items-center justify-center gap-4">
     <button
+      type="button"
       onClick={zoomOut}
       disabled={zoomState.scale <= 0.5}
       aria-label="Zoom out"
@@ -71,6 +72,7 @@ const ZoomControls = React.memo(({ zoomState, zoomIn, zoomOut, reset }: ZoomCont
     </button>
 
     <button
+      type="button"
       onClick={reset}
       disabled={zoomState.scale === 1}
       aria-label="Reset zoom"
@@ -80,6 +82,7 @@ const ZoomControls = React.memo(({ zoomState, zoomIn, zoomOut, reset }: ZoomCont
     </button>
 
     <button
+      type="button"
       onClick={zoomIn}
       disabled={zoomState.scale >= 2.0}
       aria-label="Zoom in"
@@ -90,7 +93,7 @@ const ZoomControls = React.memo(({ zoomState, zoomIn, zoomOut, reset }: ZoomCont
   </div>
 ));
 
-ZoomControls.displayName = "ZoomControls";
+ZoomControls.displayName = 'ZoomControls';
 
 /* ── Main Component ───────────────────────── */
 export const ZoomableImgPreview: FC<ZoomableImagePreviewProps> = ({
@@ -153,7 +156,7 @@ export const ZoomableImgPreview: FC<ZoomableImagePreviewProps> = ({
   }, [isOpen]);
 
   const containerClasses = cn(
-    "relative h-[70vh] w-full select-none overflow-hidden rounded-t-lg bg-gray-800",
+    'relative h-[70vh] w-full select-none overflow-hidden rounded-t-lg bg-gray-800',
     className,
   );
 
@@ -179,7 +182,7 @@ export const ZoomableImgPreview: FC<ZoomableImagePreviewProps> = ({
       >
         <VisuallyHidden asChild>
           <DialogTitle className="text-lg font-semibold text-gray-200">
-            Image preview - {alt || "Zoomable Image"}
+            Image preview - {alt || 'Zoomable Image'}
           </DialogTitle>
         </VisuallyHidden>
 
@@ -203,10 +206,10 @@ export const ZoomableImgPreview: FC<ZoomableImagePreviewProps> = ({
               scale: motionValues.scale,
               x: motionValues.x,
               y: motionValues.y,
-              cursor: zoomState.scale > 1 ? (isDragging ? "grabbing" : "grab") : "default",
-              touchAction: zoomState.scale > 1 ? "none" : "auto",
+              cursor: zoomState.scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default',
+              touchAction: zoomState.scale > 1 ? 'none' : 'auto',
             }}
-            transition={{ type: "spring", stiffness: 500, damping: 50 }}
+            transition={{ type: 'spring', stiffness: 500, damping: 50 }}
             className="h-full w-full"
           >
             <AdvImage
@@ -233,4 +236,4 @@ export const ZoomableImgPreview: FC<ZoomableImagePreviewProps> = ({
   );
 };
 
-ZoomableImgPreview.displayName = "ZoomableImgPreview";
+ZoomableImgPreview.displayName = 'ZoomableImgPreview';

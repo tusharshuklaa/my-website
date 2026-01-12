@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import type { SVGProps } from 'react';
 
 export interface Iphone15ProProps extends SVGProps<SVGSVGElement> {
   width?: number;
@@ -27,6 +27,7 @@ export function Iphone15Pro({
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
+      <title>iPhone 15 Pro image</title>
       <path
         d="M2 73C2 32.6832 34.6832 0 75 0H357C397.317 0 430 32.6832 430 73V809C430 849.317 397.317 882 357 882H75C34.6832 882 2 849.317 2 809V73Z"
         className="fill-[#E5E5E5] dark:fill-[#404040]"

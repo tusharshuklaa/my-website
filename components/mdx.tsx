@@ -1,15 +1,15 @@
-import { FC } from "react";
-import Link from "next/link";
-import type { MDXComponents } from "mdx/types";
-import { useMDXComponent } from "next-contentlayer2/hooks";
-import { AnimatedHeading } from "@components/text/heading";
-import { GradientText } from "@components/text";
-import { cn } from "@/lib/utils";
-import { PrettyLink } from "@components/pretty-link";
-import { ExternalEmbed } from "@components/external-embed";
-import { MultiColumn } from "@components/multi-column";
-import { ZoomableImgPreview } from "@components/zoomable-img-preview";
-import { CodeBlock } from "@components/code-block";
+import { CodeBlock } from '@components/code-block';
+import { ExternalEmbed } from '@components/external-embed';
+import { MultiColumn } from '@components/multi-column';
+import { PrettyLink } from '@components/pretty-link';
+import { GradientText } from '@components/text';
+import { AnimatedHeading } from '@components/text/heading';
+import { ZoomableImgPreview } from '@components/zoomable-img-preview';
+import type { MDXComponents } from 'mdx/types';
+import Link from 'next/link';
+import { useMDXComponent } from 'next-contentlayer2/hooks';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
 
 type MdxProps = {
   code: string;
@@ -19,7 +19,7 @@ const components: MDXComponents = {
   // Heading
   h1: ({ ...props }) => {
     return (
-      <AnimatedHeading {...props} className={cn("mt-4 !leading-snug tracking-wide", props.className)}>
+      <AnimatedHeading {...props} className={cn('mt-4 !leading-snug tracking-wide', props.className)}>
         <GradientText text={props.children} color="blue" />
       </AnimatedHeading>
     );
@@ -28,7 +28,7 @@ const components: MDXComponents = {
     <h2
       {...props}
       className={cn(
-        "relative mb-2 mt-20 max-w-fit text-2xl font-bold !leading-snug tracking-wide text-blogText",
+        'relative mb-2 mt-20 max-w-fit text-2xl font-bold !leading-snug tracking-wide text-blogText',
         props.className,
       )}
     />
@@ -37,17 +37,17 @@ const components: MDXComponents = {
     <h3
       {...props}
       className={cn(
-        "relative mb-4 mt-8 max-w-fit text-xl font-bold !leading-snug tracking-wide text-blogText",
+        'relative mb-4 mt-8 max-w-fit text-xl font-bold !leading-snug tracking-wide text-blogText',
         props.className,
       )}
     />
   ),
   h4: ({ ...props }) => (
-    <h4 {...props} className={cn("text-xl font-bold !leading-snug tracking-wide", props.className)}></h4>
+    <h4 {...props} className={cn('text-xl font-bold !leading-snug tracking-wide', props.className)}></h4>
   ),
   // Paragraph
   p: ({ ...props }) => (
-    <span {...props} className={cn("mb-4 text-balance leading-8 tracking-wider", props.className)}></span>
+    <span {...props} className={cn('mb-4 text-balance leading-8 tracking-wider', props.className)}></span>
   ),
   // List
   ol: ({ ...props }) => (
@@ -67,41 +67,41 @@ const components: MDXComponents = {
     <li
       {...props}
       className={cn(
-        "mb-4 pl-2 leading-8 tracking-wider [&>ol]:mb-2 [&>ol]:mt-2 [&>ol]:list-inside [&>ul]:mb-2 [&>ul]:mt-2 [&>ul]:list-inside",
+        'mb-4 pl-2 leading-8 tracking-wider [&>ol]:mb-2 [&>ol]:mt-2 [&>ol]:list-inside [&>ul]:mb-2 [&>ul]:mt-2 [&>ul]:list-inside',
         props.className,
       )}
     ></li>
   ),
   // Link
   a: ({ ...props }) => {
-    const href = props.href || "";
+    const href = props.href || '';
 
-    if (props.className?.includes("subheading-anchor")) {
+    if (props.className?.includes('subheading-anchor')) {
       return <Link {...props} href={href} />;
     }
 
-    const target = props.href?.startsWith("http") ? "_blank" : "_self";
-    const title = props.title || "";
+    const target = props.href?.startsWith('http') ? '_blank' : '_self';
+    const title = props.title || '';
 
     return <PrettyLink {...props} href={href} target={target} title={title} hoverEffect={false} />;
   },
   // Image
   img: ({ ...props }) => {
-    const altText = props.alt || props.title || "";
+    const altText = props.alt || props.title || '';
 
     return props.src ? <ZoomableImgPreview src={props.src} alt={altText} /> : null;
   },
   code: ({ ...props }) => (
     <code
       {...props}
-      className={cn("inline px-[6px] py-[3px] font-mono [pre_&]:px-0 [pre_&]:py-0", props.className)}
+      className={cn('inline px-[6px] py-[3px] font-mono [pre_&]:px-0 [pre_&]:py-0', props.className)}
     ></code>
   ),
   // Blockquote
   blockquote: ({ ...props }) => (
     <blockquote
       className={cn(
-        "relative my-8 space-y-2 rounded-r-lg border-l-4 border-blue-500 bg-gray-50 py-4 pl-6 pr-8 text-gray-700 dark:border-blue-400 dark:bg-gray-800/50 dark:text-gray-200 [&:has(footer)]:pb-12 [&:not(:has(footer))]:pb-4",
+        'relative my-8 space-y-2 rounded-r-lg border-l-4 border-blue-500 bg-gray-50 py-4 pl-6 pr-8 text-gray-700 dark:border-blue-400 dark:bg-gray-800/50 dark:text-gray-200 [&:has(footer)]:pb-12 [&:not(:has(footer))]:pb-4',
         "[&>p:first-of-type]:before:text-4xl [&>p:first-of-type]:before:text-blue-500 [&>p:first-of-type]:before:content-['“'] [&>p:first-of-type]:before:dark:text-blue-400 [&>p]:text-lg [&>p]:font-medium [&>p]:leading-relaxed",
         "[&>p:first-of-type]:before:mr-1 [&>p:first-of-type]:before:font-serif [&>p:first-of-type]:before:leading-3 [&>p:last-of-type]:after:ml-1 [&>p:last-of-type]:after:font-serif [&>p:last-of-type]:after:text-4xl [&>p:last-of-type]:after:leading-3 [&>p:last-of-type]:after:text-blue-500 [&>p:last-of-type]:after:content-['”'] [&>p:last-of-type]:after:dark:text-blue-400",
         "before:absolute before:right-1 before:top-8 before:font-serif before:text-7xl before:leading-3 before:text-blue-500 before:opacity-50 before:content-['”'] before:dark:text-blue-400",
@@ -163,7 +163,7 @@ const components: MDXComponents = {
     <code
       {...props}
       className={cn(
-        "rounded bg-rose-50 px-1.5 py-0.5 font-mono text-[13px] text-rose-700 dark:bg-rose-900/30 dark:text-rose-200",
+        'rounded bg-rose-50 px-1.5 py-0.5 font-mono text-[13px] text-rose-700 dark:bg-rose-900/30 dark:text-rose-200',
         props.className,
       )}
     ></code>
@@ -171,7 +171,7 @@ const components: MDXComponents = {
   // Preformatted Text
   pre: ({ ...props }) => <CodeBlock {...props} />,
   input: ({ ...props }) => {
-    if (props.type === "checkbox") {
+    if (props.type === 'checkbox') {
       return (
         <label className="relative inline-flex items-center gap-2">
           <input
@@ -182,6 +182,7 @@ const components: MDXComponents = {
             className="pointer-events-none absolute left-0 h-5 w-5 stroke-white stroke-[3] opacity-0 peer-checked:opacity-100"
             viewBox="0 0 24 24"
           >
+            <title>Checkmark</title>
             <polyline points="20 6 9 17 4 12" fill="none" />
           </svg>
           <span className="cursor-pointer select-none text-gray-700 hover:text-gray-900">{props.children}</span>
@@ -191,8 +192,8 @@ const components: MDXComponents = {
 
     return <input {...props} />;
   },
-  mark: ({ ...props }) => <mark {...props} className={cn("bg-violet-900", props.className)}></mark>,
-  "external-embed": props => <ExternalEmbed {...props} />,
+  mark: ({ ...props }) => <mark {...props} className={cn('bg-violet-900', props.className)}></mark>,
+  'external-embed': props => <ExternalEmbed {...props} />,
   MultiColumn,
 };
 
@@ -202,4 +203,4 @@ export const Mdx: FC<MdxProps> = ({ code }) => {
   return <Component components={components} />;
 };
 
-Mdx.displayName = "MdxComponent";
+Mdx.displayName = 'MdxComponent';

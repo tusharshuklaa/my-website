@@ -1,9 +1,9 @@
-import { FC } from "react";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Underline } from "@components/text";
-import { DownloadResumeButton } from "@components/download-resume-button";
-import { SupportButton } from "@components/support-button";
+import { DownloadResumeButton } from '@components/download-resume-button';
+import { SupportButton } from '@components/support-button';
+import { Underline } from '@components/text';
+import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
+import type { FC } from 'react';
 
 type FooterItemProps = {
   url: string;
@@ -21,12 +21,12 @@ const FooterListItem: FC<FooterItemProps> = ({ url, text }) => (
 );
 
 const footerLinks = [
-  { url: "/blog", text: "Blog" },
-  { url: "/", text: "Home" },
-  { url: "/about-me", text: "About Me" },
-  { url: "/showcase", text: "Showcase" },
-  { url: "/uses", text: "Uses" },
-  { url: "/privacy-policy", text: "Privacy Policy" },
+  { url: '/blog', text: 'Blog' },
+  { url: '/', text: 'Home' },
+  { url: '/about-me', text: 'About Me' },
+  { url: '/showcase', text: 'Showcase' },
+  { url: '/uses', text: 'Uses' },
+  { url: '/privacy-policy', text: 'Privacy Policy' },
 ];
 
 export const Footer: FC = () => {
@@ -38,25 +38,25 @@ export const Footer: FC = () => {
         <div className="w-full md:w-1/2">
           <h3 className="mb-4 text-3xl">Tushar&apos;s Personal Website</h3>
           <p>
-            Design inspired by casual internet surfing 😆 and coded in{" "}
+            Design inspired by casual internet surfing 😆 and coded in{' '}
             <Link href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">
               <Underline>Visual Studio Code</Underline>
             </Link>
-            . Built with{" "}
+            . Built with{' '}
             <Link href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">
               <Underline>Next.js</Underline>
             </Link>
-            ,{" "}
+            ,{' '}
             <Link href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">
               <Underline>Tailwind</Underline>
             </Link>
             , lots of coffee and ❤️
           </p>
           <p className="mt-4">
-            Show some love to my{" "}
+            Show some love to my{' '}
             <Link href="https://github.com/tusharshuklaa/my-website" target="_blank" rel="noopener noreferrer">
               <Underline>Github repository</Underline>
-            </Link>{" "}
+            </Link>{' '}
             for this website
           </p>
           {/* <p className="mt-4">
@@ -73,8 +73,8 @@ export const Footer: FC = () => {
         <div className="mt-8 w-full shrink-0 md:mt-0 md:w-1/4">
           <h4 className="mb-4 text-3xl">Pages</h4>
           <ul className="flex flex-col gap-2">
-            {footerLinks.map((link, index) => (
-              <FooterListItem key={index} {...link} />
+            {footerLinks.map(link => (
+              <FooterListItem key={link.url} {...link} />
             ))}
           </ul>
         </div>

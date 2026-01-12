@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { FC, useCallback, useMemo, useState } from "react";
-import { compareDesc, format, parseISO } from "date-fns";
-import { allBlogs, Blog } from "@content";
-import { cn } from "@/lib/utils";
-import { BentoGrid, BentoGridItem, HoverCards, PlaceholdersAndVanishInput } from "@ui";
-import { ArticleHero } from "@components/blog-hero";
-import { BentoThreeDCard } from "@components/bento-three-d-card";
-import { LuminenceSkeleton, AnimatedContentSkeleton, ChatSkeleton, ImageSkeleton } from "@components/bento-skeleton";
-import { SearchResults } from "@components/search-results";
-import { BlogSortDropdown, BlogSortTypes, SortingType } from "@components/blog-sort-dropdown";
-import { useMdxContent } from "@/hooks/use-mdx-content";
+import { AnimatedContentSkeleton, ChatSkeleton, ImageSkeleton, LuminenceSkeleton } from '@components/bento-skeleton';
+import { BentoThreeDCard } from '@components/bento-three-d-card';
+import { ArticleHero } from '@components/blog-hero';
+import { BlogSortDropdown, BlogSortTypes, type SortingType } from '@components/blog-sort-dropdown';
+import { SearchResults } from '@components/search-results';
+import { allBlogs, type Blog } from '@content';
+import { BentoGrid, BentoGridItem, HoverCards, PlaceholdersAndVanishInput } from '@ui';
+import { compareDesc, format, parseISO } from 'date-fns';
+import { type FC, useCallback, useMemo, useState } from 'react';
+import { useMdxContent } from '@/hooks/use-mdx-content';
+import { cn } from '@/lib/utils';
 
-const placeholders = ["react", "performance", "css art", "productivity"];
+const placeholders = ['react', 'performance', 'css art', 'productivity'];
 
 export const BlogClientPage: FC = () => {
   const [sortingType, setSortingType] = useState<SortingType>(BlogSortTypes.DATE_DESC);
@@ -20,7 +20,7 @@ export const BlogClientPage: FC = () => {
     .filter(blog => blog.published)
     .map(blog => ({
       ...blog,
-      date: format(parseISO(blog.date), "LLLL d, yyyy"),
+      date: format(parseISO(blog.date), 'LLLL d, yyyy'),
     }));
 
   const { items, onSubmit, onSearchClear, searchQuery } = useMdxContent(blogs);
@@ -47,10 +47,10 @@ export const BlogClientPage: FC = () => {
 
   const recentBlogs = useMemo(() => {
     return visibleBlogs.slice(0, 5).map((blog, index) => {
-      const itemClasses = cn("bg-white dark:bg-black", {
-        "md:col-span-2 md:row-span-2": index === 0,
-        "md:col-span-2": index === 4,
-        "md:col-span-1": !(index === 0 || index === 4),
+      const itemClasses = cn('bg-white dark:bg-black', {
+        'md:col-span-2 md:row-span-2': index === 0,
+        'md:col-span-2': index === 4,
+        'md:col-span-1': !(index === 0 || index === 4),
       });
 
       let Skeleton: () => JSX.Element = LuminenceSkeleton;
@@ -89,12 +89,9 @@ export const BlogClientPage: FC = () => {
 
   const remainingBlogs = useMemo(() => visibleBlogs.slice(5), [visibleBlogs]);
 
-  const onSortingChange = useCallback(
-    (value: SortingType) => {
-      setSortingType(value);
-    },
-    [setSortingType],
-  );
+  const onSortingChange = useCallback((value: SortingType) => {
+    setSortingType(value);
+  }, []);
 
   return (
     <section className="relative mx-auto mt-20 max-w-xs md:mt-40 md:max-w-4xl">
@@ -117,10 +114,12 @@ export const BlogClientPage: FC = () => {
       <BentoGrid className="mb-5">
         {recentBlogs.map((item, i) => {
           if (i === 0) {
-            return <BentoThreeDCard key={i} {...item} />;
+            return <BentoThreeDCard key={item.title} {...item} />;
           }
 
-          return <BentoGridItem {...item} key={i} maxLines={2} className={cn("[&>p:text-lg]", item.className)} />;
+          return (
+            <BentoGridItem {...item} key={item.title} maxLines={2} className={cn('[&>p:text-lg]', item.className)} />
+          );
         })}
       </BentoGrid>
 

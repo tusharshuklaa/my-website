@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { BasicUiComponent } from "@/types";
-import { cn } from "@/lib/utils";
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent } from '@/types';
 
 export const Marquee: FC<BasicUiComponent> = ({ children, className, ...props }) => {
-  const marqueeClasses = cn("relative overflow-hidden whitespace-nowrap", className);
+  const marqueeClasses = cn('relative overflow-hidden whitespace-nowrap', className);
 
   return (
     <div data-testid="cmp-marquee" className={marqueeClasses} {...props}>
@@ -12,4 +12,4 @@ export const Marquee: FC<BasicUiComponent> = ({ children, className, ...props })
   );
 };
 
-Marquee.displayName = "Marquee";
+Marquee.displayName = 'Marquee';

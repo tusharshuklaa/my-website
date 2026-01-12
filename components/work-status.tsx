@@ -1,34 +1,34 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { UiComponent } from "@/types";
-import { GradientColors } from "@/components/text";
-import { useScreenType } from "@/hooks/use-screen-type";
-import { WorkStatusMobile } from "./work-status-mobile";
-import { WorkStatusDesktop } from "./work-status-desktop";
+import type { FC } from 'react';
+import type { GradientColors } from '@/components/text';
+import { useScreenType } from '@/hooks/use-screen-type';
+import type { UiComponent } from '@/types';
+import { WorkStatusDesktop } from './work-status-desktop';
+import { WorkStatusMobile } from './work-status-mobile';
 
 const WORK_STATUS = {
-  0: "NOT LOOKING",
-  1: "ACTIVELY LOOKING",
-  2: "CASUALLY LOOKING",
+  0: 'NOT LOOKING',
+  1: 'ACTIVELY LOOKING',
+  2: 'CASUALLY LOOKING',
 };
 
 const BLIP_COLOR = {
-  0: "bg-red-500",
-  1: "bg-green-500",
-  2: "bg-orange-500",
+  0: 'bg-red-500',
+  1: 'bg-green-500',
+  2: 'bg-orange-500',
 };
 
 const TEXT_COLOR = {
-  0: "red",
-  1: "green",
-  2: "orange",
+  0: 'red',
+  1: 'green',
+  2: 'orange',
 };
 
 const BLIP_SHADOW_COLOR = {
-  0: "red",
-  1: "green",
-  2: "orange",
+  0: 'red',
+  1: 'green',
+  2: 'orange',
 };
 
 type WorkStatusNumber = keyof typeof WORK_STATUS;
@@ -48,7 +48,7 @@ export const WorkStatus: FC<UiComponent> = ({ className }) => {
   const blipColor = BLIP_COLOR[currentWorkStatus];
   const textColor = TEXT_COLOR[currentWorkStatus] as GradientColors;
   const blipShadowColor = BLIP_SHADOW_COLOR[currentWorkStatus] as GradientColors;
-  const id = "work-status";
+  const id = 'work-status';
 
   return isMobile ? (
     <WorkStatusMobile
@@ -71,4 +71,4 @@ export const WorkStatus: FC<UiComponent> = ({ className }) => {
   );
 };
 
-WorkStatus.displayName = "ContactSection";
+WorkStatus.displayName = 'ContactSection';

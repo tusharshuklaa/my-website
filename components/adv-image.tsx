@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import Image, { ImageProps } from "next/image";
-import { CldImage } from "next-cloudinary";
+import Image, { type ImageProps } from 'next/image';
+import { CldImage } from 'next-cloudinary';
+import type { FC } from 'react';
 
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -19,14 +19,14 @@ const shimmer = (w: number, h: number) => `
 </svg>`;
 
 const toBase64 = (str: string) =>
-  typeof window === "undefined" ? Buffer.from(str).toString("base64") : window.btoa(str);
+  typeof window === 'undefined' ? Buffer.from(str).toString('base64') : window.btoa(str);
 
 export const AdvImage: FC<ImageProps> = ({ className, ...props }) => {
-  const altText = props.alt || props.title || "";
-  const src = (props.src as string) || "";
-  const isExternalImage = src?.startsWith("http");
+  const altText = props.alt || props.title || '';
+  const src = (props.src as string) || '';
+  const isExternalImage = src?.startsWith('http');
   const ImgComp = isExternalImage ? Image : CldImage;
-  const defaultSize = "500";
+  const defaultSize = '500';
   const additionalProps: Record<string, unknown> = {};
 
   if (props.fill) {
@@ -53,4 +53,4 @@ export const AdvImage: FC<ImageProps> = ({ className, ...props }) => {
   );
 };
 
-AdvImage.displayName = "AdvImage";
+AdvImage.displayName = 'AdvImage';

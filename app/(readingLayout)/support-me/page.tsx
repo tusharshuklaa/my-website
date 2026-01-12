@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { AnimatedHeading } from "@components/text";
-import { MyAvatar } from "@components/my-avatar";
-import { PrettyLink } from "@components/pretty-link";
-import { CardDescription, CardTitle, MagicCard } from "@components/ui";
-import { PaymentButton } from "@components/payment-button";
+import { MyAvatar } from '@components/my-avatar';
+import { PaymentButton } from '@components/payment-button';
+import { PrettyLink } from '@components/pretty-link';
+import { AnimatedHeading } from '@components/text';
+import { CardDescription, CardTitle, MagicCard } from '@components/ui';
+import type { FC } from 'react';
 
 const SupportMePage: FC = () => (
   <div className="m-auto max-w-sm antialiased md:max-w-5xl">
@@ -16,7 +16,7 @@ const SupportMePage: FC = () => (
         <br />
         <br />
         My name is Tushar Shukla, and I&apos;m a Senior Frontend Developer passionate about the latest web trends, CSS
-        art, and creating free tools and articles to help the community. You can check out my work on my{" "}
+        art, and creating free tools and articles to help the community. You can check out my work on my{' '}
         <PrettyLink title="showcase page" href="/showcase" hoverEffect={false}>
           Showcase page
         </PrettyLink>
@@ -27,10 +27,10 @@ const SupportMePage: FC = () => (
         listed platforms.
         <br />
         <br />
-        Even if you&apos;re not in a position to contribute financially, you can still make a difference by giving the{" "}
+        Even if you&apos;re not in a position to contribute financially, you can still make a difference by giving the{' '}
         <PrettyLink title="Tushar's portfolio GitHub repository" href="https://github.com/tusharshuklaa/my-website">
           GitHub repository
-        </PrettyLink>{" "}
+        </PrettyLink>{' '}
         a star, sharing my content with your friends, or dropping a quick message to let me know how my work has helped
         you.
         <span className="mt-12 block w-full text-center text-2xl">

@@ -1,11 +1,11 @@
-import { FC } from "react";
-import clsx from "clsx";
-import { BasicUiComponent } from "@/types";
+import clsx from 'clsx';
+import type { FC } from 'react';
+import type { BasicUiComponent } from '@/types';
 
 export const FunHoverText: FC<BasicUiComponent> = ({ children, className }) => (
   <span
     className={clsx(
-      "animate-conic-text-rev cursor-pointer bg-50% bg-clip-text hover:animate-conic-text hover:bg-collage-gradient hover:text-transparent",
+      'animate-conic-text-rev cursor-pointer bg-50% bg-clip-text hover:animate-conic-text hover:bg-collage-gradient hover:text-transparent',
       className,
     )}
   >
@@ -14,8 +14,9 @@ export const FunHoverText: FC<BasicUiComponent> = ({ children, className }) => (
 );
 
 export const FunText: FC<BasicUiComponent> = ({ className }) => (
-  <div className={clsx("fun-text w-[80vmin] overflow-hidden", className)}>
+  <div className={clsx('fun-text w-[80vmin] overflow-hidden', className)}>
     <svg viewBox="0 0 33 10" fill="none" xmlns="http://www.w3.org/2000/svg" className="invisible absolute">
+      <title>text effect svg</title>
       <filter id="shadow">
         <feDropShadow dx="0" dy="0" stdDeviation="0.2" floodColor="gold" />
       </filter>
@@ -27,6 +28,7 @@ export const FunText: FC<BasicUiComponent> = ({ className }) => (
     </svg>
 
     <svg viewBox="0 0 33 10">
+      <title>text effect svg</title>
       <g filter="url(#shadow)">
         <use xlinkHref="#dev-name"></use>
       </g>

@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { SpaceMascot } from "@components/space-mascot";
-import { Heading2 } from "@components/text/heading";
+import { SpaceMascot } from '@components/space-mascot';
+import { Heading2 } from '@components/text/heading';
+import type { FC } from 'react';
 
 export const LoadingPage: FC = () => {
   return (
@@ -22,4 +22,4 @@ export const LoadingPage: FC = () => {
   );
 };
 
-LoadingPage.displayName = "LoadingPage";
+LoadingPage.displayName = 'LoadingPage';

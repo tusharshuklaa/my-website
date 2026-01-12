@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { FC, useRef } from "react";
-import { Timeline } from "@ui";
-import { CareerCompany, Company } from "@components/career";
-import { GradientText } from "@components/text";
-import { useIsMounted } from "@hooks/use-is-mounted";
-import CareerData from "@/data/career.json";
-import { AnimatedHeading } from "@components/text/heading";
+import { type CareerCompany, Company } from '@components/career';
+import { GradientText } from '@components/text';
+import { AnimatedHeading } from '@components/text/heading';
+import { useIsMounted } from '@hooks/use-is-mounted';
+import { Timeline } from '@ui';
+import { type FC, useRef } from 'react';
+import CareerData from '@/data/career.json';
 
 export const Career: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -25,7 +25,7 @@ export const Career: FC = () => {
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
         <AnimatedHeading className="text-left">
           <GradientText
-            text={"A Universe of Experience & Skills"}
+            text={'A Universe of Experience & Skills'}
             className="mb-4 max-w-4xl text-screen-md"
             color="indigo"
           />

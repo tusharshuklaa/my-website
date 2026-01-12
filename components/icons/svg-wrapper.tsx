@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { CustomIcon } from "@/types/icons";
-import { cn } from "@/lib/utils";
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { CustomIcon } from '@/types/icons';
 
 type SvgWrapperProps = CustomIcon & {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ type SvgWrapperProps = CustomIcon & {
 
 export const SvgWrapper: FC<SvgWrapperProps> = ({ children, width = 20, height = 20, className }) => (
   <svg
-    className={cn("mr-2 h-4 w-4", className)}
+    className={cn('mr-2 h-4 w-4', className)}
     role="img"
     viewBox={`0 0 24 24`}
     width={width}
@@ -21,6 +21,7 @@ export const SvgWrapper: FC<SvgWrapperProps> = ({ children, width = 20, height =
     strokeLinecap="round"
     strokeLinejoin="round"
   >
+    <title>Icon</title>
     {children}
   </svg>
 );

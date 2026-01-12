@@ -1,12 +1,12 @@
-import { FC } from "react";
-import { cn } from "@/lib/utils";
-import { BasicUiComponent, UiComponent } from "@/types";
-import { GradientText } from "../text";
-import Link from "next/link";
+import Link from 'next/link';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent, UiComponent } from '@/types';
+import { GradientText } from '../text';
 
 export const BentoGrid: FC<BasicUiComponent> = ({ className, children }) => {
   return (
-    <div className={cn("mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3", className)}>
+    <div className={cn('mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3', className)}>
       {children}
     </div>
   );
@@ -35,7 +35,7 @@ export const BentoGridItem: FC<BentoGridItemProps> = ({
   return (
     <div
       className={cn(
-        "group/bento row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-gray-200 border-transparent bg-white p-3 shadow-input transition duration-200 hover:shadow-xl dark:border-gray-800 dark:border-white/[0.2] dark:bg-black dark:shadow-none",
+        'group/bento row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-gray-200 border-transparent bg-white p-3 shadow-input transition duration-200 hover:shadow-xl dark:border-gray-800 dark:border-white/[0.2] dark:bg-black dark:shadow-none',
         className,
       )}
     >
@@ -55,12 +55,12 @@ export const BentoGridItem: FC<BentoGridItemProps> = ({
           </div>
 
           <p
-            className={cn("mt-2 text-xs font-normal text-neutral-600 dark:text-neutral-300", {
-              "line-clamp-1": maxLines === 1,
-              "line-clamp-2": maxLines === 2,
-              "line-clamp-3": maxLines === 3,
-              "line-clamp-4": maxLines === 4,
-              "line-clamp-5": maxLines === 5,
+            className={cn('mt-2 text-xs font-normal text-neutral-600 dark:text-neutral-300', {
+              'line-clamp-1': maxLines === 1,
+              'line-clamp-2': maxLines === 2,
+              'line-clamp-3': maxLines === 3,
+              'line-clamp-4': maxLines === 4,
+              'line-clamp-5': maxLines === 5,
             })}
           >
             {description}

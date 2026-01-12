@@ -1,13 +1,13 @@
-import { FC } from "react";
-import Link from "next/link";
-import { UiComponent } from "@/types";
-import { cn } from "@/lib/utils";
-import { ThreeDSliderContainer, ThreeDSliderItem } from "@components/three-d-slider";
-import ShowcaseData from "@/data/showcase.json";
-import { Button, Card, CardDescription, CardTitle } from "@ui";
-import { GradientText } from "@components/text";
-import { AnimatedHeading } from "@components/text/heading";
-import { AdvImage } from "@components/adv-image";
+import { AdvImage } from '@components/adv-image';
+import { GradientText } from '@components/text';
+import { AnimatedHeading } from '@components/text/heading';
+import { ThreeDSliderContainer, ThreeDSliderItem } from '@components/three-d-slider';
+import { Button, Card, CardDescription, CardTitle } from '@ui';
+import Link from 'next/link';
+import type { FC } from 'react';
+import ShowcaseData from '@/data/showcase.json';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 export type Showcase = {
   title: string;
@@ -62,7 +62,7 @@ const SliderBgContent: FC = () => {
 
 export const ShowcaseSlider: FC<UiComponent> = ({ className }) => {
   const showcaseSliderClasses = cn(
-    "flex h-screen min-h-svh w-full flex-col items-start justify-center gap-5 mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10",
+    'flex h-screen min-h-svh w-full flex-col items-start justify-center gap-5 mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10',
     className,
   );
 
@@ -71,7 +71,7 @@ export const ShowcaseSlider: FC<UiComponent> = ({ className }) => {
   return (
     <section data-testid="cmp-showcase-slider" className={showcaseSliderClasses} id="my-crafts">
       <AnimatedHeading className="mb-20 w-full text-center">
-        <GradientText text={"A Cluster of my Crafts"} className="mb-4 max-w-4xl text-screen-md" color="indigo" />
+        <GradientText text={'A Cluster of my Crafts'} className="mb-4 max-w-4xl text-screen-md" color="indigo" />
       </AnimatedHeading>
 
       <ThreeDSliderContainer
@@ -80,7 +80,7 @@ export const ShowcaseSlider: FC<UiComponent> = ({ className }) => {
         extraContent={<SliderBgContent />}
       >
         {showcaseData.map((item, index) => (
-          <ThreeDSliderItem key={index} position={index + 1}>
+          <ThreeDSliderItem key={item.title} position={index + 1}>
             <ShowcaseCard {...item} />
           </ThreeDSliderItem>
         ))}
@@ -89,4 +89,4 @@ export const ShowcaseSlider: FC<UiComponent> = ({ className }) => {
   );
 };
 
-ShowcaseSlider.displayName = "ShowcaseSlider";
+ShowcaseSlider.displayName = 'ShowcaseSlider';

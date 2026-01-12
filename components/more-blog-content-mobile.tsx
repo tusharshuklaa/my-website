@@ -1,13 +1,13 @@
-import { FC } from "react";
-import { allBlogs } from "@/.contentlayer/generated";
-import { MoreBlogContentProps } from "@components/more-blog-content";
-import { GradientText } from "@components/text";
-import { RelatedBlogListItem } from "@components/related-blog-list-item";
-import { cn } from "@/lib/utils";
+import type { MoreBlogContentProps } from '@components/more-blog-content';
+import { RelatedBlogListItem } from '@components/related-blog-list-item';
+import { GradientText } from '@components/text';
+import type { FC } from 'react';
+import { allBlogs } from '@/.contentlayer/generated';
+import { cn } from '@/lib/utils';
 
 export const MoreBlogContentMobile: FC<MoreBlogContentProps> = ({ className, current, related }) => {
   const relatedBlogs = allBlogs.filter(blog => blog.slug !== current && related?.includes(blog.slug));
-  const containerClasses = cn(className, "block sm:hidden px-4 mt-16");
+  const containerClasses = cn(className, 'block sm:hidden px-4 mt-16');
 
   return (
     relatedBlogs.length && (
@@ -24,4 +24,4 @@ export const MoreBlogContentMobile: FC<MoreBlogContentProps> = ({ className, cur
   );
 };
 
-MoreBlogContentMobile.displayName = "MoreBlogContentMobile";
+MoreBlogContentMobile.displayName = 'MoreBlogContentMobile';

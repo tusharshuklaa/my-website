@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { useMdxContent } from "@/hooks/use-mdx-content";
-import { FC } from "react";
-import { ArticleHero } from "../blog-hero";
-import { SearchResults } from "../search-results";
-import { Showcase } from "../showcase-slider";
-import ShowcaseData from "@/data/showcase.json";
-import { PlaceholdersAndVanishInput, HoverCards } from "@ui";
+import { HoverCards, PlaceholdersAndVanishInput } from '@ui';
+import type { FC } from 'react';
+import ShowcaseData from '@/data/showcase.json';
+import { useMdxContent } from '@/hooks/use-mdx-content';
+import { ArticleHero } from '../blog-hero';
+import { SearchResults } from '../search-results';
+import type { Showcase } from '../showcase-slider';
 
-const placeholders = ["css art", "game", "codepen", "github gist"];
+const placeholders = ['css art', 'game', 'codepen', 'github gist'];
 
 export const ShowcaseClientPage: FC = () => {
   const { items, onSubmit, onSearchClear, onTagClick, searchQuery } = useMdxContent(ShowcaseData.showcase);

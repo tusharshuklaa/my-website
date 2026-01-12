@@ -1,11 +1,11 @@
-import { FC } from "react";
-import { cn } from "@/lib/utils";
-import { Safari } from "@ui";
-import { UiComponent } from "@/types";
-import { GradientText } from "@components/text";
-import { Blip } from "@components/blip";
-import { GlowingGradientBox } from "@components/glowing-gradient-box";
-import { WorkStatusDeviceProps } from "@components/work-status";
+import { Blip } from '@components/blip';
+import { GlowingGradientBox } from '@components/glowing-gradient-box';
+import { GradientText } from '@components/text';
+import type { WorkStatusDeviceProps } from '@components/work-status';
+import { Safari } from '@ui';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 export const WorkStatusDesktop: FC<UiComponent<WorkStatusDeviceProps>> = ({
   blipColor,
@@ -15,7 +15,7 @@ export const WorkStatusDesktop: FC<UiComponent<WorkStatusDeviceProps>> = ({
   workStatusText,
   id,
 }) => {
-  const workStatusDesktopClasses = cn("flex flex-col items-center justify-center py-16 min-h-screen", className);
+  const workStatusDesktopClasses = cn('flex flex-col items-center justify-center py-16 min-h-screen', className);
 
   return (
     <section data-testid={`cmp-work-status-desktop`} className={workStatusDesktopClasses} id={id}>
@@ -28,7 +28,7 @@ export const WorkStatusDesktop: FC<UiComponent<WorkStatusDeviceProps>> = ({
         >
           <div className="relative h-full w-full">
             <div className="absolute bottom-0 left-12 top-0 m-auto flex h-max w-2/5 flex-col">
-              <Blip color={blipColor} className={cn("absolute left-60 top-6", blipShadowColor)} />
+              <Blip color={blipColor} className={cn('absolute left-60 top-6', blipShadowColor)} />
               <div>
                 <GradientText text="Currently" className="text-screen-sm" color="indigo" />
                 <br />
@@ -56,4 +56,4 @@ export const WorkStatusDesktop: FC<UiComponent<WorkStatusDeviceProps>> = ({
   );
 };
 
-WorkStatusDesktop.displayName = "ContactSection";
+WorkStatusDesktop.displayName = 'ContactSection';

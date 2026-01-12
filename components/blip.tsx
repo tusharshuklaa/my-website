@@ -1,20 +1,20 @@
-import { FC } from "react";
-import { UiComponent } from "@/types";
-import { cn } from "@/lib/utils";
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type BlipProps = UiComponent<{
   color?: string;
   size?: number;
 }>;
 
-export const Blip: FC<BlipProps> = ({ className, color = "bg-red-500", size = 20 }) => {
+export const Blip: FC<BlipProps> = ({ className, color = 'bg-red-500', size = 20 }) => {
   const sizeStyle = {
     width: `${size}px`,
     height: `${size}px`,
   };
 
   return (
-    <div className={cn("relative flex items-center justify-center", className)}>
+    <div className={cn('relative flex items-center justify-center', className)}>
       {/* Wave 1 */}
       <div
         className={`absolute rounded-full ${color} animate-ping opacity-40`}
@@ -39,4 +39,4 @@ export const Blip: FC<BlipProps> = ({ className, color = "bg-red-500", size = 20
   );
 };
 
-Blip.displayName = "Blip";
+Blip.displayName = 'Blip';

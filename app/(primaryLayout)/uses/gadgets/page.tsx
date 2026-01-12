@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { allGadgets, Gadgets } from "@content";
-import { DialogHoverCards, PlaceholdersAndVanishInput } from "@ui";
-import { ArticleHero } from "@components/blog-hero";
-import { SearchResults } from "@components/search-results";
-import { useMdxContent } from "@/hooks/use-mdx-content";
+import { ArticleHero } from '@components/blog-hero';
+import { SearchResults } from '@components/search-results';
+import { allGadgets, type Gadgets } from '@content';
+import { DialogHoverCards, PlaceholdersAndVanishInput } from '@ui';
+import type { FC } from 'react';
+import { useMdxContent } from '@/hooks/use-mdx-content';
 
-const placeholders = ["laptop", "keyboard", "mouse", "monitor"];
+const placeholders = ['laptop', 'keyboard', 'mouse', 'monitor'];
 
 const UsesGadtesPage: FC = () => {
   const { items, onSubmit, onSearchClear, onTagClick, searchQuery } = useMdxContent(allGadgets);

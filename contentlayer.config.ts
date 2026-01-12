@@ -1,15 +1,15 @@
 // contentlayer.config.ts
-import { spawn } from "child_process";
-import { statSync } from "fs";
-import path from "path";
-import Slugger from "github-slugger";
-import { defineDocumentType, makeSource } from "contentlayer2/source-files";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode, { LineElement } from "rehype-pretty-code";
-import rehypeSlug from "rehype-slug";
-import remarkGfm from "remark-gfm";
-import { rehypeExternalEmbed } from "@/lib/rehypeExternalEmbed";
-import { formatReadingTime, getReadingTime } from "@/lib/utils";
+import { spawn } from 'child_process';
+import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
+import { statSync } from 'fs';
+import Slugger from 'github-slugger';
+import path from 'path';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypePrettyCode, { type LineElement } from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
+import { rehypeExternalEmbed } from '@/lib/rehypeExternalEmbed';
+import { formatReadingTime, getReadingTime } from '@/lib/utils';
 
 const lastModifiedCache = new Map<string, Date>();
 
@@ -22,15 +22,15 @@ async function getLastModifiedDate(filePath: string): Promise<Date | null> {
   try {
     return new Promise(resolve => {
       // Git command to get the last modified date
-      const git = spawn("git", ["log", "-1", "--format=%at", "--", filePath]);
+      const git = spawn('git', ['log', '-1', '--format=%at', '--', filePath]);
 
-      let output = "";
+      let output = '';
 
-      git.stdout.on("data", data => {
+      git.stdout.on('data', data => {
         output += data;
       });
 
-      git.on("close", code => {
+      git.on('close', code => {
         if (code === 0 && output) {
           // Convert git timestamp to Date
           const timestamp = parseInt(output.trim()) * 1000;
@@ -50,7 +50,7 @@ async function getLastModifiedDate(filePath: string): Promise<Date | null> {
         }
       });
 
-      git.on("error", () => {
+      git.on('error', () => {
         try {
           // Fallback to file system stats if git fails
           const stats = statSync(filePath);
@@ -69,64 +69,64 @@ async function getLastModifiedDate(filePath: string): Promise<Date | null> {
 }
 
 // eslint-disable-next-line
-const getBlogSlug = (blog: any) => blog._raw.flattenedPath.replace(/^blog\//, "");
+const getBlogSlug = (blog: any) => blog._raw.flattenedPath.replace(/^blog\//, '');
 
 export const Blog = defineDocumentType(() => ({
-  name: "Blog",
-  filePathPattern: "blog/**/*.mdx",
-  contentType: "mdx",
+  name: 'Blog',
+  filePathPattern: 'blog/**/*.mdx',
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     summary: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     img: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     date: {
-      type: "date",
+      type: 'date',
       required: true,
     },
     published: {
-      type: "boolean",
+      type: 'boolean',
       default: true,
     },
     author: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     authorImg: {
-      type: "string",
+      type: 'string',
       required: false,
     },
     authorDesc: {
-      type: "string",
+      type: 'string',
       required: false,
     },
     tags: {
-      type: "list",
-      of: { type: "string" },
+      type: 'list',
+      of: { type: 'string' },
       required: true,
     },
     keywords: {
-      type: "list",
-      of: { type: "string" },
+      type: 'list',
+      of: { type: 'string' },
       required: false,
     },
     related: {
-      type: "list",
-      of: { type: "string" },
+      type: 'list',
+      of: { type: 'string' },
       required: false,
     },
   },
   computedFields: {
     url: {
-      type: "string",
+      type: 'string',
       resolve: post => {
         // Remove 'blog/' from the beginning and add it back with a leading slash
         const slug = getBlogSlug(post);
@@ -134,44 +134,44 @@ export const Blog = defineDocumentType(() => ({
       },
     },
     slug: {
-      type: "string",
+      type: 'string',
       resolve: post => getBlogSlug(post),
     },
     readingTime: {
-      type: "number",
+      type: 'number',
       resolve: doc => getReadingTime(doc.body.raw),
     },
     readingTimeString: {
-      type: "string",
+      type: 'string',
       resolve: doc => formatReadingTime(getReadingTime(doc.body.raw)),
     },
     authorAlias: {
-      type: "string",
+      type: 'string',
       resolve: doc =>
         doc.author
-          .split(" ")
+          .split(' ')
           .slice(0, 2)
           .map(word => word[0])
-          .join("")
+          .join('')
           .toUpperCase(),
     },
     lastModified: {
-      type: "date",
+      type: 'date',
       resolve: async doc => {
         // Get the relative path from the source file path
-        const relativePath = path.join(process.cwd(), "content", doc._raw.sourceFilePath);
+        const relativePath = path.join(process.cwd(), 'content', doc._raw.sourceFilePath);
         const date = await getLastModifiedDate(relativePath);
 
         return date?.toISOString() || doc.date;
       },
     },
     toc: {
-      type: "json",
+      type: 'json',
       resolve: doc => {
         const regExp = /\n(?<flag>#{2,6})\s+(?<content>.+)/g;
         const slugger = new Slugger();
         const headings = Array.from(doc.body.raw.matchAll(regExp)).map(({ groups }) => {
-          const content = groups?.content || "";
+          const content = groups?.content || '';
 
           return {
             level: groups?.flag.length || 0,
@@ -187,75 +187,75 @@ export const Blog = defineDocumentType(() => ({
 }));
 
 export const UsesCoding = defineDocumentType(() => ({
-  name: "Coding",
-  filePathPattern: "uses-coding/**/*.mdx",
-  contentType: "mdx",
+  name: 'Coding',
+  filePathPattern: 'uses-coding/**/*.mdx',
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     summary: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     img: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     tags: {
-      type: "list",
-      of: { type: "string" },
+      type: 'list',
+      of: { type: 'string' },
       required: true,
     },
   },
 }));
 
 export const UsesGadgets = defineDocumentType(() => ({
-  name: "Gadgets",
-  filePathPattern: "uses-gadgets/**/*.mdx",
-  contentType: "mdx",
+  name: 'Gadgets',
+  filePathPattern: 'uses-gadgets/**/*.mdx',
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     summary: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     img: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     tags: {
-      type: "list",
-      of: { type: "string" },
+      type: 'list',
+      of: { type: 'string' },
       required: true,
     },
   },
 }));
 
 export const UsesSoftware = defineDocumentType(() => ({
-  name: "Software",
-  filePathPattern: "uses-software/**/*.mdx",
-  contentType: "mdx",
+  name: 'Software',
+  filePathPattern: 'uses-software/**/*.mdx',
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     summary: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     img: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     tags: {
-      type: "list",
-      of: { type: "string" },
+      type: 'list',
+      of: { type: 'string' },
       required: true,
     },
   },
@@ -263,33 +263,33 @@ export const UsesSoftware = defineDocumentType(() => ({
 
 const createLinkIcon = () => {
   return {
-    type: "element",
-    tagName: "svg",
+    type: 'element',
+    tagName: 'svg',
     properties: {
-      xmlns: "http://www.w3.org/2000/svg",
-      width: "0.7em",
-      height: "0.7em",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: "2",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      className: ["anchor-link-icon"],
+      xmlns: 'http://www.w3.org/2000/svg',
+      width: '0.7em',
+      height: '0.7em',
+      viewBox: '0 0 24 24',
+      fill: 'none',
+      stroke: 'currentColor',
+      strokeWidth: '2',
+      strokeLinecap: 'round',
+      strokeLinejoin: 'round',
+      className: ['anchor-link-icon'],
     },
     children: [
       {
-        type: "element",
-        tagName: "path",
+        type: 'element',
+        tagName: 'path',
         properties: {
-          d: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71",
+          d: 'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71',
         },
       },
       {
-        type: "element",
-        tagName: "path",
+        type: 'element',
+        tagName: 'path',
         properties: {
-          d: "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
+          d: 'M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71',
         },
       },
     ],
@@ -297,7 +297,7 @@ const createLinkIcon = () => {
 };
 
 export default makeSource({
-  contentDirPath: "content",
+  contentDirPath: 'content',
   documentTypes: [Blog, UsesCoding, UsesGadgets, UsesSoftware],
   mdx: {
     remarkPlugins: [remarkGfm],
@@ -306,25 +306,25 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "tokyo-night",
+          theme: 'tokyo-night',
           defaultLang: {
-            block: "typescript",
-            inline: "plaintext",
+            block: 'typescript',
+            inline: 'plaintext',
           },
           onVisitLine(node: LineElement) {
             // Prevent lines from collapsing in 'display: grid' mode, and allow empty lines to be copy/pasted
             if (node.children.length === 0) {
-              node.children.push({ type: "text", value: "\u00A0" });
+              node.children.push({ type: 'text', value: '\u00A0' });
             }
           },
           onVisitHighlightedLine(node: LineElement) {
             if (node.properties) {
-              node.properties.className = [...(node.properties.className || []), "line--highlighted"];
+              node.properties.className = [...(node.properties.className || []), 'line--highlighted'];
             }
           },
           onVisitingHighlightedWord(node: LineElement) {
             if (node.properties) {
-              node.properties.className = [...(node.properties.className || []), "word--highlighted"];
+              node.properties.className = [...(node.properties.className || []), 'word--highlighted'];
             }
           },
         },
@@ -332,11 +332,11 @@ export default makeSource({
       [
         rehypeAutolinkHeadings,
         {
-          behavior: "append",
+          behavior: 'append',
           content: createLinkIcon(),
           properties: {
-            className: ["subheading-anchor"],
-            ["arial-label"]: "Link to section",
+            className: ['subheading-anchor'],
+            ['arial-label']: 'Link to section',
           },
         },
       ],

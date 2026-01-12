@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import Link from "next/link";
-import { BasicUiComponent } from "@/types";
-import { AspectRatio, ThreeDCardContainer, ThreeDCardBody, ThreeDCardItem } from "@ui";
-import { GradientText } from "@components/text";
-import { AdvImage } from "@components/adv-image";
+import { AdvImage } from '@components/adv-image';
+import { GradientText } from '@components/text';
+import { AspectRatio, ThreeDCardBody, ThreeDCardContainer, ThreeDCardItem } from '@ui';
+import Link from 'next/link';
+import type { FC } from 'react';
+import type { BasicUiComponent } from '@/types';
 
 type BentoThreeDCardProps = BasicUiComponent<{
   date: string;
@@ -31,7 +31,7 @@ export const BentoThreeDCard: FC<BentoThreeDCardProps> = ({
       containerClassName="md:col-span-2 md:row-span-2 w-full h-full py-0"
     >
       <ThreeDCardBody
-        style={{ backgroundColor: "black" }}
+        style={{ backgroundColor: 'black' }}
         className="group/card relative flex h-full w-full flex-col justify-between rounded-xl border border-black/[0.1] p-6 bg-dot-black/[0.8] dark:border-white/[0.2] dark:bg-dot-white/[0.2] dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]"
       >
         <div>
@@ -92,4 +92,4 @@ export const BentoThreeDCard: FC<BentoThreeDCardProps> = ({
   );
 };
 
-BentoThreeDCard.displayName = "BentoThreeDCard";
+BentoThreeDCard.displayName = 'BentoThreeDCard';

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { Welcome } from "@components/welcome";
-import { Career } from "@components/career";
-import { Introduction } from "@components/introduction";
-import { WorkStatus } from "@components/work-status";
-import { ShowcaseSlider } from "@/components/showcase-slider";
-import { useIsMounted } from "@hooks/use-is-mounted";
+import { Career } from '@components/career';
+import { Introduction } from '@components/introduction';
+import { Welcome } from '@components/welcome';
+import { WorkStatus } from '@components/work-status';
+import { useIsMounted } from '@hooks/use-is-mounted';
+import { ShowcaseSlider } from '@/components/showcase-slider';
 
 export default function Home() {
   const isPageMounted = useIsMounted();

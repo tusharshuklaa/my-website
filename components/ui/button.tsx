@@ -1,9 +1,9 @@
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
+import { Slot } from '@radix-ui/react-slot';
+import { cva, type VariantProps } from 'class-variance-authority';
+import * as React from 'react';
 
-import { cn } from "@/lib/utils";
-import { BasicUiComponent } from "@/types";
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent } from '@/types';
 
 const PrimaryButtonInternal: React.FC<BasicUiComponent> = ({ children }) => {
   return (
@@ -27,31 +27,31 @@ const MagicButtonInternal: React.FC<BasicUiComponent> = ({ children }) => {
   );
 };
 
-const buttonVariants = cva("", {
+const buttonVariants = cva('', {
   variants: {
     variant: {
       default:
-        "bg-gray-900 text-gray-50 hover:bg-gray-900/90 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90",
+        'bg-gray-900 text-gray-50 hover:bg-gray-900/90 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90',
       outline:
-        "border border-black dark:border-white bg-transparent hover:bg-zinc-900 dark:hover:bg-white hover:text-gray-200 dark:hover:text-gray-900",
-      ghost: "hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50",
+        'border border-black dark:border-white bg-transparent hover:bg-zinc-900 dark:hover:bg-white hover:text-gray-200 dark:hover:text-gray-900',
+      ghost: 'hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50',
       shimmer:
-        "inline-flex animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50",
-      clear: "",
-      primary: "",
-      magic: "",
+        'inline-flex animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50',
+      clear: '',
+      primary: '',
+      magic: '',
     },
     size: {
-      default: "h-10 px-4 py-2",
-      sm: "h-9 rounded-md px-3",
-      lg: "h-11 rounded-md px-8",
-      icon: "h-10 w-10",
-      auto: "",
+      default: 'h-10 px-4 py-2',
+      sm: 'h-9 rounded-md px-3',
+      lg: 'h-11 rounded-md px-8',
+      icon: 'h-10 w-10',
+      auto: '',
     },
   },
   defaultVariants: {
-    variant: "default",
-    size: "default",
+    variant: 'default',
+    size: 'default',
   },
 });
 
@@ -63,16 +63,16 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+    const Comp = asChild ? Slot : 'button';
     const defaultClasses =
-      variant === "clear"
-        ? ""
-        : "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-gray-950 dark:focus-visible:ring-gray-300";
+      variant === 'clear'
+        ? ''
+        : 'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:ring-offset-gray-950 dark:focus-visible:ring-gray-300';
 
-    if (variant === "primary") {
+    if (variant === 'primary') {
       return (
         <Comp
-          className={cn("relative overflow-hidden rounded-md p-1", buttonVariants({ variant, size, className }))}
+          className={cn('relative overflow-hidden rounded-md p-1', buttonVariants({ variant, size, className }))}
           ref={ref}
           {...props}
         >
@@ -81,11 +81,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       );
     }
 
-    if (variant === "magic") {
+    if (variant === 'magic') {
       return (
         <Comp
           className={cn(
-            "relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50",
+            'relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50',
             buttonVariants({ variant, size, className }),
           )}
           ref={ref}
@@ -100,6 +100,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 
-Button.displayName = "Button";
+Button.displayName = 'Button';
 
 export { Button, buttonVariants };

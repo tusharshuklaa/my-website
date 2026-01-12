@@ -1,9 +1,9 @@
-import { UNIQUE_VIEW_KEY } from "@/app/api/constants";
-import { Redis } from "@upstash/redis";
+import { Redis } from '@upstash/redis';
+import { UNIQUE_VIEW_KEY } from '@/app/api/constants';
 
 export const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL!,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
 });
 
 // Helper function to generate a unique key for a user's view

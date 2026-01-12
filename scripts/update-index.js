@@ -1,6 +1,6 @@
-const fs = require("fs").promises;
-const path = require("path");
-const parser = require("@babel/parser");
+const fs = require('node:fs').promises;
+const path = require('node:path');
+const parser = require('@babel/parser');
 
 /**
  * Parses a TypeScript/JavaScript file and extracts all export declarations
@@ -13,33 +13,33 @@ const parseFileExports = async filePath => {
 
   try {
     // Read the file content
-    const fileContent = await fs.readFile(filePath, "utf-8");
+    const fileContent = await fs.readFile(filePath, 'utf-8');
 
     // Parse the file content into an AST (Abstract Syntax Tree)
     // Enable TypeScript and JSX plugins for comprehensive parsing
     const ast = parser.parse(fileContent, {
-      sourceType: "module",
-      plugins: ["typescript", "jsx"],
+      sourceType: 'module',
+      plugins: ['typescript', 'jsx'],
     });
 
     // Iterate through each node in the AST
     for (const node of ast.program.body) {
       // Check if the node is any type of export declaration
       if (
-        node.type === "ExportNamedDeclaration" ||
-        node.type === "ExportDefaultDeclaration" ||
-        node.type === "ExportAllDeclaration"
+        node.type === 'ExportNamedDeclaration' ||
+        node.type === 'ExportDefaultDeclaration' ||
+        node.type === 'ExportAllDeclaration'
       ) {
         // Handle 'export * from' statements
-        if (node.type === "ExportAllDeclaration") {
+        if (node.type === 'ExportAllDeclaration') {
           exportsMap.set(`* from '${node.source.value}'`, { source: null, isType: false });
         }
         // Handle default exports (export default ...)
-        else if (node.type === "ExportDefaultDeclaration") {
+        else if (node.type === 'ExportDefaultDeclaration') {
           if (node.declaration) {
-            let exportName = "default";
+            let exportName = 'default';
             // If the export is an identifier (e.g., export default existingFunction)
-            if (node.declaration.type === "Identifier") {
+            if (node.declaration.type === 'Identifier') {
               exportName = node.declaration.name;
             }
             // If the export is a named function/class declaration (e.g., export default function foo(){})
@@ -53,15 +53,15 @@ const parseFileExports = async filePath => {
           }
         }
         // Handle named exports (export const x = ..., export function y(){}, export type Z = ...)
-        else if (node.type === "ExportNamedDeclaration") {
+        else if (node.type === 'ExportNamedDeclaration') {
           let isTypeExport = false;
 
           // Check if this is a type export (interface, type alias, or enum)
           if (
             node.declaration &&
-            (node.declaration.type === "TSInterfaceDeclaration" ||
-              node.declaration.type === "TSTypeAliasDeclaration" ||
-              node.declaration.type === "TSEnumDeclaration")
+            (node.declaration.type === 'TSInterfaceDeclaration' ||
+              node.declaration.type === 'TSTypeAliasDeclaration' ||
+              node.declaration.type === 'TSEnumDeclaration')
           ) {
             isTypeExport = true;
           }
@@ -71,7 +71,7 @@ const parseFileExports = async filePath => {
             // Handle variable declarations (export const x = ...)
             if (node.declaration.declarations) {
               node.declaration.declarations.forEach(declaration => {
-                if (declaration.id && declaration.id.type === "Identifier") {
+                if (declaration.id && declaration.id.type === 'Identifier') {
                   exportsMap.set(declaration.id.name, {
                     source: path.parse(filePath).name,
                     isType: isTypeExport,
@@ -113,14 +113,14 @@ const parseFileExports = async filePath => {
  * @param {string} dirPath - Path to the directory to process
  */
 const processDirectory = async dirPath => {
-  const indexFilePath = path.join(dirPath, "index.ts");
+  const indexFilePath = path.join(dirPath, 'index.ts');
   // Map to store all exports from all files in the directory
   const allExports = new Map();
 
   try {
     // Get all .ts and .tsx files in the directory, excluding index.ts
     const componentFiles = (await fs.readdir(dirPath)).filter(
-      filename => (filename.endsWith(".tsx") || filename.endsWith(".ts")) && filename !== "index.ts",
+      filename => (filename.endsWith('.tsx') || filename.endsWith('.ts')) && filename !== 'index.ts',
     );
 
     // Process each file in the directory
@@ -131,7 +131,9 @@ const processDirectory = async dirPath => {
       const fileExports = await parseFileExports(componentPath);
 
       // Add this file's exports to the directory's total exports
-      fileExports.forEach((value, key) => allExports.set(key, value));
+      fileExports.forEach((value, key) => {
+        allExports.set(key, value);
+      });
     }
 
     // Check if index.ts already exists
@@ -150,13 +152,13 @@ const processDirectory = async dirPath => {
             return `export ${exportedName};`;
           } else {
             // Handle normal exports, adding 'type' keyword if it's a type export
-            return `export ${isType ? "type " : ""}{ ${exportedName} } from "./${source}";`;
+            return `export ${isType ? 'type ' : ''}{ ${exportedName} } from "./${source}";`;
           }
         })
-        .join("\n");
+        .join('\n');
 
       // Write the index.ts file
-      await fs.writeFile(indexFilePath, exportStrings + "\n");
+      await fs.writeFile(indexFilePath, `${exportStrings}\n`);
       console.log(`Created index.ts in ${dirPath} with ${allExports.size} exports`);
     }
     // If no exports were found but index.ts exists, remove it
@@ -206,5 +208,5 @@ module.exports = {
 
 // Start the process if this script is run directly
 if (require.main === module) {
-  writeIndexInFolder("./components");
+  writeIndexInFolder('./components');
 }

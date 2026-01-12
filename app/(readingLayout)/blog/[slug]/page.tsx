@@ -1,24 +1,24 @@
-import { FC } from "react";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { format, parseISO } from "date-fns";
-import { getCldOgImageUrl } from "next-cloudinary";
-import { allBlogs } from "@content";
-import { LampContainer } from "@ui";
-import { AnimatedHeading } from "@components/text/heading";
-import { GradientText } from "@components/text";
-import { AnimateElement } from "@components/animate-element";
-import { SnapSection } from "@components/snap-container";
-import { SocialShare } from "@components/social-share";
-import { TableOfContents } from "@components/table-of-contents";
-import { MoreBlogContent } from "@components/more-blog-content";
-import { BlogContent } from "@components/blog-content";
-import { MyAvatar } from "@components/my-avatar";
-import { RaiseIssueBanner } from "@components/raise-issue-banner";
-import { BlogViewCounter } from "@components/blog-view-counter";
-import { MoreBlogContentMobile } from "@components/more-blog-content-mobile";
-import { SupportButton } from "@components/support-button";
-import { absoluteUrl } from "@/lib/utils";
+import { AnimateElement } from '@components/animate-element';
+import { BlogContent } from '@components/blog-content';
+import { BlogViewCounter } from '@components/blog-view-counter';
+import { MoreBlogContent } from '@components/more-blog-content';
+import { MoreBlogContentMobile } from '@components/more-blog-content-mobile';
+import { MyAvatar } from '@components/my-avatar';
+import { RaiseIssueBanner } from '@components/raise-issue-banner';
+import { SnapSection } from '@components/snap-container';
+import { SocialShare } from '@components/social-share';
+import { SupportButton } from '@components/support-button';
+import { TableOfContents } from '@components/table-of-contents';
+import { GradientText } from '@components/text';
+import { AnimatedHeading } from '@components/text/heading';
+import { allBlogs } from '@content';
+import { LampContainer } from '@ui';
+import { format, parseISO } from 'date-fns';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { getCldOgImageUrl } from 'next-cloudinary';
+import type { FC } from 'react';
+import { absoluteUrl } from '@/lib/utils';
 
 type BlogPageParams = {
   params: {
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: BlogPageParams): Promise<Meta
   if (!blogPost) {
     return {
       title: `Blog Not Found | Tushar Shukla`,
-      description: "The requested blog post could not be found.",
+      description: 'The requested blog post could not be found.',
     };
   }
 
@@ -42,16 +42,16 @@ export async function generateMetadata({ params }: BlogPageParams): Promise<Meta
     src: blogPost.img,
     width: 1200,
     height: 630,
-    crop: "fill",
-    gravity: "auto",
+    crop: 'fill',
+    gravity: 'auto',
     overlays: [
       {
-        publicId: "overlay",
+        publicId: 'overlay',
         width: 1200,
         height: 630,
         effects: [
           {
-            colorize: "100,co_black",
+            colorize: '100,co_black',
           },
           {
             opacity: 50,
@@ -61,43 +61,43 @@ export async function generateMetadata({ params }: BlogPageParams): Promise<Meta
       {
         text: {
           text: blogPost.title,
-          fontFamily: "Georgia",
+          fontFamily: 'Georgia',
           fontSize: 60,
-          fontWeight: "bold",
+          fontWeight: 'bold',
           letterSpacing: -2,
           lineSpacing: -10,
-          color: "white",
+          color: 'white',
         },
         position: {
           x: 80,
           y: 100,
         },
         width: 1040,
-        crop: "fit",
+        crop: 'fit',
       },
       {
         text: {
-          text: blogPost.summary.substring(0, 120) + (blogPost.summary.length > 120 ? "..." : ""),
-          fontFamily: "Georgia",
+          text: blogPost.summary.substring(0, 120) + (blogPost.summary.length > 120 ? '...' : ''),
+          fontFamily: 'Georgia',
           fontSize: 20,
-          fontWeight: "normal",
+          fontWeight: 'normal',
           lineSpacing: 3,
-          color: "#d1d5db",
+          color: '#d1d5db',
         },
         position: {
           x: 80,
           y: 380,
         },
         width: 1040,
-        crop: "fit",
+        crop: 'fit',
       },
       {
         text: {
           text: `by ${blogPost.author}`,
-          fontFamily: "Georgia",
+          fontFamily: 'Georgia',
           fontSize: 16,
-          fontWeight: "normal",
-          color: "#9ca3af",
+          fontWeight: 'normal',
+          color: '#9ca3af',
         },
         position: {
           x: 80,
@@ -113,14 +113,14 @@ export async function generateMetadata({ params }: BlogPageParams): Promise<Meta
     authors: [
       {
         name: blogPost.author,
-        url: "https://tusharshukla.dev",
+        url: 'https://tusharshukla.dev',
       },
     ],
     keywords: blogPost.keywords || blogPost.tags || [],
     creator: blogPost.author,
     publisher: blogPost.author,
     openGraph: {
-      type: "article",
+      type: 'article',
       title: blogPost.title,
       description: blogPost.summary,
       url: absoluteUrl(`/blog/${blogPost.slug}`),
@@ -138,10 +138,10 @@ export async function generateMetadata({ params }: BlogPageParams): Promise<Meta
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: blogPost.title,
       description: blogPost.summary,
-      creator: "@theTSguy",
+      creator: '@theTSguy',
       images: [ogImage],
     },
     alternates: {
@@ -153,7 +153,7 @@ export async function generateMetadata({ params }: BlogPageParams): Promise<Meta
 const BlogPage: FC<BlogPageParams> = ({ params }) => {
   const blog = allBlogs.find(post => {
     // Remove 'blog/' from the beginning of the path
-    const slugWithoutPrefix = post._raw.flattenedPath.replace(/^blog\//, "");
+    const slugWithoutPrefix = post._raw.flattenedPath.replace(/^blog\//, '');
     return slugWithoutPrefix === params.slug;
   });
 
@@ -173,7 +173,7 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
             <div className="flex items-center justify-between gap-4">
               <AnimateElement delay={0.15}>
                 <MyAvatar
-                  src={blog.authorImg || "https://avatars.githubusercontent.com/u/7785066?v=4"}
+                  src={blog.authorImg || 'https://avatars.githubusercontent.com/u/7785066?v=4'}
                   alt={blog.author}
                   title={blog.authorDesc}
                   fallback={blog.authorAlias}
@@ -188,7 +188,7 @@ const BlogPage: FC<BlogPageParams> = ({ params }) => {
 
             <AnimateElement delay={0.65} className="flex w-[calc(100%-5rem)] flex-col items-start gap-1 sm:w-auto">
               <time dateTime={blog.date}>
-                <GradientText color="green" text={`Published on ${format(parseISO(blog.date), "MMMM dd, yyyy")}`} />
+                <GradientText color="green" text={`Published on ${format(parseISO(blog.date), 'MMMM dd, yyyy')}`} />
               </time>
 
               <div className="flex w-full items-center justify-between gap-2">

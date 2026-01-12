@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { FC, useState } from "react";
-import Link from "next/link";
-import { AnimatePresence, motion } from "motion/react";
-import { AdvImage } from "@components/adv-image";
-import { cn } from "@/lib/utils";
-import { badgeVariants, Card, CardTitle, CardDescription, CardDate, CardFooter } from "@ui";
-import { GradientText } from "@components/text";
-import { UiComponent } from "@/types";
+import { AdvImage } from '@components/adv-image';
+import { GradientText } from '@components/text';
+import { badgeVariants, Card, CardDate, CardDescription, CardFooter, CardTitle } from '@ui';
+import { AnimatePresence, motion } from 'motion/react';
+import Link from 'next/link';
+import { type FC, useState } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type HoverCardItem = {
   title: string;
@@ -37,13 +37,13 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
   };
 
   return (
-    <div className={cn("grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3", className)}>
+    <div className={cn('grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3', className)}>
       {items.map((item, idx) => {
         const isHovered = hoveredIndex === idx;
 
         return (
           <Link
-            target={item?.url.startsWith("http") ? "_blank" : "_self"}
+            target={item?.url.startsWith('http') ? '_blank' : '_self'}
             href={item?.url}
             key={item?.url}
             className="group relative block h-full w-full"
@@ -69,7 +69,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
             </AnimatePresence>
 
             <Card className={cardClassName}>
-              <CardTitle className={cn("line-clamp-2", titleClassName)}>
+              <CardTitle className={cn('line-clamp-2', titleClassName)}>
                 {isHovered ? <GradientText text={item.title} /> : item.title}
               </CardTitle>
 
@@ -79,7 +79,7 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
                     <CardDate
                       date={item.date}
                       className={cn({
-                        "font-bold": isHovered,
+                        'font-bold': isHovered,
                       })}
                     />
                   )}
@@ -88,8 +88,8 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
                     <>
                       <span className="mx-1">•</span>
                       <span
-                        className={cn("mt-1 inline-block text-sm text-neutral-500 dark:text-neutral-300", {
-                          "font-bold": isHovered,
+                        className={cn('mt-1 inline-block text-sm text-neutral-500 dark:text-neutral-300', {
+                          'font-bold': isHovered,
                         })}
                       >
                         {item.readingTimeString}
@@ -101,8 +101,8 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
 
               {item.summary && (
                 <CardDescription
-                  className={cn("line-clamp-5", {
-                    "text-white": isHovered,
+                  className={cn('line-clamp-5', {
+                    'text-white': isHovered,
                   })}
                 >
                   {item.summary}
@@ -126,7 +126,8 @@ export const HoverCards: FC<HoverCardsType> = ({ items, cardClassName, className
                   {item.tags.map(tag => (
                     <button
                       key={tag}
-                      className={badgeVariants({ variant: "destructive" })}
+                      type="button"
+                      className={badgeVariants({ variant: 'destructive' })}
                       onClick={(event: React.MouseEvent<HTMLButtonElement>) => handleTagClick(event, tag)}
                     >
                       {tag}

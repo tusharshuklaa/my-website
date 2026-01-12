@@ -1,5 +1,5 @@
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -10,9 +10,9 @@ export const isEmoji = (str: string) => !!str.match(/\p{Extended_Pictographic}/g
 export const getReadingTime = (content: string) => {
   // Remove all MDX/HTML tags
   const cleanContent = content
-    .replace(/<\/?[^>]+(>|$)/g, "")
+    .replace(/<\/?[^>]+(>|$)/g, '')
     // Remove special characters and extra whitespace
-    .replace(/[^\w\s]/g, "")
+    .replace(/[^\w\s]/g, '')
     .trim();
 
   // Split by whitespace and filter out empty strings
@@ -27,10 +27,10 @@ export const getReadingTime = (content: string) => {
 
 export const formatReadingTime = (minutes: number) => {
   if (minutes < 1) {
-    return "Less than a minute";
+    return 'Less than a minute';
   }
 
-  return `${minutes} min${minutes === 1 ? "" : "s"} read`;
+  return `${minutes} min${minutes === 1 ? '' : 's'} read`;
 };
 
 export const absoluteUrl = (path: string) => {

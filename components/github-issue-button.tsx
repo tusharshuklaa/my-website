@@ -1,8 +1,8 @@
-import { FC } from "react";
-import Link from "next/link";
-import { UiComponent } from "@/types";
-import { cn } from "@/lib/utils";
-import { Button } from "@ui";
+import { Button } from '@ui';
+import Link from 'next/link';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { UiComponent } from '@/types';
 
 type GithubIssueButtonProps = UiComponent<{
   url?: string;
@@ -10,7 +10,7 @@ type GithubIssueButtonProps = UiComponent<{
 }>;
 
 export const GithubIssueButton: FC<GithubIssueButtonProps> = ({ issueTitle, className }) => {
-  const githubIssueButtonClasses = cn("overflow-hidden z-20 relative rounded-full p-1 h-12 text-xl mt-8", className);
+  const githubIssueButtonClasses = cn('overflow-hidden z-20 relative rounded-full p-1 h-12 text-xl mt-8', className);
 
   const title = `Found an issue for page - '${issueTitle}'`;
   const issueDescription = `
@@ -43,4 +43,4 @@ export const GithubIssueButton: FC<GithubIssueButtonProps> = ({ issueTitle, clas
   );
 };
 
-GithubIssueButton.displayName = "GithubIssueButton";
+GithubIssueButton.displayName = 'GithubIssueButton';

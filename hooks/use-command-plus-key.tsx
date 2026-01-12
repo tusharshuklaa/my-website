@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useCallback, useEffect } from 'react';
 
 type UseKeyboardShortcutOptions = {
   key: string;
@@ -20,7 +20,7 @@ export const useKeyboardShortcut = ({
   preventDefault = true,
   enabled = true,
 }: UseKeyboardShortcutOptions) => {
-  const memoizedCallback = useCallback(callback, [callback]);
+  const memoizedCallback = useCallback(callback, []);
 
   useEffect(() => {
     if (!enabled) return;
@@ -35,13 +35,13 @@ export const useKeyboardShortcut = ({
         if (!required) return false;
 
         switch (modifier) {
-          case "ctrl":
+          case 'ctrl':
             return event.ctrlKey;
-          case "meta":
+          case 'meta':
             return event.metaKey;
-          case "shift":
+          case 'shift':
             return event.shiftKey;
-          case "alt":
+          case 'alt':
             return event.altKey;
           default:
             return false;
@@ -58,7 +58,7 @@ export const useKeyboardShortcut = ({
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [key, modifiers, preventDefault, enabled, memoizedCallback]);
 };

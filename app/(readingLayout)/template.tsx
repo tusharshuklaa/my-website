@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { ComponentPropsWithoutRef } from "react";
-import { Navbar } from "@components/navbar";
-import { ContactSection } from "@components/contact-section";
-import { Footer } from "@components/footer";
-import { Toaster } from "@ui";
-import { RootRefProvider } from "@/contexts/use-root-ref";
+import { ContactSection } from '@components/contact-section';
+import { Footer } from '@components/footer';
+import { Navbar } from '@components/navbar';
+import { Toaster } from '@ui';
+import type { ComponentPropsWithoutRef } from 'react';
+import { RootRefProvider } from '@/contexts/use-root-ref';
 
-export default function Template({ children }: ComponentPropsWithoutRef<"div">) {
+export default function Template({ children }: ComponentPropsWithoutRef<'div'>) {
   return (
     <RootRefProvider>
       <Navbar />

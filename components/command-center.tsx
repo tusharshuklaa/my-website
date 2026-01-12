@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { FC, useState, useCallback, lazy, Suspense } from "react";
-import { Command, Search } from "lucide-react";
-import { Button } from "@ui";
-import { useKeyboardShortcut } from "@hooks/use-command-plus-key";
-import { shootConfetti } from "@/lib/commandCenterUtils";
-import { useScreenType } from "@/hooks/use-screen-type";
+import { useKeyboardShortcut } from '@hooks/use-command-plus-key';
+import { Button } from '@ui';
+import { Command, Search } from 'lucide-react';
+import { type FC, lazy, Suspense, useCallback, useState } from 'react';
+import { useScreenType } from '@/hooks/use-screen-type';
+import { shootConfetti } from '@/lib/commandCenterUtils';
 
 const CommandCenterContent = lazy(() =>
-  import("@components/command-center-content").then(module => ({
+  import('@components/command-center-content').then(module => ({
     default: module.CommandCenterContent,
   })),
 );
@@ -20,15 +20,15 @@ export const CommandCenter: FC = () => {
   const openCommandCenter = useCallback(() => setOpen(true), []);
 
   useKeyboardShortcut({
-    key: "k",
+    key: 'k',
     callback: openCommandCenter,
     modifiers: { ctrl: true, meta: true },
     enabled: !isMobile,
   });
 
   useKeyboardShortcut({
-    key: "j",
-    callback: () => shootConfetti("basic"),
+    key: 'j',
+    callback: () => shootConfetti('basic'),
     modifiers: { ctrl: true, meta: true },
     enabled: !isMobile,
   });

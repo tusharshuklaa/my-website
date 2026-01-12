@@ -1,14 +1,14 @@
-import { motion } from "motion/react";
-import { AspectRatio } from "@ui";
-import { AdvImage } from "@components/adv-image";
+import { AdvImage } from '@components/adv-image';
+import { AspectRatio } from '@ui';
+import { motion } from 'motion/react';
 
 export const LuminenceSkeleton = () => {
   const variants = {
     initial: {
-      backgroundPosition: "0 50%",
+      backgroundPosition: '0 50%',
     },
     animate: {
-      backgroundPosition: ["0, 50%", "100% 50%", "0 50%"],
+      backgroundPosition: ['0, 50%', '100% 50%', '0 50%'],
     },
   };
   return (
@@ -19,12 +19,12 @@ export const LuminenceSkeleton = () => {
       transition={{
         duration: 5,
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: 'reverse',
       }}
       className="flex h-full min-h-[9rem] w-full flex-col space-y-2 overflow-hidden rounded bg-dot-black/[0.2] dark:bg-dot-white/[0.2]"
       style={{
-        background: "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
-        backgroundSize: "400% 400%",
+        background: 'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
+        backgroundSize: '400% 400%',
       }}
     >
       <motion.div className="h-full w-full rounded-lg"></motion.div>
@@ -38,13 +38,13 @@ export const AnimatedContentSkeleton = () => {
       width: 0,
     },
     animate: {
-      width: "100%",
+      width: '100%',
       transition: {
         duration: 0.2,
       },
     },
     hover: {
-      width: ["0%", "100%"],
+      width: ['0%', '100%'],
       transition: {
         duration: 2,
       },
@@ -61,10 +61,11 @@ export const AnimatedContentSkeleton = () => {
     >
       {arr.map((_, i) => (
         <motion.div
-          key={"skelenton-two" + i}
+          // biome-ignore lint/suspicious/noArrayIndexKey: trivial
+          key={`skelenton-two${i}`}
           variants={variants}
           style={{
-            maxWidth: Math.random() * (100 - 40) + 40 + "%",
+            maxWidth: `${Math.random() * (100 - 40) + 40}%`,
           }}
           className="flex h-4 w-full flex-row items-center space-x-2 rounded-full border border-neutral-100 bg-neutral-100 p-2 dark:border-white/[0.2] dark:bg-black"
         ></motion.div>

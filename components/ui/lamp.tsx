@@ -1,8 +1,8 @@
-"use client";
-import React, { FC } from "react";
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
-import { BasicUiComponent } from "@/types";
+'use client';
+import { motion } from 'motion/react';
+import type { FC } from 'react';
+import { cn } from '@/lib/utils';
+import type { BasicUiComponent } from '@/types';
 
 type LampContainerProps = BasicUiComponent & {
   containerClassName?: string;
@@ -10,25 +10,25 @@ type LampContainerProps = BasicUiComponent & {
 
 export const LampContainer: FC<LampContainerProps> = ({ children, className, containerClassName }) => {
   const containerClasses = cn(
-    "relative z-50 flex -translate-y-48 sm:-translate-y-32 flex-col items-center px-5 gap-20 sm:gap-40",
+    'relative z-50 flex -translate-y-48 sm:-translate-y-32 flex-col items-center px-5 gap-20 sm:gap-40',
     containerClassName,
   );
 
   return (
     <div
       className={cn(
-        "relative z-0 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-md bg-slate-950",
+        'relative z-0 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-md bg-slate-950',
         className,
       )}
     >
       <div className="relative isolate z-0 flex w-full flex-1 scale-x-50 scale-y-75 items-center justify-center sm:scale-x-100 sm:scale-y-125">
         <motion.div
-          initial={{ opacity: 0.5, width: "15rem" }}
-          whileInView={{ opacity: 1, width: "30rem" }}
+          initial={{ opacity: 0.5, width: '15rem' }}
+          whileInView={{ opacity: 1, width: '30rem' }}
           transition={{
             delay: 0.3,
             duration: 0.8,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
           style={{
             backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
@@ -39,12 +39,12 @@ export const LampContainer: FC<LampContainerProps> = ({ children, className, con
           <div className="absolute bottom-0 left-0 z-20 h-[100%] w-40 bg-slate-950 [mask-image:linear-gradient(to_right,white,transparent)]" />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0.5, width: "15rem" }}
-          whileInView={{ opacity: 1, width: "30rem" }}
+          initial={{ opacity: 0.5, width: '15rem' }}
+          whileInView={{ opacity: 1, width: '30rem' }}
           transition={{
             delay: 0.3,
             duration: 0.8,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
           style={{
             backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
@@ -58,22 +58,22 @@ export const LampContainer: FC<LampContainerProps> = ({ children, className, con
         <div className="absolute top-1/2 z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
         <div className="absolute inset-auto z-50 h-36 w-[28rem] -translate-y-1/2 rounded-full bg-cyan-500 opacity-50 blur-3xl"></div>
         <motion.div
-          initial={{ width: "8rem" }}
-          whileInView={{ width: "16rem" }}
+          initial={{ width: '8rem' }}
+          whileInView={{ width: '16rem' }}
           transition={{
             delay: 0.3,
             duration: 0.8,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
           className="absolute inset-auto z-30 h-36 w-64 -translate-y-[6rem] rounded-full bg-cyan-400 blur-2xl"
         ></motion.div>
         <motion.div
-          initial={{ width: "15rem" }}
-          whileInView={{ width: "30rem" }}
+          initial={{ width: '15rem' }}
+          whileInView={{ width: '30rem' }}
           transition={{
             delay: 0.3,
             duration: 0.8,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
           className="absolute inset-auto z-50 h-0.5 w-[30rem] -translate-y-[7rem] bg-cyan-400"
         ></motion.div>
