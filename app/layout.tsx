@@ -1,5 +1,6 @@
 import type { Viewport, Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Dongle, Poppins } from "next/font/google";
 import { ThemeProvider } from "@components/theme-provider";
 import { InfoBar } from "@components/info-bar";
@@ -104,6 +105,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
