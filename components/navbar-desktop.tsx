@@ -5,30 +5,24 @@ import { CoolBorder } from '@components/cool-border';
 import { DownloadResumeButton } from '@components/download-resume-button';
 import { MyAvatar } from '@components/my-avatar';
 import { TextFlipper } from '@components/text';
-import { HoveredLink, Menu, MenuItem, ProductItem } from '@components/ui';
-import { allBlogs, type Blog } from '@content';
-import { format, parseISO } from 'date-fns';
-import { filter, map, sortBy, take } from 'lodash';
+import { HoveredLink, Menu, MenuItem } from '@components/ui';
 import { motion } from 'motion/react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { type FC, useState } from 'react';
 import { useHideOnScroll } from '@/hooks/use-hide-on-scroll';
 import { cn } from '@/lib/utils';
 import type { UiComponent } from '@/types';
 
-const getLimitedBlogs = (blogs: Array<Blog>, limit: number) => {
-  const publishedBlogs = filter(blogs, 'published');
-  const blogsWithFormattedDate = map(publishedBlogs, blog => ({
-    ...blog,
-    date: format(parseISO(blog.date), 'LLLL d, yyyy'),
-  }));
-  const sortedBlogs = sortBy(blogsWithFormattedDate, blog => new Date(blog.date)).reverse();
-
-  return take(sortedBlogs, limit);
-};
+const NavbarRecentBlogsPanel = dynamic(
+  () => import('@components/navbar-recent-blogs-panel').then(module => module.NavbarRecentBlogsPanel),
+  {
+    ssr: false,
+    loading: () => <div className="px-4 pb-4 text-sm text-neutral-500">Loading recent blogs...</div>,
+  },
+);
 
 export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
-  const blogs = getLimitedBlogs(allBlogs, 4);
   const [active, setActive] = useState<string | null>(null);
 
   const { isHiddenOnScroll, isReady } = useHideOnScroll({
@@ -78,17 +72,7 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
 
           <MenuItem setActive={setActive} active={active} item="Blogs" href="/blog">
             <h3 className="mb-4 text-center text-2xl font-bold">Recent Blogs</h3>
-            <div className="grid grid-cols-2 gap-10 p-4 text-sm">
-              {blogs.map(blog => (
-                <ProductItem
-                  key={blog.title}
-                  title={blog.title}
-                  href={blog.url}
-                  src={blog.img}
-                  description={blog.summary}
-                />
-              ))}
-            </div>
+            <NavbarRecentBlogsPanel />
           </MenuItem>
 
           <MenuItem item="Showcase" href="/showcase" />
