@@ -68,6 +68,8 @@ body {
   0% {
     stroke: #89fc00;
     stroke-dashoffset: var(--dash-offset);
+    fill: transparent;
+    opacity: 0;
   }
   10% {
     stroke: #9368b7;
@@ -98,21 +100,23 @@ body {
     stroke: #fff;
     fill: #fff;
     stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 
 .fun-text {
   --dash-offset: 50;
-  svg {
-    path {
-      fill: transparent;
-      stroke: #fff;
-      stroke-width: 0.1;
-      stroke-dasharray: var(--dash-offset);
-      stroke-dashoffset: var(--dash-offset);
-      animation: welcomeText 4s ease-in-out 1 forwards 4s;
-    }
-  }
+}
+
+.fun-text {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 0.1;
+  stroke-dasharray: var(--dash-offset);
+  stroke-dashoffset: var(--dash-offset);
+  animation: welcomeText 3s ease-in-out 1 forwards 3s;
+  animation-fill-mode: both;
+  opacity: 0;
 }
 
 .link-glow-yellow {

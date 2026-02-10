@@ -26,15 +26,22 @@ type BlogPageParams = {
   };
 };
 
+const getPublishedBlogBySlug = (slug: string) => {
+  return allBlogs.find(blog => blog.slug === slug && blog.published);
+};
+
 export async function generateMetadata({ params }: BlogPageParams): Promise<Metadata> {
-  // Find the post for the current slug
-  const blogPost = allBlogs.find(blog => blog.slug === params.slug);
+  const blogPost = getPublishedBlogBySlug(params.slug);
 
   // If post not found, return minimal metadata
   if (!blogPost) {
     return {
       title: `Blog Not Found | Tushar Shukla`,
       description: 'The requested blog post could not be found.',
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
@@ -151,18 +158,48 @@ export async function generateMetadata({ params }: BlogPageParams): Promise<Meta
 }
 
 const BlogPage: FC<BlogPageParams> = ({ params }) => {
-  const blog = allBlogs.find(post => {
-    // Remove 'blog/' from the beginning of the path
-    const slugWithoutPrefix = post._raw.flattenedPath.replace(/^blog\//, '');
-    return slugWithoutPrefix === params.slug;
-  });
+  const blog = getPublishedBlogBySlug(params.slug);
 
   if (!blog?.body.code) {
     notFound();
   }
 
+  const blogJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: blog.title,
+    description: blog.summary,
+    image: [getCldOgImageUrl({ src: blog.img, width: 1200, height: 630, crop: 'fill', gravity: 'auto' })],
+    author: [
+      {
+        '@type': 'Person',
+        name: blog.author,
+        url: absoluteUrl('/about-me'),
+      },
+    ],
+    publisher: {
+      '@type': 'Person',
+      name: blog.author,
+      url: absoluteUrl('/'),
+    },
+    datePublished: blog.date,
+    dateModified: blog.lastModified || blog.date,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': absoluteUrl(`/blog/${blog.slug}`),
+    },
+    url: absoluteUrl(`/blog/${blog.slug}`),
+    inLanguage: 'en-US',
+    keywords: (blog.keywords || blog.tags || []).join(', '),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: needed for seo
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       <SnapSection className="m-auto max-w-sm md:max-w-5xl">
         <LampContainer className="pt-[30dvh]">
           <AnimatedHeading className="!leading-snug tracking-wide">

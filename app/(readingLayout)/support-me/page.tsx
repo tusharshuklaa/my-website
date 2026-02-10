@@ -3,7 +3,31 @@ import { PaymentButton } from '@components/payment-button';
 import { PrettyLink } from '@components/pretty-link';
 import { AnimatedHeading } from '@components/text';
 import { CardDescription, CardTitle, MagicCard } from '@components/ui';
+import type { Metadata } from 'next';
 import type { FC } from 'react';
+import { absoluteUrl } from '@/lib/utils';
+
+export const metadata: Metadata = {
+  title: 'Support My Work | Tushar Shukla',
+  description:
+    'Support Tushar Shukla through Buy Me a Coffee or Razorpay to help sustain free frontend content, projects, and developer resources.',
+  openGraph: {
+    type: 'website',
+    title: 'Support My Work | Tushar Shukla',
+    description: 'Support free frontend content and open source work by Tushar Shukla.',
+    url: absoluteUrl('/support-me'),
+    siteName: 'Tushar Shukla | Senior Frontend Developer',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Support My Work | Tushar Shukla',
+    description: 'Support free frontend content and open source work by Tushar Shukla.',
+    creator: '@theTSguy',
+  },
+  alternates: {
+    canonical: absoluteUrl('/support-me'),
+  },
+};
 
 const SupportMePage: FC = () => (
   <div className="m-auto max-w-sm antialiased md:max-w-5xl">
@@ -23,7 +47,7 @@ const SupportMePage: FC = () => (
         <br />
         <br />
         All of my content is free to access and open source and your support would be greatly appreciated. If
-        your&apos;e inclined to contribute, and only if you can afford to, consider making a donation through any of the
+        you&apos;re inclined to contribute, and only if you can afford to, consider making a donation through any of the
         listed platforms.
         <br />
         <br />

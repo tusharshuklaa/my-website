@@ -1,6 +1,14 @@
-import Link from 'next/link';
+import type { Metadata } from 'next';
 import { GlitchText, Underline } from '@/components/text';
 import { BackgroundBeams } from '@/components/ui/background-beams';
+
+export const metadata: Metadata = {
+  title: '404 - Page Not Found',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function NotFound() {
   return (
@@ -13,15 +21,15 @@ export default async function NotFound() {
         <p className="relative z-10 mx-auto my-2 max-w-lg text-center text-neutral-500">
           Oops! The page you&apos;re looking for is either moved or doesn&apos;t exist. <br />
           If you think this is a mistake, please{' '}
-          <Link href="/contact">
+          <a href="mailto:tusharshukla.dev@gmail.com">
             <Underline>contact me</Underline>
-          </Link>
+          </a>
           . <br />
           <br />
           Feel free to checkout the{' '}
-          <Link href="/">
+          <a href="/">
             <Underline>rest of my site</Underline>
-          </Link>{' '}
+          </a>{' '}
           :)
         </p>
       </div>
