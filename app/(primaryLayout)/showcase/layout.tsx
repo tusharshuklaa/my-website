@@ -21,7 +21,6 @@ export const metadata: Metadata = {
     'frontend',
   ],
   openGraph: {
-    url: 'https://tusharshukla.dev',
     type: 'website',
     title:
       'Collection of useful, fun and informative code snippets, github repositories, tools, codepens and more | tusharshukla',
@@ -52,9 +51,6 @@ export const metadata: Metadata = {
         alt: 'tusharshukla',
       },
     ],
-  },
-  alternates: {
-    canonical: 'https://tusharshukla.dev',
   },
 };
 

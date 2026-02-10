@@ -1,12 +1,34 @@
 import { AnimatedHeading, Heading2, Heading3 } from '@components/text';
+import type { Metadata } from 'next';
 import type { FC } from 'react';
 import { PrettyLink } from '@/components/pretty-link';
-import { cn } from '@/lib/utils';
+import { absoluteUrl, cn } from '@/lib/utils';
 import type { BasicUiComponent } from '@/types';
 
 const JustText: FC<BasicUiComponent> = ({ children, className }) => (
   <span className={cn('mt-4 text-justify leading-8 tracking-wider', className)}>{children}</span>
 );
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Tushar Shukla',
+  description: 'Privacy policy for tusharshukla.dev covering data handling, analytics, and user rights.',
+  openGraph: {
+    type: 'website',
+    title: 'Privacy Policy | Tushar Shukla',
+    description: 'Read how tusharshukla.dev handles data collection, analytics, and privacy.',
+    url: absoluteUrl('/privacy-policy'),
+    siteName: 'Tushar Shukla | Portfolio',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Privacy Policy | Tushar Shukla',
+    description: 'Read how tusharshukla.dev handles data collection, analytics, and privacy.',
+    creator: '@theTSguy',
+  },
+  alternates: {
+    canonical: absoluteUrl('/privacy-policy'),
+  },
+};
 
 const PrivacyPolicyPage: FC = () => (
   <div className="m-auto max-w-sm antialiased md:max-w-5xl">
@@ -20,7 +42,7 @@ const PrivacyPolicyPage: FC = () => (
         committed to protecting your privacy and ensuring that your personal information is handled responsibly. This
         Privacy Policy explains how we collect, use, and safeguard your information when you visit our website. By using
         our website, you agree to the terms of this Privacy Policy. If you do not agree with the practices described in
-        this policy, please do not use our website. use.
+        this policy, please do not use our website.
       </JustText>
       <Heading2 className="mb-2 mt-12">1. Information We Collect</Heading2>
       <Heading3>a. Automatically Collected Information</Heading3>
@@ -117,12 +139,18 @@ const PrivacyPolicyPage: FC = () => (
           <strong>Deletion:</strong> You can request the deletion of your data, subject to legal obligations.
         </li>
       </ul>
-      <JustText>To exercise these rights, please contact us at [your email address].</JustText>
+      <JustText>
+        To exercise these rights, please contact us at{' '}
+        <PrettyLink href="mailto:tusharshukla.dev@gmail.com" title="Email Tushar Shukla">
+          tusharshukla.dev@gmail.com
+        </PrettyLink>
+        .
+      </JustText>
       <Heading2 className="mb-2 mt-12">7. Changes to This Privacy Policy</Heading2>
       <JustText>
         We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated
-        &ldquot;Last Updated&rdquot; date. We encourage you to review this policy periodically to stay informed about
-        how we are protecting your information.
+        &quot;Last Updated&quot; date. We encourage you to review this policy periodically to stay informed about how we
+        are protecting your information.
       </JustText>
     </section>
   </div>

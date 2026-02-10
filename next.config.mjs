@@ -16,6 +16,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'octodex.github.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
     ],
   },
 };

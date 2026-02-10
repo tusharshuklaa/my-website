@@ -1,22 +1,29 @@
-'use client';
+import type { Metadata } from 'next';
+import { HomeClient } from '@/components/pages/home-client';
+import { absoluteUrl } from '@/lib/utils';
 
-import { Career } from '@components/career';
-import { Introduction } from '@components/introduction';
-import { Welcome } from '@components/welcome';
-import { WorkStatus } from '@components/work-status';
-import { useIsMounted } from '@hooks/use-is-mounted';
-import { ShowcaseSlider } from '@/components/showcase-slider';
+export const metadata: Metadata = {
+  title: 'Tushar Shukla | Senior Frontend Developer',
+  description:
+    'Portfolio of Tushar Shukla featuring frontend engineering projects, CSS art, technical blogs, and web performance focused work.',
+  openGraph: {
+    type: 'website',
+    title: 'Tushar Shukla | Senior Frontend Developer',
+    description: 'Frontend portfolio with projects, blogs, CSS art, and developer resources from Tushar Shukla.',
+    url: absoluteUrl('/'),
+    siteName: 'Tushar Shukla | Senior Frontend Developer',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tushar Shukla | Senior Frontend Developer',
+    description: 'Frontend portfolio with projects, blogs, CSS art, and developer resources from Tushar Shukla.',
+    creator: '@theTSguy',
+  },
+  alternates: {
+    canonical: absoluteUrl('/'),
+  },
+};
 
-export default function Home() {
-  const isPageMounted = useIsMounted();
-
-  return (
-    <>
-      <Welcome />
-      <Introduction />
-      <ShowcaseSlider />
-      {isPageMounted && <Career />}
-      <WorkStatus />
-    </>
-  );
+export default function HomePage() {
+  return <HomeClient />;
 }

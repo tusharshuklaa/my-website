@@ -19,7 +19,6 @@ export const metadata: Metadata = {
     'css art',
   ],
   openGraph: {
-    url: 'https://tusharshukla.dev',
     type: 'website',
     title: 'Frontend and Productivity Blogs | tusharshukla',
     description:
@@ -48,9 +47,6 @@ export const metadata: Metadata = {
         alt: 'tusharshukla',
       },
     ],
-  },
-  alternates: {
-    canonical: 'https://tusharshukla.dev',
   },
 };
 

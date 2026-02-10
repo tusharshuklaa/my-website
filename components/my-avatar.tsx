@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback } from '@components/ui';
+import Image from 'next/image';
 import type { FC } from 'react';
-import { AdvImage } from './adv-image';
 
 type MyAvatarProps = {
   src?: string;
@@ -10,14 +10,26 @@ type MyAvatarProps = {
   className?: string;
 };
 
+const CLOUDINARY_BASE_URL = 'https://res.cloudinary.com/dx91z87ok/image/upload';
+const DEFAULT_AVATAR_PUBLIC_ID = 'tushar-shukla_xcsbbs';
+const DEFAULT_TRANSFORMS = 'f_auto,q_auto,c_fill,g_face,w_128,h_128,r_max';
+
 export const MyAvatar: FC<MyAvatarProps> = ({ alt, className, fallback, src, title }) => {
+  const avatarSrc = src
+    ? src.startsWith('http')
+      ? src
+      : `${CLOUDINARY_BASE_URL}/${DEFAULT_TRANSFORMS}/v1/${src}`
+    : `${CLOUDINARY_BASE_URL}/${DEFAULT_TRANSFORMS}/v1/${DEFAULT_AVATAR_PUBLIC_ID}`;
+
   return (
     <Avatar data-testid="cmp-my-avatar" className={className}>
-      <AdvImage
+      <Image
         className="aspect-square"
-        src={src || 'tushar-shukla_xcsbbs'}
+        src={avatarSrc}
         alt={alt || '@tusharshuklaa'}
         title={title || 'Tushar Shukla'}
+        width={128}
+        height={128}
         priority
       />
       <AvatarFallback>{fallback || 'TS'}</AvatarFallback>

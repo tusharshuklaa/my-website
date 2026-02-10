@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: ['/'],
-      disallow: ['/search?q=', '/admin/'],
+      disallow: ['/admin/'],
     },
     sitemap: ['https://tusharshukla.dev/sitemap.xml'],
   };

@@ -25,10 +25,12 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tusharshukla.dev'),
-  title: 'Tushar Shukla | Portfolio website',
-  description: 'Frontend Developer Portfolio Website',
+  title: 'Tushar Shukla | Senior Frontend Developer',
+  description:
+    'Portfolio of Tushar Shukla, a Senior Frontend Developer sharing projects, CSS art, frontend blogs, and web performance insights.',
   openGraph: {
-    siteName: 'Tushar Shukla | Portfolio website',
+    url: 'https://tusharshukla.dev',
+    siteName: 'Tushar Shukla | Senior Frontend Developer',
     type: 'website',
     locale: 'en_US',
     images: [
@@ -36,9 +38,17 @@ export const metadata: Metadata = {
         url: 'https://res.cloudinary.com/dx91z87ok/image/upload/v1/og-default',
         width: 1200,
         height: 630,
-        alt: 'Tushar Shukla | Portfolio website',
+        alt: 'Tushar Shukla | Senior Frontend Developer',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tushar Shukla | Senior Frontend Developer',
+    description:
+      'Portfolio of Tushar Shukla, a Senior Frontend Developer sharing projects, CSS art, frontend blogs, and web performance insights.',
+    creator: '@theTSguy',
+    images: ['https://res.cloudinary.com/dx91z87ok/image/upload/v1/og-default'],
   },
   robots: {
     index: true,
@@ -46,11 +56,12 @@ export const metadata: Metadata = {
     'max-image-preview': 'large',
     'max-snippet': -1,
     'max-video-preview': -1,
-    googleBot: 'index, follow',
-  },
-  alternates: {
-    types: {
-      'application/rss+xml': 'https://tusharshukla.dev/rss.xml',
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
     },
   },
   applicationName: 'Tushar Shukla | Portfolio website',
@@ -86,6 +97,30 @@ export const metadata: Metadata = {
   },
 };
 
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Tushar Shukla',
+    url: 'https://tusharshukla.dev',
+    inLanguage: 'en-US',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Tushar Shukla',
+    url: 'https://tusharshukla.dev',
+    image: 'https://tusharshukla.dev/images/tusharshukla_website.png',
+    jobTitle: 'Senior Frontend Developer',
+    sameAs: [
+      'https://github.com/tusharshuklaa',
+      'https://www.linkedin.com/in/tusharshuklaa/',
+      'https://x.com/theTSguy',
+      'https://codepen.io/tusharshukla',
+    ],
+  },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -94,6 +129,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} ${dongle.variable} font-poppins antialiased`}>
+        <script
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: needed for seo
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
