@@ -1,4 +1,3 @@
-import { DownloadResumeButton } from '@components/download-resume-button';
 import { SupportButton } from '@components/support-button';
 import { Underline } from '@components/text';
 import { ArrowUpRight } from 'lucide-react';
@@ -65,7 +64,6 @@ export const Footer: FC = () => {
           </p> */}
 
           <div className="left-0 right-0 mx-auto mb-4 mt-12 flex flex-col items-center gap-6 sm:left-auto sm:right-auto sm:mx-0 sm:mb-0 sm:mt-6 sm:flex-row">
-            <DownloadResumeButton />
             <SupportButton />
           </div>
         </div>

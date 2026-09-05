@@ -18,7 +18,6 @@ import {
   BookOpenText,
   Codepen,
   Drama,
-  File,
   FolderCode,
   GithubIcon,
   Layers,
@@ -199,34 +198,19 @@ const AllContacts: FC<WithCloseCommandCenter> = ({ closeCommandCenter }) => {
   );
 };
 
-const AllExtras: FC<WithCloseCommandCenter> = ({ closeCommandCenter }) => {
+const AllExtras: FC<WithCloseCommandCenter> = () => {
   const { setTheme, theme } = useTheme();
   const toggleTheme = useCallback(() => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   }, [theme, setTheme]);
 
   return (
-    <>
-      <CommandItem onSelect={toggleTheme}>
-        <Sun className="mr-2 h-4 w-4 dark:hidden dark:-rotate-90 dark:scale-0" />
-        <Moon className="mr-2 hidden h-4 w-4 rotate-90 scale-0 transition-all dark:block dark:rotate-0 dark:scale-100" />
-        <span>Toggle Theme</span>
-        <CommandShortcut className="shrink-0">Not Working</CommandShortcut>
-      </CommandItem>
-
-      <CommandItem
-        onSelect={() =>
-          openWebsite(
-            'https://drive.google.com/file/d/1FbUKhgGbrNY-dK8ZMX0CcDRnMCxQx3s5/view?usp=sharing',
-            closeCommandCenter,
-          )
-        }
-      >
-        <File className="mr-2 h-4 w-4" />
-        <span>Download Resume</span>
-        <CommandShortcut className="shrink-0">Google Drive</CommandShortcut>
-      </CommandItem>
-    </>
+    <CommandItem onSelect={toggleTheme}>
+      <Sun className="mr-2 h-4 w-4 dark:hidden dark:-rotate-90 dark:scale-0" />
+      <Moon className="mr-2 hidden h-4 w-4 rotate-90 scale-0 transition-all dark:block dark:rotate-0 dark:scale-100" />
+      <span>Toggle Theme</span>
+      <CommandShortcut className="shrink-0">Not Working</CommandShortcut>
+    </CommandItem>
   );
 };
 

@@ -1,5 +1,4 @@
 import { CommandCenter } from '@components/command-center';
-import { DownloadResumeButton } from '@components/download-resume-button';
 import { GlowingGradientBox } from '@components/glowing-gradient-box';
 import { MyAvatar } from '@components/my-avatar';
 import { SupportButton } from '@components/support-button';
@@ -60,7 +59,6 @@ export const NavbarMobile: FC = () => {
           </Link>
 
           <div className="my-4 flex items-center justify-center gap-4">
-            <DownloadResumeButton />
             <SupportButton />
           </div>
         </div>
