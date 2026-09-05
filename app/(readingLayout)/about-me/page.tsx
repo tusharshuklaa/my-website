@@ -89,7 +89,7 @@ const AboutMePage: FC = () => (
           things that I use in my daily life
         </PrettyLink>{' '}
         or{' '}
-        <PrettyLink href="mailto:tusharshuklaa@gmail.com" title="get in touch">
+        <PrettyLink href="mailto:tusharshukla.dev@gmail.com" title="get in touch">
           drop me a line, or just say hi
         </PrettyLink>
         . Let&apos;s connect and create something awesome together!
