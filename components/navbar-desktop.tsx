@@ -2,7 +2,6 @@
 
 import { CommandCenter } from '@components/command-center';
 import { CoolBorder } from '@components/cool-border';
-import { DownloadResumeButton } from '@components/download-resume-button';
 import { MyAvatar } from '@components/my-avatar';
 import { TextFlipper } from '@components/text';
 import { HoveredLink, Menu, MenuItem } from '@components/ui';
@@ -66,7 +65,6 @@ export const NavbarDesktop: FC<UiComponent> = ({ className }) => {
               <HoveredLink href="/#my-crafts">My Crafts</HoveredLink>
               <HoveredLink href="/#work-experience">Work Experience</HoveredLink>
               <HoveredLink href="/#work-status">Work Status</HoveredLink>
-              <DownloadResumeButton containerClassName="my-4" />
             </div>
           </MenuItem>
 
